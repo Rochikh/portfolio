@@ -1,0 +1,2031 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rochane Kherbouche – Expert IA & Pédagogie Numérique</title>
+  <meta name="description" content="Portfolio de Rochane Kherbouche, Ambassadeur IA, expert en intégration du numérique et de l'intelligence artificielle dans la formation." />
+  <meta property="og:title" content="Rochane Kherbouche – Expert IA & Pédagogie Numérique" />
+  <meta property="og:description" content="Ambassadeur IA, formateur, conférencier international sur l'IA dans l'éducation." />
+  <meta property="og:url" content="https://ia.rochane.fr" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    /* ─────────────────────────────────────────────
+       CSS VARIABLES & RESET
+    ───────────────────────────────────────────── */
+    :root {
+      --blue-dark:   #2c4a8a;
+      --blue:        #4472C4;
+      --blue-light:  #7ba3e0;
+      --blue-pale:   #dce8f7;
+      --rose:        #d4a5a5;
+      --rose-light:  #f0dede;
+      --rose-pale:   #faf5f5;
+      --white:       #ffffff;
+      --gray-100:    #f8f9fa;
+      --gray-200:    #e9ecef;
+      --gray-400:    #868e96;
+      --gray-700:    #495057;
+      --gray-900:    #212529;
+      --radius:      12px;
+      --radius-lg:   20px;
+      --shadow:      0 4px 20px rgba(44,74,138,.12);
+      --shadow-lg:   0 8px 40px rgba(44,74,138,.18);
+      --transition:  .3s cubic-bezier(.4,0,.2,1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; overflow-x: hidden; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--gray-900);
+      background: var(--white);
+      line-height: 1.7;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a   { color: inherit; text-decoration: none; }
+    ul  { list-style: none; }
+
+    /* ─────────────────────────────────────────────
+       NAVIGATION
+    ───────────────────────────────────────────── */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: var(--transition);
+    }
+
+    #navbar.scrolled {
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 16px rgba(44,74,138,.1);
+      padding: .75rem 2rem;
+    }
+
+    .nav-logo {
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--white);
+      letter-spacing: -.5px;
+      transition: var(--transition);
+    }
+    #navbar.scrolled .nav-logo { color: var(--blue-dark); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: .9rem;
+      font-weight: 500;
+      color: rgba(255,255,255,.85);
+      transition: var(--transition);
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 2px;
+      background: var(--rose);
+      transition: var(--transition);
+      border-radius: 2px;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover::after { width: 100%; }
+    #navbar.scrolled .nav-links a { color: var(--gray-700); }
+    #navbar.scrolled .nav-links a:hover { color: var(--blue); }
+
+    .nav-cta {
+      background: var(--rose);
+      color: var(--white) !important;
+      padding: .45rem 1.1rem;
+      border-radius: 50px;
+      font-weight: 600 !important;
+      transition: var(--transition) !important;
+    }
+    .nav-cta:hover { background: #c49090 !important; transform: translateY(-1px); }
+    .nav-cta::after { display: none !important; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    #navbar.scrolled .hamburger span { background: var(--blue-dark); }
+
+    /* Mobile nav */
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 0; right: -100%;
+        width: 75%;
+        height: 100vh;
+        background: var(--white);
+        flex-direction: column;
+        justify-content: center;
+        gap: 2.5rem;
+        padding: 2rem;
+        box-shadow: var(--shadow-lg);
+        transition: .4s ease;
+        z-index: 999;
+      }
+      .nav-links.open { right: 0; }
+      .nav-links a { color: var(--gray-700); font-size: 1.1rem; }
+      .hamburger { display: flex; z-index: 1001; }
+    }
+
+    /* ─────────────────────────────────────────────
+       HERO
+    ───────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 60%, var(--blue-light) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Decorative blobs */
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -10%; right: -5%;
+      width: 500px; height: 500px;
+      background: rgba(212,165,165,.18);
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      animation: blobSpin 12s ease-in-out infinite alternate;
+    }
+    #hero::after {
+      content: '';
+      position: absolute;
+      bottom: -10%; left: -5%;
+      width: 400px; height: 400px;
+      background: rgba(255,255,255,.07);
+      border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+      animation: blobSpin 15s ease-in-out infinite alternate-reverse;
+    }
+    @keyframes blobSpin {
+      0%   { transform: rotate(0deg) scale(1); }
+      100% { transform: rotate(20deg) scale(1.1); }
+    }
+
+    .hero-inner {
+      max-width: 900px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-avatar-wrap {
+      position: relative;
+      display: inline-block;
+    }
+    .hero-avatar {
+      width: 140px; height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid rgba(255,255,255,.4);
+      box-shadow: 0 8px 32px rgba(0,0,0,.25);
+    }
+    .hero-badge {
+      position: absolute;
+      bottom: 4px; right: 4px;
+      width: 32px; height: 32px;
+      background: var(--rose);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--white);
+      font-size: .8rem;
+      color: var(--white);
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(255,255,255,.15);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,.3);
+      color: var(--white);
+      padding: .4rem 1rem;
+      border-radius: 50px;
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .5px;
+    }
+    .hero-tag i { color: var(--rose-light); }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 6vw, 3.8rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.15;
+      letter-spacing: -1px;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,.8);
+      max-width: 580px;
+      line-height: 1.75;
+    }
+
+    .hero-socials {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .hero-socials a {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 1rem;
+      transition: var(--transition);
+      backdrop-filter: blur(8px);
+    }
+    .hero-socials a:hover {
+      background: var(--rose);
+      border-color: var(--rose);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(212,165,165,.4);
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .75rem 1.75rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: .95rem;
+      transition: var(--transition);
+      cursor: pointer;
+      border: none;
+    }
+    .btn-white {
+      background: var(--white);
+      color: var(--blue-dark);
+      box-shadow: var(--shadow);
+    }
+    .btn-white:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,.5);
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,.12);
+      border-color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .4rem;
+      color: rgba(255,255,255,.5);
+      font-size: .75rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      animation: bounce 2s ease infinite;
+    }
+    .scroll-indicator i { font-size: 1rem; }
+    @keyframes bounce {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ─────────────────────────────────────────────
+       SECTIONS LAYOUT
+    ───────────────────────────────────────────── */
+    section { padding: 5rem 2rem; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: .75rem;
+    }
+    .section-label::before {
+      content: '';
+      width: 24px; height: 2px;
+      background: var(--rose);
+      border-radius: 2px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--gray-900);
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      font-size: 1rem;
+      color: var(--gray-400);
+      max-width: 540px;
+      margin-bottom: 3rem;
+      line-height: 1.75;
+    }
+
+    /* ─────────────────────────────────────────────
+       STATS
+    ───────────────────────────────────────────── */
+    #stats {
+      background: var(--gray-100);
+      padding: 4rem 2rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .stat-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      border-radius: 4px 4px 0 0;
+    }
+    .stat-card:nth-child(1)::before { background: var(--blue); }
+    .stat-card:nth-child(2)::before { background: var(--rose); }
+    .stat-card:nth-child(3)::before { background: #6bbf8e; }
+    .stat-card:nth-child(4)::before { background: #f6a147; }
+
+    .stat-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: .5rem;
+    }
+    .stat-card:nth-child(1) .stat-number { color: var(--blue); }
+    .stat-card:nth-child(2) .stat-number { color: var(--rose); }
+    .stat-card:nth-child(3) .stat-number { color: #6bbf8e; }
+    .stat-card:nth-child(4) .stat-number { color: #f6a147; }
+
+    .stat-label {
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--gray-700);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .stat-icon {
+      font-size: 1.5rem;
+      margin-bottom: .75rem;
+      opacity: .5;
+    }
+    .stat-card:nth-child(1) .stat-icon { color: var(--blue); }
+    .stat-card:nth-child(2) .stat-icon { color: var(--rose); }
+    .stat-card:nth-child(3) .stat-icon { color: #6bbf8e; }
+    .stat-card:nth-child(4) .stat-icon { color: #f6a147; }
+
+    /* ─────────────────────────────────────────────
+       ABOUT
+    ───────────────────────────────────────────── */
+    #about {
+      background: var(--white);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        text-align: center;
+      }
+    }
+
+    .about-img-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .about-img {
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      box-shadow: var(--shadow-lg);
+      display: block;
+      object-fit: cover;
+      object-position: top center;
+      border: 4px solid var(--blue);
+    }
+
+    .about-badge-box {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: .75rem 1rem;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+      max-width: 280px;
+      width: 100%;
+      border-top: 3px solid var(--blue);
+    }
+
+    .about-badge-icon {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--blue-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--blue);
+      font-size: .95rem;
+      flex-shrink: 0;
+    }
+
+    .about-badge-text {
+      font-size: .76rem;
+      color: var(--gray-700);
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    .about-badge-text strong {
+      display: block;
+      color: var(--blue-dark);
+      font-size: .80rem;
+      margin-bottom: .1rem;
+    }
+
+    @media (max-width: 900px) {
+      .about-badge-box { margin: 0 auto; }
+      .about-links { justify-content: center; }
+      .about-highlights { text-align: left; }
+    }
+
+    .about-content { }
+    .about-content p {
+      color: var(--gray-700);
+      margin-bottom: 1.25rem;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .about-highlights {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem;
+      margin-top: 2rem;
+    }
+
+    .highlight-item {
+      display: flex;
+      align-items: flex-start;
+      gap: .6rem;
+      font-size: .88rem;
+      color: var(--gray-700);
+    }
+    .highlight-item i {
+      color: var(--blue);
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .about-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    .about-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .6rem 1.25rem;
+      border-radius: 50px;
+      font-size: .88rem;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    .about-link-btn.primary {
+      background: var(--blue);
+      color: var(--white);
+    }
+    .about-link-btn.primary:hover {
+      background: var(--blue-dark);
+      transform: translateY(-2px);
+    }
+    .about-link-btn.secondary {
+      background: var(--rose-light);
+      color: var(--blue-dark);
+    }
+    .about-link-btn.secondary:hover {
+      background: var(--rose);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    /* ─────────────────────────────────────────────
+       FILTER TABS
+    ───────────────────────────────────────────── */
+    .filter-tabs {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+    .filter-tab {
+      padding: .45rem 1.1rem;
+      border-radius: 50px;
+      font-size: .85rem;
+      font-weight: 600;
+      background: var(--gray-200);
+      color: var(--gray-700);
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+      font-family: 'Inter', sans-serif;
+    }
+    .filter-tab.active,
+    .filter-tab:hover {
+      background: var(--blue);
+      color: var(--white);
+    }
+
+    /* ─────────────────────────────────────────────
+       ARTICLES
+    ───────────────────────────────────────────── */
+    #articles { background: var(--rose-pale); }
+
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .article-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .article-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--rose), var(--blue));
+    }
+    .article-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .article-tag {
+      display: inline-flex;
+      align-items: center;
+      background: var(--rose-light);
+      color: #9b6b6b;
+      padding: .25rem .75rem;
+      border-radius: 50px;
+      font-size: .75rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      width: fit-content;
+    }
+
+    .article-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: .75rem;
+      line-height: 1.4;
+    }
+
+    .article-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .article-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--blue);
+      margin-top: auto;
+      padding-top: .75rem;
+      transition: var(--transition);
+    }
+    .article-link:hover { color: var(--blue-dark); gap: .7rem; }
+
+    /* ─────────────────────────────────────────────
+       CONFERENCES
+    ───────────────────────────────────────────── */
+    #conferences { background: var(--white); }
+
+    .conf-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .conf-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .conf-card::after {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--blue);
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: var(--transition);
+      border-radius: 0 2px 2px 0;
+    }
+    .conf-card:hover {
+      border-color: var(--blue-pale);
+      box-shadow: var(--shadow);
+      transform: translateX(3px);
+    }
+    .conf-card:hover::after { transform: scaleY(1); }
+
+    .conf-flag {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: var(--blue-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .conf-content { flex: 1; }
+    .conf-name {
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: .3rem;
+      line-height: 1.4;
+    }
+    .conf-meta {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .conf-location {
+      font-size: .78rem;
+      color: var(--blue);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: .3rem;
+    }
+    .conf-category {
+      font-size: .75rem;
+      background: var(--blue-pale);
+      color: var(--blue-dark);
+      padding: .15rem .6rem;
+      border-radius: 50px;
+      font-weight: 500;
+    }
+
+    /* ─────────────────────────────────────────────
+       FORMATIONS
+    ───────────────────────────────────────────── */
+    #formations { background: var(--gray-100); }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .form-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      transition: var(--transition);
+      box-shadow: 0 2px 8px rgba(44,74,138,.06);
+    }
+    .form-card:hover {
+      box-shadow: var(--shadow);
+      transform: translateY(-3px);
+    }
+
+    .form-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #6bbf8e;
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+
+    .form-name {
+      font-size: .93rem;
+      font-weight: 600;
+      color: var(--gray-900);
+      line-height: 1.4;
+      margin-bottom: .3rem;
+    }
+    .form-meta {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+    }
+    .form-location {
+      font-size: .78rem;
+      color: #5ca878;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: .3rem;
+    }
+    .form-tag {
+      font-size: .75rem;
+      background: #e8f5ee;
+      color: #5ca878;
+      padding: .15rem .6rem;
+      border-radius: 50px;
+      font-weight: 500;
+    }
+
+    /* ─────────────────────────────────────────────
+       WEBINAIRES
+    ───────────────────────────────────────────── */
+    #webinaires { background: var(--white); }
+
+    .web-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .web-card {
+      background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      color: var(--white);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .web-card::before {
+      content: '';
+      position: absolute;
+      top: -30%; right: -10%;
+      width: 180px; height: 180px;
+      background: rgba(255,255,255,.06);
+      border-radius: 50%;
+    }
+    .web-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .web-icon {
+      width: 48px; height: 48px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 1.25rem;
+    }
+    .web-title {
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: .75rem;
+    }
+    .web-badges {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+    }
+    .web-badge {
+      font-size: .73rem;
+      background: rgba(255,255,255,.15);
+      padding: .2rem .65rem;
+      border-radius: 50px;
+      font-weight: 500;
+    }
+
+    /* ─────────────────────────────────────────────
+       TOOLS / PROJETS
+    ───────────────────────────────────────────── */
+    #projets { background: var(--rose-pale); }
+
+    .projets-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    @media (min-width: 900px) {
+      .projets-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1200px) {
+      /* 5 cartes : 2+2+1 centré automatiquement */
+      .projets-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .projet-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .projet-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .projet-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .projet-icon {
+      width: 52px; height: 52px;
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .projet-icon.blue { background: var(--blue-pale); color: var(--blue); }
+    .projet-icon.rose { background: var(--rose-light); color: #b87878; }
+    .projet-icon.green { background: #e8f5ee; color: #5ca878; }
+
+    .projet-name {
+      font-weight: 700;
+      font-size: 1.02rem;
+      color: var(--gray-900);
+    }
+    .projet-type {
+      font-size: .78rem;
+      color: var(--gray-400);
+    }
+    .projet-desc {
+      font-size: .88rem;
+      color: var(--gray-700);
+      line-height: 1.7;
+    }
+    .projet-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--blue);
+      margin-top: auto;
+      transition: var(--transition);
+    }
+    .projet-link:hover { color: var(--blue-dark); gap: .7rem; }
+
+    .projet-tags {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+    }
+    .projet-tag {
+      font-size: .73rem;
+      background: var(--gray-100);
+      color: var(--gray-700);
+      padding: .2rem .65rem;
+      border-radius: 50px;
+      font-weight: 500;
+      border: 1px solid var(--gray-200);
+    }
+
+    /* ─────────────────────────────────────────────
+       CONTACT
+    ───────────────────────────────────────────── */
+    #contact {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%);
+      color: var(--white);
+      text-align: center;
+    }
+    #contact .section-label { color: var(--rose-light); }
+    #contact .section-title { color: var(--white); }
+    #contact .section-desc { color: rgba(255,255,255,.7); margin: 0 auto 3rem; }
+
+    .contact-cards {
+      display: flex;
+      gap: 1.25rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    .contact-card {
+      background: rgba(255,255,255,.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .75rem;
+      min-width: 180px;
+      transition: var(--transition);
+      color: var(--white);
+    }
+    .contact-card:hover {
+      background: rgba(255,255,255,.18);
+      transform: translateY(-4px);
+    }
+    .contact-card i {
+      font-size: 1.6rem;
+      color: var(--rose-light);
+    }
+    .contact-card span {
+      font-size: .85rem;
+      font-weight: 600;
+    }
+
+    .contact-socials {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .contact-socials a {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 1.1rem;
+      transition: var(--transition);
+    }
+    .contact-socials a:hover {
+      background: var(--rose);
+      border-color: var(--rose);
+      transform: translateY(-3px);
+    }
+
+    /* ─────────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────────── */
+    footer {
+      background: var(--gray-900);
+      color: var(--gray-400);
+      text-align: center;
+      padding: 1.75rem 2rem;
+      font-size: .82rem;
+    }
+    footer a {
+      color: var(--blue-light);
+      font-weight: 500;
+    }
+    footer a:hover { color: var(--blue-light); text-decoration: underline; }
+
+    /* ─────────────────────────────────────────────
+       ANIMATIONS
+    ───────────────────────────────────────────── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Staggered delay for grid children */
+    .stagger > *:nth-child(1) { transition-delay: .05s; }
+    .stagger > *:nth-child(2) { transition-delay: .12s; }
+    .stagger > *:nth-child(3) { transition-delay: .19s; }
+    .stagger > *:nth-child(4) { transition-delay: .26s; }
+    .stagger > *:nth-child(5) { transition-delay: .33s; }
+    .stagger > *:nth-child(6) { transition-delay: .40s; }
+    .stagger > *:nth-child(7) { transition-delay: .47s; }
+    .stagger > *:nth-child(8) { transition-delay: .54s; }
+    .stagger > *:nth-child(9) { transition-delay: .61s; }
+    .stagger > *:nth-child(10) { transition-delay: .68s; }
+
+    /* ─────────────────────────────────────────────
+       BACK TO TOP
+    ───────────────────────────────────────────── */
+    #back-top {
+      position: fixed;
+      bottom: 2rem; right: 2rem;
+      width: 44px; height: 44px;
+      background: var(--blue);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+      z-index: 900;
+      border: none;
+    }
+    #back-top.visible {
+      opacity: 1;
+      pointer-events: all;
+    }
+    #back-top:hover {
+      background: var(--blue-dark);
+      transform: translateY(-3px);
+    }
+
+    /* ─────────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      section { padding: 3.5rem 1.25rem; }
+      .about-highlights { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════════ -->
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo">Rochane.K</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about"       onclick="closeNav()">À propos</a></li>
+      <li><a href="#articles"    onclick="closeNav()">Articles</a></li>
+      <li><a href="#conferences" onclick="closeNav()">Conférences</a></li>
+      <li><a href="#formations"  onclick="closeNav()">Formations</a></li>
+      <li><a href="#projets"     onclick="closeNav()">Projets</a></li>
+      <li><a href="#contact" class="nav-cta" onclick="closeNav()">Contact</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="hero-inner">
+
+      <div class="hero-avatar-wrap">
+        <!-- 🔧 MISE À JOUR : remplace le src par ton URL de photo -->
+        <img
+          class="hero-avatar"
+          src="https://media.licdn.com/dms/image/v2/D4E03AQHpR2AJOJGt7A/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1719304019040?e=1746662400&v=beta&t=AHqFj4hKY2PZ7TQKQE5S6Z0YBcbNQHN1sDvk6cHm7TE"
+          alt="Rochane Kherbouche"
+          onerror="this.src='https://ui-avatars.com/api/?name=Rochane+Kherbouche&background=4472C4&color=fff&size=200'"
+        />
+        <div class="hero-badge"><i class="fa-solid fa-robot"></i></div>
+      </div>
+
+      <div class="hero-tag">
+        <i class="fa-solid fa-medal"></i>
+        Ambassadeur IA – Ministère de l'Économie et des Finances
+      </div>
+
+      <h1 class="hero-name">Rochane<br/>Kherbouche</h1>
+
+      <p class="hero-sub">
+        Passionné par l'intégration du numérique et des nouvelles pratiques pédagogiques,
+        j'aide à mettre en place des dispositifs de formation innovants en intelligence artificielle.
+      </p>
+
+      <div class="hero-socials">
+        <a href="https://www.linkedin.com/in/rochanekherbouche" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://x.com/RochaneK" target="_blank" rel="noopener" aria-label="X / Twitter">
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
+        <a href="https://www.facebook.com/Rochanek" target="_blank" rel="noopener" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="/cdn-cgi/l/email-protection#d9bab6b7adb8baad99abb6bab1b8b7bcf7bfab" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://meet.google.com/wsf-snkf-kcu" target="_blank" rel="noopener" aria-label="Visio">
+          <i class="fas fa-video"></i>
+        </a>
+        <a href="https://outlook.office365.com/owa/calendar/f91bb5b60785415fb0b6d93a495b61b7@bruxellesformation.brussels/60ca3931f35f4ce5bb2151a175ffd8228292193570038494811/calendar.html"
+           target="_blank" rel="noopener" aria-label="Agenda">
+          <i class="fas fa-calendar-alt"></i>
+        </a>
+      </div>
+
+      <div class="hero-btns">
+        <a href="#conferences" class="btn btn-white">
+          <i class="fas fa-globe"></i> Mes interventions
+        </a>
+        <a href="#contact" class="btn btn-outline">
+          <i class="fas fa-paper-plane"></i> Me contacter
+        </a>
+      </div>
+
+    </div>
+
+    <div class="scroll-indicator">
+      <span>Découvrir</span>
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       STATS
+  ═══════════════════════════════════════════ -->
+  <section id="stats">
+    <div class="container">
+      <div class="stats-grid stagger">
+
+        <div class="stat-card fade-in">
+          <div class="stat-icon"><i class="fas fa-pen-nib"></i></div>
+          <div class="stat-number" data-target="4">0</div>
+          <div class="stat-label">Articles publiés</div>
+        </div>
+
+        <div class="stat-card fade-in">
+          <div class="stat-icon"><i class="fas fa-microphone-alt"></i></div>
+          <div class="stat-number" data-target="10">0</div>
+          <div class="stat-label">Conférences</div>
+        </div>
+
+        <div class="stat-card fade-in">
+          <div class="stat-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+          <div class="stat-number" data-target="19">0</div>
+          <div class="stat-label">Formations & Ateliers</div>
+        </div>
+
+        <div class="stat-card fade-in">
+          <div class="stat-icon"><i class="fas fa-laptop"></i></div>
+          <div class="stat-number" data-target="3">0</div>
+          <div class="stat-label">Webinaires</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       À PROPOS
+  ═══════════════════════════════════════════ -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+
+        <div class="about-img-wrap fade-in">
+          <img
+            class="about-img"
+            src="https://ia.rochane.fr/assets/images/image01.jpg?v=274653b5"
+            alt="Portrait Rochane Kherbouche"
+            onerror="this.src='https://ui-avatars.com/api/?name=Rochane+Kherbouche&background=4472C4&color=fff&size=400'"
+          />
+          <div class="about-badge-box">
+            <div class="about-badge-icon"><i class="fas fa-award"></i></div>
+            <div class="about-badge-text">
+              <strong>Ambassadeur IA officiel</strong>
+              francenum.gouv.fr
+            </div>
+          </div>
+        </div>
+
+        <div class="about-content fade-in">
+          <div class="section-label">À propos</div>
+          <h2 class="section-title">Expert IA &amp;<br/>Pédagogie Numérique</h2>
+
+          <p>
+            Passionné par l'intégration du numérique et des nouvelles pratiques pédagogiques,
+            j'accompagne organisations et établissements d'enseignement dans la mise en place
+            de dispositifs de formation innovants centrés sur l'intelligence artificielle.
+          </p>
+          <p>
+            Reconnu comme <strong>Ambassadeur IA</strong> par le Ministère de l'Économie et des Finances (francenum.gouv.fr),
+            j'interviens à l'international : en Belgique, France, Tunisie, Burundi, Jordanie et auprès
+            d'institutions européennes et onusiennes.
+          </p>
+
+          <div class="about-highlights">
+            <div class="highlight-item">
+              <i class="fas fa-check-circle"></i>
+              <span>IA & Pédagogie inclusive</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Ingénierie de formation</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Conférencier international</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Innovation éducative</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Outils IA en formation</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fas fa-check-circle"></i>
+              <span>IA & inclusion numérique</span>
+            </div>
+          </div>
+
+          <div class="about-links">
+            <a href="https://www.francenum.gouv.fr/ambassadeurs-ia" target="_blank" class="about-link-btn primary">
+              <i class="fas fa-award"></i> Ambassadeur IA
+            </a>
+            <a href="https://www.centre-inffo.fr/innovation-formation/articles/rochane-kherbouche-agent-ia-collaboratif"
+               target="_blank" class="about-link-btn secondary">
+              <i class="fas fa-user-circle"></i> Portrait – « Agent IA collaboratif » · Centre Inffo
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       ARTICLES
+  ═══════════════════════════════════════════ -->
+  <section id="articles">
+    <div class="container">
+      <div class="section-label">Publications</div>
+      <h2 class="section-title">Articles publiés</h2>
+      <p class="section-desc">Réflexions et contributions écrites sur l'IA dans l'éducation, l'innovation pédagogique et l'inclusion.</p>
+
+      <div class="articles-grid stagger">
+
+        <div class="article-card fade-in">
+          <div class="article-icon">🎙️</div>
+          <div class="article-tag">Innovation</div>
+          <div class="article-title">VoxFolio – Quand la voix libère les talents, IA et pédagogies inclusives</div>
+          <a href="https://www.innovation-pedagogique.fr/article20741.html" target="_blank" class="article-link">Lire l'article <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="article-card fade-in">
+          <div class="article-icon">🤔</div>
+          <div class="article-tag">Réflexion</div>
+          <div class="article-title">Éducation artificielle ?</div>
+          <a href="https://www.innovation-pedagogique.fr/article12108.html" target="_blank" class="article-link">Lire l'article <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="article-card fade-in">
+          <div class="article-icon">💡</div>
+          <div class="article-tag">IA & Éducation</div>
+          <div class="article-title">IA en éducation, un outil d'innovation</div>
+          <a href="https://www.innovation-pedagogique.fr/article15242.html" target="_blank" class="article-link">Lire l'article <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="article-card fade-in">
+          <div class="article-icon">🤝</div>
+          <div class="article-tag">Inclusion</div>
+          <div class="article-title">IA et inclusion – Réduire la fracture numérique</div>
+          <a href="https://fr.linkedin.com/pulse/lia-pour-une-%C3%A9ducation-inclusive-r%C3%A9duire-la-fracture-kherbouche-jovde" target="_blank" class="article-link">Lire l'article <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       CONFÉRENCES
+  ═══════════════════════════════════════════ -->
+  <section id="conferences">
+    <div class="container">
+      <div class="section-label">Conférences</div>
+      <h2 class="section-title">Interventions internationales</h2>
+      <p class="section-desc">10 conférences dans 5 pays, auprès d'universités, institutions publiques et organismes internationaux.</p>
+
+      <div class="conf-grid stagger">
+
+        <div class="conf-card fade-in">
+          <div class="conf-flag">🇧🇪</div>
+          <div class="conf-content">
+            <div class="conf-name">Label européen des langues – IA et langues</div>
+            <div class="conf-meta">
+              <span class="conf-location"><i class="fas fa-map-marker-alt"></i>Belgique</span>
+              <span class="conf-category">Langues & IA</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="conf-card fade-in">
+          <div class="conf-flag">🇫🇷</div>
+          <div class="conf-content">
+            <div class="conf-name">France Éducation International</div>
+            <div class="conf-meta">
+              <span class="conf-location"><i class="fas fa-map-marker-alt"></i>France</span>
+              <span class="conf-category">International</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="conf-card fade-in">
+          <div class="conf-flag">🇧🇪</div>
+          <div class="conf-content">
+            <div class="conf-name">IPFC – Formation des inspecteurs et inspectrices</div>
+            <div class="conf-meta">
+              <span class="conf-location"><i class="fas fa-map-marker-alt"></i>Belgique</span>
+              <span class="conf-category">Formation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="conf-card fade-in">
+          <div class="conf-flag">🇧🇪</div>
+          <div class="conf-content">
+            <div class="conf-name">ULB et CCIB Bruxelles – Promotion et formation continue</div>
+            <div class="conf-meta">
+              <span class="conf-location"><i class="fas fa-map-marker-alt"></i>Bruxelles</span>
+              <span class="conf-category">Université</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="conf-card fade-in">
+          <div class="conf-flag">🇹🇳</div>
+          <div class="conf-content">
+            <div class="conf-name">Higher Institute Education & La Formation Continue, Tunis</div>
+            <div class="conf-meta">
+              <span class="conf-location"><i class="fas fa-map-marker-alt"></i>Tunis</span>
+              <span class="conf-category">Institut</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="conf-card fade-in">
+          <div class="conf-flag">🇧🇮</div>
+          <div class="conf-content">
+            <div class="conf-name">Université de Bujumbura</div>
+            <div class="conf-meta">
+              <span class="conf-location"><i class="fas fa-map-marker-alt"></i>Burundi</span>
+              <span class="conf-category">Université</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="conf-card fade-in">
+          <div class="conf-flag">🇫🇷</div>
+          <div class="conf-content">
+            <div class="conf-name">Municipalité de Berck</div>
+            <div class="conf-meta">
+              <span class="conf-location"><i class="fas fa-map-marker-alt"></i>France</span>
+              <span class="conf-category">Public</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="conf-card fade-in">
+          <div class="conf-flag">🇫🇷</div>
+          <div class="conf-content">
+            <div class="conf-name">MJC Lambres-lez-Douai</div>
+            <div class="conf-meta">
+              <span class="conf-location"><i class="fas fa-map-marker-alt"></i>France</span>
+              <span class="conf-category">Culturel</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="conf-card fade-in">
+          <div class="conf-flag">🇹🇳</div>
+          <div class="conf-content">
+            <div class="conf-name">Forum Citoyen de l'Innovation en Éducation, Sousse</div>
+            <div class="conf-meta">
+              <span class="conf-location"><i class="fas fa-map-marker-alt"></i>Sousse</span>
+              <span class="conf-category">Innovation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="conf-card fade-in">
+          <div class="conf-flag">🇧🇪</div>
+          <div class="conf-content">
+            <div class="conf-name">Elle Active (Magazine Elle) – IA et l'emploi</div>
+            <div class="conf-meta">
+              <span class="conf-location"><i class="fas fa-map-marker-alt"></i>Bruxelles</span>
+              <span class="conf-category">IA & Emploi</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       FORMATIONS
+  ═══════════════════════════════════════════ -->
+  <section id="formations">
+    <div class="container">
+      <div class="section-label">Ateliers & Formations</div>
+      <h2 class="section-title">Formations & Ateliers</h2>
+      <p class="section-desc">19 interventions de formation auprès d'institutions publiques, universités et entreprises en Europe, Afrique et au Moyen-Orient.</p>
+
+      <div class="form-grid stagger">
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">Design de formation IA – Commission européenne, AIM Consulting</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>Commission UE</span>
+              <span class="form-tag">Commission UE</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">Conception pédagogique avec l'IA – CESI Alger, projet UNESCO</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>Alger</span>
+              <span class="form-tag">UNESCO</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">Association Nationale des Services TICE et Audiovisuels</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>France</span>
+              <span class="form-tag">TICE</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">Institut des hautes études des communications sociales, Bruxelles</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>Bruxelles</span>
+              <span class="form-tag">Communication</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">Université El Manar, Tunis</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>Tunis</span>
+              <span class="form-tag">Université</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">Learning Solution, Bruxelles</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>Bruxelles</span>
+              <span class="form-tag">Formation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">École européenne de Bruxelles</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>Bruxelles</span>
+              <span class="form-tag">Européen</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">Faculté de la motricité de l'ULB, Bruxelles</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>Bruxelles</span>
+              <span class="form-tag">Motricité</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">Aprico Consultants – Digital Transformation, Bruxelles</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>Bruxelles</span>
+              <span class="form-tag">Digital</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">Aprico Consultants – Digital Transformation, Sfax</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>Sfax</span>
+              <span class="form-tag">Digital</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">RTBF Academy, Bruxelles</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>Bruxelles</span>
+              <span class="form-tag">Médias</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">IFAPME Tournai et Gembloux</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>Wallonie</span>
+              <span class="form-tag">Apprentissage</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">Bruxelles Formation</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>Bruxelles</span>
+              <span class="form-tag">Public</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">Meditech Access, Paris</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>Paris</span>
+              <span class="form-tag">Santé</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">Colloque International de l'Innovation Technologique, Sousse</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>Sousse</span>
+              <span class="form-tag">Innovation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">United Nations Volunteers, Amman</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>Amman</span>
+              <span class="form-tag">ONU</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">Université Lille – Master IPM</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>Lille</span>
+              <span class="form-tag">Master</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">Intégrer l'IA de la conception à l'évaluation – CNFPT Strasbourg</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>Strasbourg</span>
+              <span class="form-tag">Public</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">Utiliser l'IA en formation : outils et analyse critique – IFA Rouen</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>Rouen</span>
+              <span class="form-tag">Apprentissage</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       WEBINAIRES
+  ═══════════════════════════════════════════ -->
+  <section id="webinaires">
+    <div class="container">
+      <div class="section-label">En ligne</div>
+      <h2 class="section-title">Webinaires</h2>
+      <p class="section-desc">Interventions en ligne sur les usages de l'IA dans l'éducation et la formation professionnelle.</p>
+
+      <div class="web-grid stagger">
+
+        <div class="web-card fade-in">
+          <div class="web-icon"><i class="fas fa-globe"></i></div>
+          <div class="web-title">Les outils de l'IA dans l'éducation – Opportunités et défis</div>
+          <div class="web-badges">
+            <span class="web-badge">International</span>
+            <span class="web-badge">IA & Éducation</span>
+          </div>
+        </div>
+
+        <div class="web-card fade-in">
+          <div class="web-icon"><i class="fas fa-tools"></i></div>
+          <div class="web-title">Outils IA en formation – De la conception à la mise en œuvre</div>
+          <div class="web-badges">
+            <span class="web-badge">International</span>
+            <span class="web-badge">Formation</span>
+          </div>
+        </div>
+
+        <div class="web-card fade-in">
+          <div class="web-icon"><i class="fas fa-paint-brush"></i></div>
+          <div class="web-title">IA générative et création de contenus pédagogiques (Innovember)</div>
+          <div class="web-badges">
+            <span class="web-badge">Université de Lille</span>
+            <span class="web-badge">IA & Éducation</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       PROJETS / OUTILS
+  ═══════════════════════════════════════════ -->
+  <section id="projets">
+    <div class="container">
+      <div class="section-label">Créations</div>
+      <h2 class="section-title">Projets & Outils</h2>
+      <p class="section-desc">Des ressources et outils développés pour faciliter l'intégration de l'IA dans la formation.</p>
+
+      <div class="projets-grid stagger">
+
+        <div class="projet-card fade-in">
+          <div class="projet-header">
+            <div class="projet-icon blue"><i class="fas fa-robot"></i></div>
+            <div>
+              <div class="projet-name">Chat Bot Scenario Creator</div>
+              <div class="projet-type">Outil pédagogique IA</div>
+            </div>
+          </div>
+          <div class="projet-desc">
+            Un outil pour créer des scénarios conversationnels avec l'IA, facilitant la conception de formations interactives et engageantes.
+          </div>
+          <a href="https://scenariocreator.rochane.fr/" target="_blank" class="projet-link">
+            Voir l'outil <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- VoxFolio -->
+        <div class="projet-card fade-in">
+          <div class="projet-header">
+            <div class="projet-icon rose"><i class="fas fa-microphone"></i></div>
+            <div>
+              <div class="projet-name">VoxFolio</div>
+              <div class="projet-type">Portfolio vocal augmenté par l'IA</div>
+            </div>
+          </div>
+          <div class="projet-desc">
+            Transforme la voix en portfolio professionnel augmenté par l'IA. En 2 minutes d'enregistrement, l'IA transcrit, analyse et génère un visuel professionnel avec feedback personnalisé.
+          </div>
+          <div class="projet-tags">
+            <span class="projet-tag">Voix & IA</span>
+            <span class="projet-tag">Inclusion</span>
+            <span class="projet-tag">Portfolio</span>
+          </div>
+          <a href="https://voxfolio.rochane.fr/" target="_blank" class="projet-link">
+            Accéder à VoxFolio <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Argos socratique -->
+        <div class="projet-card fade-in">
+          <div class="projet-header">
+            <div class="projet-icon" style="background:#1e1e3a;color:#a5b4fc;"><i class="fas fa-brain"></i></div>
+            <div>
+              <div class="projet-name">Argos socratique</div>
+              <div class="projet-type">Traçabilité des compétences critiques</div>
+            </div>
+          </div>
+          <div class="projet-desc">
+            Dispositif de traçabilité des compétences critiques. Accès restreint sur justification pédagogique ou professionnelle – système Socrate augmenté par l'IA.
+          </div>
+          <div class="projet-tags">
+            <span class="projet-tag">Compétences</span>
+            <span class="projet-tag">Traçabilité</span>
+            <span class="projet-tag">Accès restreint</span>
+          </div>
+          <a href="https://ia-des.rochane.fr/" target="_blank" class="projet-link">
+            Découvrir Argos <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Compagnon de route -->
+        <div class="projet-card fade-in">
+          <div class="projet-header">
+            <div class="projet-icon" style="background:#ede9fe;color:#7c3aed;"><i class="fas fa-route"></i></div>
+            <div>
+              <div class="projet-name">Compagnon de route</div>
+              <div class="projet-type">Audit d'évaluations face à l'IA</div>
+            </div>
+          </div>
+          <div class="projet-desc">
+            Mesurez la robustesse de vos évaluations à l'ère de l'IA générative. Audit détaillé sur 4 dimensions critiques ou diagnostic rapide en 8 questions.
+          </div>
+          <div class="projet-tags">
+            <span class="projet-tag">Évaluation</span>
+            <span class="projet-tag">IA générative</span>
+            <span class="projet-tag">2026</span>
+          </div>
+          <a href="https://ia-cr.rochane.fr/" target="_blank" class="projet-link">
+            Tester l'outil <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       CONTACT
+  ═══════════════════════════════════════════ -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-label">Contact</div>
+      <h2 class="section-title">Travaillons ensemble</h2>
+      <p class="section-desc">
+        Pour une conférence, une formation, un atelier ou une collaboration – je suis disponible pour vous accompagner dans vos projets IA.
+      </p>
+
+      <div class="contact-cards">
+        <a href="/cdn-cgi/l/email-protection#a5c6cacbd1c4c6d1e5d7cac6cdc4cbc08bc3d7" class="contact-card">
+          <i class="fas fa-envelope"></i>
+          <span>Email</span>
+        </a>
+        <a href="https://www.linkedin.com/in/rochanekherbouche" target="_blank" class="contact-card">
+          <i class="fab fa-linkedin-in"></i>
+          <span>LinkedIn</span>
+        </a>
+        <a href="https://meet.google.com/wsf-snkf-kcu" target="_blank" class="contact-card">
+          <i class="fas fa-video"></i>
+          <span>Visio (Google Meet)</span>
+        </a>
+        <a href="https://outlook.office365.com/owa/calendar/f91bb5b60785415fb0b6d93a495b61b7@bruxellesformation.brussels/60ca3931f35f4ce5bb2151a175ffd8228292193570038494811/calendar.html"
+           target="_blank" class="contact-card">
+          <i class="fas fa-calendar-check"></i>
+          <span>Prendre RDV</span>
+        </a>
+      </div>
+
+      <div class="contact-socials">
+        <a href="https://www.linkedin.com/in/rochanekherbouche" target="_blank" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://x.com/RochaneK" target="_blank" aria-label="X / Twitter">
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
+        <a href="https://www.facebook.com/Rochanek" target="_blank" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="/cdn-cgi/l/email-protection#f4979b9a80959780b4869b979c959a91da9286" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════ -->
+  <footer>
+    <p>
+      &copy; 2025 <strong>Rochane Kherbouche</strong> –
+      <a href="https://www.francenum.gouv.fr/ambassadeurs-ia" target="_blank">Ambassadeur IA</a>
+    </p>
+  </footer>
+
+  <!-- Back to top -->
+  <button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Retour en haut">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- ═══════════════════════════════════════════
+       JAVASCRIPT
+  ═══════════════════════════════════════════ -->
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    /* ── Navbar scroll ── */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+      document.getElementById('back-top').classList.toggle('visible', window.scrollY > 300);
+    });
+
+    /* ── Hamburger ── */
+    function toggleNav() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+    function closeNav() {
+      document.getElementById('navLinks').classList.remove('open');
+    }
+
+    /* ── Intersection Observer – fade-in & counter ── */
+    const countersStarted = new Set();
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+
+        /* Counter animation */
+        const num = entry.target.querySelector('[data-target]');
+        if (num && !countersStarted.has(num)) {
+          countersStarted.add(num);
+          const target = parseInt(num.dataset.target);
+          const duration = 1200;
+          const step = Math.ceil(target / (duration / 16));
+          let current = 0;
+          const timer = setInterval(() => {
+            current = Math.min(current + step, target);
+            num.textContent = current;
+            if (current >= target) clearInterval(timer);
+          }, 16);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+    /* ── Active nav link on scroll ── */
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(sec => {
+        if (window.scrollY >= sec.offsetTop - 100) current = sec.id;
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
