@@ -16,6 +16,15 @@ jobs:
         run: |
           sed -i "s|{{GEMINI_API_KEY}}|${API_KEY}|g" index.html
 
+      - name: Verify Injection (Debug)
+        run: |
+          if grep -q "{{GEMINI_API_KEY}}" index.html; then
+            echo "ERREUR : Le marqueur est toujours présent dans le fichier !"
+            exit 1
+          else
+            echo "SUCCÈS : Le marqueur a bien été remplacé."
+          fi
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
