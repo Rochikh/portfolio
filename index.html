@@ -2312,7 +2312,7 @@
             const userInput = chatInput.value.trim();
             if (userInput === '') return;
             
-            if (GEMINI_API_KEY === '{{GEMINI_API_KEY}}') {
+            if (GEMINI_API_KEY.startsWith('{{')) {
                 addMessage("Désolé, le chatbot n'est pas encore configuré. Le propriétaire du site doit ajouter une clé API Gemini.", 'ai');
                 return;
             };
