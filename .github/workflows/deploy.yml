@@ -11,8 +11,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Inject API Key
+        env:
+          API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
-          sed -i "s|{{GEMINI_API_KEY}}|${{ secrets.GEMINI_API_KEY }}|g" index.html
+          sed -i "s|{{GEMINI_API_KEY}}|${API_KEY}|g" index.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
