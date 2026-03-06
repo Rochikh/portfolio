@@ -9,7 +9,6 @@
 2. Nommer le dépôt : **`portfolio`** (ou `rochane.fr`)
 3. Le laisser **Public**
 4. Cliquer **Create repository**
-
 ### Étape 2 – Pousser le code
 ```bash
 git init
