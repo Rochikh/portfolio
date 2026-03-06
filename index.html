@@ -2269,10 +2269,15 @@
 
         const initialMessage = "Bonjour ! Je suis l'assistant virtuel de Rochane Kherbouche. Comment puis-je vous aider aujourd'hui ? N'hésitez pas à me poser des questions sur son travail, ses interventions ou ses projets en IA et pédagogie.";
 
+        let pageContext = "";
+        document.querySelectorAll('section').forEach(section => {
+            pageContext += section.innerText.replace(/\n/g, ' ') + '\n\n';
+        });
+
         let conversationHistory = [
             {
                 "role": "user",
-                "parts": [{ "text": "Tu es un assistant virtuel pour le site de Rochane Kherbouche, un expert en IA et pédagogie numérique. Ton rôle est de répondre aux questions des visiteurs sur Rochane, ses projets, ses conférences, et ses formations. Sois concis, professionnel et amical. Ne réponds qu'aux questions en lien avec Rochane Kherbouche. Si une question est hors sujet, réponds poliment que tu ne peux pas y répondre. Voici le contexte du site pour t'aider : " + document.body.innerText.substring(0, 5000) }]
+                "parts": [{ "text": `Tu es un assistant virtuel pour le site de Rochane Kherbouche, un expert en IA et pédagogie numérique. Ton rôle est de répondre aux questions des visiteurs sur Rochane, ses projets, ses conférences, et ses formations. Sois concis, professionnel et amical. Ne réponds qu'aux questions en lien avec Rochane Kherbouche. Si une question est hors sujet, réponds poliment que tu ne peux pas y répondre. Voici le contexte du site pour t'aider : ${pageContext.substring(0, 8000)}` }]
             },
             {
                 "role": "model",
@@ -2344,7 +2349,7 @@
                 }
 
             } catch (error) {
-                console.error('Erreur lors de l'appel à l'API Gemini:', error);
+                console.error('Erreur lors de l\'appel à l\'API Gemini:', error);
                 chatMessages.removeChild(loadingElement);
                 addMessage("Désolé, une erreur s'est produite. Le propriétaire du site a été notifié.", 'ai');
             }
