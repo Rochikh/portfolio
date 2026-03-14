@@ -1,73 +1,71 @@
-/*
- * Cloudflare Pages Function - Proxy pour l'API Gemini
- *
- * Ce script intercepte les requêtes faites depuis votre site,
- * y ajoute la clé API Gemini en toute sécurité côté serveur,
- * et transmet la requête à Google.
- *
- * COMMENT ÇA MARCHE :
- * 1. Ce fichier doit être nommé `_worker.js` et placé à la racine de votre projet.
- * 2. Votre code frontend (dans index.html) doit envoyer les requêtes fetch vers l'URL relative `/`,
- *    par exemple : fetch('/', { method: 'POST', ... }).
- * 3. La clé API doit être configurée dans les variables d'environnement de votre projet Cloudflare Pages.
- *    (Paramètres > Fonctions > Variables d'environnement).
- */
+
 export default {
   async fetch(request, env, ctx) {
-    // Accepter uniquement les requêtes POST
-    if (request.method !== 'POST') {
-      // Pour toute autre méthode, servir le site statique normalement.
-      // C'est la magie des Pages Functions !
-      return env.ASSETS.fetch(request);
-    }
-
-    // Gérer les en-têtes CORS pour autoriser la requête
+    // --- CORS Preflight ---
     const corsHeaders = {
-      'Access-Control-Allow-Origin': '*', // Vous pouvez remplacer '*' par votre domaine pour plus de sécurité
+      'Access-Control-Allow-Origin': '*', // In production, should be your domain
       'Access-Control-Allow-Methods': 'POST, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type',
     };
-
     if (request.method === 'OPTIONS') {
       return new Response(null, { headers: corsHeaders });
     }
 
-    // Récupérer la clé API depuis les secrets du projet Cloudflare
-    const GEMINI_API_KEY = env.GEMINI_API_KEY;
-    if (!GEMINI_API_KEY) {
-      return new Response('Clé API non configurée sur le serveur.', { status: 500, headers: corsHeaders });
+    // We only want to handle POST requests
+    if (request.method !== 'POST') {
+      return new Response('Please send a POST request', { status: 405 });
     }
 
-    // Construire l'URL de l'API Gemini
-    const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${GEMINI_API_KEY}`;
-
     try {
-      const requestBody = await request.json();
+        // --- 1. Check for API Key ---
+        console.log('[WORKER] Function execution started.');
+        const GEMINI_API_KEY = env.GEMINI_API_KEY;
+        if (!GEMINI_API_KEY || GEMINI_API_KEY.length < 10) { // Basic check
+            console.error('[WORKER_ERROR] GEMINI_API_KEY is missing or invalid.');
+            return new Response(JSON.stringify({ error: 'API key not configured correctly on the server.' }), {
+                status: 500,
+                headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+            });
+        }
+        console.log('[WORKER] GEMINI_API_KEY found.');
 
-      // Transférer la requête à l'API Gemini
-      const geminiResponse = await fetch(GEMINI_API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(requestBody),
-      });
+        // --- 2. Prepare Google API Request ---
+        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${GEMINI_API_KEY}`;
+        const clientRequestBody = await request.json();
 
-      // Gérer les erreurs de l'API Gemini
-      if (!geminiResponse.ok) {
-        const errorText = await geminiResponse.text();
-        console.error("Erreur API Gemini:", errorText);
-        return new Response(`Erreur de l'API Gemini: ${geminiResponse.status}`, { status: geminiResponse.status, headers: corsHeaders });
-      }
+        // --- 3. Call Google API ---
+        console.log('[WORKER] Forwarding request to Google Gemini API...');
+        const googleResponse = await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(clientRequestBody),
+        });
 
-      const geminiData = await geminiResponse.json();
+        // --- 4. Handle Google API Response ---
+        if (!googleResponse.ok) {
+            const errorBody = await googleResponse.text();
+            console.error(`[WORKER_ERROR] Google API returned an error. Status: ${googleResponse.status}. Body: ${errorBody}`);
+            return new Response(JSON.stringify({ error: `Google API Error: ${errorBody}` }), {
+                status: googleResponse.status, // Proxy the status
+                headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+            });
+        }
+        
+        console.log('[WORKER] Successfully received response from Google API.');
+        const googleData = await googleResponse.json();
 
-      // Retourner la réponse de Gemini au client
-      return new Response(JSON.stringify(geminiData), {
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      });
+        // --- 5. Return Success Response to Client ---
+        return new Response(JSON.stringify(googleData), {
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        });
 
     } catch (error) {
-      console.error("Erreur du proxy:", error);
-      return new Response('Erreur interne du serveur.', { status: 500, headers: corsHeaders });
+        // --- Global Error Handler ---
+        console.error('[WORKER_CATCH_ERROR] An unexpected error occurred:', error.message, error.stack);
+        return new Response(JSON.stringify({ error: 'An internal server error occurred in the worker.' }), {
+            status: 500,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        });
     }
   },
 };
