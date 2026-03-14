@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -2316,16 +2315,9 @@
             pageContext += section.innerText.replace(/\n/g, ' ') + '\n\n';
         });
 
-        let conversationHistory = [
-            {
-                "role": "user",
-                "parts": [{ "text": `Tu es un assistant virtuel pour le site de Rochane Kherbouche. Ton rôle est de répondre aux questions des visiteurs. Sois concis (100 caractères max), professionnel et amical. Si une question porte sur une compétence non listée, encourage le contact, par ex. : \'C\'est tout à fait possible, contactez-le pour en discuter.\'. Si la question est hors-sujet, décline poliment. Voici le contexte du site pour t'aider : ${pageContext.substring(0, 8000)}` }]
-            },
-            {
-                "role": "model",
-                "parts": [{ "text": initialMessage }]
-            }
-        ];
+        const systemPrompt = `Tu es un assistant virtuel pour le site de Rochane Kherbouche. Ton rôle est de répondre aux questions des visiteurs. Sois concis (100 caractères max), professionnel et amical. Si une question porte sur une compétence non listée, encourage le contact, par ex. : 'C'est tout à fait possible, contactez-le pour en discuter.'. Si la question est hors-sujet, décline poliment. Voici le contexte du site pour t'aider : ${pageContext.substring(0, 8000)}`;
+
+        let conversationHistory = [];
 
         chatToggleBtn.addEventListener('click', () => {
             chatContainer.classList.toggle('open');
@@ -2366,13 +2358,27 @@
             chatMessages.scrollTop = chatMessages.scrollHeight;
 
             try {
+                const requestBody = {
+                    systemInstruction: {
+                        parts: [{ text: systemPrompt }]
+                    },
+                    contents: conversationHistory,
+                    safetySettings: [
+                        { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_NONE" },
+                        { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_NONE" },
+                        { category: "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold: "BLOCK_NONE" },
+                        { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "BLOCK_NONE" }
+                    ]
+                };
+
                 const response = await fetch('/api/chat', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ contents: conversationHistory }),
+                    body: JSON.stringify(requestBody),
                 });
 
                 const data = await response.json();
+                console.log("--- RÉPONSE API BRUTE ---", JSON.stringify(data, null, 2));
                 chatMessages.removeChild(loadingElement);
 
                 if (!response.ok) {
