@@ -2343,21 +2343,23 @@
         }
 
         async function sendMessage() {
-            const userInput = chatInput.value.trim();
-            if (userInput === '') return;
-
-            addMessage(userInput, 'user');
-            chatInput.value = '';
-
-            conversationHistory.push({ role: 'user', parts: [{ text: userInput }] });
-
-            const loadingElement = document.createElement('div');
-            loadingElement.classList.add('chat-message', 'ai', 'loading');
-            loadingElement.innerHTML = '<span></span><span></span><span></span>';
-            chatMessages.appendChild(loadingElement);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-
+            console.log("[CHAT DEBUG] === sendMessage() appelée ===");
             try {
+                const userInput = chatInput.value.trim();
+                if (userInput === '') return;
+                console.log("[CHAT DEBUG] 1. Input utilisateur:", userInput);
+
+                addMessage(userInput, 'user');
+                chatInput.value = '';
+
+                conversationHistory.push({ role: 'user', parts: [{ text: userInput }] });
+                console.log("[CHAT DEBUG] 2. Historique:", JSON.stringify(conversationHistory));
+
+                const loadingElement = document.createElement('div');
+                loadingElement.classList.add('chat-message', 'ai', 'loading');
+                loadingElement.innerHTML = '<span></span><span></span><span></span>';
+                chatMessages.appendChild(loadingElement);
+
                 const requestBody = {
                     systemInstruction: {
                         parts: [{ text: systemPrompt }]
@@ -2370,43 +2372,51 @@
                         { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "BLOCK_NONE" }
                     ]
                 };
+                console.log("[CHAT DEBUG] 3. Envoi fetch vers /api/chat...");
 
                 const response = await fetch('/api/chat', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(requestBody),
                 });
+                console.log("[CHAT DEBUG] 4. Réponse reçue, status:", response.status);
 
-                const data = await response.json();
-                console.log("--- RÉPONSE API BRUTE ---", JSON.stringify(data, null, 2));
+                const rawText = await response.text();
+                console.log("[CHAT DEBUG] 5. Réponse brute (texte):", rawText.substring(0, 2000));
+
+                let data;
+                try {
+                    data = JSON.parse(rawText);
+                } catch (parseErr) {
+                    console.error("[CHAT DEBUG] ERREUR: La réponse n'est pas du JSON valide:", parseErr);
+                    chatMessages.removeChild(loadingElement);
+                    addMessage("Erreur: réponse non-JSON du serveur. Voir console F12.", 'ai');
+                    return;
+                }
+
                 chatMessages.removeChild(loadingElement);
 
                 if (!response.ok) {
-                    // This is key: Log the detailed error from Google that the worker forwarded
-                    console.error("--- ERREUR SERVEUR (transmise par le worker) ---");
-                    console.error("Status:", response.status);
-                    console.error("Réponse:", data);
-                    console.error("--- FIN ERREUR SERVEUR ---");
-                    const errorMessage = data.error?.message || 'Pas de message d\'erreur détaillé.';
-                    throw new Error(errorMessage);
+                    console.error("[CHAT DEBUG] 6. ERREUR HTTP", response.status, data);
+                    addMessage("Erreur serveur " + response.status + ". Voir console F12.", 'ai');
+                    return;
                 }
 
-                if (data.candidates && data.candidates.length > 0 && data.candidates[0].content.parts[0].text) {
+                console.log("[CHAT DEBUG] 6. data.candidates:", JSON.stringify(data.candidates));
+
+                if (data.candidates && data.candidates.length > 0 && data.candidates[0].content && data.candidates[0].content.parts && data.candidates[0].content.parts[0] && data.candidates[0].content.parts[0].text) {
                     const aiResponse = data.candidates[0].content.parts[0].text;
+                    console.log("[CHAT DEBUG] 7. Réponse IA:", aiResponse);
                     addMessage(aiResponse, 'ai');
                     conversationHistory.push({ role: 'model', parts: [{ text: aiResponse }] });
                 } else {
-                    // Handle cases where the response is OK but empty (e.g., safety filters)
-                    console.warn("Réponse de l'API OK mais sans contenu candidat:", data);
-                    addMessage("Désolé, je n'ai pas pu formuler de réponse. Cela peut arriver si la question est sensible ou en cas de problème inattendu.", 'ai');
+                    console.warn("[CHAT DEBUG] 7. Pas de candidates valides. Réponse complète:", JSON.stringify(data, null, 2));
+                    addMessage("Désolé, je n'ai pas de réponse. Voir console F12 pour le diagnostic complet.", 'ai');
                 }
 
             } catch (error) {
-                console.error('Erreur finale dans la fonction sendMessage:', error);
-                if (chatMessages.contains(loadingElement)) {
-                    chatMessages.removeChild(loadingElement);
-                }
-                addMessage(`Désolé, le service est momentanément indisponible. L'erreur exacte a été enregistrée dans la console (F12) pour diagnostic.`, 'ai');
+                console.error("[CHAT DEBUG] ERREUR GLOBALE:", error.message, error.stack);
+                addMessage("Erreur: " + error.message + ". Voir console F12.", 'ai');
             }
         }
     });
