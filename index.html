@@ -866,6 +866,62 @@ footer a:hover { color: var(--accent); }
       transition: all var(--transition);
     }
     .chat-toggle-btn:hover { background: var(--accent-hover); transform: scale(1.08); }
+    .chat-badge {
+      position: absolute;
+      top: -3px; right: -3px;
+      width: 13px; height: 13px;
+      background: #22c55e;
+      border: 2px solid var(--white);
+      border-radius: 50%;
+      animation: badge-pulse 2s ease-in-out infinite;
+    }
+    @keyframes badge-pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.3); opacity: 0.7; }
+    }
+    .chat-nudge {
+      position: absolute;
+      bottom: calc(100% + 12px);
+      right: 0;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 12px 12px 2px 12px;
+      padding: .65rem 1rem;
+      font-size: .82rem;
+      font-weight: 500;
+      color: var(--text);
+      white-space: nowrap;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateY(8px) scale(0.95);
+      pointer-events: none;
+      transition: opacity .3s ease, transform .3s ease;
+      font-family: var(--font);
+    }
+    .chat-nudge.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: all;
+    }
+    .chat-nudge::after {
+      content: '';
+      position: absolute;
+      bottom: -6px; right: 18px;
+      width: 10px; height: 10px;
+      background: var(--white);
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      transform: rotate(45deg);
+    }
+    .chat-nudge-close {
+      margin-left: .6rem;
+      color: var(--muted2);
+      cursor: pointer;
+      font-size: .9rem;
+      vertical-align: middle;
+      transition: color .2s;
+    }
+    .chat-nudge-close:hover { color: var(--accent); }
     .chat-toggle-btn .fa-times { display: none; }
     .chat-container.open .chat-toggle-btn .fa-comment-dots { display: none; }
     .chat-container.open .chat-toggle-btn .fa-times { display: block; }
@@ -1335,10 +1391,15 @@ if (statsEl) {
 
 <!-- CHATBOT -->
 <div id="chat-container" class="chat-container">
-  <button id="chat-toggle-btn" class="chat-toggle-btn">
+  <button id="chat-toggle-btn" class="chat-toggle-btn" style="position:relative;">
     <i class="fas fa-comment-dots"></i>
     <i class="fas fa-times"></i>
+    <span class="chat-badge" id="chat-badge"></span>
   </button>
+  <div class="chat-nudge" id="chat-nudge">
+    💬 Une question ? Je suis là !
+    <span class="chat-nudge-close" id="chat-nudge-close">✕</span>
+  </div>
   <div id="chat-widget" class="chat-widget">
     <div class="chat-header">
       <div class="chat-header-avatar"><i class="fas fa-robot"></i></div>
@@ -1419,6 +1480,50 @@ ${pageContext.substring(0, 3000)}`;
   });
 
   chatSendBtn.addEventListener('click', sendMessage);
+
+        // Nudge on scroll to bottom
+        let nudgeShown = false;
+        window.addEventListener('scroll', () => {
+          if (nudgeShown) return;
+          const scrolled = window.scrollY + window.innerHeight;
+          const total = document.body.scrollHeight;
+          if (scrolled >= total - 200) {
+            nudgeShown = true;
+            const nudge = document.getElementById('chat-nudge');
+            if (nudge) nudge.classList.add('visible');
+          }
+        });
+
+        // Close nudge button
+        const nudgeClose = document.getElementById('chat-nudge-close');
+        if (nudgeClose) {
+          nudgeClose.addEventListener('click', (e) => {
+            e.stopPropagation();
+            document.getElementById('chat-nudge').classList.remove('visible');
+          });
+        }
+
+        // Clicking nudge opens chat
+        const nudgeEl = document.getElementById('chat-nudge');
+        if (nudgeEl) {
+          nudgeEl.addEventListener('click', (e) => {
+            if (e.target.id === 'chat-nudge-close') return;
+            chatContainer.classList.add('open');
+            nudgeEl.classList.remove('visible');
+            if (chatMessages.children.length === 0) addMessage(initialMessage, 'ai');
+          });
+        }
+
+        // Hide badge + nudge when chat opens (piggyback on container class)
+        const origToggle = chatToggleBtn.onclick;
+        const badgeHideObserver = new MutationObserver(() => {
+          if (chatContainer.classList.contains('open')) {
+            const badge = document.getElementById('chat-badge');
+            if (badge) badge.style.display = 'none';
+            document.getElementById('chat-nudge')?.classList.remove('visible');
+          }
+        });
+        badgeHideObserver.observe(chatContainer, { attributes: true, attributeFilter: ['class'] });
   chatInput.addEventListener('keypress', e => { if (e.key === 'Enter') sendMessage(); });
 
   function addMessage(text, sender) {
