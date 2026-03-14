@@ -1585,7 +1585,7 @@ function initChat() {
 
   const initialMessage = "Bonjour ! Je suis l'assistant virtuel de Rochane Kherbouche. Posez-moi vos questions sur ses expertises, projets et interventions.";
   let pageContext = "";
-  document.querySelectorAll('section, div[id]').forEach(s => { pageContext += s.innerText.replace(/\n/g,' ') + ' '; });
+  document.querySelectorAll('body *:not(script):not(style):not(nav)').forEach(s => { if (s.children.length === 0 && s.innerText.trim()) pageContext += s.innerText.trim() + ' '; });
   const systemPrompt = `Tu es l'assistant virtuel officiel de Rochane Kherbouche. Tu parles uniquement en français, avec un ton professionnel, chaleureux et direct. Tes réponses font maximum 120 mots. Si une question est hors-sujet ou concerne un domaine où tu n'as pas d'information, tu invites poliment à contacter Rochane directement via LinkedIn ou le formulaire de contact du site.
 
 === QUI EST ROCHANE KHERBOUCHE ===
@@ -1634,7 +1634,7 @@ Q: A-t-il écrit un livre ?
 R: Oui, "La transformation de l'évaluation à l'ère de l'IA", aux éditions Chroniques Sociales, prévu pour mai 2026. Pour le commander ou faire une précommande, utilisez le formulaire de contact.
 
 === CONTEXTE COMPLÉMENTAIRE DU SITE ===
-${pageContext.substring(0, 3000)}`;
+${pageContext.substring(0, 8000)}`;
   let conversationHistory = [];
 
   chatToggleBtn.addEventListener('click', () => {
