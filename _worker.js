@@ -32,7 +32,6 @@ export default {
         }
 
         const clientRequestBody = await request.json();
-        // Corrected Model: Use the latest and valid gemini-1.5-flash model
         const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
 
         const googleResponse = await fetch(API_URL, {
@@ -42,6 +41,14 @@ export default {
         });
 
         const googleData = await googleResponse.json();
+
+        // If the Google API returned an error, forward it to the client
+        if (!googleResponse.ok) {
+          return new Response(JSON.stringify(googleData), {
+            status: googleResponse.status,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          });
+        }
 
         return new Response(JSON.stringify(googleData), {
           headers: { ...corsHeaders, 'Content-Type': 'application/json' }
@@ -56,7 +63,6 @@ export default {
     }
 
     // --- Static Asset Handling ---
-    // For all other requests, pass them to the static asset server.
     return env.ASSETS.fetch(request);
   },
 };
