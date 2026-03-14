@@ -14,19 +14,18 @@ export default {
       return new Response(null, { headers: corsHeaders });
     }
 
-    // --- Routing: We only care about /api/chat ---
+    // --- Routing ---
+    // If the request is not for our API, pass it through to the static asset handler
     if (url.pathname !== '/api/chat') {
-        // This is not the chat API, so it's a request for a resource that wasn't found.
-        // The static assets are served by Pages before the worker runs.
-        return new Response(`Not Found. This worker only handles POST requests to /api/chat. You tried to access ${url.pathname}`, { status: 404 });
+      return ctx.next();
     }
 
     // --- Handle POST to /api/chat ---
     if (request.method !== 'POST') {
-      return new Response('Method Not Allowed. Please send a POST request to /api/chat.', { status: 405 });
+      return new Response('Method Not Allowed. This endpoint only accepts POST requests.', { status: 405 });
     }
 
-    // --- Main API Logic from here ---
+    // --- Main API Logic ---
     try {
         console.log('[WORKER] API request received for /api/chat.');
         const GEMINI_API_KEY = env.GEMINI_API_KEY;
@@ -37,12 +36,10 @@ export default {
                 headers: { ...corsHeaders, 'Content-Type': 'application/json' }
             });
         }
-        console.log('[WORKER] GEMINI_API_KEY found.');
 
         const clientRequestBody = await request.json();
         const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${GEMINI_API_KEY}`;
 
-        console.log('[WORKER] Forwarding request to Google Gemini API...');
         const googleResponse = await fetch(API_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -58,7 +55,6 @@ export default {
             });
         }
         
-        console.log('[WORKER] Successfully received response from Google API.');
         const googleData = await googleResponse.json();
 
         return new Response(JSON.stringify(googleData), {
@@ -66,7 +62,7 @@ export default {
         });
 
     } catch (error) {
-        console.error('[WORKER_CATCH_ERROR] An unexpected error occurred:', error.message, error.stack);
+        console.error('[WORKER_CATCH_ERROR] An unexpected error occurred:', error.message);
         return new Response(JSON.stringify({ error: 'Internal server error in worker.' }), {
             status: 500,
             headers: { ...corsHeaders, 'Content-Type': 'application/json' }
