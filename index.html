@@ -1000,6 +1000,75 @@ footer a:hover { color: var(--accent); }
       .chat-widget { width: calc(100vw - 2rem); }
     }
 
+
+    /* ─── PODCASTS ─── */
+    .podcast-list { display: flex; flex-direction: column; gap: 2rem; }
+    .podcast-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all var(--transition);
+    }
+    .podcast-card:hover { border-color: rgba(232,82,10,0.25); box-shadow: 0 6px 28px rgba(232,82,10,0.06); }
+    .podcast-meta {
+      padding: 1.4rem 1.5rem 1rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .podcast-num {
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--accent);
+      opacity: 0.6;
+      min-width: 24px;
+      padding-top: 2px;
+    }
+    .podcast-info { flex: 1; }
+    .podcast-show {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+    }
+    .podcast-title {
+      font-size: 0.97rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.4;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.3rem;
+    }
+    .podcast-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .podcast-duration {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--muted2);
+      background: var(--off);
+      border: 1px solid var(--line);
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+      white-space: nowrap;
+      align-self: flex-start;
+      margin-top: 2px;
+    }
+    .podcast-player {
+      padding: 0 1.5rem 1.2rem;
+    }
+    .podcast-player iframe {
+      width: 100%;
+      border-radius: 10px;
+      border: none;
+      display: block;
+    }
+
 </style>
 </head>
 <body>
@@ -1012,6 +1081,7 @@ footer a:hover { color: var(--accent); }
     <li><a href="#articles">Articles</a></li>
     <li><a href="#conferences">Conférences</a></li>
     <li><a href="#projets">Projets</a></li>
+    <li><a href="#podcasts">Podcasts</a></li>
     <li><a href="#contact" class="nav-cta">Contact</a></li>
   </ul>
 </nav>
@@ -1288,6 +1358,84 @@ footer a:hover { color: var(--accent); }
       <div class="webinar-row reveal"><div class="w-num">01</div><div class="w-title">Les outils de l'IA dans l'éducation – Opportunités et défis</div><div class="w-meta">International · IA &amp; Éducation</div></div>
       <div class="webinar-row reveal"><div class="w-num">02</div><div class="w-title">Outils IA en formation – De la conception à la mise en œuvre</div><div class="w-meta">International · Formation</div></div>
       <div class="webinar-row reveal"><div class="w-num">03</div><div class="w-title">IA générative et création de contenus pédagogiques (Innovember)</div><div class="w-meta">Université de Lille · IA &amp; Éducation</div></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- PODCASTS -->
+<div class="section-wrap bg-off" id="podcasts">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-tag">Médias</p>
+      <h2 class="section-title">Podcasts</h2>
+      <p class="section-sub">Trois interviews de plus de 30 minutes sur l'IA, la pédagogie et la formation professionnelle.</p>
+    </div>
+    <div class="podcast-list">
+
+      <!-- 1. Rendez-vous en terre digitale -->
+      <div class="podcast-card reveal">
+        <div class="podcast-meta">
+          <div class="podcast-num">01</div>
+          <div class="podcast-info">
+            <div class="podcast-show">Rendez-vous en terre digitale</div>
+            <div class="podcast-title">L'évaluation à l'heure de l'IA Générative</div>
+            <div class="podcast-desc">Les trois postures face à l'IA dans l'évaluation : résistante, collaborative, formative. Basé sur l'enquête du livre (67% des évaluations jugées vulnérables face à l'IA).</div>
+          </div>
+          <div class="podcast-duration">46 min · fév. 2026</div>
+        </div>
+        <div class="podcast-player">
+          <iframe
+            src="https://player.ausha.co/index.html?showId=rendez-vous-en-terre-digitale&podcastId=rochane&playlist=false&color=%23e8520a&v=3"
+            height="120"
+            scrolling="no"
+            allow="autoplay">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- 2. Never Stop Learning -->
+      <div class="podcast-card reveal">
+        <div class="podcast-meta">
+          <div class="podcast-num">02</div>
+          <div class="podcast-info">
+            <div class="podcast-show">Never Stop Learning · Épisode 83</div>
+            <div class="podcast-title">IA et compétences – Le futur de la formation professionnelle</div>
+            <div class="podcast-desc">Des retours terrain, des petits villages aux grandes organisations comme l'ONU. Prompt engineering, outils pratiques, éthique et protection des données.</div>
+          </div>
+          <div class="podcast-duration">+30 min</div>
+        </div>
+        <div class="podcast-player">
+          <iframe
+            src="https://player.ausha.co/index.html?showId=never-stop-learning&podcastId=episode-83-rochane-kherbouche-ia-et-competences-le-futur-de-la-formation-professionnelle&playlist=false&color=%23e8520a&v=3"
+            height="120"
+            scrolling="no"
+            allow="autoplay">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- 3. Numericast -->
+      <div class="podcast-card reveal">
+        <div class="podcast-meta">
+          <div class="podcast-num">03</div>
+          <div class="podcast-info">
+            <div class="podcast-show">Numericast · Épisode 08</div>
+            <div class="podcast-title">Technopédagogie, ingénierie pédagogique et outils numériques en formation</div>
+            <div class="podcast-desc">Interview sur les pratiques numériques à Bruxelles Formation : technopédagogie, ingénierie de formation et intégration des outils numériques.</div>
+          </div>
+          <div class="podcast-duration">+30 min · 2021</div>
+        </div>
+        <div class="podcast-player">
+          <iframe
+            width="100%"
+            height="120"
+            allow="autoplay"
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1040468584&color=%23e8520a&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false">
+          </iframe>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
