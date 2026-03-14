@@ -2366,7 +2366,7 @@
             chatMessages.scrollTop = chatMessages.scrollHeight;
 
             try {
-                const response = await fetch('/', {
+                const response = await fetch('/api/chat', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ contents: conversationHistory }),
