@@ -2319,7 +2319,7 @@
         let conversationHistory = [
             {
                 "role": "user",
-                "parts": [{ "text": `Tu es un assistant virtuel pour le site de Rochane Kherbouche. Ton rôle est de répondre aux questions des visiteurs. Sois concis (100 caractères max), professionnel et amical. Si une question porte sur une compétence non listée, encourage le contact, par ex. : \'C\'est tout à fait possible, contactez-le pour en discuter.\'. Si la question est hors-sujet, décline poliment. Voici le contexte du site pour t\'aider : ${pageContext.substring(0, 8000)}` }]
+                "parts": [{ "text": `Tu es un assistant virtuel pour le site de Rochane Kherbouche. Ton rôle est de répondre aux questions des visiteurs. Sois concis (100 caractères max), professionnel et amical. Si une question porte sur une compétence non listée, encourage le contact, par ex. : \'C\'est tout à fait possible, contactez-le pour en discuter.\'. Si la question est hors-sujet, décline poliment. Voici le contexte du site pour t'aider : ${pageContext.substring(0, 8000)}` }]
             },
             {
                 "role": "model",
@@ -2372,23 +2372,31 @@
                     body: JSON.stringify({ contents: conversationHistory }),
                 });
 
-                if (!response.ok) throw new Error(`Erreur du proxy: ${response.status}`);
-
                 const data = await response.json();
                 chatMessages.removeChild(loadingElement);
+
+                if (!response.ok) {
+                    const errorMsg = (data && data.error) ? `${data.error.message || 'Error'}` : `Proxy Error: ${response.status}`;
+                    throw new Error(errorMsg);
+                }
 
                 if (data.candidates && data.candidates.length > 0) {
                     const aiResponse = data.candidates[0].content.parts[0].text;
                     addMessage(aiResponse, 'ai');
                     conversationHistory.push({ role: 'model', parts: [{ text: aiResponse }] });
+                } else if (data.error) {
+                    const readableError = `Erreur de l'API Google : **${data.error.message}** (Code: ${data.error.status}).`;
+                    addMessage(readableError, 'ai');
+                    console.error('Google API Error:', data.error);
                 } else {
-                     addMessage("Désolé, je n'ai pas pu obtenir de réponse. Veuillez réessayer.", 'ai');
+                    addMessage("Désolé, j'ai reçu une réponse inattendue du serveur. Veuillez réessayer.", 'ai');
+                    console.log('Unexpected server response:', data);
                 }
 
             } catch (error) {
-                console.error('Erreur lors de l\'appel à la fonction Cloudflare:', error);
+                console.error('Error in sendMessage:', error);
                 chatMessages.removeChild(loadingElement);
-                addMessage("Désolé, une erreur de communication avec le serveur s'est produite. Le propriétaire a été notifié.", 'ai');
+                addMessage(`Désolé, une erreur de communication est survenue: ${error.message}`, 'ai');
             }
         }
     });
