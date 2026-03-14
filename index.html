@@ -2295,7 +2295,10 @@
   
   <!-- CHATBOT JAVASCRIPT -->
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    console.log("[CHAT INIT] Script chatbot chargé. readyState:", document.readyState);
+    
+    function initChat() {
+        console.log("[CHAT INIT] initChat() exécutée");
 
         const chatContainer = document.getElementById('chat-container');
         const chatToggleBtn = document.getElementById('chat-toggle-btn');
@@ -2419,7 +2422,14 @@
                 addMessage("Erreur: " + error.message + ". Voir console F12.", 'ai');
             }
         }
-    });
+    }
+
+    // S'assurer que initChat s'exécute même si DOMContentLoaded est déjà passé
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initChat);
+    } else {
+        initChat();
+    }
   </script>
 </body>
 </html>
