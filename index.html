@@ -2372,11 +2372,9 @@
                     body: JSON.stringify({ contents: conversationHistory }),
                 });
 
-                const data = await response.json();
-                console.log('Server Response:', data); // Temporary debug line
-
                 if (!response.ok) throw new Error(`Erreur du proxy: ${response.status}`);
 
+                const data = await response.json();
                 chatMessages.removeChild(loadingElement);
 
                 if (data.candidates && data.candidates.length > 0) {
