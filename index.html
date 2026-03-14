@@ -2351,54 +2351,49 @@
         }
 
         async function sendMessage() {
-            const userInput = chatInput.value.trim();
-            if (userInput === '') return;
+    const userInput = chatInput.value.trim();
+    if (userInput === '') return;
 
-            addMessage(userInput, 'user');
-            chatInput.value = '';
+    addMessage(userInput, 'user');
+    chatInput.value = '';
 
-            conversationHistory.push({ role: 'user', parts: [{ text: userInput }] });
-            
-            const loadingElement = document.createElement('div');
-            loadingElement.classList.add('chat-message', 'ai', 'loading');
-            loadingElement.innerHTML = '<span></span><span></span><span></span>';
-            chatMessages.appendChild(loadingElement);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
+    conversationHistory.push({ role: 'user', parts: [{ text: userInput }] });
+    
+    const loadingElement = document.createElement('div');
+    loadingElement.classList.add('chat-message', 'ai', 'loading');
+    loadingElement.innerHTML = '<span></span><span></span><span></span>';
+    chatMessages.appendChild(loadingElement);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
 
-            try {
-                const response = await fetch('/api/chat', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ contents: conversationHistory }),
-                });
+    try {
+        const response = await fetch('/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ contents: conversationHistory }),
+        });
 
-                const data = await response.json();
-                chatMessages.removeChild(loadingElement);
+        const data = await response.json();
+        chatMessages.removeChild(loadingElement);
 
-                if (!response.ok) {
-                    const errorMsg = (data && data.error) ? `${data.error.message || 'Error'}` : `Proxy Error: ${response.status}`;
-                    throw new Error(errorMsg);
-                }
-
-                if (data.candidates && data.candidates.length > 0) {
-                    const aiResponse = data.candidates[0].content.parts[0].text;
-                    addMessage(aiResponse, 'ai');
-                    conversationHistory.push({ role: 'model', parts: [{ text: aiResponse }] });
-                } else if (data.error) {
-                    const readableError = `Erreur de l'API Google : **${data.error.message}** (Code: ${data.error.status}).`;
-                    addMessage(readableError, 'ai');
-                    console.error('Google API Error:', data.error);
-                } else {
-                    addMessage("Désolé, j'ai reçu une réponse inattendue du serveur. Veuillez réessayer.", 'ai');
-                    console.log('Unexpected server response:', data);
-                }
-
-            } catch (error) {
-                console.error('Error in sendMessage:', error);
-                chatMessages.removeChild(loadingElement);
-                addMessage(`Désolé, une erreur de communication est survenue: ${error.message}`, 'ai');
-            }
+        if (!response.ok) {
+            console.error("Erreur serveur :", data);
+            throw new Error(data.error || `Erreur HTTP: ${response.status}`);
         }
+
+        if (data.candidates && data.candidates.length > 0) {
+            const aiResponse = data.candidates[0].content.parts[0].text;
+            addMessage(aiResponse, 'ai');
+            conversationHistory.push({ role: 'model', parts: [{ text: aiResponse }] });
+        } else {
+            addMessage("Désolé, je n'ai pas de réponse.", 'ai');
+        }
+
+    } catch (error) {
+        console.error('Erreur API:', error);
+        if (chatMessages.contains(loadingElement)) chatMessages.removeChild(loadingElement);
+        addMessage(`Erreur de connexion avec l'IA. Veuillez réessayer.`, 'ai');
+    }
+}
     });
   </script>
 </body>
