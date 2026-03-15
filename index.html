@@ -870,6 +870,7 @@ footer a:hover { color: var(--accent); }
       position: relative;
     }
     .chat-toggle-btn:hover { background: var(--accent-hover); transform: scale(1.06); }
+    .chat-toggle-btn * { pointer-events: none; }
     .chat-toggle-btn .fa-times { display: none; }
     .chat-container.open .chat-toggle-btn .fa-comment-dots { display: none; }
     .chat-container.open .chat-toggle-btn .fa-times { display: block; }
@@ -881,6 +882,7 @@ footer a:hover { color: var(--accent); }
       background: #22c55e; border: 2px solid var(--white);
       border-radius: 50%;
       animation: badge-pulse 2s ease-in-out infinite;
+      pointer-events: none;
     }
     @keyframes badge-pulse {
       0%, 100% { transform: scale(1); opacity: 1; }
@@ -1762,8 +1764,7 @@ ${pageContext.substring(0, 8000)}`;
     }
   }
 }
-if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initChat);
-else initChat();
+window.addEventListener('load', initChat);
 </script>
 
 </body>
