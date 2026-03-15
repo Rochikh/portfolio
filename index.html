@@ -842,7 +842,9 @@ footer a:hover { color: var(--accent); }
 /* ─── RESPONSIVE ─── */
 @media (max-width: 960px) {
   #hero { grid-template-columns: 1fr; padding: 100px 1.5rem 60px; }
-  .hero-right { display: none; }
+  .hero-right { display: flex; }
+  .hero-photo-card { display: none; }
+  .stats-card { border-radius: 10px; }
   .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
   .conf-grid { grid-template-columns: 1fr; }
   nav { padding: 0 1.5rem; }
@@ -1388,8 +1390,10 @@ footer a:hover { color: var(--accent); }
           <iframe
             src="https://player.ausha.co/index.html?podcastId=o9DK7SE89GZ8&playlist=false&color=%23e8520a&v=3"
             height="120"
+            frameborder="0"
             scrolling="no"
-            allow="autoplay">
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy">
           </iframe>
         </div>
       </div>
@@ -1408,9 +1412,10 @@ footer a:hover { color: var(--accent); }
         <div class="podcast-player">
           <iframe
             src="https://open.spotify.com/embed/episode/11kOrwC5NSaKwFfPxxuCk5?utm_source=generator&theme=0"
-            height="120"
-            scrolling="no"
-            allow="autoplay">
+            height="152"
+            frameborder="0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy">
           </iframe>
         </div>
       </div>
@@ -1429,8 +1434,10 @@ footer a:hover { color: var(--accent); }
         <div class="podcast-player">
           <iframe
             width="100%"
-            height="120"
-            allow="autoplay"
+            height="166"
+            frameborder="0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
             src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/numericast/numericast08-rochane-kherbouche-bruxelles-formation&color=%23e8520a&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false">
           </iframe>
         </div>
