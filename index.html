@@ -1597,18 +1597,67 @@ if (statsEl) {
 
 
 <script>
-function initChat() {
-  const chatContainer = document.getElementById('chat-container');
-  const chatToggleBtn = document.getElementById('chat-toggle-btn');
-  const chatMessages = document.getElementById('chat-messages');
-  const chatInput = document.getElementById('chat-input');
-  const chatSendBtn = document.getElementById('chat-send-btn');
-  if (!chatContainer) return;
+(function() {
+  // ── CHAT ──
+  var INITIAL_MSG = "Bonjour ! Je suis l'assistant virtuel de Rochane Kherbouche. Posez-moi vos questions sur ses expertises, projets et interventions.";
+  var history = [];
 
-  const initialMessage = "Bonjour ! Je suis l'assistant virtuel de Rochane Kherbouche. Posez-moi vos questions sur ses expertises, projets et interventions.";
-  let pageContext = "";
-  document.querySelectorAll('body *:not(script):not(style):not(nav)').forEach(s => { if (s.children.length === 0 && s.innerText.trim()) pageContext += s.innerText.trim() + ' '; });
-  const systemPrompt = `Tu es l'assistant virtuel officiel de Rochane Kherbouche. Tu parles uniquement en français, avec un ton professionnel, chaleureux et direct. Tes réponses font maximum 120 mots. Si une question est hors-sujet ou concerne un domaine où tu n'as pas d'information, tu invites poliment à contacter Rochane directement via LinkedIn ou le formulaire de contact du site.
+  function getElements() {
+    return {
+      container: document.getElementById('chat-container'),
+      toggle:    document.getElementById('chat-toggle-btn'),
+      widget:    document.getElementById('chat-widget'),
+      messages:  document.getElementById('chat-messages'),
+      input:     document.getElementById('chat-input'),
+      send:      document.getElementById('chat-send-btn'),
+      closeBtn:  document.getElementById('chat-close-btn'),
+      badge:     document.getElementById('chat-badge'),
+      nudge:     document.getElementById('chat-nudge'),
+      nudgeX:    document.getElementById('chat-nudge-close')
+    };
+  }
+
+  function addMsg(text, who, els) {
+    var d = document.createElement('div');
+    d.className = 'chat-message ' + who;
+    d.innerHTML = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    els.messages.appendChild(d);
+    els.messages.scrollTop = els.messages.scrollHeight;
+    return d;
+  }
+
+  function openChat(els) {
+    els.container.classList.add('open');
+    if (els.badge) els.badge.style.display = 'none';
+    if (els.nudge) els.nudge.classList.remove('visible');
+    if (els.messages.children.length === 0) addMsg(INITIAL_MSG, 'ai', els);
+  }
+
+  function closeChat(els) {
+    els.container.classList.remove('open');
+  }
+
+  async function send(els) {
+    var text = els.input.value.trim();
+    if (!text) return;
+    addMsg(text, 'user', els);
+    els.input.value = '';
+    history.push({ role: 'user', parts: [{ text: text }] });
+
+    var loader = document.createElement('div');
+    loader.className = 'chat-message ai loading';
+    loader.innerHTML = '<span></span><span></span><span></span>';
+    els.messages.appendChild(loader);
+    els.messages.scrollTop = els.messages.scrollHeight;
+
+    var pageContext = '';
+    document.querySelectorAll('body *:not(script):not(style):not(nav)').forEach(function(s) {
+      if (s.children.length === 0 && s.innerText && s.innerText.trim()) {
+        pageContext += s.innerText.trim() + ' ';
+      }
+    });
+
+    const systemPrompt = `Tu es l'assistant virtuel officiel de Rochane Kherbouche. Tu parles uniquement en français, avec un ton professionnel, chaleureux et direct. Tes réponses font maximum 120 mots. Si une question est hors-sujet ou concerne un domaine où tu n'as pas d'information, tu invites poliment à contacter Rochane directement via LinkedIn ou le formulaire de contact du site.
 
 === QUI EST ROCHANE KHERBOUCHE ===
 Technopédagogue basé à Bruxelles, technopédagogue spécialisé dans l'intégration de l'IA en formation. Reconnu Ambassadeur IA par le Ministère de l'Économie et des Finances français (francenum.gouv.fr). Conférencier international ayant intervenu en Belgique, France, Tunisie, Burundi, Jordanie, auprès d'institutions comme la Commission européenne, les Nations Unies, l'UNESCO, l'ULB, la RTBF, le CNFPT, et bien d'autres.
@@ -1657,94 +1706,14 @@ R: Oui, "La transformation de l'évaluation à l'ère de l'IA", aux éditions Ch
 
 === CONTEXTE COMPLÉMENTAIRE DU SITE ===
 ${pageContext.substring(0, 8000)}`;
-  let conversationHistory = [];
 
-  chatToggleBtn.addEventListener('click', () => {
-    chatContainer.classList.toggle('open');
-    if (chatContainer.classList.contains('open') && chatMessages.children.length === 0) addMessage(initialMessage, 'ai');
-  });
-
-  chatSendBtn.addEventListener('click', sendMessage);
-
-        // Nudge on scroll to bottom
-        let nudgeShown = false;
-        window.addEventListener('scroll', () => {
-          if (nudgeShown) return;
-          const scrolled = window.scrollY + window.innerHeight;
-          const total = document.body.scrollHeight;
-          if (scrolled >= total - 200) {
-            nudgeShown = true;
-            const nudge = document.getElementById('chat-nudge');
-            if (nudge) nudge.classList.add('visible');
-          }
-        });
-
-        // Close nudge button
-        const nudgeClose = document.getElementById('chat-nudge-close');
-        if (nudgeClose) {
-          nudgeClose.addEventListener('click', (e) => {
-            e.stopPropagation();
-            document.getElementById('chat-nudge').classList.remove('visible');
-          });
-        }
-
-        // Clicking nudge opens chat
-        const nudgeEl = document.getElementById('chat-nudge');
-        if (nudgeEl) {
-          nudgeEl.addEventListener('click', (e) => {
-            if (e.target.id === 'chat-nudge-close') return;
-            chatContainer.classList.add('open');
-            nudgeEl.classList.remove('visible');
-            if (chatMessages.children.length === 0) addMessage(initialMessage, 'ai');
-          });
-        }
-
-        // Hide badge + nudge when chat opens (piggyback on container class)
-        const origToggle = chatToggleBtn.onclick;
-        const badgeHideObserver = new MutationObserver(() => {
-          if (chatContainer.classList.contains('open')) {
-            const badge = document.getElementById('chat-badge');
-            if (badge) badge.style.display = 'none';
-            document.getElementById('chat-nudge')?.classList.remove('visible');
-          }
-        });
-        badgeHideObserver.observe(chatContainer, { attributes: true, attributeFilter: ['class'] });
-
-        // Header close button
-        const closeBtn = document.getElementById('chat-close-btn');
-        if (closeBtn) {
-          closeBtn.addEventListener('click', () => {
-            chatContainer.classList.remove('open');
-          });
-        }
-  chatInput.addEventListener('keypress', e => { if (e.key === 'Enter') sendMessage(); });
-
-  function addMessage(text, sender) {
-    const el = document.createElement('div');
-    el.classList.add('chat-message', sender);
-    el.innerHTML = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-    chatMessages.appendChild(el);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-  }
-
-  async function sendMessage() {
-    const userInput = chatInput.value.trim();
-    if (!userInput) return;
-    addMessage(userInput, 'user');
-    chatInput.value = '';
-    conversationHistory.push({ role: 'user', parts: [{ text: userInput }] });
-    const loader = document.createElement('div');
-    loader.classList.add('chat-message','ai','loading');
-    loader.innerHTML = '<span></span><span></span><span></span>';
-    chatMessages.appendChild(loader);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
     try {
-      const res = await fetch('/api/chat', {
+      var res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           systemInstruction: { parts: [{ text: systemPrompt }] },
-          contents: conversationHistory,
+          contents: history,
           safetySettings: [
             { category: 'HARM_CATEGORY_HARASSMENT', threshold: 'BLOCK_NONE' },
             { category: 'HARM_CATEGORY_HATE_SPEECH', threshold: 'BLOCK_NONE' },
@@ -1753,18 +1722,117 @@ ${pageContext.substring(0, 8000)}`;
           ]
         })
       });
-      const data = await res.json();
-      chatMessages.removeChild(loader);
-      const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-      addMessage(reply || "Désolé, pas de réponse disponible.", 'ai');
-      if (reply) conversationHistory.push({ role: 'model', parts: [{ text: reply }] });
-    } catch(err) {
-      chatMessages.removeChild(loader);
-      addMessage("Erreur de connexion : " + err.message, 'ai');
+      var data = await res.json();
+      els.messages.removeChild(loader);
+      var reply = data && data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts && data.candidates[0].content.parts[0] && data.candidates[0].content.parts[0].text;
+      var replyText = reply || 'Désolé, pas de réponse disponible.';
+      addMsg(replyText, 'ai', els);
+      if (reply) history.push({ role: 'model', parts: [{ text: reply }] });
+    } catch(e) {
+      els.messages.removeChild(loader);
+      addMsg('Erreur de connexion.', 'ai', els);
     }
   }
-}
-window.addEventListener('load', initChat);
+
+  function init() {
+    var els = getElements();
+    if (!els.container || !els.toggle) return;
+
+    els.toggle.addEventListener('click', function() {
+      if (els.container.classList.contains('open')) {
+        closeChat(els);
+      } else {
+        openChat(els);
+      }
+    });
+
+    if (els.closeBtn) {
+      els.closeBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        closeChat(els);
+      });
+    }
+
+    if (els.send) {
+      els.send.addEventListener('click', function() { send(els); });
+    }
+
+    if (els.input) {
+      els.input.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') send(els);
+      });
+    }
+
+    if (els.nudgeX) {
+      els.nudgeX.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (els.nudge) els.nudge.classList.remove('visible');
+      });
+    }
+
+    if (els.nudge) {
+      els.nudge.addEventListener('click', function(e) {
+        if (e.target === els.nudgeX) return;
+        openChat(els);
+      });
+    }
+
+    // Scroll nudge trigger
+    var nudgeDone = false;
+    window.addEventListener('scroll', function() {
+      if (nudgeDone || !els.nudge) return;
+      if (window.scrollY + window.innerHeight >= document.body.scrollHeight - 200) {
+        nudgeDone = true;
+        els.nudge.classList.add('visible');
+      }
+    });
+  }
+
+  // ── CONTACT FORM ──
+  function initForm() {
+    var form = document.getElementById('contact-form');
+    if (!form) return;
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      var btn = document.getElementById('submit-btn');
+      var ok = document.getElementById('form-success');
+      var err = document.getElementById('form-error');
+      btn.textContent = 'Envoi...';
+      btn.disabled = true;
+      try {
+        var r = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (r.ok) {
+          ok.style.display = 'block';
+          err.style.display = 'none';
+          form.reset();
+          btn.textContent = 'Envoyé ✓';
+        } else { throw new Error(); }
+      } catch(_) {
+        var nom  = (form.querySelector('[name="nom"]') || {}).value || '';
+        var mail = (form.querySelector('[name="email"]') || {}).value || '';
+        var type = (form.querySelector('[name="type"]') || {}).value || '';
+        var msg  = (form.querySelector('[name="message"]') || {}).value || '';
+        var sub  = encodeURIComponent('Contact depuis ia.rochane.fr');
+        var bod  = encodeURIComponent('Nom: '+nom+'\nEmail: '+mail+'\nType: '+type+'\n\n'+msg);
+        window.location.href = 'mailto:ia@rochane.fr?subject='+sub+'&body='+bod;
+        err.style.display = 'block';
+        btn.textContent = 'Envoyer →';
+        btn.disabled = false;
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() { init(); initForm(); });
+  } else {
+    init();
+    initForm();
+  }
+})();
 </script>
 
 </body>
