@@ -1628,7 +1628,12 @@ if (statsEl) {
   function addMsg(text, who, els) {
     var d = document.createElement('div');
     d.className = 'chat-message ' + who;
-    d.innerHTML = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    var html = text
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\n/g, '<br>')
+      .replace(/(\d+\. )/g, '<br>$1')
+      .replace(/^<br>/, '');
+    d.innerHTML = html;
     els.messages.appendChild(d);
     els.messages.scrollTop = els.messages.scrollHeight;
     return d;
@@ -1665,7 +1670,7 @@ if (statsEl) {
       }
     });
 
-    const systemPrompt = `Tu es l'assistant virtuel officiel de Rochane Kherbouche. Tu parles uniquement en français, avec un ton professionnel, chaleureux et direct. Tes réponses font maximum 120 mots. Si une question est hors-sujet ou concerne un domaine où tu n'as pas d'information, tu invites poliment à contacter Rochane directement via LinkedIn ou le formulaire de contact du site.
+    const systemPrompt = `Tu es l'assistant virtuel officiel de Rochane Kherbouche. Tu parles uniquement en français, avec un ton professionnel, chaleureux et direct. Tes réponses font maximum 120 mots. Quand tu listes plusieurs éléments, utilise des sauts de ligne (\n) entre chaque point. Ne jamais mettre plusieurs informations sur la même ligne. Si une question est hors-sujet ou concerne un domaine où tu n'as pas d'information, tu invites poliment à contacter Rochane directement via LinkedIn ou le formulaire de contact du site.
 
 === QUI EST ROCHANE KHERBOUCHE ===
 Technopédagogue basé à Bruxelles, technopédagogue spécialisé dans l'intégration de l'IA en formation. Reconnu Ambassadeur IA par le Ministère de l'Économie et des Finances français (francenum.gouv.fr). Conférencier international ayant intervenu en Belgique, France, Tunisie, Burundi, Jordanie, auprès d'institutions comme la Commission européenne, les Nations Unies, l'UNESCO, l'ULB, la RTBF, le CNFPT, et bien d'autres.
