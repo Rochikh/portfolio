@@ -1490,20 +1490,30 @@ footer a:hover { color: var(--accent); }
       </div>
     </div>
     <div class="reveal">
-      <div class="form-group"><label>Nom</label><input type="text" placeholder="Votre nom"></div>
-      <div class="form-group"><label>Email</label><input type="email" placeholder="votre@email.com"></div>
-      <div class="form-group">
-        <label>Type d'intervention</label>
-        <select>
-          <option value="">Sélectionner...</option>
-          <option>Conférence</option>
-          <option>Formation / Atelier</option>
-          <option>Collaboration</option>
-          <option>Autre</option>
-        </select>
-      </div>
-      <div class="form-group"><label>Message</label><textarea placeholder="Décrivez votre projet..."></textarea></div>
-      <button class="btn btn-fill" style="width:100%;justify-content:center;">Envoyer →</button>
+      <form id="contact-form" action="https://formspree.io/f/VOTRE_ID_FORMSPREE" method="POST">
+        <input type="hidden" name="_replyto" value="ia@rochane.fr">
+        <input type="hidden" name="_subject" value="Nouveau message depuis ia.rochane.fr">
+        <div class="form-group"><label>Nom</label><input type="text" name="nom" placeholder="Votre nom" required></div>
+        <div class="form-group"><label>Email</label><input type="email" name="email" placeholder="votre@email.com" required></div>
+        <div class="form-group">
+          <label>Type d'intervention</label>
+          <select name="type">
+            <option value="">Sélectionner...</option>
+            <option>Conférence</option>
+            <option>Formation / Atelier</option>
+            <option>Collaboration</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Message</label><textarea name="message" placeholder="Décrivez votre projet..." required></textarea></div>
+        <button type="submit" class="btn btn-fill" style="width:100%;justify-content:center;" id="submit-btn">Envoyer →</button>
+        <div id="form-success" style="display:none;margin-top:1rem;padding:1rem;background:var(--accent-light);border:1px solid rgba(232,82,10,0.2);border-radius:8px;color:var(--accent);font-size:0.88rem;font-weight:600;text-align:center;">
+          Message envoyé. Rochane reviendra vers vous rapidement.
+        </div>
+        <div id="form-error" style="display:none;margin-top:1rem;padding:1rem;background:#fff0f0;border:1px solid rgba(220,0,0,0.2);border-radius:8px;color:#c00;font-size:0.88rem;text-align:center;">
+          Une erreur s'est produite. <a href="mailto:ia@rochane.fr" style="color:#c00;font-weight:600;">Contactez directement par email →</a>
+        </div>
+      </form>
     </div>
   </div>
 </div>
