@@ -1653,20 +1653,27 @@ if (statsEl) {
   function addMsg(text, who, els) {
     var d = document.createElement('div');
     d.className = 'chat-message ' + who;
-    // Step 1 : conversions sur texte brut (avant tout HTML)
-    var safe = text
+    // Extraire les liens Markdown [label](url) avant tout traitement
+    var links = [];
+    var processed = text.replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, function(_, label, url) {
+      var i = links.length;
+      links.push('<a href="' + url + '" target="_blank" rel="noopener" style="color:#e8520a;font-weight:600;text-decoration:underline;">' + label + ' ↗</a>');
+      return '%%LINK' + i + '%%';
+    });
+    // Transformations texte
+    processed = processed
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, '\x00LINK\x00$2\x00LABEL\x00$1\x00END\x00')
       .replace(/\n/g, '<br>')
       .replace(/(\d+\. )/g, '<br>$1')
       .replace(/^<br>/, '');
-    // Step 2 : URLs brutes restantes (celles non capturées par le Markdown)
-    safe = safe.replace(/(https?:\/\/[^\s<"]+)/g, '\x00LINK\x00$1\x00LABEL\x00$1\x00END\x00');
-    // Step 3 : reconstruction des balises <a>
-    var html = safe.replace(/\x00LINK\x00([^\x00]+)\x00LABEL\x00([^\x00]+)\x00END\x00/g, function(_, url, label) {
-      var isRaw = url === label;
-      return '<a href="' + url + '" target="_blank" rel="noopener" style="color:#e8520a;' + (isRaw ? 'text-decoration:underline;word-break:break-all;' : 'font-weight:600;text-decoration:underline;') + '">' + label + (isRaw ? '' : ' ↗') + '</a>';
+    // URLs brutes restantes
+    processed = processed.replace(/(https?:\/\/[^\s<"%%]+)/g, function(url) {
+      var i = links.length;
+      links.push('<a href="' + url + '" target="_blank" rel="noopener" style="color:#e8520a;text-decoration:underline;word-break:break-all;">' + url + '</a>');
+      return '%%LINK' + i + '%%';
     });
+    // Restaurer tous les liens
+    var html = processed.replace(/%%LINK(\d+)%%/g, function(_, i) { return links[+i]; });
     d.innerHTML = html;
     els.messages.appendChild(d);
     els.messages.scrollTop = els.messages.scrollHeight;
