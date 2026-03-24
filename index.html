@@ -1653,13 +1653,20 @@ if (statsEl) {
   function addMsg(text, who, els) {
     var d = document.createElement('div');
     d.className = 'chat-message ' + who;
-    var html = text
+    // Step 1 : conversions sur texte brut (avant tout HTML)
+    var safe = text
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener" style="color:#e8520a;font-weight:600;text-decoration:underline;">$1 ↗</a>')
+      .replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, '\x00LINK\x00$2\x00LABEL\x00$1\x00END\x00')
       .replace(/\n/g, '<br>')
       .replace(/(\d+\. )/g, '<br>$1')
-      .replace(/^<br>/, '')
-      .replace(/(?<!["'=])(https?:\/\/[^\s<"]+)/g, '<a href="$1" target="_blank" rel="noopener" style="color:#e8520a;text-decoration:underline;word-break:break-all;">$1</a>');
+      .replace(/^<br>/, '');
+    // Step 2 : URLs brutes restantes (celles non capturées par le Markdown)
+    safe = safe.replace(/(https?:\/\/[^\s<"]+)/g, '\x00LINK\x00$1\x00LABEL\x00$1\x00END\x00');
+    // Step 3 : reconstruction des balises <a>
+    var html = safe.replace(/\x00LINK\x00([^\x00]+)\x00LABEL\x00([^\x00]+)\x00END\x00/g, function(_, url, label) {
+      var isRaw = url === label;
+      return '<a href="' + url + '" target="_blank" rel="noopener" style="color:#e8520a;' + (isRaw ? 'text-decoration:underline;word-break:break-all;' : 'font-weight:600;text-decoration:underline;') + '">' + label + (isRaw ? '' : ' ↗') + '</a>';
+    });
     d.innerHTML = html;
     els.messages.appendChild(d);
     els.messages.scrollTop = els.messages.scrollHeight;
