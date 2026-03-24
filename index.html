@@ -1362,7 +1362,27 @@ footer a:hover { color: var(--accent); }
       <div class="proj-footer">Tester l'outil <span>↗</span></div>
     </a>
     <a href="https://ia-diff.rochane.fr/" target="_blank" class="proj-card reveal">
-      <div class="proj-visual" style="background: linear-gradient(135deg, #f0f0ff, #e0e0ff);">🎯</div>
+      <div class="proj-visual" style="background: linear-gradient(135deg, #fff8f5, #ffeee5); display:flex; align-items:center; justify-content:center;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="72" height="72" fill="none">
+          <!-- Central node -->
+          <circle cx="22" cy="40" r="5" fill="#e8520a"/>
+          <!-- Three diverging paths -->
+          <!-- Top path: "défi" -->
+          <path d="M27 38 Q44 20 58 18" stroke="#e8520a" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="58" cy="18" r="4" fill="#e8520a" opacity="0.9"/>
+          <rect x="55" y="14" width="2" height="8" rx="1" fill="white"/>
+          <!-- Middle path: "standard" -->
+          <path d="M27 40 L58 40" stroke="#e8520a" stroke-width="2.5" stroke-linecap="round" opacity="0.65"/>
+          <circle cx="58" cy="40" r="4" fill="#e8520a" opacity="0.65"/>
+          <rect x="54.5" y="37.5" width="7" height="2" rx="1" fill="white" opacity="0.9"/>
+          <!-- Bottom path: "guidé" -->
+          <path d="M27 42 Q44 60 58 62" stroke="#e8520a" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+          <circle cx="58" cy="62" r="4" fill="#e8520a" opacity="0.4"/>
+          <path d="M55.5 62 L60.5 62 M58 59.5 L58 64.5" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.95"/>
+          <!-- Entry point label line -->
+          <line x1="10" y1="40" x2="17" y2="40" stroke="#e8520a" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
       <div class="proj-body">
         <div class="proj-name">Assistant de différenciation pédagogique</div>
         <div class="proj-desc">Application web propulsée par l'IA permettant aux formateurs et enseignants de générer instantanément des activités pédagogiques différenciées (versions guidée, standard et défi) pour s'adapter aux besoins de chaque apprenant.</div>
@@ -1635,9 +1655,11 @@ if (statsEl) {
     d.className = 'chat-message ' + who;
     var html = text
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener" style="color:#e8520a;font-weight:600;text-decoration:underline;">$1 ↗</a>')
       .replace(/\n/g, '<br>')
       .replace(/(\d+\. )/g, '<br>$1')
-      .replace(/^<br>/, '');
+      .replace(/^<br>/, '')
+      .replace(/(https?:\/\/[^\s<"]+)/g, '<a href="$1" target="_blank" rel="noopener" style="color:#e8520a;text-decoration:underline;word-break:break-all;">$1</a>');
     d.innerHTML = html;
     els.messages.appendChild(d);
     els.messages.scrollTop = els.messages.scrollHeight;
@@ -1705,6 +1727,9 @@ Rochane a été interviewé dans trois podcasts de plus de 30 minutes :
 === CE QUE ROCHANE NE FAIT PAS ===
 - Il ne fait pas de conférences en anglais.
 - Ne spécule pas sur des sujets non listés : invite à contacter directement.
+
+=== FORMAT DES RÉPONSES ===
+Quand tu cites un lien, utilise toujours le format Markdown : [texte descriptif](https://url) — par exemple [Voir le calendrier](https://lien) ou [Contacter sur LinkedIn](https://linkedin.com/in/rochanekherbouche). Ne colle jamais une URL brute seule.
 
 === QUESTIONS FRÉQUENTES ===
 Q: Est-il disponible ?
