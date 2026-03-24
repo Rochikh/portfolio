@@ -1659,7 +1659,7 @@ if (statsEl) {
       .replace(/\n/g, '<br>')
       .replace(/(\d+\. )/g, '<br>$1')
       .replace(/^<br>/, '')
-      .replace(/(https?:\/\/[^\s<"]+)/g, '<a href="$1" target="_blank" rel="noopener" style="color:#e8520a;text-decoration:underline;word-break:break-all;">$1</a>');
+      .replace(/(?<!["'=])(https?:\/\/[^\s<"]+)/g, '<a href="$1" target="_blank" rel="noopener" style="color:#e8520a;text-decoration:underline;word-break:break-all;">$1</a>');
     d.innerHTML = html;
     els.messages.appendChild(d);
     els.messages.scrollTop = els.messages.scrollHeight;
