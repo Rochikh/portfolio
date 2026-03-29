@@ -608,6 +608,54 @@ nav.scrolled { box-shadow: 0 1px 24px rgba(0,0,0,0.06); }
   gap: 1.2rem;
 }
 
+/* Infographies accordion */
+.infog-accordion {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--white);
+  overflow: hidden;
+}
+.infog-summary {
+  padding: 1rem 1.4rem;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  user-select: none;
+  color: var(--text);
+  transition: background .2s;
+}
+.infog-summary:hover { background: var(--bg); }
+.infog-summary::-webkit-details-marker { display: none; }
+.infog-chevron { font-size: .85rem; color: var(--muted); transition: transform .25s; }
+details.infog-accordion[open] .infog-chevron { transform: rotate(180deg); }
+.infog-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 .6rem 0;
+  border-top: 1px solid var(--line);
+}
+.infog-list li {
+  border-bottom: 1px solid var(--line);
+}
+.infog-list li:last-child { border-bottom: none; }
+.infog-list a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .85rem 1.4rem;
+  color: var(--text);
+  text-decoration: none;
+  font-size: .95rem;
+  transition: background .15s, color .15s;
+}
+.infog-list a::after { content: "↗"; font-size: .85rem; color: var(--muted); margin-left: .5rem; flex-shrink: 0; }
+.infog-list a:hover { background: var(--accent-light, #fff3ee); color: var(--accent); }
+.infog-list a:hover::after { color: var(--accent); }
+
 .proj-card {
   background: var(--white);
   border: 1px solid var(--line);
@@ -1420,6 +1468,36 @@ footer a:hover { color: var(--accent); }
       </div>
       <div class="proj-footer">Tester l'outil <span>↗</span></div>
     </a>
+  </div>
+</div>
+
+<!-- INFOGRAPHIES -->
+<div class="section-wrap" id="infographies">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-tag">Ressources visuelles</p>
+      <h2 class="section-title">Mes infographies</h2>
+      <p class="section-sub">Supports pédagogiques interactifs sur l'IA, la pédagogie et le numérique — libres d'accès et partageables.</p>
+    </div>
+    <div class="reveal" style="margin-top:2rem;">
+      <details class="infog-accordion" open>
+        <summary class="infog-summary">Voir les 12 infographies <span class="infog-chevron">▾</span></summary>
+        <ul class="infog-list">
+          <li><a href="https://ia-critique.rochane.fr/" target="_blank">L'IA avec esprit critique</a></li>
+          <li><a href="https://ia-demystifiee.rochane.fr/" target="_blank">Comprendre l'IA en 5 concepts</a></li>
+          <li><a href="https://ia-classe.rochane.fr/" target="_blank">IA responsable en classe</a></li>
+          <li><a href="https://ia-codes.rochane.fr/" target="_blank">4 codes pour transformer tes prompts IA</a></li>
+          <li><a href="https://ia-contexte.rochane.fr/" target="_blank">Contexte caché : l'efficacité des fausses questions</a></li>
+          <li><a href="https://ia-fonction.rochane.fr/" target="_blank">LLM = f(x) → y</a></li>
+          <li><a href="https://ia-triangle.rochane.fr/" target="_blank">IA : Partenaire ou Piège ?</a></li>
+          <li><a href="https://ia-rgpd.rochane.fr/" target="_blank">Check-list RGPD et IA dans l'éducation</a></li>
+          <li><a href="https://ia-friction.rochane.fr/" target="_blank">La disparition de la friction intellectuelle</a></li>
+          <li><a href="https://ia-typologies.rochane.fr/" target="_blank">Les différents types d'IA : comparaison (FR)</a></li>
+          <li><a href="https://ia-typologiesen.rochane.fr/" target="_blank">Different Types of AI: Comparison (EN)</a></li>
+          <li><a href="https://ia-transparence.rochane.fr/" target="_blank">Bonnes pratiques pour les écrits assistés par IA</a></li>
+        </ul>
+      </details>
+    </div>
   </div>
 </div>
 
