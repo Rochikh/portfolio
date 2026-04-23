@@ -1498,6 +1498,37 @@ footer a:hover { color: var(--accent); }
       </div>
       <div class="proj-footer">Tester l'outil <span>↗</span></div>
     </a>
+    <a href="https://voix-atelier.rochane.fr/" target="_blank" class="proj-card reveal">
+      <div class="proj-visual" style="background: linear-gradient(135deg, #fff6f1, #ffe4d4); display:flex; align-items:center; justify-content:center;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="72" height="72" fill="none">
+          <!-- Cycle quatre temps : arc circulaire avec 4 nœuds -->
+          <circle cx="40" cy="40" r="24" stroke="#e8520a" stroke-width="1.8" fill="none" opacity="0.35" stroke-dasharray="3 3"/>
+          <!-- T1 : nœud haut (brut, parole) -->
+          <circle cx="40" cy="16" r="6" fill="#e8520a"/>
+          <text x="40" y="19" font-size="8" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="700">1</text>
+          <!-- T2 : nœud droite (tension analytique) -->
+          <circle cx="64" cy="40" r="6" fill="#e8520a" opacity="0.8"/>
+          <text x="64" y="43" font-size="8" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="700">2</text>
+          <!-- T3 : nœud bas (reprise, pivot) -->
+          <circle cx="40" cy="64" r="6" fill="#e8520a"/>
+          <text x="40" y="67" font-size="8" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="700">3</text>
+          <!-- T4 : nœud gauche (assemblage) -->
+          <circle cx="16" cy="40" r="6" fill="#e8520a" opacity="0.8"/>
+          <text x="16" y="43" font-size="8" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="700">4</text>
+          <!-- Flèches de progression entre nœuds -->
+          <path d="M48 18 Q58 22 62 32" stroke="#e8520a" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.6"/>
+          <path d="M62 48 Q58 58 48 62" stroke="#e8520a" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.6"/>
+          <path d="M32 62 Q22 58 18 48" stroke="#e8520a" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.6"/>
+          <path d="M18 32 Q22 22 32 18" stroke="#e8520a" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.6"/>
+        </svg>
+      </div>
+      <div class="proj-body">
+        <div class="proj-name">Voix-atelier</div>
+        <div class="proj-desc">Protocole en quatre temps pour produire avec l'IA sans perdre sa voix. Alterne parole humaine brute (T1, T3) et traitement analytique (T2), puis assemble sous contrainte (T4). Skill Claude et prompts portables disponibles.</div>
+        <div class="proj-tags"><span class="proj-tag">Méthode</span><span class="proj-tag">Écriture &amp; IA</span><span class="proj-tag">Voix propre</span></div>
+      </div>
+      <div class="proj-footer">Voir l'infographie <span>↗</span></div>
+    </a>
   </div>
 </div>
 <div class="section-wrap" id="infographies">
