@@ -536,7 +536,8 @@ nav.scrolled { box-shadow: 0 1px 24px rgba(0,0,0,0.06); }
   background: var(--accent-light);
 }
 
-.conf-flag { font-size: 1.3rem; flex-shrink: 0; padding-top: 1px; }
+.conf-flag { flex-shrink: 0; padding-top: 2px; }
+.conf-flag img { display: block; border-radius: 2px; box-shadow: 0 1px 2px rgba(0,0,0,0.08); }
 
 .conf-title {
   font-size: 0.87rem;
@@ -586,10 +587,10 @@ nav.scrolled { box-shadow: 0 1px 24px rgba(0,0,0,0.06); }
 }
 
 .form-flag {
-  font-size: 1.3rem;
   flex-shrink: 0;
-  padding-top: 1px;
+  padding-top: 2px;
 }
+.form-flag img { display: block; border-radius: 2px; box-shadow: 0 1px 2px rgba(0,0,0,0.08); }
 
 .form-title { font-size: 0.87rem; font-weight: 600; color: var(--text); margin-bottom: 0.15rem; }
 .form-meta { font-size: 0.77rem; color: var(--muted2); }
@@ -965,7 +966,7 @@ footer a:hover { color: var(--accent); }
     .chat-nudge-close { margin-left: .6rem; color: var(--muted2); cursor: pointer; font-size: .9rem; vertical-align: middle; transition: color .2s; }
     .chat-nudge-close:hover { color: var(--accent); }
 
-    /* Widget popup — style "Got A Question?" */
+    /* Widget popup, style "Got A Question?" */
     .chat-widget {
       position: absolute; bottom: calc(100% + 14px); right: 0;
       width: 320px; max-width: calc(100vw - 3rem);
@@ -1219,12 +1220,12 @@ footer a:hover { color: var(--accent); }
 <div id="trust">
   <p class="trust-label">Institutions partenaires</p>
   <div class="logos-wrap">
-    <div class="logo-chip">🇪🇺 Commission européenne</div>
+    <div class="logo-chip"><img src="https://flagcdn.com/w40/eu.png" srcset="https://flagcdn.com/w80/eu.png 2x" alt="EU" width="28" height="20" loading="lazy"> Commission européenne</div>
     <div class="logo-chip">🇺🇳 Nations Unies</div>
     <div class="logo-chip">🎓 ULB Bruxelles</div>
     <div class="logo-chip">🌐 UNESCO</div>
     <div class="logo-chip">📺 RTBF Academy</div>
-    <div class="logo-chip">🇫🇷 CNFPT</div>
+    <div class="logo-chip"><img src="https://flagcdn.com/w40/fr.png" srcset="https://flagcdn.com/w80/fr.png 2x" alt="FR" width="28" height="20" loading="lazy"> CNFPT</div>
     <div class="logo-chip">📡 France Éducation International</div>
     <div class="logo-chip">🎙️ Magazine Elle</div>
     <div class="logo-chip">🎓 Université de Lille</div>
@@ -1243,7 +1244,7 @@ footer a:hover { color: var(--accent); }
         J'interviens à l'international pour accompagner l'intégration stratégique de l'IA dans les dispositifs de formation.
       </p>
       <p class="about-body">
-        Belgique, France, Tunisie, Burundi, Jordanie — auprès d'institutions européennes, onusiennes et universitaires.
+        Belgique, France, Tunisie, Burundi, Jordanie, auprès d'institutions européennes, onusiennes et universitaires.
       </p>
       <div class="skills-wrap">
         <span class="skill-tag">IA &amp; Pédagogie inclusive</span>
@@ -1330,19 +1331,19 @@ footer a:hover { color: var(--accent); }
     <p class="section-sub">13 conférences dans 6 pays, auprès d'universités, institutions publiques et organismes internationaux.</p>
   </div>
   <div class="conf-grid">
-    <div class="conf-row reveal"><div class="conf-flag">🇧🇪</div><div><div class="conf-title">L'IA constitue-t-elle une menace pour le multilinguisme ?</div><div class="conf-meta"><span class="conf-loc">Bruxelles</span><span>Multilinguisme</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag">🇧🇪</div><div><div class="conf-title">La réactivation comme levier de l'apprentissage – quels leviers offre l'IA</div><div class="conf-meta"><span class="conf-loc">Liège</span><span>Ecolab 2026</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag">🇧🇪</div><div><div class="conf-title">Label européen des langues – IA et langues</div><div class="conf-meta"><span class="conf-loc">Belgique</span><span>Langues &amp; IA</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag">🇫🇷</div><div><div class="conf-title">France Éducation International</div><div class="conf-meta"><span class="conf-loc">France</span><span>International</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag">🇧🇪</div><div><div class="conf-title">IPFC – Formation des inspecteurs et inspectrices</div><div class="conf-meta"><span class="conf-loc">Belgique</span><span>Formation</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag">🇧🇪</div><div><div class="conf-title">ULB et CCIB Bruxelles – Promotion et formation continue</div><div class="conf-meta"><span class="conf-loc">Bruxelles</span><span>Université</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag">🇹🇳</div><div><div class="conf-title">Higher Institute Education &amp; La Formation Continue, Tunis</div><div class="conf-meta"><span class="conf-loc">Tunis</span><span>Institut</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag">🇧🇮</div><div><div class="conf-title">Université de Bujumbura</div><div class="conf-meta"><span class="conf-loc">Burundi</span><span>Université</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag">🇧🇪</div><div><div class="conf-title">Elle Active (Magazine Elle) – IA et l'emploi</div><div class="conf-meta"><span class="conf-loc">Bruxelles</span><span>IA &amp; Emploi</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag">🇹🇳</div><div><div class="conf-title">Forum Citoyen de l'Innovation en Éducation, Sousse</div><div class="conf-meta"><span class="conf-loc">Sousse</span><span>Innovation</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag">🇫🇷</div><div><div class="conf-title">MJC Lambres-lez-Douai</div><div class="conf-meta"><span class="conf-loc">France</span><span>Culturel</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag">🇫🇷</div><div><div class="conf-title">Municipalité de Bersée</div><div class="conf-meta"><span class="conf-loc">France</span><span>Public</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag">🇦🇹</div><div><div class="conf-title">L'évaluation à l'ère de l'IA – Network Meeting AI-LANG</div><div class="conf-meta"><span class="conf-loc">Graz, Autriche</span><span>CELV · Avril 2026</span></div></div></div>
+    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="BE" width="28" height="20" loading="lazy"></div><div><div class="conf-title">L'IA constitue-t-elle une menace pour le multilinguisme ?</div><div class="conf-meta"><span class="conf-loc">Bruxelles</span><span>Multilinguisme</span></div></div></div>
+    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="BE" width="28" height="20" loading="lazy"></div><div><div class="conf-title">La réactivation comme levier de l'apprentissage – quels leviers offre l'IA</div><div class="conf-meta"><span class="conf-loc">Liège</span><span>Ecolab 2026</span></div></div></div>
+    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="BE" width="28" height="20" loading="lazy"></div><div><div class="conf-title">Label européen des langues – IA et langues</div><div class="conf-meta"><span class="conf-loc">Belgique</span><span>Langues &amp; IA</span></div></div></div>
+    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/fr.png" srcset="https://flagcdn.com/w80/fr.png 2x" alt="FR" width="28" height="20" loading="lazy"></div><div><div class="conf-title">France Éducation International</div><div class="conf-meta"><span class="conf-loc">France</span><span>International</span></div></div></div>
+    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="BE" width="28" height="20" loading="lazy"></div><div><div class="conf-title">IPFC – Formation des inspecteurs et inspectrices</div><div class="conf-meta"><span class="conf-loc">Belgique</span><span>Formation</span></div></div></div>
+    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="BE" width="28" height="20" loading="lazy"></div><div><div class="conf-title">ULB et CCIB Bruxelles – Promotion et formation continue</div><div class="conf-meta"><span class="conf-loc">Bruxelles</span><span>Université</span></div></div></div>
+    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/tn.png" srcset="https://flagcdn.com/w80/tn.png 2x" alt="TN" width="28" height="20" loading="lazy"></div><div><div class="conf-title">Higher Institute Education &amp; La Formation Continue, Tunis</div><div class="conf-meta"><span class="conf-loc">Tunis</span><span>Institut</span></div></div></div>
+    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/bi.png" srcset="https://flagcdn.com/w80/bi.png 2x" alt="BI" width="28" height="20" loading="lazy"></div><div><div class="conf-title">Université de Bujumbura</div><div class="conf-meta"><span class="conf-loc">Burundi</span><span>Université</span></div></div></div>
+    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="BE" width="28" height="20" loading="lazy"></div><div><div class="conf-title">Elle Active (Magazine Elle) – IA et l'emploi</div><div class="conf-meta"><span class="conf-loc">Bruxelles</span><span>IA &amp; Emploi</span></div></div></div>
+    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/tn.png" srcset="https://flagcdn.com/w80/tn.png 2x" alt="TN" width="28" height="20" loading="lazy"></div><div><div class="conf-title">Forum Citoyen de l'Innovation en Éducation, Sousse</div><div class="conf-meta"><span class="conf-loc">Sousse</span><span>Innovation</span></div></div></div>
+    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/fr.png" srcset="https://flagcdn.com/w80/fr.png 2x" alt="FR" width="28" height="20" loading="lazy"></div><div><div class="conf-title">MJC Lambres-lez-Douai</div><div class="conf-meta"><span class="conf-loc">France</span><span>Culturel</span></div></div></div>
+    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/fr.png" srcset="https://flagcdn.com/w80/fr.png 2x" alt="FR" width="28" height="20" loading="lazy"></div><div><div class="conf-title">Municipalité de Bersée</div><div class="conf-meta"><span class="conf-loc">France</span><span>Public</span></div></div></div>
+    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/at.png" srcset="https://flagcdn.com/w80/at.png 2x" alt="AT" width="28" height="20" loading="lazy"></div><div><div class="conf-title">L'évaluation à l'ère de l'IA – Network Meeting AI-LANG</div><div class="conf-meta"><span class="conf-loc">Graz, Autriche</span><span>CELV · Avril 2026</span></div></div></div>
   </div>
 </div>
 
@@ -1355,27 +1356,27 @@ footer a:hover { color: var(--accent); }
       <p class="section-sub">22 interventions auprès d'institutions publiques, universités et entreprises en Europe, Afrique et au Moyen-Orient.</p>
     </div>
     <div class="form-grid">
-      <div class="form-row reveal"><div class="form-flag">🇪🇺</div><div><div class="form-title">Design de formation IA</div><div class="form-meta">Commission européenne · AIM Consulting</div><span class="form-badge">Commission UE</span></div></div>
-      <div class="form-row reveal"><div class="form-flag">🇩🇿</div><div><div class="form-title">Conception pédagogique avec l'IA</div><div class="form-meta">CESI Alger · Projet UNESCO</div><span class="form-badge">UNESCO</span></div></div>
-      <div class="form-row reveal"><div class="form-flag">🇫🇷</div><div><div class="form-title">Association Nationale des Services TICE</div><div class="form-meta">France</div><span class="form-badge">TICE</span></div></div>
-      <div class="form-row reveal"><div class="form-flag">🇧🇪</div><div><div class="form-title">Institut des hautes études des communications sociales</div><div class="form-meta">Bruxelles</div><span class="form-badge">Communication</span></div></div>
-      <div class="form-row reveal"><div class="form-flag">🇹🇳</div><div><div class="form-title">Université El Manar</div><div class="form-meta">Tunis</div><span class="form-badge">Université</span></div></div>
-      <div class="form-row reveal"><div class="form-flag">🇧🇪</div><div><div class="form-title">RTBF Academy</div><div class="form-meta">Bruxelles</div><span class="form-badge">Médias</span></div></div>
-      <div class="form-row reveal"><div class="form-flag">🇧🇪</div><div><div class="form-title">École européenne de Bruxelles</div><div class="form-meta">Bruxelles</div><span class="form-badge">Européen</span></div></div>
-      <div class="form-row reveal"><div class="form-flag">🇧🇪</div><div><div class="form-title">Faculté de la motricité – ULB</div><div class="form-meta">Bruxelles</div><span class="form-badge">Université</span></div></div>
-      <div class="form-row reveal"><div class="form-flag">🇧🇪</div><div><div class="form-title">Aprico Consultants – Digital Transformation</div><div class="form-meta">Bruxelles · Sfax</div><span class="form-badge">Digital</span></div></div>
-      <div class="form-row reveal"><div class="form-flag">🇧🇪</div><div><div class="form-title">IFAPME Tournai et Gembloux</div><div class="form-meta">Wallonie</div><span class="form-badge">Apprentissage</span></div></div>
-      <div class="form-row reveal"><div class="form-flag">🇧🇪</div><div><div class="form-title">Bruxelles Formation</div><div class="form-meta">Bruxelles</div><span class="form-badge">Public</span></div></div>
-      <div class="form-row reveal"><div class="form-flag">🇫🇷</div><div><div class="form-title">Meditech Access</div><div class="form-meta">Paris</div><span class="form-badge">Santé</span></div></div>
-      <div class="form-row reveal"><div class="form-flag">🇯🇴</div><div><div class="form-title">United Nations Volunteers</div><div class="form-meta">Amman</div><span class="form-badge">ONU</span></div></div>
-      <div class="form-row reveal"><div class="form-flag">🇫🇷</div><div><div class="form-title">Université Lille – Master IPM</div><div class="form-meta">Lille</div><span class="form-badge">Master</span></div></div>
-      <div class="form-row reveal"><div class="form-flag">🇫🇷</div><div><div class="form-title">Intégrer l'IA de la conception à l'évaluation</div><div class="form-meta">CNFPT Strasbourg</div><span class="form-badge">Public</span></div></div>
-      <div class="form-row reveal"><div class="form-flag">🇫🇷</div><div><div class="form-title">Utiliser l'IA en formation : outils et analyse critique</div><div class="form-meta">IFA Rouen</div><span class="form-badge">Apprentissage</span></div></div>
-      <div class="form-row reveal"><div class="form-flag">🇧🇪</div><div><div class="form-title">Learning Solution</div><div class="form-meta">Bruxelles</div><span class="form-badge">Formation</span></div></div>
-      <div class="form-row reveal"><div class="form-flag">🇹🇳</div><div><div class="form-title">Colloque International de l'Innovation Technologique</div><div class="form-meta">Sousse</div><span class="form-badge">Innovation</span></div></div>
-      <div class="form-row reveal"><div class="form-flag">🇧🇪</div><div><div class="form-title">Création de scénarios pédagogiques avec l'IA pour apprenants en langues</div><div class="form-meta">FELSI · CPAB, Bruxelles</div><span class="form-badge">Langues</span></div></div>
-      <div class="form-row reveal"><div class="form-flag">🇦🇹</div><div><div class="form-title">Groupe de travail AI-LANG – Cadre de référence IA pour l'enseignement des langues</div><div class="form-meta">CELV · Graz, Autriche</div><span class="form-badge">CELV</span></div></div>
-      <div class="form-row reveal"><div class="form-flag">🇹🇳</div><div><div class="form-title">IA pour enseignants universitaires</div><div class="form-meta">Tunis</div><span class="form-badge">Université</span></div></div>
+      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/eu.png" srcset="https://flagcdn.com/w80/eu.png 2x" alt="EU" width="28" height="20" loading="lazy"></div><div><div class="form-title">Design de formation IA</div><div class="form-meta">Commission européenne · AIM Consulting</div><span class="form-badge">Commission UE</span></div></div>
+      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/dz.png" srcset="https://flagcdn.com/w80/dz.png 2x" alt="DZ" width="28" height="20" loading="lazy"></div><div><div class="form-title">Conception pédagogique avec l'IA</div><div class="form-meta">CESI Alger · Projet UNESCO</div><span class="form-badge">UNESCO</span></div></div>
+      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/fr.png" srcset="https://flagcdn.com/w80/fr.png 2x" alt="FR" width="28" height="20" loading="lazy"></div><div><div class="form-title">Association Nationale des Services TICE</div><div class="form-meta">France</div><span class="form-badge">TICE</span></div></div>
+      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="BE" width="28" height="20" loading="lazy"></div><div><div class="form-title">Institut des hautes études des communications sociales</div><div class="form-meta">Bruxelles</div><span class="form-badge">Communication</span></div></div>
+      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/tn.png" srcset="https://flagcdn.com/w80/tn.png 2x" alt="TN" width="28" height="20" loading="lazy"></div><div><div class="form-title">Université El Manar</div><div class="form-meta">Tunis</div><span class="form-badge">Université</span></div></div>
+      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="BE" width="28" height="20" loading="lazy"></div><div><div class="form-title">RTBF Academy</div><div class="form-meta">Bruxelles</div><span class="form-badge">Médias</span></div></div>
+      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="BE" width="28" height="20" loading="lazy"></div><div><div class="form-title">École européenne de Bruxelles</div><div class="form-meta">Bruxelles</div><span class="form-badge">Européen</span></div></div>
+      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="BE" width="28" height="20" loading="lazy"></div><div><div class="form-title">Faculté de la motricité – ULB</div><div class="form-meta">Bruxelles</div><span class="form-badge">Université</span></div></div>
+      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="BE" width="28" height="20" loading="lazy"></div><div><div class="form-title">Aprico Consultants – Digital Transformation</div><div class="form-meta">Bruxelles · Sfax</div><span class="form-badge">Digital</span></div></div>
+      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="BE" width="28" height="20" loading="lazy"></div><div><div class="form-title">IFAPME Tournai et Gembloux</div><div class="form-meta">Wallonie</div><span class="form-badge">Apprentissage</span></div></div>
+      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="BE" width="28" height="20" loading="lazy"></div><div><div class="form-title">Bruxelles Formation</div><div class="form-meta">Bruxelles</div><span class="form-badge">Public</span></div></div>
+      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/fr.png" srcset="https://flagcdn.com/w80/fr.png 2x" alt="FR" width="28" height="20" loading="lazy"></div><div><div class="form-title">Meditech Access</div><div class="form-meta">Paris</div><span class="form-badge">Santé</span></div></div>
+      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/jo.png" srcset="https://flagcdn.com/w80/jo.png 2x" alt="JO" width="28" height="20" loading="lazy"></div><div><div class="form-title">United Nations Volunteers</div><div class="form-meta">Amman</div><span class="form-badge">ONU</span></div></div>
+      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/fr.png" srcset="https://flagcdn.com/w80/fr.png 2x" alt="FR" width="28" height="20" loading="lazy"></div><div><div class="form-title">Université Lille – Master IPM</div><div class="form-meta">Lille</div><span class="form-badge">Master</span></div></div>
+      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/fr.png" srcset="https://flagcdn.com/w80/fr.png 2x" alt="FR" width="28" height="20" loading="lazy"></div><div><div class="form-title">Intégrer l'IA de la conception à l'évaluation</div><div class="form-meta">CNFPT Strasbourg</div><span class="form-badge">Public</span></div></div>
+      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/fr.png" srcset="https://flagcdn.com/w80/fr.png 2x" alt="FR" width="28" height="20" loading="lazy"></div><div><div class="form-title">Utiliser l'IA en formation : outils et analyse critique</div><div class="form-meta">IFA Rouen</div><span class="form-badge">Apprentissage</span></div></div>
+      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="BE" width="28" height="20" loading="lazy"></div><div><div class="form-title">Learning Solution</div><div class="form-meta">Bruxelles</div><span class="form-badge">Formation</span></div></div>
+      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/tn.png" srcset="https://flagcdn.com/w80/tn.png 2x" alt="TN" width="28" height="20" loading="lazy"></div><div><div class="form-title">Colloque International de l'Innovation Technologique</div><div class="form-meta">Sousse</div><span class="form-badge">Innovation</span></div></div>
+      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="BE" width="28" height="20" loading="lazy"></div><div><div class="form-title">Création de scénarios pédagogiques avec l'IA pour apprenants en langues</div><div class="form-meta">FELSI · CPAB, Bruxelles</div><span class="form-badge">Langues</span></div></div>
+      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/at.png" srcset="https://flagcdn.com/w80/at.png 2x" alt="AT" width="28" height="20" loading="lazy"></div><div><div class="form-title">Groupe de travail AI-LANG – Cadre de référence IA pour l'enseignement des langues</div><div class="form-meta">CELV · Graz, Autriche</div><span class="form-badge">CELV</span></div></div>
+      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/tn.png" srcset="https://flagcdn.com/w80/tn.png 2x" alt="TN" width="28" height="20" loading="lazy"></div><div><div class="form-title">IA pour enseignants universitaires</div><div class="form-meta">Tunis</div><span class="form-badge">Université</span></div></div>
     </div>
   </div>
 </div>
@@ -1547,7 +1548,7 @@ footer a:hover { color: var(--accent); }
     <div class="reveal">
       <p class="section-tag">Ressources visuelles</p>
       <h2 class="section-title">Mes infographies</h2>
-      <p class="section-sub">Supports pédagogiques interactifs sur l'IA, la pédagogie et le numérique — libres d'accès et partageables.</p>
+      <p class="section-sub">Supports pédagogiques interactifs sur l'IA, la pédagogie et le numérique, libres d'accès et partageables.</p>
     </div>
     <div class="reveal" style="margin-top:2rem;">
       <details class="infog-accordion">
@@ -1895,14 +1896,14 @@ if (statsEl) {
 === QUI EST ROCHANE KHERBOUCHE ===
 Technopédagogue basé à Bruxelles, technopédagogue spécialisé dans l'intégration de l'IA en formation. Reconnu Ambassadeur IA par le Ministère de l'Économie et des Finances français (francenum.gouv.fr). Conférencier international ayant intervenu en Belgique, France, Tunisie, Burundi, Jordanie, auprès d'institutions comme la Commission européenne, les Nations Unies, l'UNESCO, l'ULB, la RTBF, le CNFPT, et bien d'autres.
 
-Il est également auteur d'un livre à paraître en mai 2026 aux éditions Chroniques Sociales, intitulé "La transformation de l'évaluation à l'ère de l'IA". Ce livre sera disponible en précommande puis à la commande — les personnes intéressées peuvent manifester leur intérêt via le formulaire de contact.
+Il est également auteur d'un livre à paraître en mai 2026 aux éditions Chroniques Sociales, intitulé "La transformation de l'évaluation à l'ère de l'IA". Ce livre sera disponible en précommande puis à la commande. Les personnes intéressées peuvent manifester leur intérêt via le formulaire de contact.
 
 === LANGUES ===
 Rochane intervient principalement en français. Il peut aussi intervenir en arabe. Il comprend l'anglais et peut créer du contenu en anglais, mais il ne fait pas de conférences en anglais. Si quelqu'un demande une conférence en anglais, tu réponds clairement que ce n'est pas proposé.
 
 === FORMATS D'INTERVENTION ===
 - CONFÉRENCE : intervention de 1h à 2h, format magistral / inspirant, adaptée à tous types de publics (institutions, entreprises, universités, événements culturels).
-- ATELIER / WORKSHOP : durée variable, format actif. Rochane fournit le scénario pédagogique en amont (à lire avant la session), anime le workshop, et les participants repartent avec des outils concrets et une banque de ressources IA. Un suivi post-formation est possible — les participants peuvent recontacter Rochane après.
+- ATELIER / WORKSHOP : durée variable, format actif. Rochane fournit le scénario pédagogique en amont (à lire avant la session), anime le workshop, et les participants repartent avec des outils concrets et une banque de ressources IA. Un suivi post-formation est possible : les participants peuvent recontacter Rochane après.
 - Présentiel, distanciel ou hybride, quelle que soit la taille du groupe.
 
 === TARIFS ===
@@ -1913,16 +1914,16 @@ Rochane est disponible. Il est mobile et peut se déplacer hors de Belgique et h
 
 === PODCASTS ===
 Rochane a été interviewé dans trois podcasts de plus de 30 minutes :
-1. "Les voix du Digital Learning : l'évaluation à l'heure de l'IA Générative" — Rendez-vous en terre digitale (46 min, février 2026)
-2. "IA et compétences – Le futur de la formation professionnelle" — Never Stop Learning, épisode 83
-3. "Technopédagogie, ingénierie pédagogique et outils numériques en formation" — Numericast, épisode 08
+1. "Les voix du Digital Learning : l'évaluation à l'heure de l'IA Générative", Rendez-vous en terre digitale (46 min, février 2026)
+2. "IA et compétences – Le futur de la formation professionnelle", Never Stop Learning, épisode 83
+3. "Technopédagogie, ingénierie pédagogique et outils numériques en formation", Numericast, épisode 08
 
 === CE QUE ROCHANE NE FAIT PAS ===
 - Il ne fait pas de conférences en anglais.
 - Ne spécule pas sur des sujets non listés : invite à contacter directement.
 
 === FORMAT DES RÉPONSES ===
-Quand tu cites un lien, utilise toujours le format Markdown : [texte descriptif](https://url) — par exemple [Voir le calendrier](https://lien) ou [Contacter sur LinkedIn](https://linkedin.com/in/rochanekherbouche). Ne colle jamais une URL brute seule.
+Quand tu cites un lien, utilise toujours le format Markdown : [texte descriptif](https://url), par exemple [Voir le calendrier](https://lien) ou [Contacter sur LinkedIn](https://linkedin.com/in/rochanekherbouche). Ne colle jamais une URL brute seule.
 
 === QUESTIONS FRÉQUENTES ===
 Q: Est-il disponible ?
