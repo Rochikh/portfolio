@@ -1,2102 +1,2435 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rochane Kherbouche – Technopédagogue & Ambassadeur IA</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-
-:root {
-  --white: #ffffff;
-  --off: #f7f6f3;
-  --light: #eeece8;
-  --line: #e2dfd9;
-  --line2: #d0cdc7;
-  --text: #1a1916;
-  --muted: #8a8780;
-  --muted2: #b5b2ac;
-  --accent: #e8520a;
-  --accent-light: #fff0ea;
-  --accent-hover: #c94208;
-  --font: 'Plus Jakarta Sans', sans-serif;
-  --radius: 12px;
-  --transition: 0.22s cubic-bezier(0.4,0,0.2,1);
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: var(--font);
-  background: var(--white);
-  color: var(--text);
-  font-size: 16px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* ─── NAV ─── */
-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 200;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 3rem;
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--line);
-  transition: box-shadow var(--transition);
-}
-
-nav.scrolled { box-shadow: 0 1px 24px rgba(0,0,0,0.06); }
-
-.nav-logo {
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  color: var(--text);
-  text-decoration: none;
-}
-
-.nav-logo span {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  background: var(--accent);
-  border-radius: 50%;
-  margin-left: 3px;
-  vertical-align: middle;
-  margin-bottom: 2px;
-}
-
-.nav-links {
-  display: flex;
-  list-style: none;
-  gap: 2.5rem;
-  align-items: center;
-}
-
-.nav-links a {
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: var(--muted);
-  text-decoration: none;
-  letter-spacing: 0.01em;
-  transition: color var(--transition);
-}
-
-.nav-links a:hover { color: var(--text); }
-
-.nav-cta {
-  background: var(--accent) !important;
-  color: var(--white) !important;
-  padding: 0.45rem 1.1rem;
-  border-radius: 6px;
-  font-weight: 600 !important;
-  transition: background var(--transition) !important;
-}
-
-.nav-cta:hover { background: var(--accent-hover) !important; }
-
-/* ─── HERO ─── */
-#hero {
-  min-height: 100vh;
-  padding: 120px 3rem 80px;
-  display: grid;
-  grid-template-columns: 1fr 420px;
-  gap: 5rem;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.hero-label {
-  display: inline-flex;
-  align-items: center;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 1.8rem;
-}
-
-.hero-label::before {
-  content: '';
-  display: none;
-}
-
-.hero-title {
-  font-size: clamp(2.6rem, 4.5vw, 4rem);
-  font-weight: 800;
-  letter-spacing: -0.035em;
-  line-height: 1.07;
-  margin-bottom: 1.5rem;
-  color: var(--text);
-}
-
-.hero-title em {
-  font-style: normal;
-  color: var(--accent);
-}
-
-.hero-sub {
-  font-size: 1.05rem;
-  color: var(--muted);
-  max-width: 500px;
-  line-height: 1.75;
-  margin-bottom: 2.5rem;
-  font-weight: 400;
-}
-
-.hero-sub strong { color: var(--text); font-weight: 600; }
-
-.hero-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; }
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.6rem;
-  border-radius: 7px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all var(--transition);
-  font-family: var(--font);
-  border: none;
-  cursor: pointer;
-}
-
-.btn-fill { background: var(--accent); color: var(--white); }
-.btn-fill:hover { background: var(--accent-hover); transform: translateY(-1px); }
-
-.btn-outline {
-  background: transparent;
-  color: var(--text);
-  border: 1.5px solid var(--line2);
-}
-
-.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
-
-/* HERO RIGHT */
-.hero-right {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-}
-
-.hero-photo-card {
-  background: var(--off);
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  overflow: hidden;
-  padding: 2rem 2rem 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.hero-photo {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: top;
-  border: 3px solid var(--white);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  margin-bottom: 1.2rem;
-}
-
-.hero-name {
-  font-size: 1.1rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  text-align: center;
-  margin-bottom: 0.2rem;
-}
-
-.hero-role {
-  font-size: 0.8rem;
-  color: var(--muted);
-  text-align: center;
-  margin-bottom: 1.2rem;
-}
-
-.hero-tag-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  justify-content: center;
-  padding-bottom: 1.5rem;
-}
-
-.htag {
-  font-size: 0.72rem;
-  background: var(--white);
-  border: 1px solid var(--line);
-  padding: 0.25rem 0.65rem;
-  border-radius: 100px;
-  color: var(--muted);
-  font-weight: 500;
-}
-
-/* STATS CARD */
-.stats-card {
-  background: var(--text);
-  border-radius: 14px;
-  padding: 1.4rem 1.5rem;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-}
-
-.stat-item { text-align: center; }
-
-.stat-item + .stat-item {
-  border-left: 1px solid rgba(255,255,255,0.1);
-}
-
-.stat-num {
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: var(--accent);
-  letter-spacing: -0.03em;
-  line-height: 1;
-  margin-bottom: 0.25rem;
-}
-
-.stat-label {
-  font-size: 0.68rem;
-  color: rgba(255,255,255,0.45);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-/* ─── TRUST STRIP ─── */
-#trust {
-  background: var(--off);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  padding: 36px 3rem;
-}
-
-.trust-label {
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--muted2);
-  font-weight: 600;
-  margin-bottom: 1.4rem;
-  text-align: center;
-}
-
-.logos-wrap {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  justify-content: center;
-}
-
-.logo-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  background: var(--white);
-  border: 1px solid var(--line);
-  padding: 0.4rem 0.9rem;
-  border-radius: 6px;
-  font-size: 0.8rem;
-  color: var(--text);
-  font-weight: 500;
-  transition: all var(--transition);
-}
-
-.logo-chip:hover { border-color: var(--accent); color: var(--accent); }
-
-/* ─── SECTIONS ─── */
-.section-wrap {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 96px 3rem;
-}
-
-.section-wrap.bg-off {
-  max-width: 100%;
-  background: var(--off);
-  padding: 96px 0;
-}
-
-.section-wrap.bg-off .section-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 3rem;
-}
-
-.section-tag {
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--accent);
-  margin-bottom: 0.6rem;
-}
-
-.section-title {
-  font-size: clamp(1.7rem, 2.8vw, 2.3rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
-  margin-bottom: 0.8rem;
-  color: var(--text);
-}
-
-.section-sub {
-  font-size: 0.95rem;
-  color: var(--muted);
-  max-width: 520px;
-  line-height: 1.7;
-  margin-bottom: 2.8rem;
-}
-
-/* ─── ABOUT ─── */
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: start;
-}
-
-.about-body {
-  font-size: 0.95rem;
-  color: var(--muted);
-  line-height: 1.8;
-  margin-bottom: 1.5rem;
-}
-
-.about-body strong { color: var(--text); font-weight: 600; }
-
-.skills-wrap {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
-}
-
-.skill-tag {
-  font-size: 0.8rem;
-  background: var(--accent-light);
-  color: var(--accent);
-  padding: 0.3rem 0.8rem;
-  border-radius: 5px;
-  font-weight: 600;
-  border: 1px solid rgba(232,82,10,0.15);
-}
-
-.about-links { display: flex; flex-direction: column; gap: 0; }
-
-.about-link {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--line);
-  text-decoration: none;
-  color: var(--text);
-  font-size: 0.88rem;
-  font-weight: 500;
-  transition: color var(--transition);
-  group: true;
-}
-
-.about-link:hover { color: var(--accent); }
-.about-link:hover .link-arrow { transform: translate(3px,-3px); }
-
-.link-arrow {
-  font-size: 0.8rem;
-  transition: transform var(--transition);
-  color: var(--muted2);
-}
-
-.about-right { display: flex; flex-direction: column; gap: 1rem; }
-
-.info-card {
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 1.4rem 1.5rem;
-  transition: all var(--transition);
-}
-
-.info-card:hover {
-  border-color: var(--accent);
-  box-shadow: 0 4px 20px rgba(232,82,10,0.06);
-  transform: translateX(4px);
-}
-
-.info-card-title {
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--accent);
-  margin-bottom: 0.5rem;
-}
-
-.info-card-text { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
-
-/* ─── ARTICLES ─── */
-.articles-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1.2rem;
-}
-
-.article-card {
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 1.6rem;
-  text-decoration: none;
-  color: var(--text);
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  transition: all var(--transition);
-  position: relative;
-  overflow: hidden;
-}
-
-.article-card:hover {
-  border-color: var(--accent);
-  box-shadow: 0 6px 28px rgba(232,82,10,0.07);
-  transform: translateY(-3px);
-}
-
-.article-cat {
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--accent);
-}
-
-.article-title {
-  font-size: 0.95rem;
-  font-weight: 700;
-  line-height: 1.4;
-  letter-spacing: -0.01em;
-  color: var(--text);
-}
-
-.article-cta {
-  margin-top: auto;
-  font-size: 0.8rem;
-  color: var(--muted2);
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  transition: color var(--transition), gap var(--transition);
-}
-
-.article-card:hover .article-cta { color: var(--accent); gap: 0.6rem; }
-
-/* ─── CONFERENCES ─── */
-.conf-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.8rem;
-}
-
-.conf-row {
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 1.1rem 1.3rem;
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  transition: all var(--transition);
-}
-
-.conf-row:hover {
-  border-color: rgba(232,82,10,0.3);
-  background: var(--accent-light);
-}
-
-.conf-flag { flex-shrink: 0; padding-top: 2px; }
-.conf-flag img { display: block; border-radius: 2px; box-shadow: 0 1px 2px rgba(0,0,0,0.08); }
-
-.conf-title {
-  font-size: 0.87rem;
-  font-weight: 500;
-  color: var(--text);
-  line-height: 1.4;
-  margin-bottom: 0.25rem;
-}
-
-.conf-meta {
-  font-size: 0.75rem;
-  color: var(--muted2);
-  display: flex;
-  gap: 0.7rem;
-}
-
-.conf-loc { color: var(--accent); font-weight: 600; }
-
-/* ─── FORMATIONS ─── */
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 0.8rem;
-}
-
-.form-row {
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 1rem 1.3rem;
-  display: flex;
-  align-items: flex-start;
-  gap: 0.9rem;
-  transition: all var(--transition);
-}
-
-.form-row:hover { border-color: rgba(232,82,10,0.25); transform: translateX(3px); }
-
-.form-dot {
-  width: 7px;
-  height: 7px;
-  background: var(--accent);
-  border-radius: 50%;
-  margin-top: 5px;
-  flex-shrink: 0;
-  opacity: 0.6;
-}
-
-.form-flag {
-  flex-shrink: 0;
-  padding-top: 2px;
-}
-.form-flag img { display: block; border-radius: 2px; box-shadow: 0 1px 2px rgba(0,0,0,0.08); }
-
-.form-title { font-size: 0.87rem; font-weight: 600; color: var(--text); margin-bottom: 0.15rem; }
-.form-meta { font-size: 0.77rem; color: var(--muted2); }
-
-.form-badge {
-  display: inline-block;
-  font-size: 0.65rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  background: var(--accent-light);
-  color: var(--accent);
-  padding: 0.15rem 0.5rem;
-  border-radius: 3px;
-  margin-top: 0.3rem;
-}
-
-/* ─── PROJETS ─── */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.2rem;
-}
-
-/* Infographies accordion */
-.infog-accordion {
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: var(--white);
-  overflow: hidden;
-}
-.infog-summary {
-  padding: 1rem 1.4rem;
-  font-weight: 700;
-  font-size: 1rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  list-style: none;
-  user-select: none;
-  color: var(--text);
-  transition: background .2s;
-}
-.infog-summary:hover { background: var(--bg); }
-.infog-summary::-webkit-details-marker { display: none; }
-.infog-chevron { font-size: .85rem; color: var(--muted); transition: transform .25s; }
-details.infog-accordion[open] .infog-chevron { transform: rotate(180deg); }
-.infog-list {
-  list-style: none;
-  margin: 0;
-  padding: 0 0 .6rem 0;
-  border-top: 1px solid var(--line);
-}
-.infog-list li {
-  border-bottom: 1px solid var(--line);
-}
-.infog-list li:last-child { border-bottom: none; }
-.infog-list a {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: .85rem 1.4rem;
-  color: var(--text);
-  text-decoration: none;
-  font-size: .95rem;
-  transition: background .15s, color .15s;
-}
-.infog-list a::after { content: "↗"; font-size: .85rem; color: var(--muted); margin-left: .5rem; flex-shrink: 0; }
-.infog-list a:hover { background: var(--accent-light, #fff3ee); color: var(--accent); }
-.infog-list a:hover::after { color: var(--accent); }
-
-.proj-card {
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  overflow: hidden;
-  text-decoration: none;
-  color: var(--text);
-  display: flex;
-  flex-direction: column;
-  transition: all var(--transition);
-}
-
-.proj-card:hover {
-  border-color: var(--accent);
-  box-shadow: 0 8px 32px rgba(232,82,10,0.08);
-  transform: translateY(-4px);
-}
-
-.proj-visual {
-  height: 140px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2.5rem;
-  position: relative;
-}
-
-.proj-visual.c1 { background: linear-gradient(135deg, #fff0ea, #fde8d8); }
-.proj-visual.c2 { background: linear-gradient(135deg, #f0f7f0, #dff0df); }
-.proj-visual.c3 { background: linear-gradient(135deg, #f5f0ff, #ede0ff); }
-.proj-visual.c4 { background: linear-gradient(135deg, #fff8e8, #ffefc0); }
-
-.proj-body { padding: 1.4rem; flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
-
-.proj-name {
-  font-size: 1rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: var(--text);
-}
-
-.proj-desc { font-size: 0.84rem; color: var(--muted); line-height: 1.6; }
-
-.proj-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: auto; padding-top: 0.6rem; }
-
-.proj-tag {
-  font-size: 0.7rem;
-  background: var(--off);
-  border: 1px solid var(--line);
-  padding: 0.18rem 0.55rem;
-  border-radius: 4px;
-  color: var(--muted);
-}
-
-.proj-footer {
-  padding: 0.9rem 1.4rem;
-  border-top: 1px solid var(--line);
-  font-size: 0.8rem;
-  color: var(--accent);
-  font-weight: 600;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: background var(--transition);
-}
-
-.proj-card:hover .proj-footer { background: var(--accent-light); }
-
-/* ─── WEBINAIRES ─── */
-.webinar-list { display: flex; flex-direction: column; gap: 0; max-width: 780px; }
-
-.webinar-row {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  padding: 1.3rem 0;
-  border-bottom: 1px solid var(--line);
-  transition: padding-left var(--transition);
-}
-
-.webinar-row:hover { padding-left: 6px; }
-
-.w-num {
-  font-size: 0.75rem;
-  font-weight: 800;
-  color: var(--muted2);
-  min-width: 26px;
-}
-
-.w-title { font-size: 0.92rem; font-weight: 600; color: var(--text); flex: 1; }
-.w-meta { font-size: 0.78rem; color: var(--muted2); }
-
-/* ─── COMMUNITY ─── */
-#community {
-  background: var(--text);
-  padding: 96px 3rem;
-  text-align: center;
-}
-
-.community-inner { max-width: 560px; margin: 0 auto; }
-
-.comm-num {
-  font-size: clamp(3.5rem, 8vw, 6rem);
-  font-weight: 800;
-  color: var(--accent);
-  letter-spacing: -0.05em;
-  line-height: 1;
-  margin-bottom: 0.4rem;
-}
-
-.comm-label {
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.4);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-}
-
-.comm-desc {
-  font-size: 1rem;
-  color: rgba(255,255,255,0.65);
-  line-height: 1.75;
-  margin-bottom: 2rem;
-  font-weight: 300;
-}
-
-/* ─── CONTACT ─── */
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: start;
-}
-
-.contact-channels { display: flex; flex-direction: column; gap: 0.7rem; }
-
-.channel-link {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  background: var(--off);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 1rem 1.2rem;
-  text-decoration: none;
-  color: var(--text);
-  font-size: 0.88rem;
-  font-weight: 600;
-  transition: all var(--transition);
-}
-
-.channel-link:hover {
-  background: var(--accent-light);
-  border-color: rgba(232,82,10,0.3);
-  color: var(--accent);
-}
-
-.channel-icon {
-  width: 34px;
-  height: 34px;
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  flex-shrink: 0;
-}
-
-/* FORM */
-.form-group { margin-bottom: 1.1rem; }
-
-.form-group label {
-  display: block;
-  font-size: 0.74rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-  margin-bottom: 0.45rem;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select {
-  width: 100%;
-  background: var(--off);
-  border: 1.5px solid var(--line);
-  color: var(--text);
-  padding: 0.8rem 1rem;
-  border-radius: 8px;
-  font-family: var(--font);
-  font-size: 0.9rem;
-  outline: none;
-  transition: border-color var(--transition);
-  resize: vertical;
-  appearance: none;
-}
-
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus { border-color: var(--accent); background: var(--white); }
-
-.form-group textarea { min-height: 110px; }
-
-/* ─── FOOTER ─── */
-footer {
-  background: var(--off);
-  border-top: 1px solid var(--line);
-  padding: 1.5rem 3rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.8rem;
-  color: var(--muted2);
-}
-
-footer a { color: var(--muted2); text-decoration: none; transition: color var(--transition); }
-footer a:hover { color: var(--accent); }
-
-/* ─── REVEAL ─── */
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
-}
-
-.reveal.in { opacity: 1; transform: none; }
-
-/* ─── RESPONSIVE ─── */
-@media (max-width: 960px) {
-  #hero { grid-template-columns: 1fr; padding: 100px 1.5rem 60px; }
-  .hero-right { display: flex; }
-  .hero-photo-card { display: flex; }
-  .stats-card { border-radius: 10px; }
-  .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
-  .conf-grid { grid-template-columns: 1fr; }
-  nav { padding: 0 1.5rem; }
-  nav .nav-links { display: none; }
-  .section-wrap { padding: 72px 1.5rem; }
-  #trust { padding: 36px 1.5rem; }
-  #community { padding: 72px 1.5rem; }
-  footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
-}
-
-
-    /* ─── CHATBOT ─── */
-    .chat-container { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 1010; }
-
-    .chat-toggle-btn {
-      width: 56px; height: 56px;
-      background: var(--accent); color: var(--white);
-      border-radius: 50%; border: none;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem; cursor: pointer;
-      box-shadow: 0 4px 20px rgba(232,82,10,0.4);
-      transition: all var(--transition);
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rochane Kherbouche – Expert IA & Pédagogie Numérique</title>
+  <meta name="description" content="Portfolio de Rochane Kherbouche, Ambassadeur IA, expert en intégration du numérique et de l'intelligence artificielle dans la formation." />
+  <meta property="og:title" content="Rochane Kherbouche – Expert IA & Pédagogie Numérique" />
+  <meta property="og:description" content="Ambassadeur IA, formateur, conférencier international sur l'IA dans l'éducation." />
+  <meta property="og:url" content="https://ia.rochane.fr" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    /* ─────────────────────────────────────────────
+       CSS VARIABLES & RESET
+    ───────────────────────────────────────────── */
+    :root {
+      --blue-dark:   #2c4a8a;
+      --blue:        #4472C4;
+      --blue-light:  #7ba3e0;
+      --blue-pale:   #dce8f7;
+      --rose:        #d4a5a5;
+      --rose-light:  #f0dede;
+      --rose-pale:   #faf5f5;
+      --white:       #ffffff;
+      --gray-100:    #f8f9fa;
+      --gray-200:    #e9ecef;
+      --gray-400:    #868e96;
+      --gray-700:    #495057;
+      --gray-900:    #212529;
+      --radius:      12px;
+      --radius-lg:   20px;
+      --shadow:      0 4px 20px rgba(44,74,138,.12);
+      --shadow-lg:   0 8px 40px rgba(44,74,138,.18);
+      --transition:  .3s cubic-bezier(.4,0,.2,1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; overflow-x: hidden; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--gray-900);
+      background: var(--white);
+      line-height: 1.7;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a   { color: inherit; text-decoration: none; }
+    ul  { list-style: none; }
+
+    /* ─────────────────────────────────────────────
+       NAVIGATION
+    ───────────────────────────────────────────── */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: var(--transition);
+    }
+
+    #navbar.scrolled {
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 16px rgba(44,74,138,.1);
+      padding: .75rem 2rem;
+    }
+
+    .nav-logo {
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--white);
+      letter-spacing: -.5px;
+      transition: var(--transition);
+    }
+    #navbar.scrolled .nav-logo { color: var(--blue-dark); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: .9rem;
+      font-weight: 500;
+      color: rgba(255,255,255,.85);
+      transition: var(--transition);
       position: relative;
     }
-    .chat-toggle-btn:hover { background: var(--accent-hover); transform: scale(1.06); }
-    .chat-toggle-btn * { pointer-events: none; }
-    .chat-toggle-btn .fa-times { display: none; }
-    .chat-container.open .chat-toggle-btn .fa-comment-dots { display: none; }
-    .chat-container.open .chat-toggle-btn .fa-times { display: block; }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 2px;
+      background: var(--rose);
+      transition: var(--transition);
+      border-radius: 2px;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover::after { width: 100%; }
+    #navbar.scrolled .nav-links a { color: var(--gray-700); }
+    #navbar.scrolled .nav-links a:hover { color: var(--blue); }
 
-    /* Badge vert */
-    .chat-badge {
-      position: absolute; top: -2px; right: -2px;
-      width: 13px; height: 13px;
-      background: #22c55e; border: 2px solid var(--white);
+    .nav-cta {
+      background: var(--rose);
+      color: var(--white) !important;
+      padding: .45rem 1.1rem;
+      border-radius: 50px;
+      font-weight: 600 !important;
+      transition: var(--transition) !important;
+    }
+    .nav-cta:hover { background: #c49090 !important; transform: translateY(-1px); }
+    .nav-cta::after { display: none !important; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    #navbar.scrolled .hamburger span { background: var(--blue-dark); }
+
+    /* Mobile nav */
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 0; right: -100%;
+        width: 75%;
+        height: 100vh;
+        background: var(--white);
+        flex-direction: column;
+        justify-content: center;
+        gap: 2.5rem;
+        padding: 2rem;
+        box-shadow: var(--shadow-lg);
+        transition: .4s ease;
+        z-index: 999;
+      }
+      .nav-links.open { right: 0; }
+      .nav-links a { color: var(--gray-700); font-size: 1.1rem; }
+      .hamburger { display: flex; z-index: 1001; }
+    }
+
+    /* ─────────────────────────────────────────────
+       HERO
+    ───────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 60%, var(--blue-light) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Decorative blobs */
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -10%; right: -5%;
+      width: 500px; height: 500px;
+      background: rgba(212,165,165,.18);
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      animation: blobSpin 12s ease-in-out infinite alternate;
+    }
+    #hero::after {
+      content: '';
+      position: absolute;
+      bottom: -10%; left: -5%;
+      width: 400px; height: 400px;
+      background: rgba(255,255,255,.07);
+      border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+      animation: blobSpin 15s ease-in-out infinite alternate-reverse;
+    }
+    @keyframes blobSpin {
+      0%   { transform: rotate(0deg) scale(1); }
+      100% { transform: rotate(20deg) scale(1.1); }
+    }
+
+    .hero-inner {
+      max-width: 900px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-avatar-wrap {
+      position: relative;
+      display: inline-block;
+    }
+    .hero-avatar {
+      width: 140px; height: 140px;
       border-radius: 50%;
-      animation: badge-pulse 2s ease-in-out infinite;
-      pointer-events: none;
+      object-fit: cover;
+      border: 4px solid rgba(255,255,255,.4);
+      box-shadow: 0 8px 32px rgba(0,0,0,.25);
     }
-    @keyframes badge-pulse {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.3); opacity: 0.7; }
+    .hero-badge {
+      position: absolute;
+      bottom: 4px; right: 4px;
+      width: 32px; height: 32px;
+      background: var(--rose);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--white);
+      font-size: .8rem;
+      color: var(--white);
     }
 
-    /* Nudge bubble */
-    .chat-nudge {
-      position: absolute; bottom: calc(100% + 12px); right: 0;
-      background: var(--white); border: 1px solid var(--line);
-      border-radius: 12px 12px 2px 12px;
-      padding: .65rem 1rem; font-size: .82rem; font-weight: 500;
-      color: var(--text); white-space: nowrap;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      opacity: 0; transform: translateY(8px) scale(0.95); pointer-events: none;
-      transition: opacity .3s ease, transform .3s ease;
-      font-family: var(--font);
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(255,255,255,.15);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,.3);
+      color: var(--white);
+      padding: .4rem 1rem;
+      border-radius: 50px;
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .5px;
     }
-    .chat-nudge.visible { opacity: 1; transform: translateY(0) scale(1); pointer-events: all; }
-    .chat-nudge::after {
-      content: ''; position: absolute; bottom: -6px; right: 18px;
-      width: 10px; height: 10px; background: var(--white);
-      border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
-      transform: rotate(45deg);
-    }
-    .chat-nudge-close { margin-left: .6rem; color: var(--muted2); cursor: pointer; font-size: .9rem; vertical-align: middle; transition: color .2s; }
-    .chat-nudge-close:hover { color: var(--accent); }
+    .hero-tag i { color: var(--rose-light); }
 
-    /* Widget popup, style "Got A Question?" */
-    .chat-widget {
-      position: absolute; bottom: calc(100% + 14px); right: 0;
-      width: 320px; max-width: calc(100vw - 3rem);
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 6vw, 3.8rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.15;
+      letter-spacing: -1px;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,.8);
+      max-width: 580px;
+      line-height: 1.75;
+    }
+
+    .hero-socials {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .hero-socials a {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 1rem;
+      transition: var(--transition);
+      backdrop-filter: blur(8px);
+    }
+    .hero-socials a:hover {
+      background: var(--rose);
+      border-color: var(--rose);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(212,165,165,.4);
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .75rem 1.75rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: .95rem;
+      transition: var(--transition);
+      cursor: pointer;
+      border: none;
+    }
+    .btn-white {
       background: var(--white);
-      border-radius: 16px;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.14);
-      overflow: hidden;
-      opacity: 0; transform: translateY(12px) scale(0.97); pointer-events: none;
-      transition: opacity .25s ease, transform .25s ease;
+      color: var(--blue-dark);
+      box-shadow: var(--shadow);
     }
-    .chat-container.open .chat-widget { opacity: 1; transform: translateY(0) scale(1); pointer-events: all; }
-
-    /* Header orange */
-    .chat-header {
-      background: var(--accent); color: var(--white);
-      padding: 1.2rem 1.3rem 1rem;
+    .btn-white:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
     }
-    .chat-header-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 0.3rem; }
-    .chat-header-title { font-size: 1.05rem; font-weight: 800; letter-spacing: -0.01em; }
-    .chat-header-close {
-      background: none; border: none; color: rgba(255,255,255,0.7);
-      font-size: 1.2rem; cursor: pointer; padding: 0; line-height: 1;
-      transition: color .2s;
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,.5);
     }
-    .chat-header-close:hover { color: var(--white); }
-    .chat-header-sub { font-size: 0.82rem; color: rgba(255,255,255,0.8); line-height: 1.4; }
-
-    /* Messages area */
-    .chat-messages {
-      padding: 1rem; height: 240px; overflow-y: auto;
-      display: flex; flex-direction: column; gap: .7rem;
-      background: var(--off);
-    }
-    .chat-message {
-      max-width: 82%;
-      padding: .6rem .9rem;
-      border-radius: 14px;
-      line-height: 1.55;
-      font-size: .84rem;
-      word-break: break-word;
-      hyphens: auto;
-    }
-    .chat-message.user {
-      background: var(--accent); color: var(--white);
-      align-self: flex-end;
-      border-bottom-right-radius: 4px;
-      box-shadow: 0 2px 8px rgba(232,82,10,0.2);
-    }
-    .chat-message.ai {
-      background: var(--white); color: var(--text);
-      align-self: flex-start;
-      border-bottom-left-radius: 4px;
-      border: 1px solid var(--line);
-      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-    }
-    .chat-message.ai strong { color: var(--accent); }
-    .chat-message.loading { display: flex; align-items: center; gap: .45rem; background: var(--white); border: 1px solid var(--line); max-width: 60px; }
-    .chat-message.loading span {
-      width: 7px; height: 7px; border-radius: 50%; background: var(--muted2);
-      animation: bounce-loader 1.4s infinite ease-in-out both;
-    }
-    .chat-message.loading span:nth-child(1) { animation-delay: -0.32s; }
-    .chat-message.loading span:nth-child(2) { animation-delay: -0.16s; }
-    @keyframes bounce-loader { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
-
-    /* Input area */
-    .chat-input-area {
-      display: flex; gap: 0; background: var(--white);
-      border-top: 1px solid var(--line);
-    }
-    #chat-input {
-      flex: 1; border: none; outline: none; background: transparent;
-      padding: .9rem 1rem; font-family: var(--font); font-size: .88rem; color: var(--text);
-    }
-    #chat-input::placeholder { color: var(--muted2); }
-    #chat-send-btn {
-      background: var(--accent); color: var(--white);
-      border: none; padding: .9rem 1.2rem;
-      font-family: var(--font); font-size: .82rem; font-weight: 700;
-      cursor: pointer; letter-spacing: 0.02em;
-      transition: background var(--transition);
-      border-radius: 0 0 16px 0;
-    }
-    #chat-send-btn:hover { background: var(--accent-hover); }
-
-    @media (max-width: 480px) {
-      .chat-container { bottom: 1rem; right: 1rem; }
-      .chat-widget { width: calc(100vw - 2rem); }
+    .btn-outline:hover {
+      background: rgba(255,255,255,.12);
+      border-color: var(--white);
+      transform: translateY(-2px);
     }
 
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .4rem;
+      color: rgba(255,255,255,.5);
+      font-size: .75rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      animation: bounce 2s ease infinite;
+    }
+    .scroll-indicator i { font-size: 1rem; }
+    @keyframes bounce {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(6px); }
+    }
 
-    /* ─── PODCASTS ─── */
-    .podcast-list { display: flex; flex-direction: column; gap: 2rem; }
-    .podcast-card {
+    /* ─────────────────────────────────────────────
+       SECTIONS LAYOUT
+    ───────────────────────────────────────────── */
+    section { padding: 5rem 2rem; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: .75rem;
+    }
+    .section-label::before {
+      content: '';
+      width: 24px; height: 2px;
+      background: var(--rose);
+      border-radius: 2px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--gray-900);
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      font-size: 1rem;
+      color: var(--gray-400);
+      max-width: 540px;
+      margin-bottom: 3rem;
+      line-height: 1.75;
+    }
+
+    /* ─────────────────────────────────────────────
+       STATS
+    ───────────────────────────────────────────── */
+    #stats {
+      background: var(--gray-100);
+      padding: 4rem 2rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .stat-card {
       background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: 16px;
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
       overflow: hidden;
-      transition: all var(--transition);
     }
-    .podcast-card:hover { border-color: rgba(232,82,10,0.25); box-shadow: 0 6px 28px rgba(232,82,10,0.06); }
-    .podcast-meta {
-      padding: 1.4rem 1.5rem 1rem;
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      border-radius: 4px 4px 0 0;
+    }
+    .stat-card:nth-child(1)::before { background: var(--blue); }
+    .stat-card:nth-child(2)::before { background: var(--rose); }
+    .stat-card:nth-child(3)::before { background: #6bbf8e; }
+    .stat-card:nth-child(4)::before { background: #f6a147; }
+
+    .stat-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: .5rem;
+    }
+    .stat-card:nth-child(1) .stat-number { color: var(--blue); }
+    .stat-card:nth-child(2) .stat-number { color: var(--rose); }
+    .stat-card:nth-child(3) .stat-number { color: #6bbf8e; }
+    .stat-card:nth-child(4) .stat-number { color: #f6a147; }
+
+    .stat-label {
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--gray-700);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .stat-icon {
+      font-size: 1.5rem;
+      margin-bottom: .75rem;
+      opacity: .5;
+    }
+    .stat-card:nth-child(1) .stat-icon { color: var(--blue); }
+    .stat-card:nth-child(2) .stat-icon { color: var(--rose); }
+    .stat-card:nth-child(3) .stat-icon { color: #6bbf8e; }
+    .stat-card:nth-child(4) .stat-icon { color: #f6a147; }
+
+    /* ─────────────────────────────────────────────
+       ABOUT
+    ───────────────────────────────────────────── */
+    #about {
+      background: var(--white);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        text-align: center;
+      }
+    }
+
+    .about-img-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .about-img {
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      box-shadow: var(--shadow-lg);
+      display: block;
+      object-fit: cover;
+      object-position: top center;
+      border: 4px solid var(--blue);
+    }
+
+    .about-badge-box {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: .75rem 1rem;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+      max-width: 280px;
+      width: 100%;
+      border-top: 3px solid var(--blue);
+    }
+
+    .about-badge-icon {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--blue-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--blue);
+      font-size: .95rem;
+      flex-shrink: 0;
+    }
+
+    .about-badge-text {
+      font-size: .76rem;
+      color: var(--gray-700);
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    .about-badge-text strong {
+      display: block;
+      color: var(--blue-dark);
+      font-size: .80rem;
+      margin-bottom: .1rem;
+    }
+
+    @media (max-width: 900px) {
+      .about-badge-box { margin: 0 auto; }
+      .about-links { justify-content: center; }
+      .about-highlights { text-align: left; }
+    }
+
+    .about-content { }
+    .about-content p {
+      color: var(--gray-700);
+      margin-bottom: 1.25rem;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .about-highlights {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem;
+      margin-top: 2rem;
+    }
+
+    .highlight-item {
+      display: flex;
+      align-items: flex-start;
+      gap: .6rem;
+      font-size: .88rem;
+      color: var(--gray-700);
+    }
+    .highlight-item i {
+      color: var(--blue);
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .about-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    .about-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .6rem 1.25rem;
+      border-radius: 50px;
+      font-size: .88rem;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    .about-link-btn.primary {
+      background: var(--blue);
+      color: var(--white);
+    }
+    .about-link-btn.primary:hover {
+      background: var(--blue-dark);
+      transform: translateY(-2px);
+    }
+    .about-link-btn.secondary {
+      background: var(--rose-light);
+      color: var(--blue-dark);
+    }
+    .about-link-btn.secondary:hover {
+      background: var(--rose);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    /* ─────────────────────────────────────────────
+       FILTER TABS
+    ───────────────────────────────────────────── */
+    .filter-tabs {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+    .filter-tab {
+      padding: .45rem 1.1rem;
+      border-radius: 50px;
+      font-size: .85rem;
+      font-weight: 600;
+      background: var(--gray-200);
+      color: var(--gray-700);
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+      font-family: 'Inter', sans-serif;
+    }
+    .filter-tab.active,
+    .filter-tab:hover {
+      background: var(--blue);
+      color: var(--white);
+    }
+
+    /* ─────────────────────────────────────────────
+       ARTICLES
+    ───────────────────────────────────────────── */
+    #articles { background: var(--rose-pale); }
+
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .article-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .article-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--rose), var(--blue));
+    }
+    .article-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .article-tag {
+      display: inline-flex;
+      align-items: center;
+      background: var(--rose-light);
+      color: #9b6b6b;
+      padding: .25rem .75rem;
+      border-radius: 50px;
+      font-size: .75rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      width: fit-content;
+    }
+
+    .article-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: .75rem;
+      line-height: 1.4;
+    }
+
+    .article-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .article-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--blue);
+      margin-top: auto;
+      padding-top: .75rem;
+      transition: var(--transition);
+    }
+    .article-link:hover { color: var(--blue-dark); gap: .7rem; }
+
+    /* ─────────────────────────────────────────────
+       CONFERENCES
+    ───────────────────────────────────────────── */
+    #conferences { background: var(--white); }
+
+    .conf-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .conf-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 1.5rem;
       display: flex;
       align-items: flex-start;
       gap: 1rem;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
     }
-    .podcast-num {
-      font-size: 0.72rem;
-      font-weight: 800;
-      color: var(--accent);
-      opacity: 0.6;
-      min-width: 24px;
-      padding-top: 2px;
+    .conf-card::after {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--blue);
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: var(--transition);
+      border-radius: 0 2px 2px 0;
     }
-    .podcast-info { flex: 1; }
-    .podcast-show {
-      font-size: 0.72rem;
+    .conf-card:hover {
+      border-color: var(--blue-pale);
+      box-shadow: var(--shadow);
+      transform: translateX(3px);
+    }
+    .conf-card:hover::after { transform: scaleY(1); }
+
+    .conf-flag {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: var(--blue-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .conf-content { flex: 1; }
+    .conf-name {
+      font-size: .95rem;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--accent);
-      margin-bottom: 0.3rem;
-    }
-    .podcast-title {
-      font-size: 0.97rem;
-      font-weight: 700;
-      color: var(--text);
+      color: var(--gray-900);
+      margin-bottom: .3rem;
       line-height: 1.4;
-      letter-spacing: -0.01em;
-      margin-bottom: 0.3rem;
     }
-    .podcast-desc {
-      font-size: 0.82rem;
-      color: var(--muted);
-      line-height: 1.6;
+    .conf-meta {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+      align-items: center;
     }
-    .podcast-duration {
-      font-size: 0.75rem;
+    .conf-location {
+      font-size: .78rem;
+      color: var(--blue);
       font-weight: 600;
-      color: var(--muted2);
-      background: var(--off);
-      border: 1px solid var(--line);
-      padding: 0.2rem 0.6rem;
-      border-radius: 100px;
-      white-space: nowrap;
-      align-self: flex-start;
-      margin-top: 2px;
+      display: flex;
+      align-items: center;
+      gap: .3rem;
     }
-    .podcast-player {
-      padding: 0 1.5rem 1.2rem;
+    .conf-category {
+      font-size: .75rem;
+      background: var(--blue-pale);
+      color: var(--blue-dark);
+      padding: .15rem .6rem;
+      border-radius: 50px;
+      font-weight: 500;
     }
-    .podcast-player iframe {
-      width: 100%;
-      border-radius: 10px;
+
+    /* ─────────────────────────────────────────────
+       FORMATIONS
+    ───────────────────────────────────────────── */
+    #formations { background: var(--gray-100); }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .form-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      transition: var(--transition);
+      box-shadow: 0 2px 8px rgba(44,74,138,.06);
+    }
+    .form-card:hover {
+      box-shadow: var(--shadow);
+      transform: translateY(-3px);
+    }
+
+    .form-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #6bbf8e;
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+
+    .form-name {
+      font-size: .93rem;
+      font-weight: 600;
+      color: var(--gray-900);
+      line-height: 1.4;
+      margin-bottom: .3rem;
+    }
+    .form-meta {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+    }
+    .form-location {
+      font-size: .78rem;
+      color: #5ca878;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: .3rem;
+    }
+    .form-tag {
+      font-size: .75rem;
+      background: #e8f5ee;
+      color: #5ca878;
+      padding: .15rem .6rem;
+      border-radius: 50px;
+      font-weight: 500;
+    }
+
+    /* ─────────────────────────────────────────────
+       WEBINAIRES
+    ───────────────────────────────────────────── */
+    #webinaires { background: var(--white); }
+
+    .web-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .web-card {
+      background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      color: var(--white);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .web-card::before {
+      content: '';
+      position: absolute;
+      top: -30%; right: -10%;
+      width: 180px; height: 180px;
+      background: rgba(255,255,255,.06);
+      border-radius: 50%;
+    }
+    .web-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .web-icon {
+      width: 48px; height: 48px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 1.25rem;
+    }
+    .web-title {
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: .75rem;
+    }
+    .web-badges {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+    }
+    .web-badge {
+      font-size: .73rem;
+      background: rgba(255,255,255,.15);
+      padding: .2rem .65rem;
+      border-radius: 50px;
+      font-weight: 500;
+    }
+
+    /* ─────────────────────────────────────────────
+       TOOLS / PROJETS
+    ───────────────────────────────────────────── */
+    #projets { background: var(--rose-pale); }
+
+    .projets-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    @media (min-width: 900px) {
+      .projets-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1200px) {
+      /* 5 cartes : 2+2+1 centré automatiquement */
+      .projets-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .projet-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .projet-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .projet-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .projet-icon {
+      width: 52px; height: 52px;
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .projet-icon.blue { background: var(--blue-pale); color: var(--blue); }
+    .projet-icon.rose { background: var(--rose-light); color: #b87878; }
+    .projet-icon.green { background: #e8f5ee; color: #5ca878; }
+
+    .projet-name {
+      font-weight: 700;
+      font-size: 1.02rem;
+      color: var(--gray-900);
+    }
+    .projet-type {
+      font-size: .78rem;
+      color: var(--gray-400);
+    }
+    .projet-desc {
+      font-size: .88rem;
+      color: var(--gray-700);
+      line-height: 1.7;
+    }
+    .projet-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--blue);
+      margin-top: auto;
+      transition: var(--transition);
+    }
+    .projet-link:hover { color: var(--blue-dark); gap: .7rem; }
+
+    .projet-tags {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+    }
+    .projet-tag {
+      font-size: .73rem;
+      background: var(--gray-100);
+      color: var(--gray-700);
+      padding: .2rem .65rem;
+      border-radius: 50px;
+      font-weight: 500;
+      border: 1px solid var(--gray-200);
+    }
+
+    /* ─────────────────────────────────────────────
+       CONTACT
+    ───────────────────────────────────────────── */
+    #contact {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%);
+      color: var(--white);
+      text-align: center;
+    }
+    #contact .section-label { color: var(--rose-light); }
+    #contact .section-title { color: var(--white); }
+    #contact .section-desc { color: rgba(255,255,255,.7); margin: 0 auto 3rem; }
+
+    .contact-cards {
+      display: flex;
+      gap: 1.25rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    .contact-card {
+      background: rgba(255,255,255,.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .75rem;
+      min-width: 180px;
+      transition: var(--transition);
+      color: var(--white);
+    }
+    .contact-card:hover {
+      background: rgba(255,255,255,.18);
+      transform: translateY(-4px);
+    }
+    .contact-card i {
+      font-size: 1.6rem;
+      color: var(--rose-light);
+    }
+    .contact-card span {
+      font-size: .85rem;
+      font-weight: 600;
+    }
+
+    .contact-socials {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .contact-socials a {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 1.1rem;
+      transition: var(--transition);
+    }
+    .contact-socials a:hover {
+      background: var(--rose);
+      border-color: var(--rose);
+      transform: translateY(-3px);
+    }
+
+    /* ─────────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────────── */
+    footer {
+      background: var(--gray-900);
+      color: var(--gray-400);
+      text-align: center;
+      padding: 1.75rem 2rem;
+      font-size: .82rem;
+    }
+    footer a {
+      color: var(--blue-light);
+      font-weight: 500;
+    }
+    footer a:hover { color: var(--blue-light); text-decoration: underline; }
+
+    /* ─────────────────────────────────────────────
+       ANIMATIONS
+    ───────────────────────────────────────────── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Staggered delay for grid children */
+    .stagger > *:nth-child(1) { transition-delay: .05s; }
+    .stagger > *:nth-child(2) { transition-delay: .12s; }
+    .stagger > *:nth-child(3) { transition-delay: .19s; }
+    .stagger > *:nth-child(4) { transition-delay: .26s; }
+    .stagger > *:nth-child(5) { transition-delay: .33s; }
+    .stagger > *:nth-child(6) { transition-delay: .40s; }
+    .stagger > *:nth-child(7) { transition-delay: .47s; }
+    .stagger > *:nth-child(8) { transition-delay: .54s; }
+    .stagger > *:nth-child(9) { transition-delay: .61s; }
+    .stagger > *:nth-child(10) { transition-delay: .68s; }
+
+    /* ─────────────────────────────────────────────
+       BACK TO TOP
+    ───────────────────────────────────────────── */
+    #back-top {
+      position: fixed;
+      bottom: 2rem; right: 2rem;
+      width: 44px; height: 44px;
+      background: var(--blue);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+      z-index: 900;
       border: none;
+    }
+    #back-top.visible {
+      opacity: 1;
+      pointer-events: all;
+    }
+    #back-top:hover {
+      background: var(--blue-dark);
+      transform: translateY(-3px);
+    }
+
+    /* ─────────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      section { padding: 3.5rem 1.25rem; }
+      .about-highlights { grid-template-columns: 1fr; }
+    }
+    
+    /* ─────────────────────────────────────────────
+       CHATBOT STYLES
+    ───────────────────────────────────────────── */
+    .chat-container {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 1010;
+    }
+
+    .chat-toggle-btn {
+      width: 56px;
+      height: 56px;
+      background: var(--blue);
+      color: var(--white);
+      border-radius: 50%;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: var(--shadow-lg);
+      transition: var(--transition);
+    }
+
+    .chat-toggle-btn:hover {
+      background: var(--blue-dark);
+      transform: scale(1.1);
+    }
+
+    .chat-toggle-btn .fa-times {
+      display: none;
+    }
+
+    .chat-container.open .chat-toggle-btn .fa-comment-dots {
+      display: none;
+    }
+
+    .chat-container.open .chat-toggle-btn .fa-times {
       display: block;
     }
 
-
-    .podcast-play-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      background: var(--accent);
-      color: var(--white);
-      padding: 0.75rem 1.4rem;
-      border-radius: 8px;
-      font-family: var(--font);
-      font-size: 0.88rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background var(--transition), transform var(--transition);
-      margin: 0 1.5rem 1.2rem;
+    .chat-widget {
+      position: absolute;
+      bottom: calc(100% + 1rem);
+      right: 0;
+      width: 350px;
+      max-width: calc(100vw - 4rem);
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+      transition: opacity .3s ease, transform .3s ease;
     }
-    .podcast-play-btn:hover { background: var(--accent-hover); transform: translateY(-1px); }
-    .podcast-play-btn--spotify { background: #1DB954; }
-    .podcast-play-btn--spotify:hover { background: #17a349; }
 
-</style>
+    .chat-container.open .chat-widget {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
+
+    .chat-header {
+      background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+      color: var(--white);
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+
+    .chat-header-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .chat-header-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin: 0;
+    }
+
+    .chat-header-text p {
+      font-size: .8rem;
+      opacity: .8;
+      margin: 0;
+      line-height: 1;
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 1rem;
+      overflow-y: auto;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+    }
+
+    .chat-message {
+      max-width: 85%;
+      padding: .6rem 1rem;
+      border-radius: var(--radius);
+      line-height: 1.5;
+      font-size: .9rem;
+    }
+
+    .chat-message.user {
+      background: var(--rose-pale);
+      color: var(--gray-900);
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+
+    .chat-message.ai {
+      background: var(--blue-pale);
+      color: var(--gray-900);
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+    }
+
+    .chat-message.ai strong {
+      color: var(--blue-dark);
+    }
+
+    .chat-message.loading {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+    }
+
+    .chat-message.loading span {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: var(--gray-400);
+        animation: bounce-loader 1.4s infinite ease-in-out both;
+    }
+    .chat-message.loading span:nth-child(1) { animation-delay: -0.32s; }
+    .chat-message.loading span:nth-child(2) { animation-delay: -0.16s; }
+
+    @keyframes bounce-loader {
+      0%, 80%, 100% { transform: scale(0); }
+      40% { transform: scale(1.0); }
+    }
+
+    .chat-input-area {
+      display: flex;
+      padding: .75rem;
+      border-top: 1px solid var(--gray-200);
+    }
+
+    #chat-input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      padding: 0 .5rem;
+      font-family: 'Inter', sans-serif;
+      font-size: .9rem;
+    }
+
+    #chat-send-btn {
+      background: var(--blue);
+      color: var(--white);
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: .95rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    #chat-send-btn:hover {
+      background: var(--blue-dark);
+    }
+
+    @media (max-width: 480px) {
+      .chat-container {
+        bottom: 1rem;
+        right: 1rem;
+      }
+      .chat-widget {
+        width: calc(100vw - 2rem);
+      }
+    }
+  </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="main-nav">
-  <a class="nav-logo" href="#hero">Rochane Kherbouche<span></span></a>
-  <ul class="nav-links">
-    <li><a href="#about">À propos</a></li>
-    <li><a href="#articles">Articles</a></li>
-    <li><a href="#conferences">Conférences</a></li>
-    <li><a href="#projets">Projets</a></li>
-    <li><a href="#podcasts">Podcasts</a></li>
-    <li><a href="#contact" class="nav-cta">Contact</a></li>
-  </ul>
-</nav>
-
-<!-- HERO -->
-<div id="hero">
-  <div class="hero-left reveal">
-    <div class="hero-label">Ambassadeur IA · francenum.gouv.fr</div>
-    <h1 class="hero-title">Technopédagogue<br>&amp; <em>Ambassadeur</em><br>IA</h1>
-    <p class="hero-sub">
-      J'accompagne <strong>organisations et institutions</strong> dans l'intégration stratégique de l'IA en formation.
-      Conférencier international, technopédagogue, créateur d'outils IA pour l'éducation.
-    </p>
-    <div class="hero-actions">
-      <a href="#conferences" class="btn btn-fill">Mes interventions →</a>
-      <a href="#contact" class="btn btn-outline">Me contacter</a>
+  <!-- ═══════════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════════ -->
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo">Rochane.K</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about"       onclick="closeNav()">À propos</a></li>
+      <li><a href="#articles"    onclick="closeNav()">Articles</a></li>
+      <li><a href="#conferences" onclick="closeNav()">Conférences</a></li>
+      <li><a href="#formations"  onclick="closeNav()">Formations</a></li>
+      <li><a href="#projets"     onclick="closeNav()">Projets</a></li>
+      <li><a href="#contact" class="nav-cta" onclick="closeNav()">Contact</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
     </div>
-  </div>
+  </nav>
 
-  <div class="hero-right reveal">
-    <div class="hero-photo-card">
-      <img
-        src="/rochane.jpg"
-        alt="Rochane Kherbouche"
-        class="hero-photo"
-      />
-      <div class="hero-name">Rochane Kherbouche</div>
-      <div class="hero-role">Technopédagogue &amp; Ambassadeur IA · Bruxelles</div>
-      <div class="hero-tag-row">
-        <span class="htag">IA &amp; Formation</span>
-        <span class="htag">Conférencier</span>
-        <span class="htag">Inclusion</span>
-        <span class="htag">Innovation</span>
-      </div>
-    </div>
+  <!-- ═══════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="hero-inner">
 
-    <div class="stats-card">
-      <div class="stat-item">
-        <div class="stat-num" data-target="6">0</div>
-        <div class="stat-label">Articles</div>
+      <div class="hero-avatar-wrap">
+        <!-- 🔧 MISE À JOUR : remplace le src par ton URL de photo -->
+        <img
+          class="hero-avatar"
+          src="https://media.licdn.com/dms/image/v2/D4E03AQHpR2AJOJGt7A/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1719304019040?e=1746662400&v=beta&t=AHqFj4hKY2PZ7TQKQE5S6Z0YBcbNQHN1sDvk6cHm7TE"
+          alt="Rochane Kherbouche"
+          onerror="this.src='https://ui-avatars.com/api/?name=Rochane+Kherbouche&background=4472C4&color=fff&size=200'"
+        />
+        <div class="hero-badge"><i class="fa-solid fa-robot"></i></div>
       </div>
-      <div class="stat-item">
-        <div class="stat-num" data-target="14">0</div>
-        <div class="stat-label">Confé&shy;rences</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num" data-target="22">0</div>
-        <div class="stat-label">Forma&shy;tions</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num" data-target="3">0</div>
-        <div class="stat-label">Webinaires</div>
-      </div>
-    </div>
-  </div>
-</div>
 
-<!-- TRUST -->
-<div id="trust">
-  <p class="trust-label">Institutions partenaires</p>
-  <div class="logos-wrap">
-    <div class="logo-chip"><img src="https://flagcdn.com/w40/eu.png" srcset="https://flagcdn.com/w80/eu.png 2x" alt="EU" width="28" height="20" loading="lazy"> Commission européenne</div>
-    <div class="logo-chip">🇺🇳 Nations Unies</div>
-    <div class="logo-chip">🎓 ULB Bruxelles</div>
-    <div class="logo-chip">🌐 UNESCO</div>
-    <div class="logo-chip">📺 RTBF Academy</div>
-    <div class="logo-chip"><img src="https://flagcdn.com/w40/fr.png" srcset="https://flagcdn.com/w80/fr.png 2x" alt="FR" width="28" height="20" loading="lazy"> CNFPT</div>
-    <div class="logo-chip">📡 France Éducation International</div>
-    <div class="logo-chip">🎙️ Magazine Elle</div>
-    <div class="logo-chip">🎓 Université de Lille</div>
-    <div class="logo-chip">🏫 Bruxelles Formation</div>
-  </div>
-</div>
+      <div class="hero-tag">
+        <i class="fa-solid fa-medal"></i>
+        Ambassadeur IA – Ministère de l'Économie et des Finances
+      </div>
 
-<!-- ABOUT -->
-<div class="section-wrap" id="about">
-  <div class="about-grid">
-    <div class="reveal">
-      <p class="section-tag">Profil</p>
-      <h2 class="section-title">Technopédagogue &amp;<br>Ambassadeur IA</h2>
-      <p class="about-body">
-        Technopédagogue à Bruxelles, reconnu comme <strong>Ambassadeur IA</strong> par le Ministère de l'Économie et des Finances.
-        J'interviens à l'international pour accompagner l'intégration stratégique de l'IA dans les dispositifs de formation.
+      <h1 class="hero-name">Rochane<br/>Kherbouche</h1>
+
+      <p class="hero-sub">
+        Passionné par l'intégration du numérique et des nouvelles pratiques pédagogiques,
+        j'aide à mettre en place des dispositifs de formation innovants en intelligence artificielle.
       </p>
-      <p class="about-body">
-        Belgique, France, Tunisie, Burundi, Jordanie, auprès d'institutions européennes, onusiennes et universitaires.
-      </p>
-      <div class="skills-wrap">
-        <span class="skill-tag">IA &amp; Pédagogie inclusive</span>
-        <span class="skill-tag">Ingénierie de formation</span>
-        <span class="skill-tag">Conférencier international</span>
-        <span class="skill-tag">Innovation éducative</span>
-        <span class="skill-tag">Outils IA</span>
-        <span class="skill-tag">Inclusion numérique</span>
-      </div>
-      <div class="about-links">
-        <a href="https://www.francenum.gouv.fr/ambassadeurs-ia" target="_blank" class="about-link">
-          Ambassadeur IA · francenum.gouv.fr <span class="link-arrow">↗</span>
+
+      <div class="hero-socials">
+        <a href="https://www.linkedin.com/in/rochanekherbouche" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
         </a>
-        <a href="https://www.centre-inffo.fr/innovation-formation/articles/rochane-kherbouche-agent-ia-collaboratif" target="_blank" class="about-link">
-          Portrait Centre Inffo <span class="link-arrow">↗</span>
+        <a href="https://x.com/RochaneK" target="_blank" rel="noopener" aria-label="X / Twitter">
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
+        <a href="https://www.facebook.com/Rochanek" target="_blank" rel="noopener" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="/cdn-cgi/l/email-protection#04676b6a7065677044766b676c656a612a6276" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://meet.google.com/wsf-snkf-kcu" target="_blank" rel="noopener" aria-label="Visio">
+          <i class="fas fa-video"></i>
+        </a>
+        <a href="https://outlook.office365.com/owa/calendar/f91bb5b60785415fb0b6d93a495b61b7@bruxellesformation.brussels/60ca3931f35f4ce5bb2151a175ffd8228292193570038494811/calendar.html"
+           target="_blank" rel="noopener" aria-label="Agenda">
+          <i class="fas fa-calendar-alt"></i>
         </a>
       </div>
-    </div>
-    <div class="about-right reveal">
-      <div class="info-card">
-        <div class="info-card-title">Géographie</div>
-        <div class="info-card-text">Belgique · France · Tunisie · Burundi · Jordanie · Institutions européennes et onusiennes</div>
-      </div>
-      <div class="info-card">
-        <div class="info-card-title">Positionnement</div>
-        <div class="info-card-text">À l'intersection de l'IA générative, de l'ingénierie pédagogique et de l'inclusion numérique.</div>
-      </div>
-      <div class="info-card">
-        <div class="info-card-title">Communauté WhatsApp</div>
-        <div class="info-card-text">+1 000 membres · Bonnes pratiques IA · Live mensuel</div>
-      </div>
-    </div>
-  </div>
-</div>
 
-<!-- ARTICLES -->
-<div class="section-wrap bg-off" id="articles">
-  <div class="section-inner">
-    <div class="reveal">
-      <p class="section-tag">Publications</p>
+      <div class="hero-btns">
+        <a href="#conferences" class="btn btn-white">
+          <i class="fas fa-globe"></i> Mes interventions
+        </a>
+        <a href="#contact" class="btn btn-outline">
+          <i class="fas fa-paper-plane"></i> Me contacter
+        </a>
+      </div>
+
+    </div>
+
+    <div class="scroll-indicator">
+      <span>Découvrir</span>
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       STATS
+  ═══════════════════════════════════════════ -->
+  <section id="stats">
+    <div class="container">
+      <div class="stats-grid stagger">
+
+        <div class="stat-card fade-in">
+          <div class="stat-icon"><i class="fas fa-pen-nib"></i></div>
+          <div class="stat-number" data-target="4">0</div>
+          <div class="stat-label">Articles publiés</div>
+        </div>
+
+        <div class="stat-card fade-in">
+          <div class="stat-icon"><i class="fas fa-microphone-alt"></i></div>
+          <div class="stat-number" data-target="12">0</div>
+          <div class="stat-label">Conférences</div>
+        </div>
+
+        <div class="stat-card fade-in">
+          <div class="stat-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+          <div class="stat-number" data-target="19">0</div>
+          <div class="stat-label">Formations & Ateliers</div>
+        </div>
+
+        <div class="stat-card fade-in">
+          <div class="stat-icon"><i class="fas fa-laptop"></i></div>
+          <div class="stat-number" data-target="3">0</div>
+          <div class="stat-label">Webinaires</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       À PROPOS
+  ═══════════════════════════════════════════ -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+
+        <div class="about-img-wrap fade-in">
+          <img
+            class="about-img"
+            src="./rochane.jpg"
+            alt="Portrait Rochane Kherbouche"
+            onerror="this.src='https://ui-avatars.com/api/?name=Rochane+Kherbouche&background=4472C4&color=fff&size=400'"
+          />
+          <div class="about-badge-box">
+            <div class="about-badge-icon"><i class="fas fa-award"></i></div>
+            <div class="about-badge-text">
+              <strong>Ambassadeur IA officiel</strong>
+              francenum.gouv.fr
+            </div>
+          </div>
+        </div>
+
+        <div class="about-content fade-in">
+          <div class="section-label">À propos</div>
+          <h2 class="section-title">Expert IA &amp;<br/>Pédagogie Numérique</h2>
+
+          <p>
+            Passionné par l'intégration du numérique et des nouvelles pratiques pédagogiques,
+            j'accompagne organisations et établissements d'enseignement dans la mise en place
+            de dispositifs de formation innovants centrés sur l'intelligence artificielle.
+          </p>
+          <p>
+            Reconnu comme <strong>Ambassadeur IA</strong> par le Ministère de l'Économie et des Finances (francenum.gouv.fr),
+            j'interviens à l'international : en Belgique, France, Tunisie, Burundi, Jordanie et auprès
+            d'institutions européennes et onusiennes.
+          </p>
+
+          <div class="about-highlights">
+            <div class="highlight-item">
+              <i class="fas fa-check-circle"></i>
+              <span>IA & Pédagogie inclusive</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Ingénierie de formation</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Conférencier international</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Innovation éducative</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Outils IA en formation</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fas fa-check-circle"></i>
+              <span>IA & inclusion numérique</span>
+            </div>
+          </div>
+
+          <div class="about-links">
+            <a href="https://www.francenum.gouv.fr/ambassadeurs-ia" target="_blank" class="about-link-btn primary">
+              <i class="fas fa-award"></i> Ambassadeur IA
+            </a>
+            <a href="https://www.centre-inffo.fr/innovation-formation/articles/rochane-kherbouche-agent-ia-collaboratif"
+               target="_blank" class="about-link-btn secondary">
+              <i class="fas fa-user-circle"></i> Portrait – « Agent IA collaboratif » · Centre Inffo
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       ARTICLES
+  ═══════════════════════════════════════════ -->
+  <section id="articles">
+    <div class="container">
+      <div class="section-label">Publications</div>
       <h2 class="section-title">Articles publiés</h2>
-      <p class="section-sub">Contributions écrites sur l'IA dans l'éducation, l'innovation pédagogique et l'inclusion.</p>
-    </div>
-    <div class="articles-grid">
-      <a href="https://www.innovation-pedagogique.fr/article25856.html" target="_blank" class="article-card reveal">
-        <div class="article-cat">Pédagogies actives · Formation</div>
-        <div class="article-title">Les pédagogies actives au-delà du label</div>
-        <div class="article-cta">Lire l'article <span>→</span></div>
-      </a>
-      <a href="https://www.innovation-pedagogique.fr/article25486.html" target="_blank" class="article-card reveal">
-        <div class="article-cat">Évaluation · IA</div>
-        <div class="article-title">Cinq questions que les formatrices et formateurs n'osent pas se poser sur l'évaluation à l'ère de l'IA</div>
-        <div class="article-cta">Lire l'article <span>→</span></div>
-      </a>
-      <a href="https://www.innovation-pedagogique.fr/article20741.html" target="_blank" class="article-card reveal">
-        <div class="article-cat">Innovation · Inclusion</div>
-        <div class="article-title">VoxFolio – Quand la voix libère les talents, IA et pédagogies inclusives</div>
-        <div class="article-cta">Lire l'article <span>→</span></div>
-      </a>
-      <a href="https://www.innovation-pedagogique.fr/article12108.html" target="_blank" class="article-card reveal">
-        <div class="article-cat">Réflexion</div>
-        <div class="article-title">Éducation artificielle ?</div>
-        <div class="article-cta">Lire l'article <span>→</span></div>
-      </a>
-      <a href="https://www.innovation-pedagogique.fr/article15242.html" target="_blank" class="article-card reveal">
-        <div class="article-cat">IA &amp; Éducation</div>
-        <div class="article-title">IA en éducation, un outil d'innovation</div>
-        <div class="article-cta">Lire l'article <span>→</span></div>
-      </a>
-      <a href="https://fr.linkedin.com/pulse/lia-pour-une-%C3%A9ducation-inclusive-r%C3%A9duire-la-fracture-kherbouche-jovde" target="_blank" class="article-card reveal">
-        <div class="article-cat">Inclusion numérique</div>
-        <div class="article-title">IA et inclusion – Réduire la fracture numérique</div>
-        <div class="article-cta">Lire l'article <span>→</span></div>
-      </a>
-    </div>
-  </div>
-</div>
+      <p class="section-desc">Réflexions et contributions écrites sur l'IA dans l'éducation, l'innovation pédagogique et l'inclusion.</p>
 
-<!-- CONFERENCES -->
-<div class="section-wrap" id="conferences">
-  <div class="reveal">
-    <p class="section-tag">Conférences</p>
-    <h2 class="section-title">Interventions internationales</h2>
-    <p class="section-sub">14 conférences dans 6 pays, auprès d'universités, institutions publiques et organismes internationaux.</p>
-  </div>
-  <div class="conf-grid">
-    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="BE" width="28" height="20" loading="lazy"></div><div><div class="conf-title">L'évaluation à l'ère de l'IA générative, Haute École Francisco Ferrer</div><div class="conf-meta"><span class="conf-loc">Bruxelles</span><span>Évaluation &amp; IA, Mai 2026</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/at.png" srcset="https://flagcdn.com/w80/at.png 2x" alt="AT" width="28" height="20" loading="lazy"></div><div><div class="conf-title">L'évaluation à l'ère de l'IA, Network Meeting AI-LANG</div><div class="conf-meta"><span class="conf-loc">Graz, Autriche</span><span>CELV, Avril 2026</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="BE" width="28" height="20" loading="lazy"></div><div><div class="conf-title">L'IA constitue-t-elle une menace pour le multilinguisme ?</div><div class="conf-meta"><span class="conf-loc">Bruxelles</span><span>Multilinguisme, Fév. 2026</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="BE" width="28" height="20" loading="lazy"></div><div><div class="conf-title">La réactivation comme levier de l'apprentissage, quels leviers offre l'IA</div><div class="conf-meta"><span class="conf-loc">Liège</span><span>Ecolab 2026, Fév. 2026</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/fr.png" srcset="https://flagcdn.com/w80/fr.png 2x" alt="FR" width="28" height="20" loading="lazy"></div><div><div class="conf-title">France Éducation International</div><div class="conf-meta"><span class="conf-loc">France</span><span>International, Nov. 2024</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="BE" width="28" height="20" loading="lazy"></div><div><div class="conf-title">IPFC, Formation des inspecteurs et inspectrices</div><div class="conf-meta"><span class="conf-loc">Belgique</span><span>Formation, Oct. 2024</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/fr.png" srcset="https://flagcdn.com/w80/fr.png 2x" alt="FR" width="28" height="20" loading="lazy"></div><div><div class="conf-title">Découvrir l'IA : présentation grand public, MJC Lambres-lez-Douai</div><div class="conf-meta"><span class="conf-loc">Lambres-lez-Douai, France</span><span>Grand public, Fév. 2024</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/fr.png" srcset="https://flagcdn.com/w80/fr.png 2x" alt="FR" width="28" height="20" loading="lazy"></div><div><div class="conf-title">Découvrir l'IA : présentation grand public, Municipalité de Bersée</div><div class="conf-meta"><span class="conf-loc">Bersée, France</span><span>Grand public, Déc. 2023</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="BE" width="28" height="20" loading="lazy"></div><div><div class="conf-title">Label européen des langues, IA et langues</div><div class="conf-meta"><span class="conf-loc">Belgique</span><span>Langues &amp; IA</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="BE" width="28" height="20" loading="lazy"></div><div><div class="conf-title">ULB et CCIB Bruxelles, Promotion et formation continue</div><div class="conf-meta"><span class="conf-loc">Bruxelles</span><span>Université</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/tn.png" srcset="https://flagcdn.com/w80/tn.png 2x" alt="TN" width="28" height="20" loading="lazy"></div><div><div class="conf-title">Higher Institute Education &amp; La Formation Continue, Tunis</div><div class="conf-meta"><span class="conf-loc">Tunis</span><span>Institut</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/bi.png" srcset="https://flagcdn.com/w80/bi.png 2x" alt="BI" width="28" height="20" loading="lazy"></div><div><div class="conf-title">Université de Bujumbura</div><div class="conf-meta"><span class="conf-loc">Burundi</span><span>Université</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="BE" width="28" height="20" loading="lazy"></div><div><div class="conf-title">Elle Active (Magazine Elle), IA et l'emploi</div><div class="conf-meta"><span class="conf-loc">Bruxelles</span><span>IA &amp; Emploi</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/tn.png" srcset="https://flagcdn.com/w80/tn.png 2x" alt="TN" width="28" height="20" loading="lazy"></div><div><div class="conf-title">Forum Citoyen de l'Innovation en Éducation, Sousse</div><div class="conf-meta"><span class="conf-loc">Sousse</span><span>Innovation</span></div></div></div>
-  </div>
-</div>
+      <div class="articles-grid stagger">
 
-<!-- FORMATIONS -->
-<div class="section-wrap bg-off" id="formations">
-  <div class="section-inner">
-    <div class="reveal">
-      <p class="section-tag">Ateliers &amp; Formations</p>
-      <h2 class="section-title">Formations &amp; Ateliers</h2>
-      <p class="section-sub">22 interventions auprès d'institutions publiques, universités et entreprises en Europe, Afrique et au Moyen-Orient.</p>
-    </div>
-    <div class="form-grid">
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/eu.png" srcset="https://flagcdn.com/w80/eu.png 2x" alt="EU" width="28" height="20" loading="lazy"></div><div><div class="form-title">Design de formation IA</div><div class="form-meta">Commission européenne · AIM Consulting</div><span class="form-badge">Commission UE</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/dz.png" srcset="https://flagcdn.com/w80/dz.png 2x" alt="DZ" width="28" height="20" loading="lazy"></div><div><div class="form-title">Conception pédagogique avec l'IA</div><div class="form-meta">CESI Alger · Projet UNESCO</div><span class="form-badge">UNESCO</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/fr.png" srcset="https://flagcdn.com/w80/fr.png 2x" alt="FR" width="28" height="20" loading="lazy"></div><div><div class="form-title">Association Nationale des Services TICE</div><div class="form-meta">France</div><span class="form-badge">TICE</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="BE" width="28" height="20" loading="lazy"></div><div><div class="form-title">Institut des hautes études des communications sociales</div><div class="form-meta">Bruxelles</div><span class="form-badge">Communication</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/tn.png" srcset="https://flagcdn.com/w80/tn.png 2x" alt="TN" width="28" height="20" loading="lazy"></div><div><div class="form-title">Université El Manar</div><div class="form-meta">Tunis</div><span class="form-badge">Université</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="BE" width="28" height="20" loading="lazy"></div><div><div class="form-title">RTBF Academy</div><div class="form-meta">Bruxelles</div><span class="form-badge">Médias</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="BE" width="28" height="20" loading="lazy"></div><div><div class="form-title">École européenne de Bruxelles</div><div class="form-meta">Bruxelles</div><span class="form-badge">Européen</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="BE" width="28" height="20" loading="lazy"></div><div><div class="form-title">Faculté de la motricité – ULB</div><div class="form-meta">Bruxelles</div><span class="form-badge">Université</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="BE" width="28" height="20" loading="lazy"></div><div><div class="form-title">Aprico Consultants – Digital Transformation</div><div class="form-meta">Bruxelles · Sfax</div><span class="form-badge">Digital</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="BE" width="28" height="20" loading="lazy"></div><div><div class="form-title">IFAPME Tournai et Gembloux</div><div class="form-meta">Wallonie</div><span class="form-badge">Apprentissage</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="BE" width="28" height="20" loading="lazy"></div><div><div class="form-title">Bruxelles Formation</div><div class="form-meta">Bruxelles</div><span class="form-badge">Public</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/fr.png" srcset="https://flagcdn.com/w80/fr.png 2x" alt="FR" width="28" height="20" loading="lazy"></div><div><div class="form-title">Meditech Access</div><div class="form-meta">Paris</div><span class="form-badge">Santé</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/jo.png" srcset="https://flagcdn.com/w80/jo.png 2x" alt="JO" width="28" height="20" loading="lazy"></div><div><div class="form-title">United Nations Volunteers</div><div class="form-meta">Amman</div><span class="form-badge">ONU</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/fr.png" srcset="https://flagcdn.com/w80/fr.png 2x" alt="FR" width="28" height="20" loading="lazy"></div><div><div class="form-title">Université Lille – Master IPM</div><div class="form-meta">Lille</div><span class="form-badge">Master</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/fr.png" srcset="https://flagcdn.com/w80/fr.png 2x" alt="FR" width="28" height="20" loading="lazy"></div><div><div class="form-title">Intégrer l'IA de la conception à l'évaluation</div><div class="form-meta">CNFPT Strasbourg</div><span class="form-badge">Public</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/fr.png" srcset="https://flagcdn.com/w80/fr.png 2x" alt="FR" width="28" height="20" loading="lazy"></div><div><div class="form-title">Utiliser l'IA en formation : outils et analyse critique</div><div class="form-meta">IFA Rouen</div><span class="form-badge">Apprentissage</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="BE" width="28" height="20" loading="lazy"></div><div><div class="form-title">Learning Solution</div><div class="form-meta">Bruxelles</div><span class="form-badge">Formation</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/tn.png" srcset="https://flagcdn.com/w80/tn.png 2x" alt="TN" width="28" height="20" loading="lazy"></div><div><div class="form-title">Colloque International de l'Innovation Technologique</div><div class="form-meta">Sousse</div><span class="form-badge">Innovation</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="BE" width="28" height="20" loading="lazy"></div><div><div class="form-title">Création de scénarios pédagogiques avec l'IA pour apprenants en langues</div><div class="form-meta">FELSI · CPAB, Bruxelles</div><span class="form-badge">Langues</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/at.png" srcset="https://flagcdn.com/w80/at.png 2x" alt="AT" width="28" height="20" loading="lazy"></div><div><div class="form-title">Groupe de travail AI-LANG – Cadre de référence IA pour l'enseignement des langues</div><div class="form-meta">CELV · Graz, Autriche</div><span class="form-badge">CELV</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/tn.png" srcset="https://flagcdn.com/w80/tn.png 2x" alt="TN" width="28" height="20" loading="lazy"></div><div><div class="form-title">IA pour enseignants universitaires</div><div class="form-meta">Tunis</div><span class="form-badge">Université</span></div></div>
-    </div>
-  </div>
-</div>
+        <div class="article-card fade-in">
+          <div class="article-icon">🎙️</div>
+          <div class="article-tag">Innovation</div>
+          <div class="article-title">VoxFolio – Quand la voix libère les talents, IA et pédagogies inclusives</div>
+          <a href="https://www.innovation-pedagogique.fr/article20741.html" target="_blank" class="article-link">Lire l'article <i class="fas fa-arrow-right"></i></a>
+        </div>
 
-<!-- PROJETS -->
-<div class="section-wrap" id="projets">
-  <div class="reveal">
-    <p class="section-tag">Créations</p>
-    <h2 class="section-title">Projets &amp; Outils</h2>
-    <p class="section-sub">Ressources et outils développés pour faciliter l'intégration de l'IA dans la formation.</p>
-  </div>
-  <div class="projects-grid">
-    <a href="https://livre.rochane.fr" target="_blank" rel="noopener noreferrer" class="proj-card reveal">
-      <div class="proj-visual" style="background: linear-gradient(135deg, #fff0ea, #fde8d8); display:flex; align-items:center; justify-content:center;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="72" height="72" fill="none">
-          <!-- Livre ouvert : reliure centrale -->
-          <path d="M40 20 L40 64" stroke="#e8520a" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
-          <!-- Page gauche -->
-          <path d="M40 20 Q26 18 14 22 L14 60 Q26 56 40 60 Z" fill="#e8520a" fill-opacity="0.12" stroke="#e8520a" stroke-width="2" stroke-linejoin="round"/>
-          <!-- Page droite -->
-          <path d="M40 20 Q54 18 66 22 L66 60 Q54 56 40 60 Z" fill="#e8520a" fill-opacity="0.18" stroke="#e8520a" stroke-width="2" stroke-linejoin="round"/>
-          <!-- Lignes de texte page gauche -->
-          <line x1="20" y1="30" x2="34" y2="30" stroke="#e8520a" stroke-width="1.5" stroke-linecap="round" opacity="0.65"/>
-          <line x1="20" y1="36" x2="32" y2="36" stroke="#e8520a" stroke-width="1.5" stroke-linecap="round" opacity="0.45"/>
-          <line x1="20" y1="42" x2="34" y2="42" stroke="#e8520a" stroke-width="1.5" stroke-linecap="round" opacity="0.55"/>
-          <line x1="20" y1="48" x2="30" y2="48" stroke="#e8520a" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
-          <!-- Lignes de texte page droite -->
-          <line x1="46" y1="30" x2="60" y2="30" stroke="#e8520a" stroke-width="1.5" stroke-linecap="round" opacity="0.65"/>
-          <line x1="46" y1="36" x2="58" y2="36" stroke="#e8520a" stroke-width="1.5" stroke-linecap="round" opacity="0.45"/>
-          <line x1="46" y1="42" x2="60" y2="42" stroke="#e8520a" stroke-width="1.5" stroke-linecap="round" opacity="0.55"/>
-          <line x1="46" y1="48" x2="56" y2="48" stroke="#e8520a" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
-        </svg>
-      </div>
-      <div class="proj-body">
-        <div class="proj-name">Évaluer en formation à l'ère de l'IA générative</div>
-        <div class="proj-desc">Manuel pratique pour repenser l'évaluation des apprentissages face à l'IA générative. Préface du Pr. Christelle Lison (Université de Sherbrooke). Diagnostic, fondements, méthodologie de transformation, boîte à outils.</div>
-        <div class="proj-tags"><span class="proj-tag">Livre</span><span class="proj-tag">Chronique Sociale</span><span class="proj-tag">Juin 2026</span></div>
-      </div>
-      <div class="proj-footer">Découvrir le livre <span>↗</span></div>
-    </a>
-    <a href="https://scenariocreator.rochane.fr/" target="_blank" class="proj-card reveal">
-      <div class="proj-visual c1">🤖</div>
-      <div class="proj-body">
-        <div class="proj-name">Chat Bot Scenario Creator</div>
-        <div class="proj-desc">Créer des scénarios conversationnels avec l'IA pour concevoir des formations interactives et engageantes.</div>
-        <div class="proj-tags"><span class="proj-tag">Outil pédagogique</span><span class="proj-tag">IA conversationnelle</span><span class="proj-tag">Scénario</span></div>
-      </div>
-      <div class="proj-footer">Voir l'outil <span>↗</span></div>
-    </a>
-    <a href="https://voxfolio.rochane.fr/" target="_blank" class="proj-card reveal">
-      <div class="proj-visual c2">🎙️</div>
-      <div class="proj-body">
-        <div class="proj-name">VoxFolio</div>
-        <div class="proj-desc">Portfolio vocal augmenté par l'IA. En 2 minutes d'enregistrement : transcription, analyse et génération d'un profil professionnel.</div>
-        <div class="proj-tags"><span class="proj-tag">Voix &amp; IA</span><span class="proj-tag">Inclusion</span><span class="proj-tag">Portfolio</span></div>
-      </div>
-      <div class="proj-footer">Accéder à VoxFolio <span>↗</span></div>
-    </a>
-    <a href="https://ia-des.rochane.fr/" target="_blank" class="proj-card reveal">
-      <div class="proj-visual c3">🔍</div>
-      <div class="proj-body">
-        <div class="proj-name">Argos Socratique</div>
-        <div class="proj-desc">Dispositif de traçabilité des compétences critiques. Système Socrate augmenté par l'IA. Accès sur justification pédagogique.</div>
-        <div class="proj-tags"><span class="proj-tag">Compétences</span><span class="proj-tag">Traçabilité</span><span class="proj-tag">Accès restreint</span></div>
-      </div>
-      <div class="proj-footer">Découvrir Argos <span>↗</span></div>
-    </a>
-    <a href="https://ia-cr.rochane.fr/" target="_blank" class="proj-card reveal">
-      <div class="proj-visual c4">📊</div>
-      <div class="proj-body">
-        <div class="proj-name">Compagnon de Route</div>
-        <div class="proj-desc">Mesurez la robustesse de vos évaluations face à l'IA générative. Basé sur le protocole du livre de Rochane (2026) : audit détaillé sur 4 dimensions critiques ou diagnostic rapide en 8 questions.</div>
-        <div class="proj-tags"><span class="proj-tag">Évaluation</span><span class="proj-tag">IA générative</span><span class="proj-tag">Audit</span></div>
-      </div>
-      <div class="proj-footer">Tester l'outil <span>↗</span></div>
-    </a>
-    <a href="https://ia-diff.rochane.fr/" target="_blank" class="proj-card reveal">
-      <div class="proj-visual" style="background: linear-gradient(135deg, #fff8f5, #ffeee5); display:flex; align-items:center; justify-content:center;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="72" height="72" fill="none">
-          <!-- Central node -->
-          <circle cx="22" cy="40" r="5" fill="#e8520a"/>
-          <!-- Three diverging paths -->
-          <!-- Top path: "défi" -->
-          <path d="M27 38 Q44 20 58 18" stroke="#e8520a" stroke-width="2.5" stroke-linecap="round"/>
-          <circle cx="58" cy="18" r="4" fill="#e8520a" opacity="0.9"/>
-          <rect x="55" y="14" width="2" height="8" rx="1" fill="white"/>
-          <!-- Middle path: "standard" -->
-          <path d="M27 40 L58 40" stroke="#e8520a" stroke-width="2.5" stroke-linecap="round" opacity="0.65"/>
-          <circle cx="58" cy="40" r="4" fill="#e8520a" opacity="0.65"/>
-          <rect x="54.5" y="37.5" width="7" height="2" rx="1" fill="white" opacity="0.9"/>
-          <!-- Bottom path: "guidé" -->
-          <path d="M27 42 Q44 60 58 62" stroke="#e8520a" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
-          <circle cx="58" cy="62" r="4" fill="#e8520a" opacity="0.4"/>
-          <path d="M55.5 62 L60.5 62 M58 59.5 L58 64.5" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.95"/>
-          <!-- Entry point label line -->
-          <line x1="10" y1="40" x2="17" y2="40" stroke="#e8520a" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <div class="proj-body">
-        <div class="proj-name">Assistant de différenciation pédagogique</div>
-        <div class="proj-desc">Application web propulsée par l'IA permettant aux formateurs et enseignants de générer instantanément des activités pédagogiques différenciées (versions guidée, standard et défi) pour s'adapter aux besoins de chaque apprenant.</div>
-        <div class="proj-tags"><span class="proj-tag">Différenciation</span><span class="proj-tag">Inclusion</span><span class="proj-tag">Formateurs</span></div>
-      </div>
-      <div class="proj-footer">Accéder à l'outil <span>↗</span></div>
-    </a>
-    <a href="https://ia-conflits.rochane.fr/" target="_blank" class="proj-card reveal">
-      <div class="proj-visual" style="background: linear-gradient(135deg, #fff5f0, #ffe8dc); display:flex; align-items:center; justify-content:center;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="72" height="72" fill="none">
-          <!-- Croyance initiale : bloc stable -->
-          <rect x="10" y="30" width="22" height="20" rx="4" fill="#e8520a" opacity="0.18"/>
-          <rect x="11" y="31" width="20" height="18" rx="3" stroke="#e8520a" stroke-width="1.8" opacity="0.5"/>
-          <!-- Fissure centrale -->
-          <path d="M21 30 L18 40 L22 40 L19 50" stroke="#e8520a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-          <!-- Flèche de choc venant de droite -->
-          <path d="M62 40 L42 40" stroke="#e8520a" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M46 35 L42 40 L46 45" stroke="#e8520a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <!-- Point d'impact -->
-          <circle cx="42" cy="40" r="3" fill="#e8520a" opacity="0.7"/>
-          <!-- Éclats -->
-          <line x1="33" y1="25" x2="28" y2="19" stroke="#e8520a" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
-          <line x1="21" y1="22" x2="21" y2="15" stroke="#e8520a" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
-          <line x1="11" y1="27" x2="5" y2="22" stroke="#e8520a" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
-          <!-- Niveau intensité : 3 barres -->
-          <rect x="55" y="50" width="5" height="8" rx="1.5" fill="#e8520a" opacity="0.35"/>
-          <rect x="62" y="44" width="5" height="14" rx="1.5" fill="#e8520a" opacity="0.6"/>
-          <rect x="69" y="37" width="5" height="21" rx="1.5" fill="#e8520a" opacity="0.9"/>
-        </svg>
-      </div>
-      <div class="proj-body">
-        <div class="proj-name">Déstabilisateur pédagogique</div>
-        <div class="proj-desc">Génère une situation concrète qui fait tomber une croyance professionnelle erronée chez vos apprenants. Trois niveaux d'intensité : questionnement doux, dissonance forte ou rupture radicale.</div>
-        <div class="proj-tags"><span class="proj-tag">Conflit cognitif</span><span class="proj-tag">Croyances</span><span class="proj-tag">Formateurs</span></div>
-      </div>
-      <div class="proj-footer">Tester l'outil <span>↗</span></div>
-    </a>
-    <a href="https://ia-generateurtransparence.rochane.fr/" target="_blank" class="proj-card reveal">
-      <div class="proj-visual" style="background: linear-gradient(135deg, #f0f7ff, #ddeeff); display:flex; align-items:center; justify-content:center;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="72" height="72" fill="none">
-          <!-- Jauge fond -->
-          <path d="M16 52 A26 26 0 0 1 64 52" stroke="#e0e8f0" stroke-width="7" stroke-linecap="round" fill="none"/>
-          <!-- Jauge remplie à ~60% -->
-          <path d="M16 52 A26 26 0 0 1 49 28" stroke="#e8520a" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.85"/>
-          <!-- Aiguille -->
-          <line x1="40" y1="52" x2="50" y2="29" stroke="#e8520a" stroke-width="2.5" stroke-linecap="round"/>
-          <circle cx="40" cy="52" r="3.5" fill="#e8520a"/>
-          <!-- Étiquettes extrémités -->
-          <text x="13" y="63" font-size="7" fill="#e8520a" opacity="0.6" font-family="sans-serif">Min</text>
-          <text x="59" y="63" font-size="7" fill="#e8520a" opacity="0.6" font-family="sans-serif">Max</text>
-          <!-- Petits tirets de graduation -->
-          <line x1="40" y1="27" x2="40" y2="22" stroke="#e8520a" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
-          <line x1="22" y1="36" x2="18" y2="33" stroke="#e8520a" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
-          <line x1="58" y1="36" x2="62" y2="33" stroke="#e8520a" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
-        </svg>
-      </div>
-      <div class="proj-body">
-        <div class="proj-name">Générateur de transparence IA</div>
-        <div class="proj-desc">Un système de jauge pour nuancer la transparence sur l'usage de l'IA. Plutôt qu'un simple oui/non, l'outil visualise le dosage réel : simple coup de main ou sous-traitance complète.</div>
-        <div class="proj-tags"><span class="proj-tag">Transparence</span><span class="proj-tag">Éthique IA</span><span class="proj-tag">Écriture</span></div>
-      </div>
-      <div class="proj-footer">Tester l'outil <span>↗</span></div>
-    </a>
-    <a href="https://voix-atelier.rochane.fr/" target="_blank" class="proj-card reveal">
-      <div class="proj-visual" style="background: linear-gradient(135deg, #fff6f1, #ffe4d4); display:flex; align-items:center; justify-content:center;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="72" height="72" fill="none">
-          <!-- Cycle quatre temps : arc circulaire avec 4 nœuds -->
-          <circle cx="40" cy="40" r="24" stroke="#e8520a" stroke-width="1.8" fill="none" opacity="0.35" stroke-dasharray="3 3"/>
-          <!-- T1 : nœud haut (brut, parole) -->
-          <circle cx="40" cy="16" r="6" fill="#e8520a"/>
-          <text x="40" y="19" font-size="8" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="700">1</text>
-          <!-- T2 : nœud droite (tension analytique) -->
-          <circle cx="64" cy="40" r="6" fill="#e8520a" opacity="0.8"/>
-          <text x="64" y="43" font-size="8" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="700">2</text>
-          <!-- T3 : nœud bas (reprise, pivot) -->
-          <circle cx="40" cy="64" r="6" fill="#e8520a"/>
-          <text x="40" y="67" font-size="8" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="700">3</text>
-          <!-- T4 : nœud gauche (assemblage) -->
-          <circle cx="16" cy="40" r="6" fill="#e8520a" opacity="0.8"/>
-          <text x="16" y="43" font-size="8" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="700">4</text>
-          <!-- Flèches de progression entre nœuds -->
-          <path d="M48 18 Q58 22 62 32" stroke="#e8520a" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.6"/>
-          <path d="M62 48 Q58 58 48 62" stroke="#e8520a" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.6"/>
-          <path d="M32 62 Q22 58 18 48" stroke="#e8520a" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.6"/>
-          <path d="M18 32 Q22 22 32 18" stroke="#e8520a" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.6"/>
-        </svg>
-      </div>
-      <div class="proj-body">
-        <div class="proj-name">Voix-atelier</div>
-        <div class="proj-desc">Protocole en quatre temps pour produire avec l'IA sans perdre sa voix. Alterne parole humaine brute (T1, T3) et traitement analytique (T2), puis assemble sous contrainte (T4). Skill Claude et prompts portables disponibles.</div>
-        <div class="proj-tags"><span class="proj-tag">Méthode</span><span class="proj-tag">Écriture &amp; IA</span><span class="proj-tag">Voix propre</span></div>
-      </div>
-      <div class="proj-footer">Voir l'infographie <span>↗</span></div>
-    </a>
-  </div>
-</div>
-<div class="section-wrap" id="infographies">
-  <div class="section-inner">
-    <div class="reveal">
-      <p class="section-tag">Ressources visuelles</p>
-      <h2 class="section-title">Mes infographies</h2>
-      <p class="section-sub">Supports pédagogiques interactifs sur l'IA, la pédagogie et le numérique, libres d'accès et partageables.</p>
-    </div>
-    <div class="reveal" style="margin-top:2rem;">
-      <details class="infog-accordion">
-        <summary class="infog-summary">14 infographies disponibles <span class="infog-chevron">▾</span></summary>
-        <ul class="infog-list">
-          <li><a href="https://ia-conso.rochane.fr/" target="_blank">IA et consommation énergétique</a></li>
-          <li><a href="https://ia-critique.rochane.fr/" target="_blank">L'IA avec esprit critique</a></li>
-          <li><a href="https://ia-demystifiee.rochane.fr/" target="_blank">Comprendre l'IA en 5 concepts</a></li>
-          <li><a href="https://ia-classe.rochane.fr/" target="_blank">IA responsable en classe</a></li>
-          <li><a href="https://ia-codes.rochane.fr/" target="_blank">4 codes pour transformer tes prompts IA</a></li>
-          <li><a href="https://ia-contexte.rochane.fr/" target="_blank">Contexte caché : l'efficacité des fausses questions</a></li>
-          <li><a href="https://ia-fonction.rochane.fr/" target="_blank">LLM = f(x) → y</a></li>
-          <li><a href="https://ia-triangle.rochane.fr/" target="_blank">IA : Partenaire ou Piège ?</a></li>
-          <li><a href="https://ia-rgpd.rochane.fr/" target="_blank">Check-list RGPD et IA dans l'éducation</a></li>
-          <li><a href="https://ia-friction.rochane.fr/" target="_blank">La disparition de la friction intellectuelle</a></li>
-          <li><a href="https://ia-typologies.rochane.fr/" target="_blank">Les différents types d'IA : comparaison (FR)</a></li>
-          <li><a href="https://ia-typologiesen.rochane.fr/" target="_blank">Different Types of AI: Comparison (EN)</a></li>
-          <li><a href="https://ia-transparence.rochane.fr/" target="_blank">Bonnes pratiques pour les écrits assistés par IA</a></li>
-          <li><a href="https://llm-fallacy.rochane.fr/" target="_blank">L'illusion de compétence à l'ère de l'IA (LLM Fallacy)</a></li>
-        </ul>
-      </details>
-    </div>
-  </div>
-</div>
+        <div class="article-card fade-in">
+          <div class="article-icon">🤔</div>
+          <div class="article-tag">Réflexion</div>
+          <div class="article-title">Éducation artificielle ?</div>
+          <a href="https://www.innovation-pedagogique.fr/article12108.html" target="_blank" class="article-link">Lire l'article <i class="fas fa-arrow-right"></i></a>
+        </div>
 
-<!-- WEBINAIRES -->
-<div class="section-wrap bg-off" id="webinaires">
-  <div class="section-inner">
-    <div class="reveal">
-      <p class="section-tag">En ligne</p>
+        <div class="article-card fade-in">
+          <div class="article-icon">💡</div>
+          <div class="article-tag">IA & Éducation</div>
+          <div class="article-title">IA en éducation, un outil d'innovation</div>
+          <a href="https://www.innovation-pedagogique.fr/article15242.html" target="_blank" class="article-link">Lire l'article <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="article-card fade-in">
+          <div class="article-icon">🤝</div>
+          <div class="article-tag">Inclusion</div>
+          <div class="article-title">IA et inclusion – Réduire la fracture numérique</div>
+          <a href="https://fr.linkedin.com/pulse/lia-pour-une-%C3%A9ducation-inclusive-r%C3%A9duire-la-fracture-kherbouche-jovde" target="_blank" class="article-link">Lire l'article <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       CONFÉRENCES
+  ═══════════════════════════════════════════ -->
+  <section id="conferences">
+    <div class="container">
+      <div class="section-label">Conférences</div>
+      <h2 class="section-title">Interventions internationales</h2>
+      <p class="section-desc">12 conférences dans 5 pays, auprès d'universités, institutions publiques et organismes internationaux.</p>
+
+      <div class="conf-grid stagger">
+
+        <div class="conf-card fade-in">
+          <div class="conf-flag">🇧🇪</div>
+          <div class="conf-content">
+            <div class="conf-name">L'intelligence artificielle constitue-t-elle une menace pour le multilinguisme ?</div>
+            <div class="conf-meta">
+              <span class="conf-location"><i class="fas fa-map-marker-alt"></i>Bruxelles</span>
+              <span class="conf-category">Multilinguisme</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="conf-card fade-in">
+          <div class="conf-flag">🇧🇪</div>
+          <div class="conf-content">
+            <div class="conf-name">L’après formation : la réactivation comme levier de l’apprentissage – quels leviers nous offre l’IA</div>
+            <div class="conf-meta">
+              <span class="conf-location"><i class="fas fa-map-marker-alt"></i>Liège</span>
+              <span class="conf-category">Ecolab 2026</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="conf-card fade-in">
+          <div class="conf-flag">🇧🇪</div>
+          <div class="conf-content">
+            <div class="conf-name">Label européen des langues – IA et langues</div>
+            <div class="conf-meta">
+              <span class="conf-location"><i class="fas fa-map-marker-alt"></i>Belgique</span>
+              <span class="conf-category">Langues & IA</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="conf-card fade-in">
+          <div class="conf-flag">🇫🇷</div>
+          <div class="conf-content">
+            <div class="conf-name">France Éducation International</div>
+            <div class="conf-meta">
+              <span class="conf-location"><i class="fas fa-map-marker-alt"></i>France</span>
+              <span class="conf-category">International</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="conf-card fade-in">
+          <div class="conf-flag">🇧🇪</div>
+          <div class="conf-content">
+            <div class="conf-name">IPFC – Formation des inspecteurs et inspectrices</div>
+            <div class="conf-meta">
+              <span class="conf-location"><i class="fas fa-map-marker-alt"></i>Belgique</span>
+              <span class="conf-category">Formation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="conf-card fade-in">
+          <div class="conf-flag">🇧🇪</div>
+          <div class="conf-content">
+            <div class="conf-name">ULB et CCIB Bruxelles – Promotion et formation continue</div>
+            <div class="conf-meta">
+              <span class="conf-location"><i class="fas fa-map-marker-alt"></i>Bruxelles</span>
+              <span class="conf-category">Université</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="conf-card fade-in">
+          <div class="conf-flag">🇹🇳</div>
+          <div class="conf-content">
+            <div class="conf-name">Higher Institute Education & La Formation Continue, Tunis</div>
+            <div class="conf-meta">
+              <span class="conf-location"><i class="fas fa-map-marker-alt"></i>Tunis</span>
+              <span class="conf-category">Institut</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="conf-card fade-in">
+          <div class="conf-flag">🇧🇮</div>
+          <div class="conf-content">
+            <div class="conf-name">Université de Bujumbura</div>
+            <div class="conf-meta">
+              <span class="conf-location"><i class="fas fa-map-marker-alt"></i>Burundi</span>
+              <span class="conf-category">Université</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="conf-card fade-in">
+          <div class="conf-flag">🇫🇷</div>
+          <div class="conf-content">
+            <div class="conf-name">Municipalité de Bersée</div>
+            <div class="conf-meta">
+              <span class="conf-location"><i class="fas fa-map-marker-alt"></i>France</span>
+              <span class="conf-category">Public</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="conf-card fade-in">
+          <div class="conf-flag">🇫🇷</div>
+          <div class="conf-content">
+            <div class="conf-name">MJC Lambres-lez-Douai</div>
+            <div class="conf-meta">
+              <span class="conf-location"><i class="fas fa-map-marker-alt"></i>France</span>
+              <span class="conf-category">Culturel</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="conf-card fade-in">
+          <div class="conf-flag">🇹🇳</div>
+          <div class="conf-content">
+            <div class="conf-name">Forum Citoyen de l'Innovation en Éducation, Sousse</div>
+            <div class="conf-meta">
+              <span class="conf-location"><i class="fas fa-map-marker-alt"></i>Sousse</span>
+              <span class="conf-category">Innovation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="conf-card fade-in">
+          <div class="conf-flag">🇧🇪</div>
+          <div class="conf-content">
+            <div class="conf-name">Elle Active (Magazine Elle) – IA et l'emploi</div>
+            <div class="conf-meta">
+              <span class="conf-location"><i class="fas fa-map-marker-alt"></i>Bruxelles</span>
+              <span class="conf-category">IA & Emploi</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       FORMATIONS
+  ═══════════════════════════════════════════ -->
+  <section id="formations">
+    <div class="container">
+      <div class="section-label">Ateliers & Formations</div>
+      <h2 class="section-title">Formations & Ateliers</h2>
+      <p class="section-desc">19 interventions de formation auprès d'institutions publiques, universités et entreprises en Europe, Afrique et au Moyen-Orient.</p>
+
+      <div class="form-grid stagger">
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">Design de formation IA – Commission européenne, AIM Consulting</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>Commission UE</span>
+              <span class="form-tag">Commission UE</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">Conception pédagogique avec l'IA – CESI Alger, projet UNESCO</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>Alger</span>
+              <span class="form-tag">UNESCO</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">Association Nationale des Services TICE et Audiovisuels</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>France</span>
+              <span class="form-tag">TICE</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">Institut des hautes études des communications sociales, Bruxelles</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>Bruxelles</span>
+              <span class="form-tag">Communication</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">Université El Manar, Tunis</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>Tunis</span>
+              <span class="form-tag">Université</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">Learning Solution, Bruxelles</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>Bruxelles</span>
+              <span class="form-tag">Formation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">École européenne de Bruxelles</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>Bruxelles</span>
+              <span class="form-tag">Européen</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">Faculté de la motricité de l'ULB, Bruxelles</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>Bruxelles</span>
+              <span class="form-tag">Motricité</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">Aprico Consultants – Digital Transformation, Bruxelles</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>Bruxelles</span>
+              <span class="form-tag">Digital</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">Aprico Consultants – Digital Transformation, Sfax</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>Sfax</span>
+              <span class="form-tag">Digital</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">RTBF Academy, Bruxelles</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>Bruxelles</span>
+              <span class="form-tag">Médias</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">IFAPME Tournai et Gembloux</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>Wallonie</span>
+              <span class="form-tag">Apprentissage</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">Bruxelles Formation</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>Bruxelles</span>
+              <span class="form-tag">Public</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">Meditech Access, Paris</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>Paris</span>
+              <span class="form-tag">Santé</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">Colloque International de l'Innovation Technologique, Sousse</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>Sousse</span>
+              <span class="form-tag">Innovation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">United Nations Volunteers, Amman</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>Amman</span>
+              <span class="form-tag">ONU</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">Université Lille – Master IPM</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>Lille</span>
+              <span class="form-tag">Master</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">Intégrer l'IA de la conception à l'évaluation – CNFPT Strasbourg</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>Strasbourg</span>
+              <span class="form-tag">Public</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card fade-in">
+          <div class="form-dot"></div>
+          <div>
+            <div class="form-name">Utiliser l'IA en formation : outils et analyse critique – IFA Rouen</div>
+            <div class="form-meta">
+              <span class="form-location"><i class="fas fa-map-marker-alt"></i>Rouen</span>
+              <span class="form-tag">Apprentissage</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       WEBINAIRES
+  ═══════════════════════════════════════════ -->
+  <section id="webinaires">
+    <div class="container">
+      <div class="section-label">En ligne</div>
       <h2 class="section-title">Webinaires</h2>
-      <p class="section-sub">Interventions en ligne sur les usages de l'IA dans l'éducation et la formation professionnelle.</p>
-    </div>
-    <div class="webinar-list">
-      <div class="webinar-row reveal"><div class="w-num">01</div><div class="w-title">Les outils de l'IA dans l'éducation – Opportunités et défis</div><div class="w-meta">International · IA &amp; Éducation</div></div>
-      <div class="webinar-row reveal"><div class="w-num">02</div><div class="w-title">Outils IA en formation – De la conception à la mise en œuvre</div><div class="w-meta">International · Formation</div></div>
-      <div class="webinar-row reveal"><div class="w-num">03</div><div class="w-title">IA générative et création de contenus pédagogiques (Innovember)</div><div class="w-meta">Université de Lille · IA &amp; Éducation</div></div>
-    </div>
-  </div>
-</div>
+      <p class="section-desc">Interventions en ligne sur les usages de l'IA dans l'éducation et la formation professionnelle.</p>
 
+      <div class="web-grid stagger">
 
-<!-- PODCASTS -->
-<div class="section-wrap bg-off" id="podcasts">
-  <div class="section-inner">
-    <div class="reveal">
-      <p class="section-tag">Médias</p>
-      <h2 class="section-title">Podcasts</h2>
-      <p class="section-sub">Trois interviews de plus de 30 minutes sur l'IA, la pédagogie et la formation professionnelle.</p>
-    </div>
-    <div class="podcast-list">
-
-      <!-- 1. Rendez-vous en terre digitale -->
-      <div class="podcast-card reveal">
-        <div class="podcast-meta">
-          <div class="podcast-num">01</div>
-          <div class="podcast-info">
-            <div class="podcast-show">Rendez-vous en terre digitale</div>
-            <div class="podcast-title">L'évaluation à l'heure de l'IA Générative</div>
-            <div class="podcast-desc">Les trois postures face à l'IA dans l'évaluation : résistante, collaborative, formative. Basé sur l'enquête du livre (67% des évaluations jugées vulnérables face à l'IA).</div>
+        <div class="web-card fade-in">
+          <div class="web-icon"><i class="fas fa-globe"></i></div>
+          <div class="web-title">Les outils de l'IA dans l'éducation – Opportunités et défis</div>
+          <div class="web-badges">
+            <span class="web-badge">International</span>
+            <span class="web-badge">IA & Éducation</span>
           </div>
-          <div class="podcast-duration">46 min · fév. 2026</div>
         </div>
-        <div class="podcast-player">
-          <a href="https://podcast.ausha.co/rendez-vous-en-terre-digitale/rochane" target="_blank" class="podcast-play-btn">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            Écouter l'épisode (46 min)
+
+        <div class="web-card fade-in">
+          <div class="web-icon"><i class="fas fa-tools"></i></div>
+          <div class="web-title">Outils IA en formation – De la conception à la mise en œuvre</div>
+          <div class="web-badges">
+            <span class="web-badge">International</span>
+            <span class="web-badge">Formation</span>
+          </div>
+        </div>
+
+        <div class="web-card fade-in">
+          <div class="web-icon"><i class="fas fa-paint-brush"></i></div>
+          <div class="web-title">IA générative et création de contenus pédagogiques (Innovember)</div>
+          <div class="web-badges">
+            <span class="web-badge">Université de Lille</span>
+            <span class="web-badge">IA & Éducation</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       PROJETS / OUTILS
+  ═══════════════════════════════════════════ -->
+  <section id="projets">
+    <div class="container">
+      <div class="section-label">Créations</div>
+      <h2 class="section-title">Projets & Outils</h2>
+      <p class="section-desc">Des ressources et outils développés pour faciliter l'intégration de l'IA dans la formation.</p>
+
+      <div class="projets-grid stagger">
+
+        <div class="projet-card fade-in">
+          <div class="projet-header">
+            <div class="projet-icon blue"><i class="fas fa-robot"></i></div>
+            <div>
+              <div class="projet-name">Chat Bot Scenario Creator</div>
+              <div class="projet-type">Outil pédagogique IA</div>
+            </div>
+          </div>
+          <div class="projet-desc">
+            Un outil pour créer des scénarios conversationnels avec l'IA, facilitant la conception de formations interactives et engageantes.
+          </div>
+          <a href="https://scenariocreator.rochane.fr/" target="_blank" class="projet-link">
+            Voir l'outil <i class="fas fa-arrow-right"></i>
           </a>
         </div>
-      </div>
 
-      <!-- 2. Never Stop Learning -->
-      <div class="podcast-card reveal">
-        <div class="podcast-meta">
-          <div class="podcast-num">02</div>
-          <div class="podcast-info">
-            <div class="podcast-show">Never Stop Learning · Épisode 83</div>
-            <div class="podcast-title">IA et compétences – Le futur de la formation professionnelle</div>
-            <div class="podcast-desc">Des retours terrain, des petits villages aux grandes organisations comme l'ONU. Prompt engineering, outils pratiques, éthique et protection des données.</div>
+        <!-- VoxFolio -->
+        <div class="projet-card fade-in">
+          <div class="projet-header">
+            <div class="projet-icon rose"><i class="fas fa-microphone"></i></div>
+            <div>
+              <div class="projet-name">VoxFolio</div>
+              <div class="projet-type">Portfolio vocal augmenté par l'IA</div>
+            </div>
           </div>
-          <div class="podcast-duration">+30 min</div>
-        </div>
-        <div class="podcast-player">
-          <a href="https://open.spotify.com/episode/11kOrwC5NSaKwFfPxxuCk5" target="_blank" class="podcast-play-btn podcast-play-btn--spotify">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
-            Écouter sur Spotify
+          <div class="projet-desc">
+            Transforme la voix en portfolio professionnel augmenté par l'IA. En 2 minutes d'enregistrement, l'IA transcrit, analyse et génère un visuel professionnel avec feedback personnalisé.
+          </div>
+          <div class="projet-tags">
+            <span class="projet-tag">Voix & IA</span>
+            <span class="projet-tag">Inclusion</span>
+            <span class="projet-tag">Portfolio</span>
+          </div>
+          <a href="https://voxfolio.rochane.fr/" target="_blank" class="projet-link">
+            Accéder à VoxFolio <i class="fas fa-arrow-right"></i>
           </a>
         </div>
-      </div>
 
-      <!-- 3. Numericast -->
-      <div class="podcast-card reveal">
-        <div class="podcast-meta">
-          <div class="podcast-num">03</div>
-          <div class="podcast-info">
-            <div class="podcast-show">Numericast · Épisode 08</div>
-            <div class="podcast-title">Technopédagogie, ingénierie pédagogique et outils numériques en formation</div>
-            <div class="podcast-desc">Interview sur les pratiques numériques à Bruxelles Formation : technopédagogie, ingénierie de formation et intégration des outils numériques.</div>
+        <!-- Argos socratique -->
+        <div class="projet-card fade-in">
+          <div class="projet-header">
+            <div class="projet-icon" style="background:#1e1e3a;color:#a5b4fc;"><i class="fas fa-brain"></i></div>
+            <div>
+              <div class="projet-name">Argos socratique</div>
+              <div class="projet-type">Traçabilité des compétences critiques</div>
+            </div>
           </div>
-          <div class="podcast-duration">+30 min · 2021</div>
+          <div class="projet-desc">
+            Dispositif de traçabilité des compétences critiques. Accès restreint sur justification pédagogique ou professionnelle – système Socrate augmenté par l'IA.
+          </div>
+          <div class="projet-tags">
+            <span class="projet-tag">Compétences</span>
+            <span class="projet-tag">Traçabilité</span>
+            <span class="projet-tag">Accès restreint</span>
+          </div>
+          <a href="https://ia-des.rochane.fr/" target="_blank" class="projet-link">
+            Découvrir Argos <i class="fas fa-arrow-right"></i>
+          </a>
         </div>
-        <div class="podcast-player">
-          <iframe
-            width="100%"
-            height="166"
-            frameborder="0"
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy"
-            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/numericast/numericast08-rochane-kherbouche-bruxelles-formation&color=%23e8520a&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false">
-          </iframe>
+
+        <!-- Compagnon de route -->
+        <div class="projet-card fade-in">
+          <div class="projet-header">
+            <div class="projet-icon" style="background:#ede9fe;color:#7c3aed;"><i class="fas fa-route"></i></div>
+            <div>
+              <div class="projet-name">Compagnon de route</div>
+              <div class="projet-type">Audit d'évaluations face à l'IA</div>
+            </div>
+          </div>
+          <div class="projet-desc">
+            Mesurez la robustesse de vos évaluations à l'ère de l'IA générative. Audit détaillé sur 4 dimensions critiques ou diagnostic rapide en 8 questions.
+          </div>
+          <div class="projet-tags">
+            <span class="projet-tag">Évaluation</span>
+            <span class="projet-tag">IA générative</span>
+            <span class="projet-tag">2026</span>
+          </div>
+          <a href="https://ia-cr.rochane.fr/" target="_blank" class="projet-link">
+            Tester l'outil <i class="fas fa-arrow-right"></i>
+          </a>
         </div>
-      </div>
 
-    </div>
-  </div>
-</div>
 
-<!-- COMMUNITY -->
-<div id="community">
-  <div class="community-inner reveal">
-    <div class="comm-num">+1 000</div>
-    <div class="comm-label">membres · Communauté WhatsApp</div>
-    <p class="comm-desc">Partage de ressources et d'outils IA, bonnes pratiques pédagogiques et un live mensuel pour échanger en direct.</p>
-    <a href="https://chat.whatsapp.com/Bpy9TORsbJ3LMKL4y6nBkj" target="_blank" class="btn btn-fill">Rejoindre la communauté →</a>
-  </div>
-</div>
 
-<!-- CONTACT -->
-<div class="section-wrap" id="contact">
-  <div class="contact-grid">
-    <div class="reveal">
-      <p class="section-tag">Contact</p>
-      <h2 class="section-title">Travaillons<br>ensemble</h2>
-      <p class="section-sub">Conférence, formation, atelier ou collaboration. Disponible pour accompagner vos projets IA.</p>
-      <div class="contact-channels">
-        <a href="https://www.linkedin.com/in/rochanekherbouche" target="_blank" class="channel-link">
-          <div class="channel-icon">in</div> LinkedIn · Rochane Kherbouche
-        </a>
-        <a href="https://meet.google.com/wsf-snkf-kcu" target="_blank" class="channel-link">
-          <div class="channel-icon">📹</div> Visio Google Meet
-        </a>
-        <a href="https://outlook.office365.com/owa/calendar/f91bb5b60785415fb0b6d93a495b61b7@bruxellesformation.brussels/60ca3931f35f4ce5bb2151a175ffd8228292193570038494811/calendar.html" target="_blank" class="channel-link">
-          <div class="channel-icon">📅</div> Voir mes disponibilités
-        </a>
       </div>
     </div>
-    <div class="reveal">
-      <form id="contact-form" action="https://formspree.io/f/xnjgbdpw" method="POST">
-        <input type="hidden" name="_replyto" value="ia@rochane.fr">
-        <input type="hidden" name="_subject" value="Nouveau message depuis ia.rochane.fr">
-        <div class="form-group"><label>Nom</label><input type="text" name="nom" placeholder="Votre nom" required></div>
-        <div class="form-group"><label>Email</label><input type="email" name="email" placeholder="votre@email.com" required></div>
-        <div class="form-group">
-          <label>Type d'intervention</label>
-          <select name="type">
-            <option value="">Sélectionner...</option>
-            <option>Conférence</option>
-            <option>Formation / Atelier</option>
-            <option>Collaboration</option>
-            <option>Autre</option>
-          </select>
-        </div>
-        <div class="form-group"><label>Message</label><textarea name="message" placeholder="Décrivez votre projet..." required></textarea></div>
-        <button type="submit" class="btn btn-fill" style="width:100%;justify-content:center;" id="submit-btn">Envoyer →</button>
-        <div id="form-success" style="display:none;margin-top:1rem;padding:1rem;background:var(--accent-light);border:1px solid rgba(232,82,10,0.2);border-radius:8px;color:var(--accent);font-size:0.88rem;font-weight:600;text-align:center;">
-          Message envoyé. Rochane reviendra vers vous rapidement.
-        </div>
-        <div id="form-error" style="display:none;margin-top:1rem;padding:1rem;background:#fff0f0;border:1px solid rgba(220,0,0,0.2);border-radius:8px;color:#c00;font-size:0.88rem;text-align:center;">
-          Une erreur s'est produite. <a href="mailto:ia@rochane.fr" style="color:#c00;font-weight:600;">Contactez directement par email →</a>
-        </div>
-      </form>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       COMMUNAUTÉ WHATSAPP
+  ═══════════════════════════════════════════ -->
+  <section id="whatsapp-community" style="background-color: #128C7E; color: white;">
+    <div class="container" style="text-align: center;">
+      <div class="section-label" style="color: white;">Communauté</div>
+      <h2 class="section-title" style="color: white;">Rejoignez la Communauté WhatsApp</h2>
+      <p class="section-desc" style="color: rgba(255,255,255,.8);">
+        Rejoignez notre communauté de plus de 1000 passionnés pour échanger sur les bonnes pratiques pédagogiques liées à l'IA et découvrir des outils innovants. Un live mensuel est organisé pour les membres !
+      </p>
+      <a href="https://chat.whatsapp.com/Bpy9TORsbJ3LMKL4y6nBkj" target="_blank" class="btn btn-white">
+        <i class="fab fa-whatsapp"></i> Rejoindre maintenant
+      </a>
     </div>
-  </div>
-</div>
+  </section>
 
-<!-- FOOTER -->
-<footer>
-  <div>© 2026 <strong>Rochane Kherbouche</strong> · Technopédagogue &amp; Ambassadeur IA</div>
-  <a href="https://www.francenum.gouv.fr/ambassadeurs-ia" target="_blank">Ambassadeur IA · francenum.gouv.fr</a>
-</footer>
+  <!-- ═══════════════════════════════════════════
+       CONTACT
+  ═══════════════════════════════════════════ -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-label">Contact</div>
+      <h2 class="section-title">Travaillons ensemble</h2>
+      <p class="section-desc">
+        Pour une conférence, une formation, un atelier ou une collaboration – je suis disponible pour vous accompagner dans vos projets IA.
+      </p>
 
-<script>
-// NAV SCROLL
-window.addEventListener('scroll', () => {
-  document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 10);
-});
+      <div class="contact-cards">
+        <a href="/cdn-cgi/l/email-protection#4724282933262433073528242f262922692135" class="contact-card">
+          <i class="fas fa-envelope"></i>
+          <span>Email</span>
+        </a>
+        <a href="https://www.linkedin.com/in/rochanekherbouche" target="_blank" class="contact-card">
+          <i class="fab fa-linkedin-in"></i>
+          <span>LinkedIn</span>
+        </a>
+        <a href="https://meet.google.com/wsf-snkf-kcu" target="_blank" class="contact-card">
+          <i class="fas fa-video"></i>
+          <span>Visio (Google Meet)</span>
+        </a>
+        <a href="https://outlook.office365.com/owa/calendar/f91bb5b60785415fb0b6d93a495b61b7@bruxellesformation.brussels/60ca3931f35f4ce5bb2151a175ffd8228292193570038494811/calendar.html"
+           target="_blank" class="contact-card">
+          <i class="fas fa-calendar-check"></i>
+          <span>Mes disponibilités</span>
+        </a>
+      </div>
 
-// REVEAL
-const reveals = document.querySelectorAll('.reveal');
-const io = new IntersectionObserver((entries) => {
-  entries.forEach((e, i) => {
-    if (e.isIntersecting) {
-      setTimeout(() => e.target.classList.add('in'), i * 55);
-    }
-  });
-}, { threshold: 0.08 });
-reveals.forEach(el => io.observe(el));
+      <div class="contact-socials">
+        <a href="https://www.linkedin.com/in/rochanekherbouche" target="_blank" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://x.com/RochaneK" target="_blank" aria-label="X / Twitter">
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
+        <a href="https://www.facebook.com/Rochanek" target="_blank" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="/cdn-cgi/l/email-protection#0e6d61607a6f6d7a4e7c616d666f606b20687c" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+    </div>
+  </section>
 
-// Trigger visible on load
-setTimeout(() => {
-  reveals.forEach(el => {
-    if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('in');
-  });
-}, 80);
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════ -->
+  <footer>
+    <p>
+      &copy; 2025 <strong>Rochane Kherbouche</strong> –
+      <a href="https://www.francenum.gouv.fr/ambassadeurs-ia" target="_blank">Ambassadeur IA</a>
+    </p>
+  </footer>
 
-// COUNTER
-let done = false;
-const counters = document.querySelectorAll('.stat-num[data-target]');
-const statsEl = document.querySelector('.stats-card');
-if (statsEl) {
-  new IntersectionObserver(([e]) => {
-    if (e.isIntersecting && !done) {
-      done = true;
-      counters.forEach(el => {
-        const target = +el.dataset.target;
-        const start = performance.now();
-        const dur = 1100;
-        function tick(now) {
-          const p = Math.min((now - start) / dur, 1);
-          const eased = 1 - Math.pow(1 - p, 3);
-          el.textContent = Math.round(eased * target);
-          if (p < 1) requestAnimationFrame(tick);
-        }
-        requestAnimationFrame(tick);
-      });
-    }
-  }, { threshold: 0.6 }).observe(statsEl);
-}
-</script>
-
-<!-- FONT AWESOME -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<!-- CHATBOT -->
-<div id="chat-container" class="chat-container">
-  <button id="chat-toggle-btn" class="chat-toggle-btn">
-    <i class="fas fa-comment-dots"></i>
-    <i class="fas fa-times"></i>
-    <span class="chat-badge" id="chat-badge"></span>
+  <!-- Back to top -->
+  <button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Retour en haut">
+    <i class="fas fa-chevron-up"></i>
   </button>
-  <div class="chat-nudge" id="chat-nudge">
-    💬 Une question ? Je suis là !
-    <span class="chat-nudge-close" id="chat-nudge-close">✕</span>
-  </div>
-  <div id="chat-widget" class="chat-widget">
-    <div class="chat-header">
-      <div class="chat-header-top">
-        <div class="chat-header-title">Une question ?</div>
-        <button class="chat-header-close" id="chat-close-btn">✕</button>
-      </div>
-      <div class="chat-header-sub">Je réponds sur les interventions, formats et disponibilités de Rochane.</div>
+  
+  <!-- CHATBOT HTML -->
+  <div id="chat-container" class="chat-container">
+    <button id="chat-toggle-btn" class="chat-toggle-btn">
+        <i class="fas fa-comment-dots"></i>
+        <i class="fas fa-times"></i>
+    </button>
+    <div id="chat-widget" class="chat-widget">
+        <div class="chat-header">
+            <div class="chat-header-avatar">
+                <i class="fas fa-robot"></i>
+            </div>
+            <div class="chat-header-text">
+                <h3>Assistant IA 🤖</h3>
+                <p>Posez-moi une question !</p>
+            </div>
+        </div>
+        <div id="chat-messages" class="chat-messages">
+           <!-- Messages will be appended here -->
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Tapez votre message...">
+            <button id="chat-send-btn"><i class="fas fa-paper-plane"></i></button>
+        </div>
     </div>
-    <div id="chat-messages" class="chat-messages"></div>
-    <div class="chat-input-area">
-      <input type="text" id="chat-input" placeholder="Votre question ici...">
-      <button id="chat-send-btn">Envoyer</button>
-    </div>
   </div>
-</div>
 
-
-<script>
-(function() {
-  // ── CHAT ──
-  var INITIAL_MSG = "Bonjour ! Je suis l'assistant virtuel de Rochane Kherbouche. Posez-moi vos questions sur ses expertises, projets et interventions.";
-  var history = [];
-
-  function getElements() {
-    return {
-      container: document.getElementById('chat-container'),
-      toggle:    document.getElementById('chat-toggle-btn'),
-      widget:    document.getElementById('chat-widget'),
-      messages:  document.getElementById('chat-messages'),
-      input:     document.getElementById('chat-input'),
-      send:      document.getElementById('chat-send-btn'),
-      closeBtn:  document.getElementById('chat-close-btn'),
-      badge:     document.getElementById('chat-badge'),
-      nudge:     document.getElementById('chat-nudge'),
-      nudgeX:    document.getElementById('chat-nudge-close')
-    };
-  }
-
-  function addMsg(text, who, els) {
-    var d = document.createElement('div');
-    d.className = 'chat-message ' + who;
-    // Extraire les liens Markdown [label](url) avant tout traitement
-    var links = [];
-    var processed = text.replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, function(_, label, url) {
-      var i = links.length;
-      links.push('<a href="' + url + '" target="_blank" rel="noopener" style="color:#e8520a;font-weight:600;text-decoration:underline;">' + label + ' ↗</a>');
-      return '%%LINK' + i + '%%';
-    });
-    // Transformations texte
-    processed = processed
-      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\n/g, '<br>')
-      .replace(/(\d+\. )/g, '<br>$1')
-      .replace(/^<br>/, '');
-    // URLs brutes restantes
-    processed = processed.replace(/(https?:\/\/[^\s<"%%]+)/g, function(url) {
-      var i = links.length;
-      links.push('<a href="' + url + '" target="_blank" rel="noopener" style="color:#e8520a;text-decoration:underline;word-break:break-all;">' + url + '</a>');
-      return '%%LINK' + i + '%%';
-    });
-    // Restaurer tous les liens
-    var html = processed.replace(/%%LINK(\d+)%%/g, function(_, i) { return links[+i]; });
-    d.innerHTML = html;
-    els.messages.appendChild(d);
-    els.messages.scrollTop = els.messages.scrollHeight;
-    return d;
-  }
-
-  function openChat(els) {
-    els.container.classList.add('open');
-    if (els.badge) els.badge.style.display = 'none';
-    if (els.nudge) els.nudge.classList.remove('visible');
-    if (els.messages.children.length === 0) addMsg(INITIAL_MSG, 'ai', els);
-  }
-
-  function closeChat(els) {
-    els.container.classList.remove('open');
-  }
-
-  async function send(els) {
-    var text = els.input.value.trim();
-    if (!text) return;
-    addMsg(text, 'user', els);
-    els.input.value = '';
-    history.push({ role: 'user', parts: [{ text: text }] });
-
-    var loader = document.createElement('div');
-    loader.className = 'chat-message ai loading';
-    loader.innerHTML = '<span></span><span></span><span></span>';
-    els.messages.appendChild(loader);
-    els.messages.scrollTop = els.messages.scrollHeight;
-
-    var pageContext = '';
-    document.querySelectorAll('body *:not(script):not(style):not(nav)').forEach(function(s) {
-      if (s.children.length === 0 && s.innerText && s.innerText.trim()) {
-        pageContext += s.innerText.trim() + ' ';
-      }
+  <!-- ═══════════════════════════════════════════
+       JAVASCRIPT
+  ═══════════════════════════════════════════ -->
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    /* ── Navbar scroll ── */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+      document.getElementById('back-top').classList.toggle('visible', window.scrollY > 300);
     });
 
-    const systemPrompt = `Tu es l'assistant virtuel officiel de Rochane Kherbouche. Tu parles uniquement en français, avec un ton professionnel, chaleureux et direct. Tes réponses font maximum 120 mots. Quand tu listes plusieurs éléments, utilise des sauts de ligne (\n) entre chaque point. Ne jamais mettre plusieurs informations sur la même ligne. Si une question est hors-sujet ou concerne un domaine où tu n'as pas d'information, tu invites poliment à contacter Rochane directement via LinkedIn ou le formulaire de contact du site.
-
-=== QUI EST ROCHANE KHERBOUCHE ===
-Technopédagogue basé à Bruxelles, technopédagogue spécialisé dans l'intégration de l'IA en formation. Reconnu Ambassadeur IA par le Ministère de l'Économie et des Finances français (francenum.gouv.fr). Conférencier international ayant intervenu en Belgique, France, Tunisie, Burundi, Jordanie, auprès d'institutions comme la Commission européenne, les Nations Unies, l'UNESCO, l'ULB, la RTBF, le CNFPT, et bien d'autres.
-
-Il est également auteur d'un livre à paraître fin juin 2026 aux éditions Chronique Sociale, intitulé "Évaluer en formation à l'ère de l'IA générative", préfacé par la professeure Christelle Lison (Université de Sherbrooke). Une page dédiée permet de télécharger un extrait (préface intégrale et sommaire détaillé) : [livre.rochane.fr](https://livre.rochane.fr).
-
-=== LANGUES ===
-Rochane intervient principalement en français. Il peut aussi intervenir en arabe. Il comprend l'anglais et peut créer du contenu en anglais, mais il ne fait pas de conférences en anglais. Si quelqu'un demande une conférence en anglais, tu réponds clairement que ce n'est pas proposé.
-
-=== FORMATS D'INTERVENTION ===
-- CONFÉRENCE : intervention de 1h à 2h, format magistral / inspirant, adaptée à tous types de publics (institutions, entreprises, universités, événements culturels).
-- ATELIER / WORKSHOP : durée variable, format actif. Rochane fournit le scénario pédagogique en amont (à lire avant la session), anime le workshop, et les participants repartent avec des outils concrets et une banque de ressources IA. Un suivi post-formation est possible : les participants peuvent recontacter Rochane après.
-- Présentiel, distanciel ou hybride, quelle que soit la taille du groupe.
-
-=== TARIFS ===
-Les tarifs ne sont pas publics. Ils dépendent du contexte, de l'organisation et du type d'intervention. Si quelqu'un demande un tarif, tu réponds : "Les tarifs sont établis au cas par cas selon le contexte. Je vous invite à contacter Rochane directement via LinkedIn ou le formulaire de contact pour un échange personnalisé."
-
-=== DISPONIBILITÉ ET MOBILITÉ ===
-Rochane est disponible. Il est mobile et peut se déplacer hors de Belgique et hors de France pour des interventions. Pour vérifier ses disponibilités précises, un lien calendrier est disponible sur le site.
-
-=== PODCASTS ===
-Rochane a été interviewé dans trois podcasts de plus de 30 minutes :
-1. "Les voix du Digital Learning : l'évaluation à l'heure de l'IA Générative", Rendez-vous en terre digitale (46 min, février 2026)
-2. "IA et compétences – Le futur de la formation professionnelle", Never Stop Learning, épisode 83
-3. "Technopédagogie, ingénierie pédagogique et outils numériques en formation", Numericast, épisode 08
-
-=== CE QUE ROCHANE NE FAIT PAS ===
-- Il ne fait pas de conférences en anglais.
-- Ne spécule pas sur des sujets non listés : invite à contacter directement.
-
-=== FORMAT DES RÉPONSES ===
-Quand tu cites un lien, utilise toujours le format Markdown : [texte descriptif](https://url), par exemple [Voir le calendrier](https://lien) ou [Contacter sur LinkedIn](https://linkedin.com/in/rochanekherbouche). Ne colle jamais une URL brute seule.
-
-=== QUESTIONS FRÉQUENTES ===
-Q: Est-il disponible ?
-R: Oui, Rochane est disponible. Pour ses disponibilités précises, vous pouvez consulter son calendrier directement sur le site ou le contacter via LinkedIn.
-
-Q: Peut-il se déplacer ?
-R: Oui, il est mobile et intervient en Belgique, en France et à l'international.
-
-Q: En quelle langue intervient-il ?
-R: Principalement en français. Il peut aussi intervenir en arabe. Il ne fait pas de conférences en anglais.
-
-Q: Propose-t-il un suivi après la formation ?
-R: Oui, les participants peuvent le recontacter après un atelier.
-
-Q: A-t-il écrit un livre ?
-R: Oui, "Évaluer en formation à l'ère de l'IA générative", aux éditions Chronique Sociale, à paraître fin juin 2026. Préface du Pr. Christelle Lison (Université de Sherbrooke). Pour télécharger un extrait (préface et sommaire) : [livre.rochane.fr](https://livre.rochane.fr).
-
-=== CONTEXTE COMPLÉMENTAIRE DU SITE ===
-${pageContext.substring(0, 8000)}`;
-
-    try {
-      var res = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          systemInstruction: { parts: [{ text: systemPrompt }] },
-          contents: history,
-          safetySettings: [
-            { category: 'HARM_CATEGORY_HARASSMENT', threshold: 'BLOCK_NONE' },
-            { category: 'HARM_CATEGORY_HATE_SPEECH', threshold: 'BLOCK_NONE' },
-            { category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT', threshold: 'BLOCK_NONE' },
-            { category: 'HARM_CATEGORY_DANGEROUS_CONTENT', threshold: 'BLOCK_NONE' }
-          ]
-        })
-      });
-      var data = await res.json();
-      els.messages.removeChild(loader);
-      var reply = data && data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts && data.candidates[0].content.parts[0] && data.candidates[0].content.parts[0].text;
-      var replyText = reply || 'Désolé, pas de réponse disponible.';
-      addMsg(replyText, 'ai', els);
-      if (reply) history.push({ role: 'model', parts: [{ text: reply }] });
-    } catch(e) {
-      els.messages.removeChild(loader);
-      addMsg('Erreur de connexion.', 'ai', els);
+    /* ── Hamburger ── */
+    function toggleNav() {
+      document.getElementById('navLinks').classList.toggle('open');
     }
-  }
+    function closeNav() {
+      document.getElementById('navLinks').classList.remove('open');
+    }
 
-  function init() {
-    var els = getElements();
-    if (!els.container || !els.toggle) return;
+    /* ── Intersection Observer – fade-in & counter ── */
+    const countersStarted = new Set();
 
-    els.toggle.addEventListener('click', function() {
-      if (els.container.classList.contains('open')) {
-        closeChat(els);
-      } else {
-        openChat(els);
-      }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+
+        /* Counter animation */
+        const num = entry.target.querySelector('[data-target]');
+        if (num && !countersStarted.has(num)) {
+          countersStarted.add(num);
+          const target = parseInt(num.dataset.target);
+          const duration = 1200;
+          const step = Math.ceil(target / (duration / 16));
+          let current = 0;
+          const timer = setInterval(() => {
+            current = Math.min(current + step, target);
+            num.textContent = current;
+            if (current >= target) clearInterval(timer);
+          }, 16);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+    /* ── Active nav link on scroll ── */
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(sec => {
+        if (window.scrollY >= sec.offsetTop - 100) current = sec.id;
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+      });
     });
+  </script>
+  
+  <!-- CHATBOT JAVASCRIPT -->
+  <script>
+    console.log("[CHAT INIT] Script chatbot chargé. readyState:", document.readyState);
+    
+    function initChat() {
+        console.log("[CHAT INIT] initChat() exécutée");
 
-    if (els.closeBtn) {
-      els.closeBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        closeChat(els);
-      });
-    }
+        const chatContainer = document.getElementById('chat-container');
+        const chatToggleBtn = document.getElementById('chat-toggle-btn');
+        const chatMessages = document.getElementById('chat-messages');
+        const chatInput = document.getElementById('chat-input');
+        const chatSendBtn = document.getElementById('chat-send-btn');
+        
+        if (!chatContainer || !chatToggleBtn || !chatMessages || !chatInput || !chatSendBtn) {
+            console.error("Un ou plusieurs éléments du chat n'ont pas été trouvés. Le chat ne peut pas être initialisé.");
+            return;
+        }
 
-    if (els.send) {
-      els.send.addEventListener('click', function() { send(els); });
-    }
+        const initialMessage = "Bonjour ! Je suis l'assistant virtuel personnel de Rochane Kherbouche, conçu pour répondre à toutes vos questions. N'hésitez pas à m'interroger en détail sur ses domaines d'expertise comme l'intelligence artificielle et la pédagogie, ses projets innovants, ses interventions passées et à venir, ou même les outils qu'il a développés. Je suis là pour vous fournir des informations complètes et précises.";
 
-    if (els.input) {
-      els.input.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') send(els);
-      });
-    }
-
-    if (els.nudgeX) {
-      els.nudgeX.addEventListener('click', function(e) {
-        e.stopPropagation();
-        if (els.nudge) els.nudge.classList.remove('visible');
-      });
-    }
-
-    if (els.nudge) {
-      els.nudge.addEventListener('click', function(e) {
-        if (e.target === els.nudgeX) return;
-        openChat(els);
-      });
-    }
-
-    // Scroll nudge trigger
-    var nudgeDone = false;
-    window.addEventListener('scroll', function() {
-      if (nudgeDone || !els.nudge) return;
-      if (window.scrollY + window.innerHeight >= document.body.scrollHeight - 200) {
-        nudgeDone = true;
-        els.nudge.classList.add('visible');
-      }
-    });
-  }
-
-  // ── CONTACT FORM ──
-  function initForm() {
-    var form = document.getElementById('contact-form');
-    if (!form) return;
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      var btn = document.getElementById('submit-btn');
-      var ok = document.getElementById('form-success');
-      var err = document.getElementById('form-error');
-      btn.textContent = 'Envoi...';
-      btn.disabled = true;
-      try {
-        var r = await fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
+        let pageContext = "";
+        document.querySelectorAll('section').forEach(section => {
+            pageContext += section.innerText.replace(/\n/g, ' ') + '\n\n';
         });
-        if (r.ok) {
-          ok.style.display = 'block';
-          err.style.display = 'none';
-          form.reset();
-          btn.textContent = 'Envoyé ✓';
-        } else { throw new Error(); }
-      } catch(_) {
-        var nom  = (form.querySelector('[name="nom"]') || {}).value || '';
-        var mail = (form.querySelector('[name="email"]') || {}).value || '';
-        var type = (form.querySelector('[name="type"]') || {}).value || '';
-        var msg  = (form.querySelector('[name="message"]') || {}).value || '';
-        var sub  = encodeURIComponent('Contact depuis ia.rochane.fr');
-        var bod  = encodeURIComponent('Nom: '+nom+'\nEmail: '+mail+'\nType: '+type+'\n\n'+msg);
-        window.location.href = 'mailto:ia@rochane.fr?subject='+sub+'&body='+bod;
-        err.style.display = 'block';
-        btn.textContent = 'Envoyer →';
-        btn.disabled = false;
-      }
-    });
-  }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() { init(); initForm(); });
-  } else {
-    init();
-    initForm();
-  }
-})();
-</script>
+        const systemPrompt = `Tu es un assistant virtuel pour le site de Rochane Kherbouche. Ton rôle est de répondre aux questions des visiteurs. Sois concis (100 caractères max), professionnel et amical. Si une question porte sur une compétence non listée, encourage le contact, par ex. : 'C'est tout à fait possible, contactez-le pour en discuter.'. Si la question est hors-sujet, décline poliment. Voici le contexte du site pour t'aider : ${pageContext.substring(0, 8000)}`;
 
+        let conversationHistory = [];
+
+        chatToggleBtn.addEventListener('click', () => {
+            chatContainer.classList.toggle('open');
+            if (chatContainer.classList.contains('open') && chatMessages.children.length === 0) {
+                addMessage(initialMessage, 'ai');
+            }
+        });
+
+        chatSendBtn.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        function addMessage(text, sender) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('chat-message', sender);
+            
+            const formattedText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            messageElement.innerHTML = formattedText;
+            
+            chatMessages.appendChild(messageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        async function sendMessage() {
+            console.log("[CHAT DEBUG] === sendMessage() appelée ===");
+            try {
+                const userInput = chatInput.value.trim();
+                if (userInput === '') return;
+                console.log("[CHAT DEBUG] 1. Input utilisateur:", userInput);
+
+                addMessage(userInput, 'user');
+                chatInput.value = '';
+
+                conversationHistory.push({ role: 'user', parts: [{ text: userInput }] });
+                console.log("[CHAT DEBUG] 2. Historique:", JSON.stringify(conversationHistory));
+
+                const loadingElement = document.createElement('div');
+                loadingElement.classList.add('chat-message', 'ai', 'loading');
+                loadingElement.innerHTML = '<span></span><span></span><span></span>';
+                chatMessages.appendChild(loadingElement);
+
+                const requestBody = {
+                    systemInstruction: {
+                        parts: [{ text: systemPrompt }]
+                    },
+                    contents: conversationHistory,
+                    safetySettings: [
+                        { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_NONE" },
+                        { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_NONE" },
+                        { category: "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold: "BLOCK_NONE" },
+                        { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "BLOCK_NONE" }
+                    ]
+                };
+                console.log("[CHAT DEBUG] 3. Envoi fetch vers /api/chat...");
+
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(requestBody),
+                });
+                console.log("[CHAT DEBUG] 4. Réponse reçue, status:", response.status);
+
+                const rawText = await response.text();
+                console.log("[CHAT DEBUG] 5. Réponse brute (texte):", rawText.substring(0, 2000));
+
+                let data;
+                try {
+                    data = JSON.parse(rawText);
+                } catch (parseErr) {
+                    console.error("[CHAT DEBUG] ERREUR: La réponse n'est pas du JSON valide:", parseErr);
+                    chatMessages.removeChild(loadingElement);
+                    addMessage("Erreur: réponse non-JSON du serveur. Voir console F12.", 'ai');
+                    return;
+                }
+
+                chatMessages.removeChild(loadingElement);
+
+                if (!response.ok) {
+                    console.error("[CHAT DEBUG] 6. ERREUR HTTP", response.status, data);
+                    addMessage("Erreur serveur " + response.status + ". Voir console F12.", 'ai');
+                    return;
+                }
+
+                console.log("[CHAT DEBUG] 6. data.candidates:", JSON.stringify(data.candidates));
+
+                if (data.candidates && data.candidates.length > 0 && data.candidates[0].content && data.candidates[0].content.parts && data.candidates[0].content.parts[0] && data.candidates[0].content.parts[0].text) {
+                    const aiResponse = data.candidates[0].content.parts[0].text;
+                    console.log("[CHAT DEBUG] 7. Réponse IA:", aiResponse);
+                    addMessage(aiResponse, 'ai');
+                    conversationHistory.push({ role: 'model', parts: [{ text: aiResponse }] });
+                } else {
+                    console.warn("[CHAT DEBUG] 7. Pas de candidates valides. Réponse complète:", JSON.stringify(data, null, 2));
+                    addMessage("Désolé, je n'ai pas de réponse. Voir console F12 pour le diagnostic complet.", 'ai');
+                }
+
+            } catch (error) {
+                console.error("[CHAT DEBUG] ERREUR GLOBALE:", error.message, error.stack);
+                addMessage("Erreur: " + error.message + ". Voir console F12.", 'ai');
+            }
+        }
+    }
+
+    // S'assurer que initChat s'exécute même si DOMContentLoaded est déjà passé
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initChat);
+    } else {
+        initChat();
+    }
+  </script>
 </body>
 </html>
