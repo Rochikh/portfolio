@@ -1151,6 +1151,7 @@ footer a:hover { color: var(--accent); }
   <a class="nav-logo" href="#hero">Rochane Kherbouche<span></span></a>
   <ul class="nav-links">
     <li><a href="#about">À propos</a></li>
+    <li><a href="#livre">Livre</a></li>
     <li><a href="#articles">Articles</a></li>
     <li><a href="#conferences">Conférences</a></li>
     <li><a href="#projets">Projets</a></li>
@@ -1211,6 +1212,65 @@ footer a:hover { color: var(--accent); }
       <div class="stat-item">
         <div class="stat-num" data-target="15">0</div>
         <div class="stat-label">Infographies</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LIVRE -->
+<style>
+  #livre .book-grid{display:grid;grid-template-columns:minmax(300px,440px) 1fr;gap:3.5rem;align-items:center;margin-top:2.5rem;}
+  #livre .book3d-frame{position:relative;width:100%;height:500px;background:var(--off);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(26,25,22,.10);}
+  #livre .book3d-frame iframe{width:100%;height:100%;border:none;display:block;}
+  #livre .book3d-hint{position:absolute;bottom:10px;left:0;right:0;text-align:center;font-size:.72rem;color:var(--muted2);pointer-events:none;}
+  #livre .book-status{display:inline-block;background:var(--accent-light);color:var(--accent);font-weight:700;font-size:.78rem;padding:.4rem .9rem;border-radius:999px;margin-bottom:1.2rem;}
+  #livre .book-h{font-size:clamp(1.4rem,2.4vw,1.9rem);font-weight:800;letter-spacing:-.02em;line-height:1.18;color:var(--text);margin:0 0 .5rem;}
+  #livre .book-stitle{font-family:Georgia,serif;font-style:italic;font-size:1.02rem;color:var(--muted);margin-bottom:1.2rem;}
+  #livre .book-lead{color:var(--muted);line-height:1.7;font-size:.96rem;}
+  #livre .book-stats{display:flex;gap:1.8rem;flex-wrap:wrap;margin:1.6rem 0;}
+  #livre .book-stat .n{font-size:1.5rem;font-weight:800;color:var(--accent);letter-spacing:-.03em;line-height:1;}
+  #livre .book-stat .l{font-size:.74rem;color:var(--muted2);margin-top:.25rem;max-width:130px;line-height:1.3;}
+  #livre .book-meta{font-size:.84rem;color:var(--muted2);margin:0 0 1.6rem;line-height:1.6;}
+  #livre .book-meta strong{color:var(--text);font-weight:600;}
+  #livre .book-actions{display:flex;gap:.8rem;flex-wrap:wrap;align-items:center;}
+  #livre .book-note{font-size:.78rem;color:var(--muted2);margin-top:.8rem;}
+  @media(max-width:860px){#livre .book-grid{grid-template-columns:1fr;gap:2rem;}#livre .book3d-frame{height:380px;}}
+</style>
+<div class="section-wrap" id="livre">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-tag">À paraître</p>
+      <h2 class="section-title">Le livre</h2>
+      <p class="section-sub">Un manuel pratique pour repenser l'évaluation des apprentissages quand l'IA générative rebat les cartes.</p>
+    </div>
+    <div class="book-grid reveal">
+      <div class="book3d-frame">
+        <iframe src="https://livre3d.rochane.fr/" title="Couverture 3D du livre, à faire tourner" loading="lazy" allowfullscreen></iframe>
+        <div class="book3d-hint">Glisser pour tourner · molette pour zoomer</div>
+      </div>
+      <div class="book-text">
+        <span class="book-status">À paraître · fin juin 2026</span>
+        <h3 class="book-h">Évaluer en formation à l'ère de l'IA générative</h3>
+        <p class="book-stitle">Manuel pratique pour repenser l'évaluation des apprentissages</p>
+        <p class="book-lead">
+          Les détecteurs d'IA échouent. La surveillance épuise. La question utile n'est plus d'empêcher l'IA,
+          mais de redéfinir ce que l'évaluation mesure. Cet ouvrage déplace le centre de gravité : du produit fini
+          vers le processus documenté, de l'interdiction vers le discernement. Trois postures concrètes,
+          quatre parties, et une boîte à outils de huit fiches applicables.
+        </p>
+        <div class="book-stats">
+          <div class="book-stat"><div class="n">88 %</div><div class="l">d'étudiants UK utilisent l'IA pour leurs travaux évalués (HEPI, 2025)</div></div>
+          <div class="book-stat"><div class="n">48</div><div class="l">professionnels francophones enquêtés</div></div>
+          <div class="book-stat"><div class="n">300+</div><div class="l">sources scientifiques mobilisées</div></div>
+        </div>
+        <p class="book-meta">
+          <strong>Chronique Sociale</strong> · Préface de la P<sup>r</sup> Christelle Lison (Université de Sherbrooke) · ISBN 978-2-38548-104-9 · 26,90 €
+        </p>
+        <div class="book-actions">
+          <a href="https://livre.rochane.fr" target="_blank" rel="noopener" class="btn btn-fill">Recevoir l'extrait gratuit →</a>
+          <a href="https://livre3d.rochane.fr/" target="_blank" rel="noopener" class="btn btn-outline">Voir la couverture en grand</a>
+        </div>
+        <p class="book-note">Préface intégrale et sommaire détaillé en téléchargement. Notification à la sortie, trois emails maximum, pas de spam.</p>
       </div>
     </div>
   </div>
@@ -1390,34 +1450,6 @@ footer a:hover { color: var(--accent); }
     <p class="section-sub">Ressources et outils développés pour faciliter l'intégration de l'IA dans la formation.</p>
   </div>
   <div class="projects-grid">
-    <a href="https://livre.rochane.fr" target="_blank" rel="noopener noreferrer" class="proj-card reveal">
-      <div class="proj-visual" style="background: linear-gradient(135deg, #fff0ea, #fde8d8); display:flex; align-items:center; justify-content:center;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="72" height="72" fill="none">
-          <!-- Livre ouvert : reliure centrale -->
-          <path d="M40 20 L40 64" stroke="#e8520a" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
-          <!-- Page gauche -->
-          <path d="M40 20 Q26 18 14 22 L14 60 Q26 56 40 60 Z" fill="#e8520a" fill-opacity="0.12" stroke="#e8520a" stroke-width="2" stroke-linejoin="round"/>
-          <!-- Page droite -->
-          <path d="M40 20 Q54 18 66 22 L66 60 Q54 56 40 60 Z" fill="#e8520a" fill-opacity="0.18" stroke="#e8520a" stroke-width="2" stroke-linejoin="round"/>
-          <!-- Lignes de texte page gauche -->
-          <line x1="20" y1="30" x2="34" y2="30" stroke="#e8520a" stroke-width="1.5" stroke-linecap="round" opacity="0.65"/>
-          <line x1="20" y1="36" x2="32" y2="36" stroke="#e8520a" stroke-width="1.5" stroke-linecap="round" opacity="0.45"/>
-          <line x1="20" y1="42" x2="34" y2="42" stroke="#e8520a" stroke-width="1.5" stroke-linecap="round" opacity="0.55"/>
-          <line x1="20" y1="48" x2="30" y2="48" stroke="#e8520a" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
-          <!-- Lignes de texte page droite -->
-          <line x1="46" y1="30" x2="60" y2="30" stroke="#e8520a" stroke-width="1.5" stroke-linecap="round" opacity="0.65"/>
-          <line x1="46" y1="36" x2="58" y2="36" stroke="#e8520a" stroke-width="1.5" stroke-linecap="round" opacity="0.45"/>
-          <line x1="46" y1="42" x2="60" y2="42" stroke="#e8520a" stroke-width="1.5" stroke-linecap="round" opacity="0.55"/>
-          <line x1="46" y1="48" x2="56" y2="48" stroke="#e8520a" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
-        </svg>
-      </div>
-      <div class="proj-body">
-        <div class="proj-name">Évaluer en formation à l'ère de l'IA générative</div>
-        <div class="proj-desc">Manuel pratique pour repenser l'évaluation des apprentissages face à l'IA générative. Préface du Pr. Christelle Lison (Université de Sherbrooke). Diagnostic, fondements, méthodologie de transformation, boîte à outils.</div>
-        <div class="proj-tags"><span class="proj-tag">Livre</span><span class="proj-tag">Chronique Sociale</span><span class="proj-tag">Juin 2026</span></div>
-      </div>
-      <div class="proj-footer">Découvrir le livre <span>↗</span></div>
-    </a>
     <a href="https://scenariocreator.rochane.fr/" target="_blank" class="proj-card reveal">
       <div class="proj-visual c1">🤖</div>
       <div class="proj-body">
