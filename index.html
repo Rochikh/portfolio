@@ -4,6 +4,67 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rochane Kherbouche – Technopédagogue & Ambassadeur IA</title>
+<meta name="description" content="Technopédagogue et Ambassadeur IA (francenum.gouv.fr), j'accompagne organisations et institutions dans l'intégration de l'IA en formation. Conférencier international, auteur de « Évaluer en formation à l'ère de l'IA générative » (Chronique Sociale, 2026).">
+<link rel="canonical" href="https://ia.rochane.fr/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="theme-color" content="#e8520a">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://ia.rochane.fr/">
+<meta property="og:site_name" content="Rochane Kherbouche">
+<meta property="og:title" content="Rochane Kherbouche – Technopédagogue & Ambassadeur IA">
+<meta property="og:description" content="L'IA transforme la formation. J'aide organisations et institutions à reprendre la main : conférences, formations, outils. Auteur de « Évaluer en formation à l'ère de l'IA générative » (Chronique Sociale, 2026).">
+<meta property="og:image" content="https://ia.rochane.fr/livre-rochane.jpg">
+<meta property="og:image:alt" content="Rochane Kherbouche présentant son livre « Évaluer en formation à l'ère de l'IA générative »">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Rochane Kherbouche – Technopédagogue & Ambassadeur IA">
+<meta name="twitter:description" content="Conférences, formations et outils pour intégrer l'IA en formation. Auteur de « Évaluer en formation à l'ère de l'IA générative » (Chronique Sociale, 2026).">
+<meta name="twitter:image" content="https://ia.rochane.fr/livre-rochane.jpg">
+
+<!-- Données structurées -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://ia.rochane.fr/#person",
+      "name": "Rochane Kherbouche",
+      "url": "https://ia.rochane.fr/",
+      "image": "https://ia.rochane.fr/rochane.jpg",
+      "jobTitle": "Technopédagogue & Ambassadeur IA",
+      "description": "Technopédagogue et Ambassadeur IA, conférencier international, spécialiste de l'intégration de l'IA générative en formation.",
+      "email": "mailto:ia@rochane.fr",
+      "sameAs": [
+        "https://www.linkedin.com/in/rochanekherbouche",
+        "https://www.francenum.gouv.fr/ambassadeurs-ia"
+      ]
+    },
+    {
+      "@type": "Book",
+      "name": "Évaluer en formation à l'ère de l'IA générative",
+      "alternateName": "Manuel pratique pour repenser l'évaluation des apprentissages",
+      "author": { "@id": "https://ia.rochane.fr/#person" },
+      "isbn": "978-2-38548-104-9",
+      "inLanguage": "fr",
+      "datePublished": "2026-06-25",
+      "publisher": { "@type": "Organization", "name": "Chronique Sociale" },
+      "image": "https://ia.rochane.fr/livre-rochane.jpg",
+      "offers": {
+        "@type": "Offer",
+        "price": "26.90",
+        "priceCurrency": "EUR",
+        "url": "https://www.chroniquesociale.com/pedagogie-formation/1519-evaluer-en-formation-a-lere-de-lia-generative.html",
+        "availability": "https://schema.org/PreOrder"
+      }
+    }
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -16,8 +77,8 @@
   --line: #e2dfd9;
   --line2: #d0cdc7;
   --text: #1a1916;
-  --muted: #8a8780;
-  --muted2: #b5b2ac;
+  --muted: #6e6b64;
+  --muted2: #94918a;
   --accent: #e8520a;
   --accent-light: #fff0ea;
   --accent-hover: #c94208;
@@ -104,6 +165,32 @@ nav.scrolled { box-shadow: 0 1px 24px rgba(0,0,0,0.06); }
 }
 
 .nav-cta:hover { background: var(--accent-hover) !important; }
+
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.nav-burger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+nav.menu-open .nav-burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+nav.menu-open .nav-burger span:nth-child(2) { opacity: 0; }
+nav.menu-open .nav-burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* ─── HERO ─── */
 #hero {
@@ -254,7 +341,7 @@ nav.scrolled { box-shadow: 0 1px 24px rgba(0,0,0,0.06); }
   border-radius: 14px;
   padding: 1.4rem 1.5rem;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 0;
 }
 
@@ -413,7 +500,6 @@ nav.scrolled { box-shadow: 0 1px 24px rgba(0,0,0,0.06); }
   font-size: 0.88rem;
   font-weight: 500;
   transition: color var(--transition);
-  group: true;
 }
 
 .about-link:hover { color: var(--accent); }
@@ -451,6 +537,49 @@ nav.scrolled { box-shadow: 0 1px 24px rgba(0,0,0,0.06); }
 }
 
 .info-card-text { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+
+/* ─── DÉMARCHE ─── */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+  counter-reset: step;
+}
+
+.step-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.6rem 1.5rem;
+  position: relative;
+  transition: all var(--transition);
+}
+
+.step-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 6px 28px rgba(232,82,10,0.07);
+  transform: translateY(-3px);
+}
+
+.step-num {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent);
+  opacity: 0.25;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 0.8rem;
+}
+
+.step-title {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+
+.step-desc { font-size: 0.86rem; color: var(--muted); line-height: 1.65; }
 
 /* ─── ARTICLES ─── */
 .articles-grid {
@@ -611,53 +740,54 @@ nav.scrolled { box-shadow: 0 1px 24px rgba(0,0,0,0.06); }
   gap: 1.2rem;
 }
 
-/* Infographies accordion */
-.infog-accordion {
-  border: 1px solid var(--line);
-  border-radius: 14px;
+/* Infographies : grille visuelle */
+.infog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 0.9rem;
+  margin-top: 2rem;
+}
+.infog-card {
   background: var(--white);
-  overflow: hidden;
-}
-.infog-summary {
-  padding: 1rem 1.4rem;
-  font-weight: 700;
-  font-size: 1rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  list-style: none;
-  user-select: none;
-  color: var(--text);
-  transition: background .2s;
-}
-.infog-summary:hover { background: var(--bg); }
-.infog-summary::-webkit-details-marker { display: none; }
-.infog-chevron { font-size: .85rem; color: var(--muted); transition: transform .25s; }
-details.infog-accordion[open] .infog-chevron { transform: rotate(180deg); }
-.infog-list {
-  list-style: none;
-  margin: 0;
-  padding: 0 0 .6rem 0;
-  border-top: 1px solid var(--line);
-}
-.infog-list li {
-  border-bottom: 1px solid var(--line);
-}
-.infog-list li:last-child { border-bottom: none; }
-.infog-list a {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: .85rem 1.4rem;
-  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.2rem 1.3rem;
   text-decoration: none;
-  font-size: .95rem;
-  transition: background .15s, color .15s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  transition: all var(--transition);
 }
-.infog-list a::after { content: "↗"; font-size: .85rem; color: var(--muted); margin-left: .5rem; flex-shrink: 0; }
-.infog-list a:hover { background: var(--accent-light, #fff3ee); color: var(--accent); }
-.infog-list a:hover::after { color: var(--accent); }
+.infog-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 6px 24px rgba(232,82,10,0.08);
+  transform: translateY(-3px);
+}
+.infog-idx {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--accent);
+  opacity: 0.55;
+  letter-spacing: 0.08em;
+}
+.infog-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+}
+.infog-open {
+  margin-top: auto;
+  font-size: 0.76rem;
+  color: var(--muted2);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: color var(--transition), gap var(--transition);
+}
+.infog-card:hover .infog-open { color: var(--accent); gap: 0.6rem; }
 
 .proj-card {
   background: var(--white);
@@ -899,7 +1029,34 @@ footer a:hover { color: var(--accent); }
   .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
   .conf-grid { grid-template-columns: 1fr; }
   nav { padding: 0 1.5rem; }
-  nav .nav-links { display: none; }
+  .nav-burger { display: flex; }
+  nav .nav-links {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: var(--white);
+    border-bottom: 1px solid var(--line);
+    padding: 0.5rem 0 1rem;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+  }
+  nav.menu-open .nav-links { display: flex; }
+  nav .nav-links li { width: 100%; }
+  nav .nav-links a {
+    display: block;
+    padding: 0.85rem 1.5rem;
+    font-size: 0.95rem;
+    color: var(--text);
+  }
+  nav .nav-links a.nav-cta {
+    margin: 0.6rem 1.5rem 0;
+    border-radius: 8px;
+    text-align: center;
+  }
   .section-wrap { padding: 72px 1.5rem; }
   #trust { padding: 36px 1.5rem; }
   #community { padding: 72px 1.5rem; }
@@ -1149,13 +1306,16 @@ footer a:hover { color: var(--accent); }
 <!-- NAV -->
 <nav id="main-nav">
   <a class="nav-logo" href="#hero">Rochane Kherbouche<span></span></a>
-  <ul class="nav-links">
+  <button class="nav-burger" id="nav-burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-menu">
     <li><a href="#about">À propos</a></li>
     <li><a href="#livre">Livre</a></li>
-    <li><a href="#articles">Articles</a></li>
+    <li><a href="#demarche">Démarche</a></li>
     <li><a href="#conferences">Conférences</a></li>
     <li><a href="#projets">Projets</a></li>
-    <li><a href="#podcasts">Podcasts</a></li>
+    <li><a href="#podcasts">Médias</a></li>
     <li><a href="#contact" class="nav-cta">Contact</a></li>
   </ul>
 </nav>
@@ -1164,14 +1324,15 @@ footer a:hover { color: var(--accent); }
 <div id="hero">
   <div class="hero-left reveal">
     <div class="hero-label">Ambassadeur IA · francenum.gouv.fr</div>
-    <h1 class="hero-title">Technopédagogue<br>&amp; <em>Ambassadeur</em><br>IA</h1>
+    <h1 class="hero-title">L'IA transforme<br>la formation.<br><em>Reprenez la main.</em></h1>
     <p class="hero-sub">
-      J'accompagne <strong>organisations et institutions</strong> dans l'intégration stratégique de l'IA en formation.
-      Conférencier international, technopédagogue, créateur d'outils IA pour l'éducation.
+      Technopédagogue et <strong>Ambassadeur IA</strong>, j'accompagne organisations et institutions
+      dans l'intégration stratégique de l'IA en formation : conférences, ateliers, outils concrets.
+      Auteur de <strong>« Évaluer en formation à l'ère de l'IA générative »</strong> (Chronique Sociale, 2026).
     </p>
     <div class="hero-actions">
-      <a href="#conferences" class="btn btn-fill">Mes interventions →</a>
-      <a href="#contact" class="btn btn-outline">Me contacter</a>
+      <a href="#contact" class="btn btn-fill">Réserver une intervention →</a>
+      <a href="#demarche" class="btn btn-outline">Découvrir ma démarche</a>
     </div>
   </div>
 
@@ -1183,7 +1344,7 @@ footer a:hover { color: var(--accent); }
         class="hero-photo"
       />
       <div class="hero-name">Rochane Kherbouche</div>
-      <div class="hero-role">Technopédagogue &amp; Ambassadeur IA · France &amp; Bruxelles</div>
+      <div class="hero-role">Technopédagogue &amp; Ambassadeur IA · Lille · Bruxelles · International</div>
       <div class="hero-tag-row">
         <span class="htag">IA &amp; Formation</span>
         <span class="htag">Conférencier</span>
@@ -1194,24 +1355,20 @@ footer a:hover { color: var(--accent); }
 
     <div class="stats-card">
       <div class="stat-item">
-        <div class="stat-num" data-target="6">0</div>
-        <div class="stat-label">Articles</div>
+        <div class="stat-num" data-target="35" data-suffix="+">0</div>
+        <div class="stat-label">Inter&shy;ventions</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num" data-target="14">0</div>
-        <div class="stat-label">Confé&shy;rences</div>
+        <div class="stat-num" data-target="7">0</div>
+        <div class="stat-label">Pays</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num" data-target="22">0</div>
-        <div class="stat-label">Forma&shy;tions</div>
+        <div class="stat-num" data-target="1000" data-suffix="+">0</div>
+        <div class="stat-label">Membres commu&shy;nauté</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num" data-target="3">0</div>
-        <div class="stat-label">Webinaires</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num" data-target="15">0</div>
-        <div class="stat-label">Infographies</div>
+        <div class="stat-num" data-target="20" data-suffix="+">0</div>
+        <div class="stat-label">Outils &amp; ressources</div>
       </div>
     </div>
   </div>
@@ -1234,7 +1391,12 @@ footer a:hover { color: var(--accent); }
   #livre .book-meta strong{color:var(--text);font-weight:600;}
   #livre .book-actions{display:flex;gap:.8rem;flex-wrap:wrap;align-items:center;}
   #livre .book-note{font-size:.78rem;color:var(--muted2);margin-top:.8rem;}
-  @media(max-width:860px){#livre .book-grid{grid-template-columns:1fr;gap:2rem;}#livre .book3d-frame{height:380px;}}
+  #livre .book-visual{position:relative;}
+  #livre .book-polaroid{position:absolute;bottom:-26px;right:-18px;width:158px;background:var(--white);border:1px solid var(--line);border-radius:10px;padding:8px 8px 10px;box-shadow:0 14px 36px rgba(26,25,22,.18);transform:rotate(-4deg);transition:transform var(--transition);z-index:2;}
+  #livre .book-polaroid:hover{transform:rotate(-1deg) scale(1.04);}
+  #livre .book-polaroid img{width:100%;height:auto;display:block;border-radius:6px;}
+  #livre .book-polaroid figcaption{font-size:.66rem;color:var(--muted);text-align:center;padding-top:6px;font-weight:600;line-height:1.35;}
+  @media(max-width:860px){#livre .book-grid{grid-template-columns:1fr;gap:2rem;}#livre .book3d-frame{height:380px;}#livre .book-polaroid{position:static;width:180px;margin:1rem auto 0;transform:rotate(-2deg);}}
 </style>
 <div class="section-wrap" id="livre">
   <div class="section-inner">
@@ -1244,9 +1406,15 @@ footer a:hover { color: var(--accent); }
       <p class="section-sub">Un manuel pratique pour repenser l'évaluation des apprentissages quand l'IA générative rebat les cartes.</p>
     </div>
     <div class="book-grid reveal">
-      <div class="book3d-frame">
-        <iframe src="https://livre3d.rochane.fr/" title="Couverture 3D du livre, à faire tourner" loading="lazy" allowfullscreen></iframe>
-        <div class="book3d-hint">Glisser pour tourner · molette pour zoomer</div>
+      <div class="book-visual">
+        <div class="book3d-frame">
+          <iframe src="https://livre3d.rochane.fr/" title="Couverture 3D du livre, à faire tourner" loading="lazy" allowfullscreen></iframe>
+          <div class="book3d-hint">Glisser pour tourner · molette pour zoomer</div>
+        </div>
+        <figure class="book-polaroid">
+          <img src="/livre-rochane.jpg" alt="Rochane Kherbouche tenant l'exemplaire imprimé de son livre" loading="lazy" width="900" height="1084">
+          <figcaption>L'exemplaire imprimé, en avant-première</figcaption>
+        </figure>
       </div>
       <div class="book-text">
         <span class="book-status">Sortie le 25 juin 2026 · précommande ouverte</span>
@@ -1278,34 +1446,60 @@ footer a:hover { color: var(--accent); }
 
 <!-- TRUST -->
 <div id="trust">
-  <p class="trust-label">Institutions partenaires</p>
+  <p class="trust-label">Ils m'ont fait confiance</p>
   <div class="logos-wrap">
-    <div class="logo-chip"><img src="https://flagcdn.com/w40/eu.png" srcset="https://flagcdn.com/w80/eu.png 2x" alt="EU" width="28" height="20" loading="lazy"> Commission européenne</div>
-    <div class="logo-chip">🇺🇳 Nations Unies</div>
-    <div class="logo-chip">🎓 ULB Bruxelles</div>
-    <div class="logo-chip">🌐 UNESCO</div>
-    <div class="logo-chip">📺 RTBF Academy</div>
-    <div class="logo-chip"><img src="https://flagcdn.com/w40/fr.png" srcset="https://flagcdn.com/w80/fr.png 2x" alt="FR" width="28" height="20" loading="lazy"> CNFPT</div>
-    <div class="logo-chip">📡 France Éducation International</div>
-    <div class="logo-chip">🎙️ Magazine Elle</div>
-    <div class="logo-chip">🎓 Université de Lille</div>
-    <div class="logo-chip">🏫 Bruxelles Formation</div>
+    <div class="logo-chip">Commission européenne</div>
+    <div class="logo-chip">Nations Unies</div>
+    <div class="logo-chip">UNESCO</div>
+    <div class="logo-chip">ULB Bruxelles</div>
+    <div class="logo-chip">RTBF Academy</div>
+    <div class="logo-chip">CNFPT</div>
+    <div class="logo-chip">France Éducation International</div>
+    <div class="logo-chip">CELV · Conseil de l'Europe</div>
+    <div class="logo-chip">Magazine Elle</div>
+    <div class="logo-chip">Université de Lille</div>
+    <div class="logo-chip">Bruxelles Formation</div>
   </div>
 </div>
+
+<!-- TÉMOIGNAGES : section prête à l'emploi, à décommenter dès que 2-3 vraies
+     citations (nom + fonction + institution) sont collectées.
+<div class="section-wrap" id="temoignages">
+  <div class="reveal">
+    <p class="section-tag">Ils en parlent</p>
+    <h2 class="section-title">Témoignages</h2>
+  </div>
+  <div class="about-right" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;">
+    <div class="info-card reveal">
+      <div class="info-card-text" style="font-size:0.95rem;font-style:italic;margin-bottom:0.8rem;">« Citation du témoignage ici. »</div>
+      <div class="info-card-title">Prénom Nom · Fonction · Institution</div>
+    </div>
+    <div class="info-card reveal">
+      <div class="info-card-text" style="font-size:0.95rem;font-style:italic;margin-bottom:0.8rem;">« Citation du témoignage ici. »</div>
+      <div class="info-card-title">Prénom Nom · Fonction · Institution</div>
+    </div>
+    <div class="info-card reveal">
+      <div class="info-card-text" style="font-size:0.95rem;font-style:italic;margin-bottom:0.8rem;">« Citation du témoignage ici. »</div>
+      <div class="info-card-title">Prénom Nom · Fonction · Institution</div>
+    </div>
+  </div>
+</div>
+-->
+
 
 <!-- ABOUT -->
 <div class="section-wrap" id="about">
   <div class="about-grid">
     <div class="reveal">
       <p class="section-tag">Profil</p>
-      <h2 class="section-title">Technopédagogue &amp;<br>Ambassadeur IA</h2>
+      <h2 class="section-title">Rendre l'IA utile,<br>comprise et inclusive</h2>
       <p class="about-body">
-        Basé en France, près de Lille, je travaille à Bruxelles et interviens à l'international.
+        Basé près de Lille, actif à Bruxelles, j'interviens à l'international.
         Reconnu comme <strong>Ambassadeur IA</strong> par le Ministère de l'Économie et des Finances,
         j'accompagne l'intégration stratégique de l'IA dans les dispositifs de formation.
       </p>
       <p class="about-body">
-        Belgique, France, Tunisie, Burundi, Jordanie, auprès d'institutions européennes, onusiennes et universitaires.
+        Belgique, France, Autriche, Tunisie, Algérie, Burundi, Jordanie : auprès d'institutions européennes, onusiennes et universitaires.
       </p>
       <div class="skills-wrap">
         <span class="skill-tag">IA &amp; Pédagogie inclusive</span>
@@ -1341,8 +1535,41 @@ footer a:hover { color: var(--accent); }
   </div>
 </div>
 
+<!-- DÉMARCHE -->
+<div class="section-wrap bg-off" id="demarche">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-tag">Méthode</p>
+      <h2 class="section-title">Ma démarche</h2>
+      <p class="section-sub">Pas de conférence sur étagère : chaque intervention suit le même fil exigeant, du diagnostic au suivi. C'est ce qui fait qu'elle laisse des traces.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card reveal">
+        <div class="step-num">01</div>
+        <div class="step-title">Diagnostic</div>
+        <div class="step-desc">Échange en amont pour comprendre votre contexte, vos publics et vos contraintes. L'intervention part de vos pratiques réelles, pas d'un support générique.</div>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">02</div>
+        <div class="step-title">Conception</div>
+        <div class="step-desc">Scénario pédagogique transmis avant la session, objectifs et livrables définis. Chacun sait pourquoi il vient et ce qu'il en retirera.</div>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">03</div>
+        <div class="step-title">Animation</div>
+        <div class="step-desc">Formats actifs où l'on manipule les outils en séance, en présentiel, à distance ou en hybride, quelle que soit la taille du groupe.</div>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">04</div>
+        <div class="step-title">Suivi</div>
+        <div class="step-desc">Les participants repartent avec une banque de ressources IA et peuvent me recontacter après la session. L'apprentissage s'ancre dans la durée.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ARTICLES -->
-<div class="section-wrap bg-off" id="articles">
+<div class="section-wrap" id="articles">
   <div class="section-inner">
     <div class="reveal">
       <p class="section-tag">Publications</p>
@@ -1385,7 +1612,8 @@ footer a:hover { color: var(--accent); }
 </div>
 
 <!-- CONFERENCES -->
-<div class="section-wrap" id="conferences">
+<div class="section-wrap bg-off" id="conferences">
+  <div class="section-inner">
   <div class="reveal">
     <p class="section-tag">Conférences</p>
     <h2 class="section-title">Interventions internationales</h2>
@@ -1407,10 +1635,11 @@ footer a:hover { color: var(--accent); }
     <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="BE" width="28" height="20" loading="lazy"></div><div><div class="conf-title">Elle Active (Magazine Elle), IA et l'emploi</div><div class="conf-meta"><span class="conf-loc">Bruxelles</span><span>IA &amp; Emploi</span></div></div></div>
     <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/tn.png" srcset="https://flagcdn.com/w80/tn.png 2x" alt="TN" width="28" height="20" loading="lazy"></div><div><div class="conf-title">Forum Citoyen de l'Innovation en Éducation, Sousse</div><div class="conf-meta"><span class="conf-loc">Sousse</span><span>Innovation</span></div></div></div>
   </div>
+  </div>
 </div>
 
 <!-- FORMATIONS -->
-<div class="section-wrap bg-off" id="formations">
+<div class="section-wrap" id="formations">
   <div class="section-inner">
     <div class="reveal">
       <p class="section-tag">Ateliers &amp; Formations</p>
@@ -1444,7 +1673,8 @@ footer a:hover { color: var(--accent); }
 </div>
 
 <!-- PROJETS -->
-<div class="section-wrap" id="projets">
+<div class="section-wrap bg-off" id="projets">
+  <div class="section-inner">
   <div class="reveal">
     <p class="section-tag">Créations</p>
     <h2 class="section-title">Projets &amp; Outils</h2>
@@ -1624,7 +1854,10 @@ footer a:hover { color: var(--accent); }
       <div class="proj-footer">Voir l'infographie <span>↗</span></div>
     </a>
   </div>
+  </div>
 </div>
+
+<!-- INFOGRAPHIES -->
 <div class="section-wrap" id="infographies">
   <div class="section-inner">
     <div class="reveal">
@@ -1632,27 +1865,22 @@ footer a:hover { color: var(--accent); }
       <h2 class="section-title">Mes infographies</h2>
       <p class="section-sub">Supports pédagogiques interactifs sur l'IA, la pédagogie et le numérique, libres d'accès et partageables.</p>
     </div>
-    <div class="reveal" style="margin-top:2rem;">
-      <details class="infog-accordion">
-        <summary class="infog-summary">15 infographies disponibles <span class="infog-chevron">▾</span></summary>
-        <ul class="infog-list">
-          <li><a href="https://ia-persistance.rochane.fr/" target="_blank">Quand l'IA aide trop, ce qui s'efface en silence</a></li>
-          <li><a href="https://ia-conso.rochane.fr/" target="_blank">IA et consommation énergétique</a></li>
-          <li><a href="https://ia-critique.rochane.fr/" target="_blank">L'IA avec esprit critique</a></li>
-          <li><a href="https://ia-demystifiee.rochane.fr/" target="_blank">Comprendre l'IA en 5 concepts</a></li>
-          <li><a href="https://ia-classe.rochane.fr/" target="_blank">IA responsable en classe</a></li>
-          <li><a href="https://ia-codes.rochane.fr/" target="_blank">4 codes pour transformer tes prompts IA</a></li>
-          <li><a href="https://ia-contexte.rochane.fr/" target="_blank">Contexte caché : l'efficacité des fausses questions</a></li>
-          <li><a href="https://ia-fonction.rochane.fr/" target="_blank">LLM = f(x) → y</a></li>
-          <li><a href="https://ia-triangle.rochane.fr/" target="_blank">IA : Partenaire ou Piège ?</a></li>
-          <li><a href="https://ia-rgpd.rochane.fr/" target="_blank">Check-list RGPD et IA dans l'éducation</a></li>
-          <li><a href="https://ia-friction.rochane.fr/" target="_blank">La disparition de la friction intellectuelle</a></li>
-          <li><a href="https://ia-typologies.rochane.fr/" target="_blank">Les différents types d'IA : comparaison (FR)</a></li>
-          <li><a href="https://ia-typologiesen.rochane.fr/" target="_blank">Different Types of AI: Comparison (EN)</a></li>
-          <li><a href="https://ia-transparence.rochane.fr/" target="_blank">Bonnes pratiques pour les écrits assistés par IA</a></li>
-          <li><a href="https://llm-fallacy.rochane.fr/" target="_blank">L'illusion de compétence à l'ère de l'IA (LLM Fallacy)</a></li>
-        </ul>
-      </details>
+    <div class="infog-grid">
+      <a class="infog-card reveal" href="https://ia-persistance.rochane.fr/" target="_blank" rel="noopener"><span class="infog-idx">N°15</span><span class="infog-name">Quand l'IA aide trop, ce qui s'efface en silence</span><span class="infog-open">Voir l'infographie <span>↗</span></span></a>
+      <a class="infog-card reveal" href="https://ia-conso.rochane.fr/" target="_blank" rel="noopener"><span class="infog-idx">N°14</span><span class="infog-name">IA et consommation énergétique</span><span class="infog-open">Voir l'infographie <span>↗</span></span></a>
+      <a class="infog-card reveal" href="https://ia-critique.rochane.fr/" target="_blank" rel="noopener"><span class="infog-idx">N°13</span><span class="infog-name">L'IA avec esprit critique</span><span class="infog-open">Voir l'infographie <span>↗</span></span></a>
+      <a class="infog-card reveal" href="https://ia-demystifiee.rochane.fr/" target="_blank" rel="noopener"><span class="infog-idx">N°12</span><span class="infog-name">Comprendre l'IA en 5 concepts</span><span class="infog-open">Voir l'infographie <span>↗</span></span></a>
+      <a class="infog-card reveal" href="https://ia-classe.rochane.fr/" target="_blank" rel="noopener"><span class="infog-idx">N°11</span><span class="infog-name">IA responsable en classe</span><span class="infog-open">Voir l'infographie <span>↗</span></span></a>
+      <a class="infog-card reveal" href="https://ia-codes.rochane.fr/" target="_blank" rel="noopener"><span class="infog-idx">N°10</span><span class="infog-name">4 codes pour transformer tes prompts IA</span><span class="infog-open">Voir l'infographie <span>↗</span></span></a>
+      <a class="infog-card reveal" href="https://ia-contexte.rochane.fr/" target="_blank" rel="noopener"><span class="infog-idx">N°09</span><span class="infog-name">Contexte caché : l'efficacité des fausses questions</span><span class="infog-open">Voir l'infographie <span>↗</span></span></a>
+      <a class="infog-card reveal" href="https://ia-fonction.rochane.fr/" target="_blank" rel="noopener"><span class="infog-idx">N°08</span><span class="infog-name">LLM = f(x) → y</span><span class="infog-open">Voir l'infographie <span>↗</span></span></a>
+      <a class="infog-card reveal" href="https://ia-triangle.rochane.fr/" target="_blank" rel="noopener"><span class="infog-idx">N°07</span><span class="infog-name">IA : Partenaire ou Piège ?</span><span class="infog-open">Voir l'infographie <span>↗</span></span></a>
+      <a class="infog-card reveal" href="https://ia-rgpd.rochane.fr/" target="_blank" rel="noopener"><span class="infog-idx">N°06</span><span class="infog-name">Check-list RGPD et IA dans l'éducation</span><span class="infog-open">Voir l'infographie <span>↗</span></span></a>
+      <a class="infog-card reveal" href="https://ia-friction.rochane.fr/" target="_blank" rel="noopener"><span class="infog-idx">N°05</span><span class="infog-name">La disparition de la friction intellectuelle</span><span class="infog-open">Voir l'infographie <span>↗</span></span></a>
+      <a class="infog-card reveal" href="https://ia-typologies.rochane.fr/" target="_blank" rel="noopener"><span class="infog-idx">N°04</span><span class="infog-name">Les différents types d'IA : comparaison (FR)</span><span class="infog-open">Voir l'infographie <span>↗</span></span></a>
+      <a class="infog-card reveal" href="https://ia-typologiesen.rochane.fr/" target="_blank" rel="noopener"><span class="infog-idx">N°03</span><span class="infog-name">Different Types of AI: Comparison (EN)</span><span class="infog-open">Voir l'infographie <span>↗</span></span></a>
+      <a class="infog-card reveal" href="https://ia-transparence.rochane.fr/" target="_blank" rel="noopener"><span class="infog-idx">N°02</span><span class="infog-name">Bonnes pratiques pour les écrits assistés par IA</span><span class="infog-open">Voir l'infographie <span>↗</span></span></a>
+      <a class="infog-card reveal" href="https://llm-fallacy.rochane.fr/" target="_blank" rel="noopener"><span class="infog-idx">N°01</span><span class="infog-name">L'illusion de compétence à l'ère de l'IA (LLM Fallacy)</span><span class="infog-open">Voir l'infographie <span>↗</span></span></a>
     </div>
   </div>
 </div>
@@ -1675,7 +1903,7 @@ footer a:hover { color: var(--accent); }
 
 
 <!-- PODCASTS -->
-<div class="section-wrap bg-off" id="podcasts">
+<div class="section-wrap" id="podcasts">
   <div class="section-inner">
     <div class="reveal">
       <p class="section-tag">Médias</p>
@@ -1770,6 +1998,9 @@ footer a:hover { color: var(--accent); }
         <a href="https://www.linkedin.com/in/rochanekherbouche" target="_blank" class="channel-link">
           <div class="channel-icon">in</div> LinkedIn · Rochane Kherbouche
         </a>
+        <a href="mailto:ia@rochane.fr" class="channel-link">
+          <div class="channel-icon">@</div> ia@rochane.fr
+        </a>
         <a href="https://meet.google.com/wsf-snkf-kcu" target="_blank" class="channel-link">
           <div class="channel-icon">📹</div> Visio Google Meet
         </a>
@@ -1780,13 +2011,12 @@ footer a:hover { color: var(--accent); }
     </div>
     <div class="reveal">
       <form id="contact-form" action="https://formspree.io/f/xnjgbdpw" method="POST">
-        <input type="hidden" name="_replyto" value="ia@rochane.fr">
         <input type="hidden" name="_subject" value="Nouveau message depuis ia.rochane.fr">
-        <div class="form-group"><label>Nom</label><input type="text" name="nom" placeholder="Votre nom" required></div>
-        <div class="form-group"><label>Email</label><input type="email" name="email" placeholder="votre@email.com" required></div>
+        <div class="form-group"><label for="cf-nom">Nom</label><input type="text" id="cf-nom" name="nom" placeholder="Votre nom" autocomplete="name" required></div>
+        <div class="form-group"><label for="cf-email">Email</label><input type="email" id="cf-email" name="_replyto" placeholder="votre@email.com" autocomplete="email" required></div>
         <div class="form-group">
-          <label>Type d'intervention</label>
-          <select name="type">
+          <label for="cf-type">Type d'intervention</label>
+          <select id="cf-type" name="type">
             <option value="">Sélectionner...</option>
             <option>Conférence</option>
             <option>Formation / Atelier</option>
@@ -1794,7 +2024,7 @@ footer a:hover { color: var(--accent); }
             <option>Autre</option>
           </select>
         </div>
-        <div class="form-group"><label>Message</label><textarea name="message" placeholder="Décrivez votre projet..." required></textarea></div>
+        <div class="form-group"><label for="cf-message">Message</label><textarea id="cf-message" name="message" placeholder="Décrivez votre projet..." required></textarea></div>
         <button type="submit" class="btn btn-fill" style="width:100%;justify-content:center;" id="submit-btn">Envoyer →</button>
         <div id="form-success" style="display:none;margin-top:1rem;padding:1rem;background:var(--accent-light);border:1px solid rgba(232,82,10,0.2);border-radius:8px;color:var(--accent);font-size:0.88rem;font-weight:600;text-align:center;">
           Message envoyé. Rochane reviendra vers vous rapidement.
@@ -1810,7 +2040,10 @@ footer a:hover { color: var(--accent); }
 <!-- FOOTER -->
 <footer>
   <div>© 2026 <strong>Rochane Kherbouche</strong> · Technopédagogue &amp; Ambassadeur IA</div>
-  <a href="https://www.francenum.gouv.fr/ambassadeurs-ia" target="_blank">Ambassadeur IA · francenum.gouv.fr</a>
+  <div style="display:flex;gap:1.2rem;flex-wrap:wrap;justify-content:center;">
+    <a href="/mentions-legales.html">Mentions légales &amp; confidentialité</a>
+    <a href="https://www.francenum.gouv.fr/ambassadeurs-ia" target="_blank">Ambassadeur IA · francenum.gouv.fr</a>
+  </div>
 </footer>
 
 <script>
@@ -1818,6 +2051,23 @@ footer a:hover { color: var(--accent); }
 window.addEventListener('scroll', () => {
   document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 10);
 });
+
+// MENU MOBILE
+const navEl = document.getElementById('main-nav');
+const burger = document.getElementById('nav-burger');
+if (burger) {
+  burger.addEventListener('click', () => {
+    const open = navEl.classList.toggle('menu-open');
+    burger.setAttribute('aria-expanded', open);
+    burger.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+  });
+  navEl.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      navEl.classList.remove('menu-open');
+      burger.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
 
 // REVEAL
 const reveals = document.querySelectorAll('.reveal');
@@ -1847,12 +2097,13 @@ if (statsEl) {
       done = true;
       counters.forEach(el => {
         const target = +el.dataset.target;
+        const suffix = el.dataset.suffix || '';
         const start = performance.now();
         const dur = 1100;
         function tick(now) {
           const p = Math.min((now - start) / dur, 1);
           const eased = 1 - Math.pow(1 - p, 3);
-          el.textContent = Math.round(eased * target);
+          el.textContent = Math.round(eased * target).toLocaleString('fr-FR') + (p === 1 ? suffix : '');
           if (p < 1) requestAnimationFrame(tick);
         }
         requestAnimationFrame(tick);
@@ -1862,14 +2113,11 @@ if (statsEl) {
 }
 </script>
 
-<!-- FONT AWESOME -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 <!-- CHATBOT -->
 <div id="chat-container" class="chat-container">
-  <button id="chat-toggle-btn" class="chat-toggle-btn">
-    <i class="fas fa-comment-dots"></i>
-    <i class="fas fa-times"></i>
+  <button id="chat-toggle-btn" class="chat-toggle-btn" aria-label="Ouvrir l'assistant de discussion">
+    <svg class="fa-comment-dots" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 5.94 2 10.8c0 2.1.84 4.03 2.24 5.55-.18 1.4-.77 2.65-1.55 3.6-.16.2-.02.5.23.48 1.93-.18 3.6-.86 4.9-1.66 1.27.46 2.67.73 4.18.73 5.52 0 10-3.94 10-8.8S17.52 2 12 2zM7.5 12.1a1.3 1.3 0 1 1 0-2.6 1.3 1.3 0 0 1 0 2.6zm4.5 0a1.3 1.3 0 1 1 0-2.6 1.3 1.3 0 0 1 0 2.6zm4.5 0a1.3 1.3 0 1 1 0-2.6 1.3 1.3 0 0 1 0 2.6z"/></svg>
+    <svg class="fa-times" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
     <span class="chat-badge" id="chat-badge"></span>
   </button>
   <div class="chat-nudge" id="chat-nudge">
@@ -1968,80 +2216,13 @@ if (statsEl) {
     els.messages.appendChild(loader);
     els.messages.scrollTop = els.messages.scrollHeight;
 
-    var pageContext = '';
-    document.querySelectorAll('body *:not(script):not(style):not(nav)').forEach(function(s) {
-      if (s.children.length === 0 && s.innerText && s.innerText.trim()) {
-        pageContext += s.innerText.trim() + ' ';
-      }
-    });
-
-    const systemPrompt = `Tu es l'assistant virtuel officiel de Rochane Kherbouche. Tu parles uniquement en français, avec un ton professionnel, chaleureux et direct. Tes réponses font maximum 120 mots. Quand tu listes plusieurs éléments, utilise des sauts de ligne (\n) entre chaque point. Ne jamais mettre plusieurs informations sur la même ligne. Si une question est hors-sujet ou concerne un domaine où tu n'as pas d'information, tu invites poliment à contacter Rochane directement via LinkedIn ou le formulaire de contact du site.
-
-=== QUI EST ROCHANE KHERBOUCHE ===
-Technopédagogue basé à Bruxelles, technopédagogue spécialisé dans l'intégration de l'IA en formation. Reconnu Ambassadeur IA par le Ministère de l'Économie et des Finances français (francenum.gouv.fr). Conférencier international ayant intervenu en Belgique, France, Tunisie, Burundi, Jordanie, auprès d'institutions comme la Commission européenne, les Nations Unies, l'UNESCO, l'ULB, la RTBF, le CNFPT, et bien d'autres.
-
-Il est également auteur d'un livre à paraître fin juin 2026 aux éditions Chronique Sociale, intitulé "Évaluer en formation à l'ère de l'IA générative", préfacé par la professeure Christelle Lison (Université de Sherbrooke). Une page dédiée permet de télécharger un extrait (préface intégrale et sommaire détaillé) : [livre.rochane.fr](https://livre.rochane.fr).
-
-=== LANGUES ===
-Rochane intervient principalement en français. Il peut aussi intervenir en arabe. Il comprend l'anglais et peut créer du contenu en anglais, mais il ne fait pas de conférences en anglais. Si quelqu'un demande une conférence en anglais, tu réponds clairement que ce n'est pas proposé.
-
-=== FORMATS D'INTERVENTION ===
-- CONFÉRENCE : intervention de 1h à 2h, format magistral / inspirant, adaptée à tous types de publics (institutions, entreprises, universités, événements culturels).
-- ATELIER / WORKSHOP : durée variable, format actif. Rochane fournit le scénario pédagogique en amont (à lire avant la session), anime le workshop, et les participants repartent avec des outils concrets et une banque de ressources IA. Un suivi post-formation est possible : les participants peuvent recontacter Rochane après.
-- Présentiel, distanciel ou hybride, quelle que soit la taille du groupe.
-
-=== TARIFS ===
-Les tarifs ne sont pas publics. Ils dépendent du contexte, de l'organisation et du type d'intervention. Si quelqu'un demande un tarif, tu réponds : "Les tarifs sont établis au cas par cas selon le contexte. Je vous invite à contacter Rochane directement via LinkedIn ou le formulaire de contact pour un échange personnalisé."
-
-=== DISPONIBILITÉ ET MOBILITÉ ===
-Rochane est disponible. Il est mobile et peut se déplacer hors de Belgique et hors de France pour des interventions. Pour vérifier ses disponibilités précises, un lien calendrier est disponible sur le site.
-
-=== PODCASTS ===
-Rochane a été interviewé dans trois podcasts de plus de 30 minutes :
-1. "Les voix du Digital Learning : l'évaluation à l'heure de l'IA Générative", Rendez-vous en terre digitale (46 min, février 2026)
-2. "IA et compétences – Le futur de la formation professionnelle", Never Stop Learning, épisode 83
-3. "Technopédagogie, ingénierie pédagogique et outils numériques en formation", Numericast, épisode 08
-
-=== CE QUE ROCHANE NE FAIT PAS ===
-- Il ne fait pas de conférences en anglais.
-- Ne spécule pas sur des sujets non listés : invite à contacter directement.
-
-=== FORMAT DES RÉPONSES ===
-Quand tu cites un lien, utilise toujours le format Markdown : [texte descriptif](https://url), par exemple [Voir le calendrier](https://lien) ou [Contacter sur LinkedIn](https://linkedin.com/in/rochanekherbouche). Ne colle jamais une URL brute seule.
-
-=== QUESTIONS FRÉQUENTES ===
-Q: Est-il disponible ?
-R: Oui, Rochane est disponible. Pour ses disponibilités précises, vous pouvez consulter son calendrier directement sur le site ou le contacter via LinkedIn.
-
-Q: Peut-il se déplacer ?
-R: Oui, il est mobile et intervient en Belgique, en France et à l'international.
-
-Q: En quelle langue intervient-il ?
-R: Principalement en français. Il peut aussi intervenir en arabe. Il ne fait pas de conférences en anglais.
-
-Q: Propose-t-il un suivi après la formation ?
-R: Oui, les participants peuvent le recontacter après un atelier.
-
-Q: A-t-il écrit un livre ?
-R: Oui, "Évaluer en formation à l'ère de l'IA générative", aux éditions Chronique Sociale, à paraître fin juin 2026. Préface du Pr. Christelle Lison (Université de Sherbrooke). Pour télécharger un extrait (préface et sommaire) : [livre.rochane.fr](https://livre.rochane.fr).
-
-=== CONTEXTE COMPLÉMENTAIRE DU SITE ===
-${pageContext.substring(0, 8000)}`;
-
     try {
+      // Le prompt système est géré côté serveur (_worker.js) : rien d'autre que
+      // l'historique de conversation ne transite depuis le navigateur.
       var res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          systemInstruction: { parts: [{ text: systemPrompt }] },
-          contents: history,
-          safetySettings: [
-            { category: 'HARM_CATEGORY_HARASSMENT', threshold: 'BLOCK_NONE' },
-            { category: 'HARM_CATEGORY_HATE_SPEECH', threshold: 'BLOCK_NONE' },
-            { category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT', threshold: 'BLOCK_NONE' },
-            { category: 'HARM_CATEGORY_DANGEROUS_CONTENT', threshold: 'BLOCK_NONE' }
-          ]
-        })
+        body: JSON.stringify({ contents: history })
       });
       var data = await res.json();
       els.messages.removeChild(loader);
@@ -2134,7 +2315,7 @@ ${pageContext.substring(0, 8000)}`;
         } else { throw new Error(); }
       } catch(_) {
         var nom  = (form.querySelector('[name="nom"]') || {}).value || '';
-        var mail = (form.querySelector('[name="email"]') || {}).value || '';
+        var mail = (form.querySelector('[name="_replyto"]') || {}).value || '';
         var type = (form.querySelector('[name="type"]') || {}).value || '';
         var msg  = (form.querySelector('[name="message"]') || {}).value || '';
         var sub  = encodeURIComponent('Contact depuis ia.rochane.fr');
