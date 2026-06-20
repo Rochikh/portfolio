@@ -1187,12 +1187,14 @@ footer a:hover { color: var(--accent); }
 
     /* Input area */
     .chat-input-area {
-      display: flex; gap: 0; background: var(--white);
+      display: flex; gap: 0; align-items: flex-end; background: var(--white);
       border-top: 1px solid var(--line);
     }
     #chat-input {
       flex: 1; border: none; outline: none; background: transparent;
       padding: .9rem 1rem; font-family: var(--font); font-size: .88rem; color: var(--text);
+      resize: none; line-height: 1.45; max-height: 140px; overflow-y: auto;
+      box-sizing: border-box; display: block;
     }
     #chat-input::placeholder { color: var(--muted2); }
     #chat-send-btn {
@@ -2134,7 +2136,7 @@ if (statsEl) {
     </div>
     <div id="chat-messages" class="chat-messages"></div>
     <div class="chat-input-area">
-      <input type="text" id="chat-input" placeholder="Votre question ici...">
+      <textarea id="chat-input" rows="1" placeholder="Votre question ici..."></textarea>
       <button id="chat-send-btn">Envoyer</button>
     </div>
   </div>
@@ -2208,6 +2210,7 @@ if (statsEl) {
     if (!text) return;
     addMsg(text, 'user', els);
     els.input.value = '';
+    els.input.style.height = 'auto';
     history.push({ role: 'user', parts: [{ text: text }] });
 
     var loader = document.createElement('div');
@@ -2260,8 +2263,12 @@ if (statsEl) {
     }
 
     if (els.input) {
-      els.input.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') send(els);
+      els.input.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(els); }
+      });
+      els.input.addEventListener('input', function() {
+        els.input.style.height = 'auto';
+        els.input.style.height = els.input.scrollHeight + 'px';
       });
     }
 
