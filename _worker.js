@@ -128,13 +128,24 @@ export default {
           }],
         }));
 
+        // Base de connaissance generee depuis index.html (asset statique du meme
+        // deploiement, lue via le binding ASSETS : aucun appel reseau externe).
+        let knowledgeBase = '';
+        try {
+          const kbResp = await env.ASSETS.fetch(new URL('/knowledge.md', request.url));
+          if (kbResp.ok) knowledgeBase = await kbResp.text();
+        } catch (e) { /* knowledge.md indisponible : on continue sans */ }
+        const fullSystemPrompt = knowledgeBase
+          ? SYSTEM_PROMPT + '\n\n=== BASE DE CONNAISSANCE DETAILLEE (titres et liens des travaux) ===\n' + knowledgeBase
+          : SYSTEM_PROMPT;
+
         const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent?key=${GEMINI_API_KEY}`;
 
         const googleResponse = await fetch(API_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
+            systemInstruction: { parts: [{ text: fullSystemPrompt }] },
             contents,
           }),
         });
