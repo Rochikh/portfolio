@@ -6,7 +6,7 @@ Si une ressource n'a pas d'URL, la decrire sans inventer de lien.
 
 ## Livre
 - Évaluer en formation à l'ère de l'IA générative (Manuel pratique pour repenser l'évaluation des apprentissages)
-  Precommande: https://www.chroniquesociale.com/pedagogie-formation/1519-evaluer-en-formation-a-lere-de-lia-generative.html
+  Commande (paru le 25 juin 2026): https://www.chroniquesociale.com/pedagogie-formation/1519-evaluer-en-formation-a-lere-de-lia-generative.html
   Extrait gratuit et infos: https://livre.rochane.fr
 
 ## Infographies (15)
