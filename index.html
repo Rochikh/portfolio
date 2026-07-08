@@ -59,7 +59,7 @@
         "price": "26.90",
         "priceCurrency": "EUR",
         "url": "https://www.chroniquesociale.com/pedagogie-formation/1519-evaluer-en-formation-a-lere-de-lia-generative.html",
-        "availability": "https://schema.org/PreOrder"
+        "availability": "https://schema.org/InStock"
       }
     }
   ]
@@ -1187,12 +1187,14 @@ footer a:hover { color: var(--accent); }
 
     /* Input area */
     .chat-input-area {
-      display: flex; gap: 0; background: var(--white);
+      display: flex; gap: 0; align-items: flex-end; background: var(--white);
       border-top: 1px solid var(--line);
     }
     #chat-input {
       flex: 1; border: none; outline: none; background: transparent;
       padding: .9rem 1rem; font-family: var(--font); font-size: .88rem; color: var(--text);
+      resize: none; line-height: 1.45; max-height: 140px; overflow-y: auto;
+      box-sizing: border-box; display: block;
     }
     #chat-input::placeholder { color: var(--muted2); }
     #chat-send-btn {
@@ -1355,7 +1357,7 @@ footer a:hover { color: var(--accent); }
 
     <div class="stats-card">
       <div class="stat-item">
-        <div class="stat-num" data-target="35" data-suffix="+">0</div>
+        <div class="stat-num" data-target="40" data-suffix="+">0</div>
         <div class="stat-label">Inter&shy;ventions</div>
       </div>
       <div class="stat-item">
@@ -1401,7 +1403,7 @@ footer a:hover { color: var(--accent); }
 <div class="section-wrap" id="livre">
   <div class="section-inner">
     <div class="reveal">
-      <p class="section-tag">À paraître</p>
+      <p class="section-tag">Disponible</p>
       <h2 class="section-title">Le livre</h2>
       <p class="section-sub">Un manuel pratique pour repenser l'évaluation des apprentissages quand l'IA générative rebat les cartes.</p>
     </div>
@@ -1413,11 +1415,11 @@ footer a:hover { color: var(--accent); }
         </div>
         <figure class="book-polaroid">
           <img src="/livre-rochane.jpg" alt="Rochane Kherbouche tenant l'exemplaire imprimé de son livre" loading="lazy" width="900" height="1084">
-          <figcaption>L'exemplaire imprimé, en avant-première</figcaption>
+          <figcaption>L'exemplaire imprimé, entre mes mains</figcaption>
         </figure>
       </div>
       <div class="book-text">
-        <span class="book-status">Sortie le 25 juin 2026 · précommande ouverte</span>
+        <span class="book-status">Paru le 25 juin 2026 · disponible chez l'éditeur</span>
         <h3 class="book-h">Évaluer en formation à l'ère de l'IA générative</h3>
         <p class="book-stitle">Manuel pratique pour repenser l'évaluation des apprentissages</p>
         <p class="book-lead">
@@ -1435,10 +1437,10 @@ footer a:hover { color: var(--accent); }
           <strong>Chronique Sociale</strong> · Préface de la P<sup>r</sup> Christelle Lison (Université de Sherbrooke) · ISBN 978-2-38548-104-9 · 26,90 €
         </p>
         <div class="book-actions">
-          <a href="https://www.chroniquesociale.com/pedagogie-formation/1519-evaluer-en-formation-a-lere-de-lia-generative.html" target="_blank" rel="noopener" class="btn btn-fill">Précommander · 26,90 € →</a>
+          <a href="https://www.chroniquesociale.com/pedagogie-formation/1519-evaluer-en-formation-a-lere-de-lia-generative.html" target="_blank" rel="noopener" class="btn btn-fill">Commander · 26,90 € →</a>
           <a href="https://livre.rochane.fr" target="_blank" rel="noopener" class="btn btn-outline">Recevoir l'extrait gratuit</a>
         </div>
-        <p class="book-note">Précommande chez l'éditeur Chronique Sociale, livraison à la sortie. L'extrait gratuit (préface intégrale et sommaire) est téléchargeable sans engagement.</p>
+        <p class="book-note">Commande chez l'éditeur Chronique Sociale, expédition sous quelques jours. L'extrait gratuit (préface intégrale et sommaire) est téléchargeable sans engagement.</p>
       </div>
     </div>
   </div>
@@ -1526,6 +1528,10 @@ footer a:hover { color: var(--accent); }
       <div class="info-card">
         <div class="info-card-title">Positionnement</div>
         <div class="info-card-text">À l'intersection de l'IA générative, de l'ingénierie pédagogique et de l'inclusion numérique.</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">Secteurs</div>
+        <div class="info-card-text">Institutions publiques et européennes · Enseignement supérieur · Médias · Entreprises · Santé : formations IA pour médecins, lors de réunions professionnelles organisées par des laboratoires pharmaceutiques</div>
       </div>
       <div class="info-card">
         <div class="info-card-title">Communauté WhatsApp</div>
@@ -1644,10 +1650,11 @@ footer a:hover { color: var(--accent); }
     <div class="reveal">
       <p class="section-tag">Ateliers &amp; Formations</p>
       <h2 class="section-title">Formations &amp; Ateliers</h2>
-      <p class="section-sub">22 interventions auprès d'institutions publiques, universités et entreprises en Europe, Afrique et au Moyen-Orient.</p>
+      <p class="section-sub">26 interventions auprès d'institutions publiques, universités, entreprises et professionnels de santé, en Europe, Afrique et au Moyen-Orient.</p>
     </div>
     <div class="form-grid">
       <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/eu.png" srcset="https://flagcdn.com/w80/eu.png 2x" alt="EU" width="28" height="20" loading="lazy"></div><div><div class="form-title">Design de formation IA</div><div class="form-meta">Commission européenne · AIM Consulting</div><span class="form-badge">Commission UE</span></div></div>
+      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/fr.png" srcset="https://flagcdn.com/w80/fr.png 2x" alt="FR" width="28" height="20" loading="lazy"></div><div><div class="form-title">Initiation à l'IA pour médecins</div><div class="form-meta">Réunions professionnelles de laboratoires pharmaceutiques · Partout en France · 4 sessions, en cours</div><span class="form-badge">Santé</span></div></div>
       <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/dz.png" srcset="https://flagcdn.com/w80/dz.png 2x" alt="DZ" width="28" height="20" loading="lazy"></div><div><div class="form-title">Conception pédagogique avec l'IA</div><div class="form-meta">CESI Alger · Projet UNESCO</div><span class="form-badge">UNESCO</span></div></div>
       <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/fr.png" srcset="https://flagcdn.com/w80/fr.png 2x" alt="FR" width="28" height="20" loading="lazy"></div><div><div class="form-title">Association Nationale des Services TICE</div><div class="form-meta">France</div><span class="form-badge">TICE</span></div></div>
       <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="BE" width="28" height="20" loading="lazy"></div><div><div class="form-title">Institut des hautes études des communications sociales</div><div class="form-meta">Bruxelles</div><span class="form-badge">Communication</span></div></div>
@@ -2134,7 +2141,7 @@ if (statsEl) {
     </div>
     <div id="chat-messages" class="chat-messages"></div>
     <div class="chat-input-area">
-      <input type="text" id="chat-input" placeholder="Votre question ici...">
+      <textarea id="chat-input" rows="1" placeholder="Votre question ici..."></textarea>
       <button id="chat-send-btn">Envoyer</button>
     </div>
   </div>
@@ -2208,6 +2215,7 @@ if (statsEl) {
     if (!text) return;
     addMsg(text, 'user', els);
     els.input.value = '';
+    els.input.style.height = 'auto';
     history.push({ role: 'user', parts: [{ text: text }] });
 
     var loader = document.createElement('div');
@@ -2260,8 +2268,12 @@ if (statsEl) {
     }
 
     if (els.input) {
-      els.input.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') send(els);
+      els.input.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(els); }
+      });
+      els.input.addEventListener('input', function() {
+        els.input.style.height = 'auto';
+        els.input.style.height = els.input.scrollHeight + 'px';
       });
     }
 
