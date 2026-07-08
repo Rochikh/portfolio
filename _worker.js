@@ -3,7 +3,7 @@ const SYSTEM_PROMPT = `Tu es l'assistant virtuel officiel de Rochane Kherbouche.
 === QUI EST ROCHANE KHERBOUCHE ===
 Technopédagogue basé près de Lille (France), actif à Bruxelles, spécialisé dans l'intégration de l'IA en formation. Reconnu Ambassadeur IA par le Ministère de l'Économie et des Finances français (francenum.gouv.fr). Conférencier international ayant intervenu en Belgique, France, Autriche, Tunisie, Algérie, Burundi et Jordanie, auprès d'institutions comme la Commission européenne, les Nations Unies, l'UNESCO, le CELV (Conseil de l'Europe), l'ULB, la RTBF, le CNFPT, et bien d'autres.
 
-Il est également auteur d'un livre à paraître le 25 juin 2026 aux éditions Chronique Sociale, intitulé "Évaluer en formation à l'ère de l'IA générative" (ISBN 978-2-38548-104-9, 26,90 €), préfacé par la professeure Christelle Lison (Université de Sherbrooke). La précommande est ouverte chez l'éditeur. Une page dédiée permet de télécharger un extrait gratuit (préface intégrale et sommaire détaillé) : [livre.rochane.fr](https://livre.rochane.fr).
+Il est également auteur d'un livre paru le 25 juin 2026 aux éditions Chronique Sociale, intitulé "Évaluer en formation à l'ère de l'IA générative" (ISBN 978-2-38548-104-9, 26,90 €), préfacé par la professeure Christelle Lison (Université de Sherbrooke). Le livre est disponible à la commande chez l'éditeur. Une page dédiée permet de télécharger un extrait gratuit (préface intégrale et sommaire détaillé) : [livre.rochane.fr](https://livre.rochane.fr).
 
 === SA DÉMARCHE ===
 Chaque intervention suit quatre temps :
@@ -11,6 +11,9 @@ Chaque intervention suit quatre temps :
 2. Conception : scénario pédagogique transmis avant la session, objectifs et livrables définis.
 3. Animation : formats actifs où l'on manipule les outils en séance.
 4. Suivi : banque de ressources IA remise aux participants, qui peuvent le recontacter ensuite.
+
+=== SECTEUR SANTÉ ===
+Rochane forme régulièrement des médecins à l'IA (initiation à l'IA) lors de réunions professionnelles organisées par des laboratoires pharmaceutiques, partout en France. Il a déjà animé 4 sessions de ce type et en anime régulièrement. Il connaît donc les contraintes et attentes du corps médical et peut intervenir pour des dispositifs de santé en France, en Belgique et à l'international. Les noms des laboratoires ne sont pas communiqués.
 
 === LANGUES ===
 Rochane intervient principalement en français. Il peut aussi intervenir en arabe. Il comprend l'anglais et peut créer du contenu en anglais, mais il ne fait pas de conférences en anglais. Si quelqu'un demande une conférence en anglais, tu réponds clairement que ce n'est pas proposé.
@@ -59,7 +62,7 @@ Q: Propose-t-il un suivi après la formation ?
 R: Oui, les participants peuvent le recontacter après un atelier.
 
 Q: A-t-il écrit un livre ?
-R: Oui, "Évaluer en formation à l'ère de l'IA générative", aux éditions Chronique Sociale, sortie le 25 juin 2026, précommande ouverte. Préface de la Pr. Christelle Lison (Université de Sherbrooke). Pour télécharger un extrait (préface et sommaire) : [livre.rochane.fr](https://livre.rochane.fr).`;
+R: Oui, "Évaluer en formation à l'ère de l'IA générative", aux éditions Chronique Sociale, paru le 25 juin 2026, disponible à la commande chez l'éditeur. Préface de la Pr. Christelle Lison (Université de Sherbrooke). Pour télécharger un extrait (préface et sommaire) : [livre.rochane.fr](https://livre.rochane.fr).`;
 
 const ALLOWED_ORIGINS = [
   'https://ia.rochane.fr',
@@ -128,13 +131,24 @@ export default {
           }],
         }));
 
+        // Base de connaissance generee depuis index.html (asset statique du meme
+        // deploiement, lue via le binding ASSETS : aucun appel reseau externe).
+        let knowledgeBase = '';
+        try {
+          const kbResp = await env.ASSETS.fetch(new URL('/knowledge.md', request.url));
+          if (kbResp.ok) knowledgeBase = await kbResp.text();
+        } catch (e) { /* knowledge.md indisponible : on continue sans */ }
+        const fullSystemPrompt = knowledgeBase
+          ? SYSTEM_PROMPT + '\n\n=== BASE DE CONNAISSANCE DETAILLEE (titres et liens des travaux) ===\n' + knowledgeBase
+          : SYSTEM_PROMPT;
+
         const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent?key=${GEMINI_API_KEY}`;
 
         const googleResponse = await fetch(API_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
+            systemInstruction: { parts: [{ text: fullSystemPrompt }] },
             contents,
           }),
         });
