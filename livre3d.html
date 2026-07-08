@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Évaluer en formation à l'ère de l'IA générative — vue 3D</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{ --ink:#2a2622; --muted:#8a8074; --line:rgba(40,34,28,.16); --red:#E30613; }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; height:100%; overflow:hidden; background:#efece6; }
+  body{
+    font-family:'DM Sans',system-ui,sans-serif; color:var(--ink);
+    background:
+      radial-gradient(120% 90% at 50% 30%, #ffffff 0%, #f3efe8 38%, #e7e2d9 78%, #ddd7cc 100%);
+  }
+  #scene{ position:fixed; inset:0; display:block; touch-action:none; }
+  .vignette{ position:fixed; inset:0; pointer-events:none;
+    box-shadow: inset 0 0 240px 40px rgba(60,50,38,.18); }
+  .topbar{ position:fixed; top:26px; left:30px; right:30px; display:flex; justify-content:space-between; align-items:flex-start; pointer-events:none; }
+  .title{ font-family:'Fraunces',serif; font-style:italic; font-size:17px; color:var(--ink); letter-spacing:.2px; max-width:380px; line-height:1.35; }
+  .title b{ font-style:normal; font-weight:400; display:block; font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:4px; }
+  .author{ text-align:right; font-size:13px; color:var(--muted); letter-spacing:.4px; }
+  .controls{ position:fixed; left:50%; bottom:30px; transform:translateX(-50%); display:flex; gap:8px; background:rgba(255,255,255,.62); backdrop-filter:blur(8px); border:1px solid var(--line); border-radius:999px; padding:7px; }
+  .controls button{ font-family:'DM Sans',sans-serif; font-size:13px; letter-spacing:.3px; color:var(--ink); background:transparent; border:1px solid transparent; border-radius:999px; padding:9px 16px; cursor:pointer; transition:background .18s,border-color .18s; display:flex; align-items:center; gap:7px; }
+  .controls button:hover{ background:rgba(40,34,28,.06); }
+  .controls button.on{ background:var(--ink); color:#f3efe8; }
+  .hint{ position:fixed; left:50%; bottom:84px; transform:translateX(-50%); font-size:11.5px; letter-spacing:.3px; color:var(--ink); background:rgba(255,255,255,.72); backdrop-filter:blur(6px); border:1px solid var(--line); border-radius:999px; padding:6px 14px; white-space:nowrap; pointer-events:none; z-index:5; }
+  @media (max-width:640px){
+    .topbar{ top:14px; left:16px; right:16px; }
+    .title{ font-size:14px; max-width:58%; } .title b{ font-size:10px; letter-spacing:1.4px; }
+    .author{ font-size:11px; }
+    .hint{ bottom:76px; font-size:10.5px; max-width:92vw; white-space:normal; text-align:center; }
+    .controls{ bottom:16px; gap:4px; padding:5px; }
+    .controls button{ font-size:12px; padding:8px 11px; }
+  }
+  .ico{ width:15px; height:15px; display:inline-block; }
+  .err{ position:fixed; inset:0; display:none; align-items:center; justify-content:center; padding:40px; text-align:center; font-size:15px; color:var(--ink); }
+</style>
+</head>
+<body>
+<canvas id="scene"></canvas>
+<div class="vignette"></div>
+
+<div class="topbar">
+  <div class="title"><b>Chronique Sociale · juin 2026</b>Évaluer en formation à l'ère de l'IA générative</div>
+  <div class="author">Rochane Kherbouche</div>
+</div>
+
+<div class="hint">glisser pour tourner · molette pour zoomer · double-clic pour réinitialiser</div>
+
+<div class="controls">
+  <button id="btnPlay" class="on">
+    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+    <span>Pause</span>
+  </button>
+  <button id="btnCover">Couverture</button>
+  <button id="btnBack">Quatrième</button>
+  <button id="btnReset">Réinitialiser</button>
+</div>
+
+<div class="err" id="err">Impossible de charger le moteur 3D. Vérifie ta connexion réseau (chargement depuis cdnjs).</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  if(typeof THREE === 'undefined'){ document.getElementById('err').style.display='flex'; return; }
+  if(matchMedia('(pointer:coarse)').matches){ const h=document.querySelector('.hint'); if(h) h.textContent='glisser pour tourner · pincer pour zoomer · double-tap pour réinitialiser'; }
+
+  /* ---------- Proportions du livre ---------- */
+  const W=1.0, H=1.5, D=0.18;
+  const RED='#E30613';
+
+  /* ---------- Helpers canvas ---------- */
+  function mkCanvas(w,h){ const c=document.createElement('canvas'); c.width=w; c.height=h; return c; }
+  function roundRect(ctx,x,y,w,h,r){ ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); }
+  function wrap(ctx,text,x,y,maxW,lh){ const words=text.split(' '); let line=''; for(let i=0;i<words.length;i++){ const t=line+words[i]+' '; if(ctx.measureText(t).width>maxW && i>0){ ctx.fillText(line.trim(),x,y); line=words[i]+' '; y+=lh; } else line=t; } ctx.fillText(line.trim(),x,y); return y+lh; }
+  function arcText(ctx,str,cx,cy,r,start,font,color){ ctx.save(); ctx.fillStyle=color; ctx.font=font; ctx.textAlign='center'; ctx.textBaseline='middle'; let a=start; for(const ch of str){ const w=ctx.measureText(ch).width; const step=w/r; ctx.save(); ctx.translate(cx+Math.cos(a+step/2)*r, cy+Math.sin(a+step/2)*r); ctx.rotate(a+step/2+Math.PI/2); ctx.fillText(ch,0,0); ctx.restore(); a+=step; } ctx.restore(); }
+  function csLogo(ctx,x,y,s){ ctx.fillStyle=RED; roundRect(ctx,x,y,s,s,s*0.22); ctx.fill(); ctx.fillStyle='#fff'; ctx.beginPath(); ctx.arc(x+s*0.5,y+s*0.5,s*0.3,0,Math.PI*2); ctx.fill(); ctx.strokeStyle=RED; ctx.lineWidth=s*0.12; ctx.beginPath(); ctx.arc(x+s*0.56,y+s*0.5,s*0.16,-0.4,Math.PI*1.3); ctx.stroke(); }
+
+  /* ---------- Couverture (recto) ---------- */
+  function drawCover(){
+    const c=mkCanvas(760,1140), x=c.getContext('2d');
+    x.fillStyle='#fff'; x.fillRect(0,0,760,1140);
+    x.fillStyle=RED; roundRect(x,70,128,475,14,7); x.fill();
+    x.strokeStyle=RED; x.lineWidth=9; x.lineCap='round';
+    x.beginPath(); x.moveTo(545,135); x.quadraticCurveTo(585,135,585,175); x.lineTo(585,610); x.stroke();
+    // sunburst
+    x.save(); x.translate(628,210);
+    for(let i=0;i<9;i++){ x.save(); x.rotate((-95+i*30)*Math.PI/180); x.beginPath(); x.moveTo(0,-32); x.lineTo(0,-58); x.lineWidth=13; x.stroke(); x.restore(); }
+    x.restore();
+    // titre
+    x.fillStyle='#16110d'; x.textAlign='left'; x.textBaseline='alphabetic';
+    x.font='700 46px "Helvetica Neue",Helvetica,Arial,sans-serif';
+    x.fillText('Évaluer en formation',70,322);
+    x.fillText('à l\u2019ère de l\u2019IA générative',70,380);
+    // sous-titre
+    x.fillStyle='#33302c'; x.font='italic 33px Georgia,serif';
+    x.fillText('Manuel pratique',70,478);
+    x.fillText('pour repenser l\u2019évaluation',70,524);
+    x.fillText('des apprentissages',70,570);
+    // auteur
+    x.fillStyle='#16110d'; x.font='700 43px "Helvetica Neue",Helvetica,Arial,sans-serif';
+    x.fillText('Rochane Kherbouche',70,812);
+    x.fillStyle='#33302c'; x.font='26px "Helvetica Neue",Helvetica,Arial,sans-serif';
+    x.fillText('Préface de la',70,852);
+    x.font='700 26px "Helvetica Neue",Helvetica,Arial,sans-serif';
+    x.fillText('P',70,884); var pw=x.measureText('P').width;
+    x.font='700 17px "Helvetica Neue",Helvetica,Arial,sans-serif'; x.fillText('r',70+pw,872);
+    x.font='700 26px "Helvetica Neue",Helvetica,Arial,sans-serif'; x.fillText(' Christelle Lison',70+pw+9,884);
+    // arc bas-droite + label
+    x.strokeStyle=RED; x.lineWidth=9; x.beginPath(); x.arc(435,610,150, 0, 75*Math.PI/180); x.stroke();
+    arcText(x,'Pédagogie – Formation',435,610,124,0.05,'700 15px "Helvetica Neue",Arial,sans-serif',RED);
+    // logo Chronique Sociale
+    csLogo(x,475,948,78);
+    x.fillStyle=RED; x.font='700 23px "Helvetica Neue",Arial,sans-serif'; x.textAlign='left';
+    x.fillText('Chronique',568,978); x.fillText('Sociale',568,1006);
+    // mini roundel bas-gauche
+    x.fillStyle=RED; roundRect(x,70,1046,44,44,10); x.fill();
+    x.fillStyle='#fff'; x.beginPath(); x.arc(92,1068,13,0,Math.PI*2); x.fill();
+    const t=new THREE.CanvasTexture(c); t.anisotropy=16; return t;
+  }
+
+  /* ---------- Quatrième de couverture (verso) ---------- */
+  function drawBack(){
+    const c=mkCanvas(760,1140), x=c.getContext('2d');
+    x.fillStyle='#fff'; x.fillRect(0,0,760,1140);
+    const PAD=44;
+    x.fillStyle=RED; x.font='italic 700 28px "Helvetica Neue",Arial,sans-serif'; x.textAlign='left'; x.textBaseline='alphabetic';
+    x.fillText('Pédagogie',PAD,60); x.fillText('Formation',PAD,92);
+    for(let i=0;i<3;i++){ x.fillRect(PAD+i*14,102,9,9); }
+    csLogo(x,560,38,36);
+    x.fillStyle=RED; x.font='700 23px "Helvetica Neue",Arial,sans-serif'; x.fillText('Chronique',606,58); x.fillText('Sociale',606,82);
+    x.fillStyle='#333'; x.font='16px "Helvetica Neue",Arial,sans-serif'; x.textAlign='right';
+    x.fillText('1, rue Vaubecour - 69002 Lyon',716,112);
+    x.fillText('www.chroniquesociale.com',716,134);
+    x.textAlign='left';
+    x.fillStyle=RED; roundRect(x,PAD,150,672,9,5); x.fill();
+    x.strokeStyle='#16110d'; x.lineWidth=4; x.strokeRect(PAD,184,38,38); x.strokeRect(PAD+8,192,22,22);
+    x.fillStyle='#16110d'; x.font='600 24px "Helvetica Neue",Arial,sans-serif'; x.fillText('l\u2019essentiel',PAD+54,213);
+    x.strokeStyle='#5a534a'; x.lineWidth=2; roundRect(x,PAD,244,672,760,16); x.stroke();
+    const bx=PAD+26, bw=620; let y=288;
+    x.fillStyle='#1b1714';
+    x.textAlign='center'; x.font='700 24px "Helvetica Neue",Arial,sans-serif';
+    y=wrap(x,'Évaluer en formation à l\u2019ère de l\u2019IA générative',PAD+336,y,bw,30);
+    x.font='italic 16px Georgia,serif'; y+=4;
+    y=wrap(x,'Manuel pratique pour repenser l\u2019évaluation des apprentissages',PAD+336,y,bw,21); y+=10;
+    x.textAlign='left'; x.font='14px Georgia,serif';
+    const paras=[
+      '88 % des étudiantes et étudiants britanniques utilisent l\u2019IA pour leurs travaux évalués. Les détecteurs échouent. Les examens surveillés butent sur la logistique, le coût, et l\u2019épuisement. La vraie question n\u2019est plus comment empêcher l\u2019IA, mais ce que nos évaluations sont censées mesurer.',
+      'Ce livre propose une réponse opérationnelle, ancrée dans quinze ans de terrain en formation professionnelle, une enquête auprès de 48 professionnel·les francophones, et plus de trois cents sources scientifiques. Il déplace le centre de gravité de l\u2019évaluation : du produit fini vers le processus documenté, de la surveillance vers la conversation, de l\u2019interdiction vers le discernement.',
+      'Trois postures structurent la transformation. L\u2019IA-Résistant rend l\u2019outil structurellement inutile (oral synchrone, simulation, performance en temps réel). L\u2019IA-Collaboratif documente et évalue l\u2019usage (portfolios avec traces, journaux de bord). L\u2019IA-Formateur transforme l\u2019IA en sparring partner intellectuel (dialogue socratique, analyse critique).',
+      'Quatre parties composent l\u2019ouvrage : diagnostic, fondements théoriques, méthodologie de transformation, et boîte à outils de huit fiches immédiatement applicables.'
+    ];
+    for(const p of paras){ y=wrap(x,p,bx,y,bw,19); y+=5; }
+    x.font='italic 14px Georgia,serif'; x.fillText('Pour les métiers de la formation. Pour évaluer autrement.',bx,y); y+=26;
+    x.font='700 15px Georgia,serif'; x.fillText('L\u2019auteur',bx,y); y+=22;
+    x.font='14px Georgia,serif';
+    y=wrap(x,'Rochane Kherbouche est technopédagogue, docteur en physique, animateur d\u2019une communauté IA de 1000+ professionnels de la formation. Conférencier et consultant auprès d\u2019équipes pédagogiques. Préface de la professeure Christelle Lison (Université de Sherbrooke).',bx,y,bw,19);
+    x.fillStyle='#1b1714'; x.font='15px "Helvetica Neue",Arial,sans-serif';
+    x.fillText('ISBN : 978-2-38548-104-9',PAD,1034);
+    for(let i=0;i<44;i++){ const bw2=(i%4===0)?4:2; x.fillRect(PAD+i*5.4,1044,bw2,52); }
+    x.font='15px "Helvetica Neue",Arial,sans-serif'; x.fillText('9 782385 481049',PAD,1116);
+    x.font='600 16px "Helvetica Neue",Arial,sans-serif'; x.fillText('26,90 € TTC France',320,1050);
+    x.font='14px "Helvetica Neue",Arial,sans-serif'; x.fillStyle='#444';
+    x.fillText('Diffusion Sofedis',320,1078); x.fillText('Distribution Sodis',320,1098);
+    qr(x,560,1032,80); qr(x,652,1032,80);
+    const t=new THREE.CanvasTexture(c); t.anisotropy=16; return t;
+  }
+  function qr(ctx,x,y,s){
+    ctx.fillStyle='#fff'; ctx.fillRect(x,y,s,s);
+    ctx.fillStyle='#111';
+    const n=7, m=s/n;
+    for(let i=0;i<n;i++)for(let j=0;j<n;j++){ if(Math.random()>0.5) ctx.fillRect(x+i*m,y+j*m,m,m); }
+    function finder(fx,fy){ ctx.fillStyle='#111'; ctx.fillRect(fx,fy,m*3,m*3); ctx.fillStyle='#fff'; ctx.fillRect(fx+m,fy+m,m,m); }
+    finder(x,y); finder(x+m*4,y); finder(x,y+m*4);
+  }
+
+  /* ---------- tranche (dos relié) ---------- */
+  function drawSpine(){
+    const c=mkCanvas(150,1140), x=c.getContext('2d');
+    x.fillStyle='#fff'; x.fillRect(0,0,150,1140);
+    x.fillStyle=RED; x.fillRect(28,90,9,960);
+    x.save(); x.translate(78,570); x.rotate(Math.PI/2); x.textAlign='center'; x.textBaseline='middle'; x.fillStyle='#16110d';
+    x.font='26px "Helvetica Neue",Arial,sans-serif'; x.fillText('Rochane Kherbouche',-400,0);
+    x.font='700 28px "Helvetica Neue",Arial,sans-serif'; x.fillText('Évaluer en formation à l\u2019ère de l\u2019IA générative',70,0);
+    x.restore();
+    csLogo(x,54,1042,44);
+    const t=new THREE.CanvasTexture(c); t.anisotropy=16; return t;
+  }
+
+  /* ---------- pages / tranches papier ---------- */
+  function drawPages(w,h,horizontal){
+    const c=mkCanvas(w,h), x=c.getContext('2d');
+    x.fillStyle='#f1ece1'; x.fillRect(0,0,w,h);
+    x.strokeStyle='#dad0bd'; x.lineWidth=1;
+    if(horizontal){ for(let yy=2; yy<h; yy+=3){ x.beginPath(); x.moveTo(0,yy); x.lineTo(w,yy); x.stroke(); } }
+    else { for(let xx=2; xx<w; xx+=3){ x.beginPath(); x.moveTo(xx,0); x.lineTo(xx,h); x.stroke(); } x.fillStyle=RED; x.fillRect(0,0,14,h); }
+    const t=new THREE.CanvasTexture(c); t.anisotropy=16; return t;
+  }
+
+  /* ---------- Construction de la scène ---------- */
+  const canvas=document.getElementById('scene');
+  const renderer=new THREE.WebGLRenderer({canvas:canvas, antialias:true, alpha:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  renderer.outputEncoding=THREE.sRGBEncoding;
+  renderer.shadowMap.enabled=true; renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(32, innerWidth/innerHeight, 0.1, 100);
+  camera.position.set(0,0.12,4.0);
+  let userZoom=1, baseZ=4.0;
+
+  const cover=drawCover(); cover.encoding=THREE.sRGBEncoding;
+  const back=drawBack();   back.encoding=THREE.sRGBEncoding;
+  const spine=drawSpine(); spine.encoding=THREE.sRGBEncoding;
+  const pagesR=drawPages(150,1140,true);  pagesR.encoding=THREE.sRGBEncoding;
+  const pagesT=drawPages(760,150,false);  pagesT.encoding=THREE.sRGBEncoding;
+
+  function mat(tex){ return new THREE.MeshStandardMaterial({map:tex, roughness:0.92, metalness:0.0}); }
+  const mats=[ mat(pagesR), mat(spine), mat(pagesT), mat(pagesT), mat(cover), mat(back) ];
+  const geo=new THREE.BoxGeometry(W,H,D);
+  const book=new THREE.Mesh(geo,mats);
+  book.castShadow=true;
+  const group=new THREE.Group(); group.add(book); scene.add(group);
+  group.rotation.set(-0.07,-0.6,0);
+
+  // sol + ombre
+  const ground=new THREE.Mesh(new THREE.PlaneGeometry(20,20), new THREE.ShadowMaterial({opacity:0.22}));
+  ground.rotation.x=-Math.PI/2; ground.position.y=-H/2-0.02; ground.receiveShadow=true; scene.add(ground);
+
+  // lumières
+  scene.add(new THREE.HemisphereLight(0xffffff,0xcabfa8,0.7));
+  scene.add(new THREE.AmbientLight(0xffffff,0.25));
+  const key=new THREE.DirectionalLight(0xffffff,0.85);
+  key.position.set(3,5,4); key.castShadow=true;
+  key.shadow.mapSize.set(2048,2048);
+  key.shadow.camera.near=0.5; key.shadow.camera.far=20;
+  key.shadow.camera.left=-2; key.shadow.camera.right=2; key.shadow.camera.top=2; key.shadow.camera.bottom=-2;
+  key.shadow.bias=-0.0004; scene.add(key);
+  const fill=new THREE.DirectionalLight(0xffffff,0.25); fill.position.set(-4,2,-3); scene.add(fill);
+
+  /* ---------- Interaction ---------- */
+  let autoRotate=true, dragging=false, px=0, py=0;
+  let target=null; // {x,y} pour animation vers une face
+  const btnPlay=document.getElementById('btnPlay');
+
+  function setPlay(on){ autoRotate=on; btnPlay.classList.toggle('on',on);
+    btnPlay.querySelector('span').textContent = on?'Pause':'Lecture';
+    btnPlay.querySelector('svg').innerHTML = on
+      ? '<rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/>'
+      : '<path d="M7 4 L19 12 L7 20 Z"/>';
+  }
+  btnPlay.onclick=()=>setPlay(!autoRotate);
+
+  function goTo(y,z){ target={x:-0.05,y:y}; if(z!==undefined){ userZoom=z; applyZoom(); } setPlay(false); }
+  document.getElementById('btnCover').onclick=()=>goTo(0,0.72);
+  document.getElementById('btnBack').onclick =()=>goTo(Math.PI,0.6);
+  document.getElementById('btnReset').onclick=()=>{ userZoom=1; applyZoom(); group.rotation.set(-0.07,-0.6,0); target=null; setPlay(true); };
+
+  canvas.addEventListener('pointerdown',e=>{ dragging=true; target=null; px=e.clientX; py=e.clientY; canvas.setPointerCapture(e.pointerId); });
+  canvas.addEventListener('pointermove',e=>{ if(!dragging)return; const dx=e.clientX-px, dy=e.clientY-py; px=e.clientX; py=e.clientY; group.rotation.y+=dx*0.01; group.rotation.x=Math.max(-0.7,Math.min(0.7,group.rotation.x+dy*0.01)); });
+  let lastTap=0;
+  canvas.addEventListener('pointerup',e=>{ dragging=false;
+    if(e.pointerType==='touch'){ const now=Date.now();
+      if(now-lastTap<350){ userZoom=1; applyZoom(); group.rotation.set(-0.07,-0.6,0); target=null; setPlay(true); lastTap=0; }
+      else lastTap=now;
+    }
+  });
+  canvas.addEventListener('pointercancel',()=>{ dragging=false; pinchD=0; });
+  canvas.addEventListener('wheel',e=>{ e.preventDefault(); userZoom=Math.max(0.55,Math.min(1.8,userZoom+e.deltaY*0.0015)); applyZoom(); },{passive:false});
+  let pinchD=0;
+  canvas.addEventListener('touchmove',e=>{ if(e.touches.length===2){ e.preventDefault(); const dx=e.touches[0].clientX-e.touches[1].clientX, dy=e.touches[0].clientY-e.touches[1].clientY, d=Math.hypot(dx,dy); if(pinchD){ userZoom=Math.max(0.55,Math.min(1.8,userZoom*(pinchD/d))); applyZoom(); } pinchD=d; } },{passive:false});
+  canvas.addEventListener('touchend',()=>{ pinchD=0; });
+  canvas.addEventListener('dblclick',()=>{ userZoom=1; applyZoom(); group.rotation.set(-0.07,-0.6,0); target=null; setPlay(true); });
+
+  function fit(){
+    const aspect=innerWidth/innerHeight;
+    camera.aspect=aspect; camera.updateProjectionMatrix();
+    renderer.setSize(innerWidth,innerHeight);
+    const half=Math.tan((32*Math.PI/180)/2);
+    const dH=(H*1.5/2)/half;
+    const dW=(1.02*1.12/2)/(half*aspect);
+    baseZ=Math.max(dH,dW);
+    applyZoom();
+  }
+  function applyZoom(){ camera.position.set(0,0,baseZ*userZoom); camera.lookAt(0,-0.16,0); }
+  addEventListener('resize',fit); fit();
+
+  /* ---------- Boucle ---------- */
+  function tick(){
+    requestAnimationFrame(tick);
+    if(target){
+      group.rotation.x += (target.x-group.rotation.x)*0.12;
+      group.rotation.y += (target.y-group.rotation.y)*0.12;
+      if(Math.abs(target.y-group.rotation.y)<0.002){ group.rotation.y=target.y; group.rotation.x=target.x; target=null; }
+    } else if(autoRotate && !dragging){
+      group.rotation.y += 0.006;
+    }
+    renderer.render(scene,camera);
+  }
+  tick();
+})();
+</script>
+</body>
+</html>
