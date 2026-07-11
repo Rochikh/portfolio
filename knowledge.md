@@ -98,8 +98,9 @@ Si une ressource n'a pas d'URL, la decrire sans inventer de lien.
 - Elle Active (Magazine Elle), IA et l'emploi (Bruxelles IA & Emploi)
 - Forum Citoyen de l'Innovation en Éducation, Sousse (Sousse Innovation)
 
-## Formations et ateliers (21)
+## Formations et ateliers (22)
 - Design de formation IA (Commission européenne · AIM Consulting)
+- Initiation à l'IA pour médecins (Réunions professionnelles de laboratoires pharmaceutiques · Partout en France · 4 sessions, en cours)
 - Conception pédagogique avec l'IA (CESI Alger · Projet UNESCO)
 - Association Nationale des Services TICE (France)
 - Institut des hautes études des communications sociales (Bruxelles)
