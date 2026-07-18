@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Évaluer en formation à l'ère de l'IA générative — vue 3D</title>
+<meta name="robots" content="noindex">
+<title>Évaluer en formation à l'ère de l'IA générative · vue 3D</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
@@ -254,6 +255,8 @@
       : '<path d="M7 4 L19 12 L7 20 Z"/>';
   }
   btnPlay.onclick=()=>setPlay(!autoRotate);
+  /* Rotation automatique coupée si l'utilisateur préfère réduire les animations */
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) setPlay(false);
 
   function goTo(y,z){ target={x:-0.05,y:y}; if(z!==undefined){ userZoom=z; applyZoom(); } setPlay(false); }
   document.getElementById('btnCover').onclick=()=>goTo(0,0.72);
