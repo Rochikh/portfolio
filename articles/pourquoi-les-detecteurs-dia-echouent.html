@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pourquoi les détecteurs d'IA échouent, et que faire à la place · Rochane Kherbouche</title>
+<meta name="description" content="Les détecteurs d'IA échouent et la surveillance épuise. Comment déplacer l'évaluation du produit fini vers le processus documenté.">
+<link rel="canonical" href="https://ia.rochane.fr/articles/pourquoi-les-detecteurs-dia-echouent">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="theme-color" content="#1d3db0">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://ia.rochane.fr/articles/pourquoi-les-detecteurs-dia-echouent">
+<meta property="og:site_name" content="Rochane Kherbouche">
+<meta property="og:title" content="Pourquoi les détecteurs d'IA échouent, et que faire à la place">
+<meta property="og:description" content="Les détecteurs d'IA échouent et la surveillance épuise. Comment déplacer l'évaluation du produit fini vers le processus documenté.">
+<meta property="og:image" content="https://ia.rochane.fr/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Rochane Kherbouche, technopédagogue et Ambassadeur IA, IA en formation">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pourquoi les détecteurs d'IA échouent, et que faire à la place">
+<meta name="twitter:description" content="Les détecteurs d'IA échouent et la surveillance épuise. Comment déplacer l'évaluation du produit fini vers le processus documenté.">
+<meta name="twitter:image" content="https://ia.rochane.fr/og-image.jpg">
+<meta name="twitter:image:alt" content="Rochane Kherbouche, technopédagogue et Ambassadeur IA, IA en formation">
+
+<!-- Données structurées. datePublished à ajouter au moment de la publication réelle. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://ia.rochane.fr/#person",
+      "name": "Rochane Kherbouche",
+      "url": "https://ia.rochane.fr/",
+      "image": "https://ia.rochane.fr/rochane.jpg",
+      "jobTitle": "Technopédagogue & Ambassadeur IA",
+      "description": "Technopédagogue et Ambassadeur IA, conférencier international, spécialiste de l'intégration de l'IA générative en formation.",
+      "email": "mailto:ia@rochane.fr",
+      "sameAs": [
+        "https://www.linkedin.com/in/rochanekherbouche",
+        "https://www.francenum.gouv.fr/ambassadeurs-ia"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://ia.rochane.fr/#website",
+      "url": "https://ia.rochane.fr/",
+      "name": "Rochane Kherbouche",
+      "inLanguage": "fr",
+      "publisher": { "@id": "https://ia.rochane.fr/#person" }
+    },
+    {
+      "@type": "Article",
+      "headline": "Pourquoi les détecteurs d'IA échouent, et que faire à la place",
+      "inLanguage": "fr",
+      "datePublished": "2026-07-18",
+      "dateModified": "2026-07-18",
+      "author": { "@id": "https://ia.rochane.fr/#person" },
+      "publisher": { "@id": "https://ia.rochane.fr/#person" },
+      "isPartOf": { "@id": "https://ia.rochane.fr/#website" },
+      "mainEntityOfPage": "https://ia.rochane.fr/articles/pourquoi-les-detecteurs-dia-echouent",
+      "image": "https://ia.rochane.fr/og-image.jpg"
+    }
+  ]
+}
+</script>
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=2">
+</head>
+
+<body>
+
+<a class="skip-link" href="#main">Aller au contenu</a>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a class="nav-logo" href="/">Rochane Kherbouche<span></span></a>
+  <button class="nav-burger" id="nav-burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-menu">
+    <li><a href="/conferences">Conférences</a></li>
+    <li><a href="/ateliers-formations">Ateliers &amp; formations</a></li>
+    <li><a href="/accompagnement">Accompagnement</a></li>
+    <li><a href="/evaluer-ia">Évaluer avec l'IA</a></li>
+    <li><a href="/ressources" aria-current="page">Ressources</a></li>
+    <li><a href="/#livre">Livre</a></li>
+    <li><a href="/#contact">Contact</a></li>
+    <li><a href="https://cal.com/rochane/echange-avec-rochane" target="_blank" rel="noopener" class="nav-cta">Échanger sur votre projet</a></li>
+  </ul>
+</nav>
+
+<main id="main">
+
+<article class="article-wrap">
+  <p class="article-eyebrow">Article · Évaluation &amp; IA</p>
+  <h1 class="article-h1">Pourquoi les détecteurs d'IA échouent, et que faire à la place</h1>
+  <p class="article-deck">On croit qu'un meilleur détecteur réglera le problème. La course est déjà perdue, et pendant qu'on la mène, on se trompe de combat.</p>
+  <p class="article-meta">Publié le 18 juillet 2026 · 4 min de lecture</p>
+
+  <div class="article-prose">
+
+    <p>Un formateur que j'ai interrogé pour mon enquête a passé douze heures à confondre cinq personnes. Douze heures de traque, prélevées sur la préparation de ses séances, sur le retour à ses apprenants, sur l'accompagnement de celles et ceux qui, eux, avaient joué le jeu. Au bout, cinq dossiers de suspicion, beaucoup de fatigue, et pas un gramme d'apprentissage en plus.</p>
+
+    <p>Ces douze heures racontent l'impasse où l'IA générative a poussé l'évaluation. La première réaction de beaucoup d'institutions, aujourd'hui, est d'acheter un détecteur. Je comprends le réflexe. Il repose pourtant sur deux croyances fausses : que la machine peut trancher, et que le problème, c'est la triche.</p>
+
+    <h2>Les détecteurs ont un train de retard permanent</h2>
+    <p>On se rassure en se disant qu'ils finiront par rattraper les modèles. L'ordre des choses est inverse. Un modèle d'IA est éprouvé contre les détecteurs existants avant même d'être diffusé. Le formateur qui s'équipe travaille donc toujours sur le terrain d'hier. Ce retard est inscrit dans la manière dont ces modèles sont fabriqués, et aucune mise à jour du détecteur n'y changera rien. Les régularités statistiques qui trahissaient les premiers modèles se sont effacées, et les textes produits aujourd'hui varient autant que l'écriture humaine. Il n'y a plus de signature à lire.</p>
+    <p>Investir dans la détection, c'est financer un retard permanent. Et l'outil fait des dégâts pendant qu'il échoue : il se trompe plus souvent sur les locuteurs non natifs, et chaque faux positif est une accusation portée contre quelqu'un qui n'a rien fait. On ne surveille pas non plus un usage devenu massif. Quand 88 % des étudiants britanniques déclarent utiliser l'IA pour leurs travaux évalués, comme le mesure l'enquête HEPI de 2025, traquer une minorité perd son sens. La question porte désormais sur ce qu'on évalue encore.</p>
+
+    <h2>Ce que la surveillance coûte</h2>
+    <p>Revenons aux douze heures. Elles sont le prix courant de la surveillance, et ce prix se paie ailleurs que sur la ligne du budget. Présentée comme une défense de l'intégrité, elle produit surtout du stress et l'usure lente de la relation pédagogique. Même lorsqu'elle attrape quelqu'un, elle ne prouve rien. Un détecteur constate l'absence de signaux repérables, et l'intégrité se joue ailleurs. L'honnêteté d'un travail tient à la manière dont il a été produit, au chemin parcouru. Le fichier rendu n'en garde aucune trace. Chercher l'honnêteté dans une copie finie, c'est chercher la fièvre dans le thermomètre.</p>
+
+    <h2>On se trompe de combat</h2>
+    <p>Renoncer à un instrument inefficace, biaisé et faussement accusateur, c'est simplement arrêter de prétendre faire ce qu'on ne fait pas. Personne n'ouvre la porte à la triche en rangeant un outil qui ne détecte rien. Rien n'oblige non plus à bunkeriser les évaluations. Il suffit de regarder les choses en face : les tricheurs ont toujours existé, dans toutes les écoles et à toutes les époques, et ce n'est pas l'IA qui fait tricher. Elle a rendu le raccourci plus accessible, voilà tout.</p>
+    <p>Si notre seule réponse à cette facilité nouvelle est de mieux surveiller, nous avons changé de métier sans nous en apercevoir. Nous étions là pour faire apprendre. Nous voici à faire la police.</p>
+
+    <h2>Donner envie d'apprendre</h2>
+    <p>Alors que faire à la place ? Commencer par l'envie. Un apprenant qui sent qu'il progresse, qui mesure que sa compétence ne lui tombe pas du ciel, n'a pas le même rapport au raccourci que celui qui exécute une tâche sans y croire. La tentation de déléguer à la machine est réelle. C'est une économie d'effort, presque un réflexe. Le sens redonné à l'exercice fait plus contre elle que toutes les serrures. La motivation intrinsèque accomplit ce qu'aucun détecteur ne fera : elle rend le raccourci absurde aux yeux de celui qui pourrait le prendre, parce qu'on ne se prive pas volontiers de ce qu'on est en train d'apprendre. Une minorité contournera toujours, comme partout. Ce n'est pas une raison pour dresser un appareil de suspicion autour de la majorité, qui, elle, est venue pour apprendre.</p>
+
+    <h2>Rendre le chemin visible</h2>
+    <p>L'envie donne la raison ; reste la méthode. Si l'intégrité se joue dans le chemin, alors c'est le chemin qu'il faut rendre visible et évaluer. On déplace le centre de gravité du produit fini vers le processus : comment l'apprenant s'y est pris, quels choix il a faits, ce qu'il a tenté, corrigé, abandonné en route. Un oral où l'on défend ses décisions, un journal de bord qui garde la trace des étapes, une soutenance où l'on rend compte de son usage de l'IA : autant de formes qui ne se contrefont pas d'un clic. L'IA devient alors un objet de discussion. On la déclare, on l'interroge, on apprend à s'en servir avec discernement. C'est le sujet de mon livre, « Évaluer en formation à l'ère de l'IA générative », et de la boîte à outils qui l'accompagne.</p>
+    <p>Reste ce formateur, et ses douze heures. Rendues à la conception d'un travail qui donne envie, au retour qui fait progresser, à l'accompagnement de celles et ceux qui veulent apprendre, elles feraient enfin leur travail. C'est là, dans l'envie d'apprendre, que se gagne l'évaluation. C'est elle qui mérite nos douze heures.</p>
+
+  </div>
+</article>
+
+<!-- POUR ALLER PLUS LOIN -->
+<div class="article-more">
+  <a href="/evaluer-ia" class="btn btn-outline">Le livre et les outils <span>→</span></a>
+  <a href="https://ia-cr.rochane.fr/" target="_blank" rel="noopener" class="btn btn-outline">Compagnon de Route <span>↗</span></a>
+  <a href="https://faqeval.rochane.fr" target="_blank" rel="noopener" class="btn btn-outline">FAQ Évaluer IA <span>↗</span></a>
+</div>
+
+<!-- CTA -->
+<div class="section-wrap bg-off cta-band">
+  <div class="section-inner reveal">
+    <h2 class="section-title">Ce sujet vous parle ?</h2>
+    <p class="section-sub" style="margin-left:auto;margin-right:auto;">Ce texte prolonge le livre « Évaluer en formation à l'ère de l'IA générative ». Pour une conférence ou un atelier sur l'évaluation, parlons de votre contexte.</p>
+    <div class="cta-actions">
+      <a href="https://cal.com/rochane/echange-avec-rochane" target="_blank" rel="noopener" class="btn btn-fill">Échanger sur votre projet →</a>
+      <a href="mailto:ia@rochane.fr" class="btn btn-outline">Écrire à ia@rochane.fr</a>
+    </div>
+    <p class="hero-note">Un créneau de 30 minutes ou 1 heure, à votre convenance. Tarifs établis au cas par cas selon le contexte.</p>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <div>© 2026 <strong>Rochane Kherbouche</strong> · Technopédagogue &amp; Ambassadeur IA</div>
+  <div style="display:flex;gap:1.2rem;flex-wrap:wrap;justify-content:center;">
+    <a href="/conferences">Conférences</a>
+    <a href="/ateliers-formations">Ateliers &amp; formations</a>
+    <a href="/accompagnement">Accompagnement</a>
+    <a href="/evaluer-ia">Évaluer avec l'IA</a>
+    <a href="/ressources">Ressources</a>
+    <a href="/mentions-legales">Mentions légales &amp; confidentialité</a>
+    <a href="https://www.francenum.gouv.fr/ambassadeurs-ia" target="_blank" rel="noopener">Ambassadeur IA · francenum.gouv.fr</a>
+  </div>
+</footer>
+
+<script src="/site.js?v=1" defer></script>
+
+</body>
+</html>

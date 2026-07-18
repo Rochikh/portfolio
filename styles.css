@@ -1682,3 +1682,193 @@ footer a:hover { color: var(--accent); }
   border-color: var(--accent);
   color: var(--white);
 }
+
+/* ═══════════════════════════════════════════════════════════
+   ARTICLES (contenu long) · gabarit de rubrique éditoriale
+   ═══════════════════════════════════════════════════════════ */
+
+/* Bandeau brouillon : visible tant que l'article n'est pas publié */
+.draft-banner {
+  background: rgba(207,46,46,0.08);
+  border-bottom: 1px solid rgba(207,46,46,0.25);
+  color: var(--rouge);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.03em;
+  text-align: center;
+  padding: 0.7rem 1.5rem;
+  margin-top: 60px;
+}
+
+.article-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 120px 1.5rem 0;
+}
+.draft-banner + .article-wrap { padding-top: 48px; }
+
+.article-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+.article-eyebrow::before {
+  content: '';
+  width: 20px;
+  height: 2px;
+  background: var(--rouge);
+  flex-shrink: 0;
+}
+
+.article-h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.4vw, 2.9rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.14;
+  color: var(--text);
+  margin-bottom: 1.1rem;
+}
+
+.article-deck {
+  font-size: 1.2rem;
+  color: var(--muted);
+  line-height: 1.65;
+  margin-bottom: 1.4rem;
+}
+.article-deck strong { color: var(--text); font-weight: 600; }
+
+.article-meta {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--muted2);
+  padding-bottom: 1.8rem;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 2.2rem;
+}
+
+/* Corps rédactionnel */
+.article-prose { color: var(--text); }
+.article-prose > p {
+  font-size: 1.06rem;
+  line-height: 1.8;
+  margin-bottom: 1.3rem;
+  color: var(--text);
+}
+.article-prose > p strong { font-weight: 600; }
+.article-prose h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  color: var(--text);
+  margin: 2.8rem 0 0.9rem;
+}
+.article-prose h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 1.9rem 0 0.6rem;
+}
+.article-prose ul, .article-prose ol {
+  padding-left: 1.3rem;
+  margin: 0 0 1.3rem;
+}
+.article-prose li {
+  font-size: 1.02rem;
+  line-height: 1.75;
+  margin-bottom: 0.5rem;
+}
+.article-prose a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.article-prose a:hover { color: var(--accent-hover); }
+.article-prose blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 1.2rem;
+  margin: 1.8rem 0;
+  font-style: italic;
+  color: var(--muted);
+}
+.article-prose figure { margin: 1.8rem 0; }
+.article-prose img { max-width: 100%; height: auto; display: block; border: 1px solid var(--line); border-radius: var(--radius); }
+.article-prose figcaption {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--muted2);
+  text-align: center;
+  padding-top: 0.5rem;
+}
+
+/* Encart de donnée vérifiable (chiffre + source) */
+.article-callout {
+  display: flex;
+  gap: 1.1rem;
+  align-items: baseline;
+  background: var(--white);
+  border: 1px solid var(--line2);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1.2rem 1.4rem;
+  margin: 1.8rem 0;
+}
+.callout-num {
+  font-family: var(--font-mono);
+  font-size: 1.9rem;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.callout-text { font-size: 0.95rem; color: var(--muted); line-height: 1.55; }
+.callout-src { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted2); }
+
+/* Note de rédaction (voix-atelier) : à remplir puis retirer avant publication */
+.article-todo {
+  border: 1px dashed var(--line2);
+  border-radius: var(--radius);
+  background: var(--off);
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  font-style: italic;
+  padding: 0.9rem 1.1rem;
+  margin: 0.8rem 0 1.6rem;
+}
+.article-todo::before {
+  content: 'À écrire';
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-style: normal;
+  font-size: 0.64rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rouge);
+  border: 1px solid rgba(207,46,46,0.4);
+  border-radius: 2px;
+  padding: 0.1rem 0.4rem;
+  margin-right: 0.6rem;
+  vertical-align: 1px;
+}
+
+/* Pied d'article : pour aller plus loin */
+.article-more {
+  max-width: 720px;
+  margin: 2.4rem auto 0;
+  padding: 0 1.5rem;
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}

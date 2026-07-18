@@ -8,6 +8,7 @@ Chaque contenu est rattache a la page du site ou il vit (ligne "Page:"),
 avec deduplication : un outil present sur l'accueil et dans la bibliotheque
 n'apparait qu'une fois, rattache a sa page de reference.
 """
+import glob
 import html
 import os
 import re
@@ -206,6 +207,27 @@ def main(src_dir, dst):
     for (title, meta), page in webs:
         out += [f"- {clean(title)} ({clean(meta)})", f"  Page: {page}"]
     out.append("")
+
+    # Articles du site (dossier articles/) : uniquement les articles PUBLIES.
+    # Regle : un article en brouillon porte <meta name="robots" content="noindex">
+    # et reste donc invisible pour l'assistant tant qu'il n'est pas ecrit.
+    articles = []
+    for path in sorted(glob.glob(os.path.join(src_dir, "articles", "*.html"))):
+        doc = open(path, encoding="utf-8").read()
+        if re.search(r'name="robots"[^>]*noindex', doc):
+            continue  # brouillon
+        slug = os.path.basename(path)[:-5]
+        m = re.search(r'<h1[^>]*>(.*?)</h1>', doc, re.S)
+        title = clean(m.group(1)) if m else clean(re.search(r'<title>(.*?)</title>', doc, re.S).group(1))
+        d = re.search(r'name="description" content="([^"]*)"', doc)
+        desc = clean(d.group(1)) if d else ""
+        articles.append((title, desc, f"{SITE}/articles/{slug}"))
+    if articles:
+        out.append(f"## Articles du site ({len(articles)})")
+        for title, desc, url in articles:
+            out.append(f"- {title}" + (f" : {desc}" if desc else ""))
+            out += [f"  URL: {url}", f"  Page: {url}"]
+        out.append("")
 
     open(dst, 'w', encoding='utf-8').write('\n'.join(out))
 
