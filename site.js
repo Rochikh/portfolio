@@ -116,7 +116,7 @@
   }
 
     // ── CHAT ──
-    var INITIAL_MSG = "Bonjour ! Je suis l'assistant virtuel de Rochane Kherbouche. Posez-moi vos questions sur ses expertises, projets et interventions.";
+    var INITIAL_MSG = "Bonjour ! Je suis l'assistant virtuel de Rochane Kherbouche. Posez-moi vos questions sur ses interventions, ses outils et son livre.";
     var history = [];
 
     function getElements() {
