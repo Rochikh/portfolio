@@ -65,30 +65,39 @@
   ]
 }
 </script>
-<script>document.documentElement.classList.add('js');</script>
+<script>
+document.documentElement.classList.add('js');
+/* Redirections des anciennes ancres du site one-page (liens LinkedIn, favoris) */
+(function(){var m={"#conferences":"/conferences","#formations":"/ateliers-formations",
+"#articles":"/ressources#articles","#infographies":"/ressources#infographies",
+"#webinaires":"/ressources#webinaires","#podcasts":"/ressources#podcasts",
+"#about":"/#demarche"};var t=m[location.hash];if(t)location.replace(t);})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css?v=1">
 </head>
+
 <body>
 
 <a class="skip-link" href="#main">Aller au contenu</a>
 
 <!-- NAV -->
 <nav id="main-nav">
-  <a class="nav-logo" href="#hero">Rochane Kherbouche<span></span></a>
+  <a class="nav-logo" href="/">Rochane Kherbouche<span></span></a>
   <button class="nav-burger" id="nav-burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-menu">
     <span></span><span></span><span></span>
   </button>
   <ul class="nav-links" id="nav-menu">
-    <li><a href="#about">À propos</a></li>
-    <li><a href="#livre">Livre</a></li>
-    <li><a href="#demarche">Démarche</a></li>
-    <li><a href="#conferences">Conférences</a></li>
-    <li><a href="#projets">Projets</a></li>
-    <li><a href="#podcasts">Médias</a></li>
-    <li><a href="#contact" class="nav-cta">Contact</a></li>
+    <li><a href="/conferences">Conférences</a></li>
+    <li><a href="/ateliers-formations">Ateliers &amp; formations</a></li>
+    <li><a href="/accompagnement">Accompagnement</a></li>
+    <li><a href="/evaluer-ia">Évaluer avec l'IA</a></li>
+    <li><a href="/ressources">Ressources</a></li>
+    <li><a href="/#livre">Livre</a></li>
+    <li><a href="/#contact">Contact</a></li>
+    <li><a href="https://cal.com/rochane/echange-avec-rochane" target="_blank" rel="noopener" class="nav-cta">Échanger sur votre projet</a></li>
   </ul>
 </nav>
 
@@ -104,14 +113,16 @@
     </div>
     <h1 class="hero-title">L'IA transforme<br>la formation.<br><em>Reprenez la main.</em></h1>
     <p class="hero-sub">
-      Technopédagogue et <strong>Ambassadeur IA</strong>, j'accompagne organisations et institutions
-      dans l'intégration stratégique de l'IA en formation : conférences, ateliers, outils concrets.
+      Vos équipes utilisent déjà l'IA, avec ou sans cadre. J'aide les institutions, l'enseignement supérieur,
+      les organismes de formation, les entreprises et les acteurs de la santé à passer d'usages dispersés
+      à des pratiques pédagogiques assumées : <strong>conférences, ateliers, formations et accompagnements</strong>.
       Auteur de <strong>« Évaluer en formation à l'ère de l'IA générative »</strong> (Chronique Sociale, 2026).
     </p>
     <div class="hero-actions">
-      <a href="#contact" class="btn btn-fill">Réserver une intervention →</a>
-      <a href="#demarche" class="btn btn-outline">Découvrir ma démarche</a>
+      <a href="https://cal.com/rochane/echange-avec-rochane" target="_blank" rel="noopener" class="btn btn-fill">Échanger sur votre projet →</a>
+      <a href="#offres" class="btn btn-outline">Découvrir les formats d'intervention</a>
     </div>
+    <p class="hero-note">Un créneau de 30 minutes ou 1 heure, à votre convenance.</p>
   </div>
 
   <div class="hero-right reveal">
@@ -135,7 +146,7 @@
 
     <div class="stats-card">
       <div class="stat-item">
-        <div class="stat-num" data-target="40" data-suffix="+">0</div>
+        <div class="stat-num" data-target="38">0</div>
         <div class="stat-label">Inter&shy;ventions</div>
       </div>
       <div class="stat-item">
@@ -150,6 +161,64 @@
         <div class="stat-num" data-target="20" data-suffix="+">0</div>
         <div class="stat-label">Outils &amp; ressources</div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST -->
+<div id="trust">
+  <p class="trust-label">Ils m'ont fait confiance</p>
+  <div class="logos-wrap">
+    <div class="logo-chip">Commission européenne</div>
+    <div class="logo-chip">Nations Unies</div>
+    <div class="logo-chip">UNESCO</div>
+    <div class="logo-chip">ULB Bruxelles</div>
+    <div class="logo-chip">RTBF Academy</div>
+    <div class="logo-chip">CNFPT</div>
+    <div class="logo-chip">France Éducation International</div>
+    <div class="logo-chip">CELV · Conseil de l'Europe</div>
+    <div class="logo-chip">Magazine Elle</div>
+    <div class="logo-chip">Université de Lille</div>
+  </div>
+</div>
+
+<!-- OFFRES -->
+<div class="section-wrap bg-off" id="offres">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-tag">Offres</p>
+      <h2 class="section-title">Quatre façons de<br>travailler ensemble</h2>
+      <p class="section-sub">Chaque format répond à un moment précis de votre réflexion : ouvrir le sujet, outiller vos équipes, structurer une stratégie ou repenser l'évaluation.</p>
+    </div>
+    <div class="offers-grid">
+      <a href="/conferences" class="offer-card reveal">
+        <div class="offer-kicker">01 · Conférences</div>
+        <div class="offer-title">Ouvrir le sujet, donner un cap</div>
+        <p class="offer-desc">Pour vos événements, journées d'étude et séminaires : une lecture claire et critique de ce que l'IA change en formation, de 1 h à 2 h, en présentiel ou à distance.</p>
+        <div class="offer-proof">14 conférences données dans 5 pays</div>
+        <div class="offer-cta">Voir le format conférence <span>→</span></div>
+      </a>
+      <a href="/ateliers-formations" class="offer-card reveal">
+        <div class="offer-kicker">02 · Ateliers &amp; formations</div>
+        <div class="offer-title">Faire progresser les pratiques</div>
+        <p class="offer-desc">Pour vos formateurs, enseignants et équipes pédagogiques : des formats actifs où l'on manipule les outils en séance, avec un scénario transmis en amont et une banque de ressources remise ensuite.</p>
+        <div class="offer-proof">21 sessions référencées, d'Alger à Amman</div>
+        <div class="offer-cta">Voir les ateliers et formations <span>→</span></div>
+      </a>
+      <a href="/accompagnement" class="offer-card reveal">
+        <div class="offer-kicker">03 · Accompagnement</div>
+        <div class="offer-title">Structurer votre stratégie IA</div>
+        <p class="offer-desc">Pour les organisations qui veulent un cadre durable : diagnostic, conception, animation, suivi. L'IA s'ancre dans vos dispositifs, pas dans une intervention isolée.</p>
+        <div class="offer-proof">Une démarche en quatre temps, du diagnostic au suivi</div>
+        <div class="offer-cta">Voir l'accompagnement <span>→</span></div>
+      </a>
+      <a href="/evaluer-ia" class="offer-card reveal">
+        <div class="offer-kicker">04 · Évaluer avec l'IA</div>
+        <div class="offer-title">Repenser ce que l'évaluation mesure</div>
+        <p class="offer-desc">Le sujet du livre : quand l'IA générative rebat les cartes, on ne surveille plus le produit, on documente le processus. Outils, articles et interventions dédiés.</p>
+        <div class="offer-proof">Un livre, des outils dédiés, une FAQ de 30 objections</div>
+        <div class="offer-cta">Explorer le parcours évaluation <span>→</span></div>
+      </a>
     </div>
   </div>
 </div>
@@ -201,101 +270,6 @@
   </div>
 </div>
 
-<!-- TRUST -->
-<div id="trust">
-  <p class="trust-label">Ils m'ont fait confiance</p>
-  <div class="logos-wrap">
-    <div class="logo-chip">Commission européenne</div>
-    <div class="logo-chip">Nations Unies</div>
-    <div class="logo-chip">UNESCO</div>
-    <div class="logo-chip">ULB Bruxelles</div>
-    <div class="logo-chip">RTBF Academy</div>
-    <div class="logo-chip">CNFPT</div>
-    <div class="logo-chip">France Éducation International</div>
-    <div class="logo-chip">CELV · Conseil de l'Europe</div>
-    <div class="logo-chip">Magazine Elle</div>
-    <div class="logo-chip">Université de Lille</div>
-    <div class="logo-chip">Bruxelles Formation</div>
-  </div>
-</div>
-
-<!-- TÉMOIGNAGES : section prête à l'emploi, à décommenter dès que 2-3 vraies
-     citations (nom + fonction + institution) sont collectées.
-<div class="section-wrap" id="temoignages">
-  <div class="reveal">
-    <p class="section-tag">Ils en parlent</p>
-    <h2 class="section-title">Témoignages</h2>
-  </div>
-  <div class="about-right" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;">
-    <div class="info-card reveal">
-      <div class="info-card-text" style="font-size:0.95rem;font-style:italic;margin-bottom:0.8rem;">« Citation du témoignage ici. »</div>
-      <div class="info-card-title">Prénom Nom · Fonction · Institution</div>
-    </div>
-    <div class="info-card reveal">
-      <div class="info-card-text" style="font-size:0.95rem;font-style:italic;margin-bottom:0.8rem;">« Citation du témoignage ici. »</div>
-      <div class="info-card-title">Prénom Nom · Fonction · Institution</div>
-    </div>
-    <div class="info-card reveal">
-      <div class="info-card-text" style="font-size:0.95rem;font-style:italic;margin-bottom:0.8rem;">« Citation du témoignage ici. »</div>
-      <div class="info-card-title">Prénom Nom · Fonction · Institution</div>
-    </div>
-  </div>
-</div>
--->
-
-
-<!-- ABOUT -->
-<div class="section-wrap" id="about">
-  <div class="about-grid">
-    <div class="reveal">
-      <p class="section-tag">Profil</p>
-      <h2 class="section-title">Rendre l'IA utile,<br>comprise et inclusive</h2>
-      <p class="about-body">
-        Basé près de Lille, actif à Bruxelles, j'interviens à l'international.
-        Reconnu comme <strong>Ambassadeur IA</strong> par le Ministère de l'Économie et des Finances,
-        j'accompagne l'intégration stratégique de l'IA dans les dispositifs de formation.
-      </p>
-      <p class="about-body">
-        Belgique, France, Autriche, Tunisie, Algérie, Burundi, Jordanie : auprès d'institutions européennes, onusiennes et universitaires.
-      </p>
-      <div class="skills-wrap">
-        <span class="skill-tag">IA &amp; Pédagogie inclusive</span>
-        <span class="skill-tag">Ingénierie de formation</span>
-        <span class="skill-tag">Conférencier international</span>
-        <span class="skill-tag">Innovation éducative</span>
-        <span class="skill-tag">Outils IA</span>
-        <span class="skill-tag">Inclusion numérique</span>
-      </div>
-      <div class="about-links">
-        <a href="https://www.francenum.gouv.fr/ambassadeurs-ia" target="_blank" rel="noopener" class="about-link">
-          Ambassadeur IA · francenum.gouv.fr <span class="link-arrow">↗</span>
-        </a>
-        <a href="https://www.centre-inffo.fr/innovation-formation/articles/rochane-kherbouche-agent-ia-collaboratif" target="_blank" rel="noopener" class="about-link">
-          Portrait Centre Inffo <span class="link-arrow">↗</span>
-        </a>
-      </div>
-    </div>
-    <div class="about-right reveal">
-      <div class="info-card">
-        <div class="info-card-title">Géographie</div>
-        <div class="info-card-text">Belgique · France · Tunisie · Burundi · Jordanie · Institutions européennes et onusiennes</div>
-      </div>
-      <div class="info-card">
-        <div class="info-card-title">Positionnement</div>
-        <div class="info-card-text">À l'intersection de l'IA générative, de l'ingénierie pédagogique et de l'inclusion numérique.</div>
-      </div>
-      <div class="info-card">
-        <div class="info-card-title">Secteurs</div>
-        <div class="info-card-text">Institutions publiques et européennes · Enseignement supérieur · Médias · Entreprises · Santé : formations IA pour médecins, lors de réunions professionnelles organisées par des laboratoires pharmaceutiques</div>
-      </div>
-      <div class="info-card">
-        <div class="info-card-title">Communauté WhatsApp</div>
-        <div class="info-card-text">+1 000 membres · Bonnes pratiques IA · Live mensuel</div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- DÉMARCHE -->
 <div class="section-wrap bg-off" id="demarche">
   <div class="section-inner">
@@ -329,148 +303,57 @@
   </div>
 </div>
 
-<!-- ARTICLES -->
-<div class="section-wrap" id="articles">
+<!-- TERRAIN : mini études de cas -->
+<div class="section-wrap" id="preuves">
   <div class="section-inner">
     <div class="reveal">
-      <p class="section-tag">Publications</p>
-      <h2 class="section-title">Articles publiés</h2>
-      <p class="section-sub">Contributions écrites sur l'IA dans l'éducation, l'innovation pédagogique et l'inclusion.</p>
+      <p class="section-tag">Terrain</p>
+      <h2 class="section-title">Trois contextes,<br>trois interventions</h2>
+      <p class="section-sub">Des institutions européennes aux professionnels de santé : la même exigence, adaptée à chaque contexte.</p>
     </div>
-    <div class="articles-grid">
-      <a href="https://www.innovation-pedagogique.fr/article25856.html" target="_blank" rel="noopener" class="article-card reveal">
-        <div class="article-cat">Pédagogies actives · Formation</div>
-        <div class="article-title">Les pédagogies actives au-delà du label</div>
-        <div class="article-cta">Lire l'article <span>→</span></div>
-      </a>
-      <a href="https://www.innovation-pedagogique.fr/article25486.html" target="_blank" rel="noopener" class="article-card reveal">
-        <div class="article-cat">Évaluation · IA</div>
-        <div class="article-title">Cinq questions que les formatrices et formateurs n'osent pas se poser sur l'évaluation à l'ère de l'IA</div>
-        <div class="article-cta">Lire l'article <span>→</span></div>
-      </a>
-      <a href="https://www.innovation-pedagogique.fr/article20741.html" target="_blank" rel="noopener" class="article-card reveal">
-        <div class="article-cat">Innovation · Inclusion</div>
-        <div class="article-title">VoxFolio – Quand la voix libère les talents, IA et pédagogies inclusives</div>
-        <div class="article-cta">Lire l'article <span>→</span></div>
-      </a>
-      <a href="https://www.innovation-pedagogique.fr/article12108.html" target="_blank" rel="noopener" class="article-card reveal">
-        <div class="article-cat">Réflexion</div>
-        <div class="article-title">Éducation artificielle ?</div>
-        <div class="article-cta">Lire l'article <span>→</span></div>
-      </a>
-      <a href="https://www.innovation-pedagogique.fr/article15242.html" target="_blank" rel="noopener" class="article-card reveal">
-        <div class="article-cat">IA &amp; Éducation</div>
-        <div class="article-title">IA en éducation, un outil d'innovation</div>
-        <div class="article-cta">Lire l'article <span>→</span></div>
-      </a>
-      <a href="https://fr.linkedin.com/pulse/lia-pour-une-%C3%A9ducation-inclusive-r%C3%A9duire-la-fracture-kherbouche-jovde" target="_blank" rel="noopener" class="article-card reveal">
-        <div class="article-cat">Inclusion numérique</div>
-        <div class="article-title">IA et inclusion – Réduire la fracture numérique</div>
-        <div class="article-cta">Lire l'article <span>→</span></div>
-      </a>
+    <div class="case-grid">
+      <div class="case-card reveal">
+        <div class="case-org">Commission européenne</div>
+        <div class="case-title">Design de formation IA</div>
+        <p class="case-line"><strong>Contexte.</strong> Mission menée pour la Commission européenne, avec AIM Consulting.</p>
+        <p class="case-line"><strong>Format.</strong> Design de formation : le dispositif est conçu avant d'être animé.</p>
+        <p class="case-line"><strong>Enjeu.</strong> Adapter la formation à l'IA aux exigences d'une institution européenne.</p>
+        <a class="case-link" href="/accompagnement">Voir l'accompagnement <span>→</span></a>
+      </div>
+      <div class="case-card reveal">
+        <div class="case-org">CELV · Conseil de l'Europe</div>
+        <div class="case-title">L'IA pour l'enseignement des langues</div>
+        <p class="case-line"><strong>Contexte.</strong> Groupe de travail AI-LANG du Centre européen pour les langues vivantes (Graz, Autriche).</p>
+        <p class="case-line"><strong>Format.</strong> Contribution au cadre de référence IA pour l'enseignement des langues et conférence au Network Meeting (avril 2026).</p>
+        <p class="case-line"><strong>Enjeu.</strong> Outiller les enseignants de langues face à l'IA, à l'échelle européenne.</p>
+        <a class="case-link" href="/conferences">Voir les conférences <span>→</span></a>
+      </div>
+      <div class="case-card reveal">
+        <div class="case-org">Secteur santé</div>
+        <div class="case-title">Initiation à l'IA pour médecins</div>
+        <p class="case-line"><strong>Contexte.</strong> Réunions professionnelles organisées par des laboratoires pharmaceutiques, partout en France.</p>
+        <p class="case-line"><strong>Format.</strong> Sessions d'initiation : quatre animées, dispositif en cours.</p>
+        <p class="case-line"><strong>Enjeu.</strong> Donner aux praticiens des repères concrets et critiques sur l'IA.</p>
+        <a class="case-link" href="/ateliers-formations">Voir les ateliers <span>→</span></a>
+      </div>
+    </div>
+    <div class="press-links reveal">
+      <a href="https://www.francenum.gouv.fr/ambassadeurs-ia" target="_blank" rel="noopener" class="press-link">Ambassadeur IA · francenum.gouv.fr <span class="link-arrow">↗</span></a>
+      <a href="https://www.centre-inffo.fr/innovation-formation/articles/rochane-kherbouche-agent-ia-collaboratif" target="_blank" rel="noopener" class="press-link">Portrait Centre Inffo <span class="link-arrow">↗</span></a>
     </div>
   </div>
 </div>
 
-<!-- CONFERENCES -->
-<div class="section-wrap bg-off" id="conferences">
-  <div class="section-inner">
-  <div class="reveal">
-    <p class="section-tag">Conférences</p>
-    <h2 class="section-title">Interventions internationales</h2>
-    <p class="section-sub">14 conférences dans 5 pays, auprès d'universités, institutions publiques et organismes internationaux.</p>
-  </div>
-  <div class="conf-grid">
-    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="conf-title">L'évaluation à l'ère de l'IA générative, Haute École Francisco Ferrer</div><div class="conf-meta"><span class="conf-loc">Bruxelles</span><span>Évaluation &amp; IA, Mai 2026</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/at.png" srcset="https://flagcdn.com/w80/at.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="conf-title">L'évaluation à l'ère de l'IA, Network Meeting AI-LANG</div><div class="conf-meta"><span class="conf-loc">Graz, Autriche</span><span>CELV, Avril 2026</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="conf-title">L'IA constitue-t-elle une menace pour le multilinguisme ?</div><div class="conf-meta"><span class="conf-loc">Bruxelles</span><span>Multilinguisme, Fév. 2026</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="conf-title">La réactivation comme levier de l'apprentissage, quels leviers offre l'IA</div><div class="conf-meta"><span class="conf-loc">Liège</span><span>Ecolab 2026, Fév. 2026</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/fr.png" srcset="https://flagcdn.com/w80/fr.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="conf-title">France Éducation International</div><div class="conf-meta"><span class="conf-loc">France</span><span>International, Nov. 2024</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="conf-title">IPFC, Formation des inspecteurs et inspectrices</div><div class="conf-meta"><span class="conf-loc">Belgique</span><span>Formation, Oct. 2024</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/fr.png" srcset="https://flagcdn.com/w80/fr.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="conf-title">Découvrir l'IA : présentation grand public, MJC Lambres-lez-Douai</div><div class="conf-meta"><span class="conf-loc">Lambres-lez-Douai, France</span><span>Grand public, Fév. 2024</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/fr.png" srcset="https://flagcdn.com/w80/fr.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="conf-title">Découvrir l'IA : présentation grand public, Municipalité de Bersée</div><div class="conf-meta"><span class="conf-loc">Bersée, France</span><span>Grand public, Déc. 2023</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="conf-title">Label européen des langues, IA et langues</div><div class="conf-meta"><span class="conf-loc">Belgique</span><span>Langues &amp; IA</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="conf-title">ULB et CCIB Bruxelles, Promotion et formation continue</div><div class="conf-meta"><span class="conf-loc">Bruxelles</span><span>Université</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/tn.png" srcset="https://flagcdn.com/w80/tn.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="conf-title">Higher Institute Education &amp; La Formation Continue, Tunis</div><div class="conf-meta"><span class="conf-loc">Tunis</span><span>Institut</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/bi.png" srcset="https://flagcdn.com/w80/bi.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="conf-title">Université de Bujumbura</div><div class="conf-meta"><span class="conf-loc">Burundi</span><span>Université</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="conf-title">Elle Active (Magazine Elle), IA et l'emploi</div><div class="conf-meta"><span class="conf-loc">Bruxelles</span><span>IA &amp; Emploi</span></div></div></div>
-    <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/tn.png" srcset="https://flagcdn.com/w80/tn.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="conf-title">Forum Citoyen de l'Innovation en Éducation, Sousse</div><div class="conf-meta"><span class="conf-loc">Sousse</span><span>Innovation</span></div></div></div>
-  </div>
-  </div>
-</div>
-
-<!-- FORMATIONS -->
-<div class="section-wrap" id="formations">
-  <div class="section-inner">
-    <div class="reveal">
-      <p class="section-tag">Ateliers &amp; Formations</p>
-      <h2 class="section-title">Formations &amp; Ateliers</h2>
-      <p class="section-sub">22 interventions auprès d'institutions publiques, universités, entreprises et professionnels de santé, en Europe, Afrique et au Moyen-Orient.</p>
-    </div>
-    <div class="form-grid">
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/eu.png" srcset="https://flagcdn.com/w80/eu.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="form-title">Design de formation IA</div><div class="form-meta">Commission européenne · AIM Consulting</div><span class="form-badge">Commission UE</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/fr.png" srcset="https://flagcdn.com/w80/fr.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="form-title">Initiation à l'IA pour médecins</div><div class="form-meta">Réunions professionnelles de laboratoires pharmaceutiques · Partout en France · 4 sessions, en cours</div><span class="form-badge">Santé</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/dz.png" srcset="https://flagcdn.com/w80/dz.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="form-title">Conception pédagogique avec l'IA</div><div class="form-meta">CESI Alger · Projet UNESCO</div><span class="form-badge">UNESCO</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/fr.png" srcset="https://flagcdn.com/w80/fr.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="form-title">Association Nationale des Services TICE</div><div class="form-meta">France</div><span class="form-badge">TICE</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="form-title">Institut des hautes études des communications sociales</div><div class="form-meta">Bruxelles</div><span class="form-badge">Communication</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/tn.png" srcset="https://flagcdn.com/w80/tn.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="form-title">Université El Manar</div><div class="form-meta">Tunis</div><span class="form-badge">Université</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="form-title">RTBF Academy</div><div class="form-meta">Bruxelles</div><span class="form-badge">Médias</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="form-title">École européenne de Bruxelles</div><div class="form-meta">Bruxelles</div><span class="form-badge">Européen</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="form-title">Faculté de la motricité – ULB</div><div class="form-meta">Bruxelles</div><span class="form-badge">Université</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="form-title">Aprico Consultants – Digital Transformation</div><div class="form-meta">Bruxelles · Sfax</div><span class="form-badge">Digital</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="form-title">IFAPME Tournai et Gembloux</div><div class="form-meta">Wallonie</div><span class="form-badge">Apprentissage</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="form-title">Bruxelles Formation</div><div class="form-meta">Bruxelles</div><span class="form-badge">Public</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/fr.png" srcset="https://flagcdn.com/w80/fr.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="form-title">Meditech Access</div><div class="form-meta">Paris</div><span class="form-badge">Santé</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/jo.png" srcset="https://flagcdn.com/w80/jo.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="form-title">United Nations Volunteers</div><div class="form-meta">Amman</div><span class="form-badge">ONU</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/fr.png" srcset="https://flagcdn.com/w80/fr.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="form-title">Université Lille – Master IPM</div><div class="form-meta">Lille</div><span class="form-badge">Master</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/fr.png" srcset="https://flagcdn.com/w80/fr.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="form-title">Intégrer l'IA de la conception à l'évaluation</div><div class="form-meta">CNFPT Strasbourg</div><span class="form-badge">Public</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/fr.png" srcset="https://flagcdn.com/w80/fr.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="form-title">Utiliser l'IA en formation : outils et analyse critique</div><div class="form-meta">IFA Rouen</div><span class="form-badge">Apprentissage</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="form-title">Learning Solution</div><div class="form-meta">Bruxelles</div><span class="form-badge">Formation</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/tn.png" srcset="https://flagcdn.com/w80/tn.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="form-title">Colloque International de l'Innovation Technologique</div><div class="form-meta">Sousse</div><span class="form-badge">Innovation</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/be.png" srcset="https://flagcdn.com/w80/be.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="form-title">Création de scénarios pédagogiques avec l'IA pour apprenants en langues</div><div class="form-meta">FELSI · CPAB, Bruxelles</div><span class="form-badge">Langues</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/at.png" srcset="https://flagcdn.com/w80/at.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="form-title">Groupe de travail AI-LANG – Cadre de référence IA pour l'enseignement des langues</div><div class="form-meta">CELV · Graz, Autriche</div><span class="form-badge">CELV</span></div></div>
-      <div class="form-row reveal"><div class="form-flag"><img src="https://flagcdn.com/w40/tn.png" srcset="https://flagcdn.com/w80/tn.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="form-title">IA pour enseignants universitaires</div><div class="form-meta">Tunis</div><span class="form-badge">Université</span></div></div>
-    </div>
-  </div>
-</div>
-
-<!-- PROJETS -->
+<!-- PROJETS PHARES -->
 <div class="section-wrap bg-off" id="projets">
   <div class="section-inner">
   <div class="reveal">
     <p class="section-tag">Créations</p>
     <h2 class="section-title">Projets &amp; Outils</h2>
-    <p class="section-sub">Ressources et outils développés pour faciliter l'intégration de l'IA dans la formation.</p>
+    <p class="section-sub">Quatre outils phares, en cohérence avec le livre et les interventions. Les neuf sont en libre accès dans les ressources.</p>
   </div>
   <div class="projects-grid">
-    <a href="https://scenariocreator.rochane.fr/" target="_blank" rel="noopener" class="proj-card reveal">
-      <div class="proj-visual c1">🤖</div>
-      <div class="proj-body">
-        <div class="proj-name">Chat Bot Scenario Creator</div>
-        <div class="proj-desc">Créer des scénarios conversationnels avec l'IA pour concevoir des formations interactives et engageantes.</div>
-        <div class="proj-tags"><span class="proj-tag">Outil pédagogique</span><span class="proj-tag">IA conversationnelle</span><span class="proj-tag">Scénario</span></div>
-      </div>
-      <div class="proj-footer">Voir l'outil <span>↗</span></div>
-    </a>
-    <a href="https://voxfolio.rochane.fr/" target="_blank" rel="noopener" class="proj-card reveal">
-      <div class="proj-visual c2">🎙️</div>
-      <div class="proj-body">
-        <div class="proj-name">VoxFolio</div>
-        <div class="proj-desc">Portfolio vocal augmenté par l'IA. En 2 minutes d'enregistrement : transcription, analyse et génération d'un profil professionnel.</div>
-        <div class="proj-tags"><span class="proj-tag">Voix &amp; IA</span><span class="proj-tag">Inclusion</span><span class="proj-tag">Portfolio</span></div>
-      </div>
-      <div class="proj-footer">Accéder à VoxFolio <span>↗</span></div>
-    </a>
-    <a href="https://ia-des.rochane.fr/" target="_blank" rel="noopener" class="proj-card reveal">
-      <div class="proj-visual c3">🔍</div>
-      <div class="proj-body">
-        <div class="proj-name">Argos Socratique</div>
-        <div class="proj-desc">Dispositif de traçabilité des compétences critiques. Système Socrate augmenté par l'IA. Accès sur justification pédagogique.</div>
-        <div class="proj-tags"><span class="proj-tag">Compétences</span><span class="proj-tag">Traçabilité</span><span class="proj-tag">Accès restreint</span></div>
-      </div>
-      <div class="proj-footer">Découvrir Argos <span>↗</span></div>
-    </a>
-    <a href="https://ia-cr.rochane.fr/" target="_blank" rel="noopener" class="proj-card reveal">
+        <a href="https://ia-cr.rochane.fr/" target="_blank" rel="noopener" class="proj-card reveal">
       <div class="proj-visual c4">📊</div>
       <div class="proj-body">
         <div class="proj-name">Compagnon de Route</div>
@@ -478,8 +361,9 @@
         <div class="proj-tags"><span class="proj-tag">Évaluation</span><span class="proj-tag">IA générative</span><span class="proj-tag">Audit</span></div>
       </div>
       <div class="proj-footer">Tester l'outil <span>↗</span></div>
+    
     </a>
-    <a href="https://faqeval.rochane.fr" target="_blank" rel="noopener" class="proj-card reveal">
+        <a href="https://faqeval.rochane.fr" target="_blank" rel="noopener" class="proj-card reveal">
       <div class="proj-visual" style="background: #e9edfa; display:flex; align-items:center; justify-content:center;">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="72" height="72" fill="none">
           <!-- Bulle d'objection -->
@@ -498,183 +382,53 @@
         <div class="proj-tags"><span class="proj-tag">Évaluation</span><span class="proj-tag">Conférences</span><span class="proj-tag">FAQ pratique</span></div>
       </div>
       <div class="proj-footer">Consulter la FAQ <span>↗</span></div>
+    
     </a>
-    <a href="https://ia-diff.rochane.fr/" target="_blank" rel="noopener" class="proj-card reveal">
-      <div class="proj-visual" style="background: #e9edfa; display:flex; align-items:center; justify-content:center;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="72" height="72" fill="none">
-          <!-- Central node -->
-          <circle cx="22" cy="40" r="5" fill="#1d3db0"/>
-          <!-- Three diverging paths -->
-          <!-- Top path: "défi" -->
-          <path d="M27 38 Q44 20 58 18" stroke="#1d3db0" stroke-width="2.5" stroke-linecap="round"/>
-          <circle cx="58" cy="18" r="4" fill="#1d3db0" opacity="0.9"/>
-          <rect x="55" y="14" width="2" height="8" rx="1" fill="white"/>
-          <!-- Middle path: "standard" -->
-          <path d="M27 40 L58 40" stroke="#1d3db0" stroke-width="2.5" stroke-linecap="round" opacity="0.65"/>
-          <circle cx="58" cy="40" r="4" fill="#1d3db0" opacity="0.65"/>
-          <rect x="54.5" y="37.5" width="7" height="2" rx="1" fill="white" opacity="0.9"/>
-          <!-- Bottom path: "guidé" -->
-          <path d="M27 42 Q44 60 58 62" stroke="#1d3db0" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
-          <circle cx="58" cy="62" r="4" fill="#1d3db0" opacity="0.4"/>
-          <path d="M55.5 62 L60.5 62 M58 59.5 L58 64.5" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.95"/>
-          <!-- Entry point label line -->
-          <line x1="10" y1="40" x2="17" y2="40" stroke="#1d3db0" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-      </div>
+        <a href="https://voxfolio.rochane.fr/" target="_blank" rel="noopener" class="proj-card reveal">
+      <div class="proj-visual c2">🎙️</div>
       <div class="proj-body">
-        <div class="proj-name">Assistant de différenciation pédagogique</div>
-        <div class="proj-desc">Application web propulsée par l'IA permettant aux formateurs et enseignants de générer instantanément des activités pédagogiques différenciées (versions guidée, standard et défi) pour s'adapter aux besoins de chaque apprenant.</div>
-        <div class="proj-tags"><span class="proj-tag">Différenciation</span><span class="proj-tag">Inclusion</span><span class="proj-tag">Formateurs</span></div>
+        <div class="proj-name">VoxFolio</div>
+        <div class="proj-desc">Portfolio vocal augmenté par l'IA. En 2 minutes d'enregistrement : transcription, analyse et génération d'un profil professionnel.</div>
+        <div class="proj-tags"><span class="proj-tag">Voix &amp; IA</span><span class="proj-tag">Inclusion</span><span class="proj-tag">Portfolio</span></div>
       </div>
-      <div class="proj-footer">Accéder à l'outil <span>↗</span></div>
+      <div class="proj-footer">Accéder à VoxFolio <span>↗</span></div>
+    
     </a>
-    <a href="https://ia-conflits.rochane.fr/" target="_blank" rel="noopener" class="proj-card reveal">
-      <div class="proj-visual" style="background: #fbeceb; display:flex; align-items:center; justify-content:center;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="72" height="72" fill="none">
-          <!-- Croyance initiale : bloc stable -->
-          <rect x="10" y="30" width="22" height="20" rx="4" fill="#1d3db0" opacity="0.18"/>
-          <rect x="11" y="31" width="20" height="18" rx="3" stroke="#1d3db0" stroke-width="1.8" opacity="0.5"/>
-          <!-- Fissure centrale -->
-          <path d="M21 30 L18 40 L22 40 L19 50" stroke="#1d3db0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-          <!-- Flèche de choc venant de droite -->
-          <path d="M62 40 L42 40" stroke="#1d3db0" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M46 35 L42 40 L46 45" stroke="#1d3db0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <!-- Point d'impact -->
-          <circle cx="42" cy="40" r="3" fill="#1d3db0" opacity="0.7"/>
-          <!-- Éclats -->
-          <line x1="33" y1="25" x2="28" y2="19" stroke="#1d3db0" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
-          <line x1="21" y1="22" x2="21" y2="15" stroke="#1d3db0" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
-          <line x1="11" y1="27" x2="5" y2="22" stroke="#1d3db0" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
-          <!-- Niveau intensité : 3 barres -->
-          <rect x="55" y="50" width="5" height="8" rx="1.5" fill="#1d3db0" opacity="0.35"/>
-          <rect x="62" y="44" width="5" height="14" rx="1.5" fill="#1d3db0" opacity="0.6"/>
-          <rect x="69" y="37" width="5" height="21" rx="1.5" fill="#1d3db0" opacity="0.9"/>
-        </svg>
-      </div>
+        <a href="https://ia-des.rochane.fr/" target="_blank" rel="noopener" class="proj-card reveal">
+      <div class="proj-visual c3">🔍</div>
       <div class="proj-body">
-        <div class="proj-name">Déstabilisateur pédagogique</div>
-        <div class="proj-desc">Génère une situation concrète qui fait tomber une croyance professionnelle erronée chez vos apprenants. Trois niveaux d'intensité : questionnement doux, dissonance forte ou rupture radicale.</div>
-        <div class="proj-tags"><span class="proj-tag">Conflit cognitif</span><span class="proj-tag">Croyances</span><span class="proj-tag">Formateurs</span></div>
+        <div class="proj-name">Argos Socratique</div>
+        <div class="proj-desc">Dispositif de traçabilité des compétences critiques. Système Socrate augmenté par l'IA. Accès sur justification pédagogique.</div>
+        <div class="proj-tags"><span class="proj-tag">Compétences</span><span class="proj-tag">Traçabilité</span><span class="proj-tag">Accès restreint</span></div>
       </div>
-      <div class="proj-footer">Tester l'outil <span>↗</span></div>
-    </a>
-    <a href="https://ia-generateurtransparence.rochane.fr/" target="_blank" rel="noopener" class="proj-card reveal">
-      <div class="proj-visual" style="background: #eef1f6; display:flex; align-items:center; justify-content:center;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="72" height="72" fill="none">
-          <!-- Jauge fond -->
-          <path d="M16 52 A26 26 0 0 1 64 52" stroke="#e0e8f0" stroke-width="7" stroke-linecap="round" fill="none"/>
-          <!-- Jauge remplie à ~60% -->
-          <path d="M16 52 A26 26 0 0 1 49 28" stroke="#1d3db0" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.85"/>
-          <!-- Aiguille -->
-          <line x1="40" y1="52" x2="50" y2="29" stroke="#1d3db0" stroke-width="2.5" stroke-linecap="round"/>
-          <circle cx="40" cy="52" r="3.5" fill="#1d3db0"/>
-          <!-- Étiquettes extrémités -->
-          <text x="13" y="63" font-size="7" fill="#1d3db0" opacity="0.6" font-family="sans-serif">Min</text>
-          <text x="59" y="63" font-size="7" fill="#1d3db0" opacity="0.6" font-family="sans-serif">Max</text>
-          <!-- Petits tirets de graduation -->
-          <line x1="40" y1="27" x2="40" y2="22" stroke="#1d3db0" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
-          <line x1="22" y1="36" x2="18" y2="33" stroke="#1d3db0" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
-          <line x1="58" y1="36" x2="62" y2="33" stroke="#1d3db0" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
-        </svg>
-      </div>
-      <div class="proj-body">
-        <div class="proj-name">Générateur de transparence IA</div>
-        <div class="proj-desc">Un système de jauge pour nuancer la transparence sur l'usage de l'IA. Plutôt qu'un simple oui/non, l'outil visualise le dosage réel : simple coup de main ou sous-traitance complète.</div>
-        <div class="proj-tags"><span class="proj-tag">Transparence</span><span class="proj-tag">Éthique IA</span><span class="proj-tag">Écriture</span></div>
-      </div>
-      <div class="proj-footer">Tester l'outil <span>↗</span></div>
-    </a>
-    <a href="https://voix-atelier.rochane.fr/" target="_blank" rel="noopener" class="proj-card reveal">
-      <div class="proj-visual" style="background: #f3f7fc; display:flex; align-items:center; justify-content:center;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="72" height="72" fill="none">
-          <!-- Cycle quatre temps : arc circulaire avec 4 nœuds -->
-          <circle cx="40" cy="40" r="24" stroke="#1d3db0" stroke-width="1.8" fill="none" opacity="0.35" stroke-dasharray="3 3"/>
-          <!-- T1 : nœud haut (brut, parole) -->
-          <circle cx="40" cy="16" r="6" fill="#1d3db0"/>
-          <text x="40" y="19" font-size="8" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="700">1</text>
-          <!-- T2 : nœud droite (tension analytique) -->
-          <circle cx="64" cy="40" r="6" fill="#1d3db0" opacity="0.8"/>
-          <text x="64" y="43" font-size="8" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="700">2</text>
-          <!-- T3 : nœud bas (reprise, pivot) -->
-          <circle cx="40" cy="64" r="6" fill="#1d3db0"/>
-          <text x="40" y="67" font-size="8" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="700">3</text>
-          <!-- T4 : nœud gauche (assemblage) -->
-          <circle cx="16" cy="40" r="6" fill="#1d3db0" opacity="0.8"/>
-          <text x="16" y="43" font-size="8" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="700">4</text>
-          <!-- Flèches de progression entre nœuds -->
-          <path d="M48 18 Q58 22 62 32" stroke="#1d3db0" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.6"/>
-          <path d="M62 48 Q58 58 48 62" stroke="#1d3db0" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.6"/>
-          <path d="M32 62 Q22 58 18 48" stroke="#1d3db0" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.6"/>
-          <path d="M18 32 Q22 22 32 18" stroke="#1d3db0" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.6"/>
-        </svg>
-      </div>
-      <div class="proj-body">
-        <div class="proj-name">Voix-atelier</div>
-        <div class="proj-desc">Protocole en quatre temps pour produire avec l'IA sans perdre sa voix. Alterne parole humaine brute (T1, T3) et traitement analytique (T2), puis assemble sous contrainte (T4). Skill Claude et prompts portables disponibles.</div>
-        <div class="proj-tags"><span class="proj-tag">Méthode</span><span class="proj-tag">Écriture &amp; IA</span><span class="proj-tag">Voix propre</span></div>
-      </div>
-      <div class="proj-footer">Voir l'infographie <span>↗</span></div>
+      <div class="proj-footer">Découvrir Argos <span>↗</span></div>
+    
     </a>
   </div>
+  <div class="home-more reveal"><a href="/ressources#outils" class="btn btn-outline">Tous les outils <span>→</span></a></div>
   </div>
 </div>
 
-<!-- INFOGRAPHIES -->
-<div class="section-wrap" id="infographies">
+<!-- RESSOURCES : sélection -->
+<div class="section-wrap" id="ressources-apercu">
   <div class="section-inner">
     <div class="reveal">
-      <p class="section-tag">Ressources visuelles</p>
-      <h2 class="section-title">Mes infographies</h2>
-      <p class="section-sub">Supports pédagogiques interactifs sur l'IA, la pédagogie et le numérique, libres d'accès et partageables.</p>
+      <p class="section-tag">Ressources</p>
+      <h2 class="section-title">À lire, à écouter,<br>à réutiliser</h2>
+      <p class="section-sub">Articles, infographies, webinaires et podcasts en libre accès. Un aperçu ci-dessous, tout le reste dans la bibliothèque.</p>
     </div>
-    <div class="infog-grid">
+    <div class="ressel-grid">
+            <a href="https://www.innovation-pedagogique.fr/article25486.html" target="_blank" rel="noopener" class="article-card reveal">
+        <div class="article-cat">Évaluation · IA</div>
+        <div class="article-title">Cinq questions que les formatrices et formateurs n'osent pas se poser sur l'évaluation à l'ère de l'IA</div>
+        <div class="article-cta">Lire l'article <span>→</span></div>
+      
+      </a>
       <a class="infog-card reveal" href="https://ia-persistance.rochane.fr/" target="_blank" rel="noopener"><span class="infog-idx">N°15</span><span class="infog-name">Quand l'IA aide trop, ce qui s'efface en silence</span><span class="infog-open">Voir l'infographie <span>↗</span></span></a>
-      <a class="infog-card reveal" href="https://ia-conso.rochane.fr/" target="_blank" rel="noopener"><span class="infog-idx">N°14</span><span class="infog-name">IA et consommation énergétique</span><span class="infog-open">Voir l'infographie <span>↗</span></span></a>
-      <a class="infog-card reveal" href="https://ia-critique.rochane.fr/" target="_blank" rel="noopener"><span class="infog-idx">N°13</span><span class="infog-name">L'IA avec esprit critique</span><span class="infog-open">Voir l'infographie <span>↗</span></span></a>
-      <a class="infog-card reveal" href="https://ia-demystifiee.rochane.fr/" target="_blank" rel="noopener"><span class="infog-idx">N°12</span><span class="infog-name">Comprendre l'IA en 5 concepts</span><span class="infog-open">Voir l'infographie <span>↗</span></span></a>
-      <a class="infog-card reveal" href="https://ia-classe.rochane.fr/" target="_blank" rel="noopener"><span class="infog-idx">N°11</span><span class="infog-name">IA responsable en classe</span><span class="infog-open">Voir l'infographie <span>↗</span></span></a>
-      <a class="infog-card reveal" href="https://ia-codes.rochane.fr/" target="_blank" rel="noopener"><span class="infog-idx">N°10</span><span class="infog-name">4 codes pour transformer tes prompts IA</span><span class="infog-open">Voir l'infographie <span>↗</span></span></a>
-      <a class="infog-card reveal" href="https://ia-contexte.rochane.fr/" target="_blank" rel="noopener"><span class="infog-idx">N°09</span><span class="infog-name">Contexte caché : l'efficacité des fausses questions</span><span class="infog-open">Voir l'infographie <span>↗</span></span></a>
-      <a class="infog-card reveal" href="https://ia-fonction.rochane.fr/" target="_blank" rel="noopener"><span class="infog-idx">N°08</span><span class="infog-name">LLM = f(x) → y</span><span class="infog-open">Voir l'infographie <span>↗</span></span></a>
-      <a class="infog-card reveal" href="https://ia-triangle.rochane.fr/" target="_blank" rel="noopener"><span class="infog-idx">N°07</span><span class="infog-name">IA : Partenaire ou Piège ?</span><span class="infog-open">Voir l'infographie <span>↗</span></span></a>
-      <a class="infog-card reveal" href="https://ia-rgpd.rochane.fr/" target="_blank" rel="noopener"><span class="infog-idx">N°06</span><span class="infog-name">Check-list RGPD et IA dans l'éducation</span><span class="infog-open">Voir l'infographie <span>↗</span></span></a>
-      <a class="infog-card reveal" href="https://ia-friction.rochane.fr/" target="_blank" rel="noopener"><span class="infog-idx">N°05</span><span class="infog-name">La disparition de la friction intellectuelle</span><span class="infog-open">Voir l'infographie <span>↗</span></span></a>
-      <a class="infog-card reveal" href="https://ia-typologies.rochane.fr/" target="_blank" rel="noopener"><span class="infog-idx">N°04</span><span class="infog-name">Les différents types d'IA : comparaison (FR)</span><span class="infog-open">Voir l'infographie <span>↗</span></span></a>
-      <a class="infog-card reveal" href="https://ia-typologiesen.rochane.fr/" target="_blank" rel="noopener"><span class="infog-idx">N°03</span><span class="infog-name">Different Types of AI: Comparison (EN)</span><span class="infog-open">Voir l'infographie <span>↗</span></span></a>
-      <a class="infog-card reveal" href="https://ia-transparence.rochane.fr/" target="_blank" rel="noopener"><span class="infog-idx">N°02</span><span class="infog-name">Bonnes pratiques pour les écrits assistés par IA</span><span class="infog-open">Voir l'infographie <span>↗</span></span></a>
       <a class="infog-card reveal" href="https://llm-fallacy.rochane.fr/" target="_blank" rel="noopener"><span class="infog-idx">N°01</span><span class="infog-name">L'illusion de compétence à l'ère de l'IA (LLM Fallacy)</span><span class="infog-open">Voir l'infographie <span>↗</span></span></a>
     </div>
-  </div>
-</div>
-
-<!-- WEBINAIRES -->
-<div class="section-wrap bg-off" id="webinaires">
-  <div class="section-inner">
-    <div class="reveal">
-      <p class="section-tag">En ligne</p>
-      <h2 class="section-title">Webinaires</h2>
-      <p class="section-sub">Interventions en ligne sur les usages de l'IA dans l'éducation et la formation professionnelle.</p>
-    </div>
-    <div class="webinar-list">
-      <div class="webinar-row reveal"><div class="w-num">01</div><div class="w-title">Les outils de l'IA dans l'éducation – Opportunités et défis</div><div class="w-meta">International · IA &amp; Éducation</div></div>
-      <div class="webinar-row reveal"><div class="w-num">02</div><div class="w-title">Outils IA en formation – De la conception à la mise en œuvre</div><div class="w-meta">International · Formation</div></div>
-      <div class="webinar-row reveal"><div class="w-num">03</div><div class="w-title">IA générative et création de contenus pédagogiques (Innovember)</div><div class="w-meta">Université de Lille · IA &amp; Éducation</div></div>
-    </div>
-  </div>
-</div>
-
-
-<!-- PODCASTS -->
-<div class="section-wrap" id="podcasts">
-  <div class="section-inner">
-    <div class="reveal">
-      <p class="section-tag">Médias</p>
-      <h2 class="section-title">Podcasts</h2>
-      <p class="section-sub">Trois interviews de plus de 30 minutes sur l'IA, la pédagogie et la formation professionnelle.</p>
-    </div>
     <div class="podcast-list">
-
-      <!-- 1. Rendez-vous en terre digitale -->
+      
       <div class="podcast-card reveal">
         <div class="podcast-meta">
           <div class="podcast-num">01</div>
@@ -693,51 +447,35 @@
         </div>
       </div>
 
-      <!-- 2. Never Stop Learning -->
-      <div class="podcast-card reveal">
-        <div class="podcast-meta">
-          <div class="podcast-num">02</div>
-          <div class="podcast-info">
-            <div class="podcast-show">Never Stop Learning · Épisode 83</div>
-            <div class="podcast-title">IA et compétences – Le futur de la formation professionnelle</div>
-            <div class="podcast-desc">Des retours terrain, des petits villages aux grandes organisations comme l'ONU. Prompt engineering, outils pratiques, éthique et protection des données.</div>
-          </div>
-          <div class="podcast-duration">+30 min</div>
-        </div>
-        <div class="podcast-player">
-          <a href="https://open.spotify.com/episode/11kOrwC5NSaKwFfPxxuCk5" target="_blank" rel="noopener" class="podcast-play-btn podcast-play-btn--spotify">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
-            Écouter sur Spotify
-          </a>
-        </div>
-      </div>
+      
+    </div>
+    <div class="home-more reveal"><a href="/ressources" class="btn btn-outline">Explorer toute la bibliothèque <span>→</span></a></div>
+  </div>
+</div>
 
-      <!-- 3. Numericast -->
-      <div class="podcast-card reveal">
-        <div class="podcast-meta">
-          <div class="podcast-num">03</div>
-          <div class="podcast-info">
-            <div class="podcast-show">Numericast · Épisode 08</div>
-            <div class="podcast-title">Technopédagogie, ingénierie pédagogique et outils numériques en formation</div>
-            <div class="podcast-desc">Interview sur les pratiques numériques à Bruxelles Formation : technopédagogie, ingénierie de formation et intégration des outils numériques.</div>
-          </div>
-          <div class="podcast-duration">+30 min · 2021</div>
-        </div>
-        <div class="podcast-player">
-          <iframe
-            width="100%"
-            height="166"
-            frameborder="0"
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy"
-            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/numericast/numericast08-rochane-kherbouche-bruxelles-formation&color=%231d3db0&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false">
-          </iframe>
-        </div>
-      </div>
-
+<!-- TÉMOIGNAGES : section prête à l'emploi, à décommenter dès que 2-3 vraies
+     citations (nom + fonction + institution) sont collectées.
+<div class="section-wrap" id="temoignages">
+  <div class="reveal">
+    <p class="section-tag">Ils en parlent</p>
+    <h2 class="section-title">Témoignages</h2>
+  </div>
+  <div class="about-right" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;">
+    <div class="info-card reveal">
+      <div class="info-card-text" style="font-size:0.95rem;font-style:italic;margin-bottom:0.8rem;">« Citation du témoignage ici. »</div>
+      <div class="info-card-title">Prénom Nom · Fonction · Institution</div>
+    </div>
+    <div class="info-card reveal">
+      <div class="info-card-text" style="font-size:0.95rem;font-style:italic;margin-bottom:0.8rem;">« Citation du témoignage ici. »</div>
+      <div class="info-card-title">Prénom Nom · Fonction · Institution</div>
+    </div>
+    <div class="info-card reveal">
+      <div class="info-card-text" style="font-size:0.95rem;font-style:italic;margin-bottom:0.8rem;">« Citation du témoignage ici. »</div>
+      <div class="info-card-title">Prénom Nom · Fonction · Institution</div>
     </div>
   </div>
 </div>
+-->
 
 <!-- COMMUNITY -->
 <div id="community">
@@ -755,16 +493,16 @@
     <div class="reveal">
       <p class="section-tag">Contact</p>
       <h2 class="section-title">Travaillons<br>ensemble</h2>
-      <p class="section-sub">Conférence, formation, atelier ou collaboration. Disponible pour accompagner vos projets IA.</p>
+      <p class="section-sub">Conférence, formation, atelier ou accompagnement : parlons de votre projet. Réponse rapide, y compris pour un simple conseil.</p>
       <div class="contact-channels">
-        <a href="https://www.linkedin.com/in/rochanekherbouche" target="_blank" rel="noopener" class="channel-link">
-          <div class="channel-icon">in</div> LinkedIn · Rochane Kherbouche
+        <a href="https://cal.com/rochane/echange-avec-rochane" target="_blank" rel="noopener" class="channel-link">
+          <div class="channel-icon" aria-hidden="true">📅</div> Réserver un échange : 30 min ou 1 h, à votre convenance
         </a>
         <a href="mailto:ia@rochane.fr" class="channel-link">
-          <div class="channel-icon">@</div> ia@rochane.fr
+          <div class="channel-icon" aria-hidden="true">@</div> ia@rochane.fr
         </a>
-        <a href="https://cal.com/rochane/echange-avec-rochane" target="_blank" rel="noopener" class="channel-link">
-          <div class="channel-icon">📅</div> Voir mes disponibilités &amp; réserver un créneau
+        <a href="https://www.linkedin.com/in/rochanekherbouche" target="_blank" rel="noopener" class="channel-link">
+          <div class="channel-icon" aria-hidden="true">in</div> LinkedIn · Rochane Kherbouche
         </a>
       </div>
     </div>
@@ -779,6 +517,7 @@
             <option value="">Sélectionner...</option>
             <option>Conférence</option>
             <option>Formation / Atelier</option>
+            <option>Accompagnement</option>
             <option>Collaboration</option>
             <option>Autre</option>
           </select>
@@ -802,11 +541,15 @@
 <footer>
   <div>© 2026 <strong>Rochane Kherbouche</strong> · Technopédagogue &amp; Ambassadeur IA</div>
   <div style="display:flex;gap:1.2rem;flex-wrap:wrap;justify-content:center;">
-    <a href="/mentions-legales.html">Mentions légales &amp; confidentialité</a>
+    <a href="/conferences">Conférences</a>
+    <a href="/ateliers-formations">Ateliers &amp; formations</a>
+    <a href="/accompagnement">Accompagnement</a>
+    <a href="/evaluer-ia">Évaluer avec l'IA</a>
+    <a href="/ressources">Ressources</a>
+    <a href="/mentions-legales">Mentions légales &amp; confidentialité</a>
     <a href="https://www.francenum.gouv.fr/ambassadeurs-ia" target="_blank" rel="noopener">Ambassadeur IA · francenum.gouv.fr</a>
   </div>
 </footer>
-
 
 <script src="/site.js?v=1" defer></script>
 
