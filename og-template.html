@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex">
+<!-- Gabarit de l'image de partage og-image.jpg (1200x630).
+     Régénération : capture d'écran 1200x630 de cette page, polices chargées,
+     enregistrée en og-image.jpg à la racine. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Instrument+Sans:wght@400;500;600&family=Spline+Sans+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #fdfdfb;
+    --text: #14151b;
+    --muted: #5d6270;
+    --accent: #1d3db0;
+    --rouge: #cf2e2e;
+    --seyes: #ccd9ec;
+    --line: #dfe3ec;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px;
+    height: 630px;
+    font-family: 'Instrument Sans', sans-serif;
+    color: var(--text);
+    background:
+      repeating-linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent 34px,
+        rgba(204,217,236,0.55) 34px,
+        rgba(204,217,236,0.55) 36px
+      ),
+      var(--paper);
+    position: relative;
+    overflow: hidden;
+  }
+  /* marge du correcteur */
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 96px;
+    width: 3px;
+    background: rgba(207,46,46,0.4);
+  }
+  .inner {
+    position: absolute;
+    inset: 0;
+    padding: 64px 80px 56px 140px;
+    display: flex;
+    flex-direction: column;
+  }
+  .copy-header {
+    display: flex;
+    gap: 56px;
+    font-family: 'Spline Sans Mono', monospace;
+    font-size: 19px;
+    letter-spacing: 0.04em;
+  }
+  .cf { display: flex; gap: 12px; align-items: baseline; padding-bottom: 8px; border-bottom: 2.5px solid var(--seyes); }
+  .cf .k { text-transform: uppercase; color: #63687a; letter-spacing: 0.1em; }
+  .cf .v { color: var(--accent); font-weight: 600; }
+  h1 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 800;
+    font-size: 88px;
+    line-height: 1.04;
+    letter-spacing: -0.025em;
+    margin-top: 54px;
+  }
+  h1 em {
+    font-style: normal;
+    color: var(--accent);
+    padding-bottom: 6px;
+    background-image:
+      linear-gradient(var(--rouge), var(--rouge)),
+      linear-gradient(var(--rouge), var(--rouge));
+    background-repeat: no-repeat;
+    background-size: 100% 4px, 100% 4px;
+    background-position: 0 calc(100% - 9px), 0 100%;
+  }
+  .sub {
+    margin-top: 34px;
+    font-size: 30px;
+    line-height: 1.45;
+    color: var(--muted);
+    max-width: 880px;
+  }
+  .sub strong { color: var(--text); font-weight: 600; }
+  .footer {
+    margin-top: auto;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    font-family: 'Spline Sans Mono', monospace;
+    font-size: 22px;
+  }
+  .name { font-weight: 600; color: var(--text); }
+  .name .dot { display: inline-block; width: 12px; height: 12px; background: var(--rouge); border-radius: 2px; margin-left: 8px; }
+  .url { color: var(--accent); font-weight: 600; }
+</style>
+</head>
+<body>
+  <div class="inner">
+    <div class="copy-header">
+      <div class="cf"><span class="k">Nom</span><span class="v">Kherbouche Rochane</span></div>
+      <div class="cf"><span class="k">Matière</span><span class="v">IA &amp; formation</span></div>
+      <div class="cf"><span class="k">Mention</span><span class="v">Ambassadeur IA</span></div>
+    </div>
+    <h1>L'IA transforme la formation.<br><em>Reprenez la main.</em></h1>
+    <p class="sub">Conférences, ateliers et accompagnements · Technopédagogue, auteur de
+      <strong>« Évaluer en formation à l'ère de l'IA générative »</strong> (Chronique Sociale, 2026)</p>
+    <div class="footer">
+      <span class="name">Rochane Kherbouche<span class="dot"></span></span>
+      <span class="url">ia.rochane.fr</span>
+    </div>
+  </div>
+</body>
+</html>

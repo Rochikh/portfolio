@@ -1,86 +1,64 @@
-# 🤖 Portfolio – Rochane Kherbouche
+# ia.rochane.fr · Portfolio de Rochane Kherbouche
 
-> Portfolio personnel d'expert IA & Pédagogie Numérique, hébergé sur GitHub Pages.
+Portfolio professionnel de Rochane Kherbouche, technopédagogue et Ambassadeur IA :
+conférences, ateliers, formations et accompagnements sur l'IA en formation et
+l'évaluation. Auteur de « Évaluer en formation à l'ère de l'IA générative »
+(Chronique Sociale, 2026).
 
-## 🚀 Déploiement sur GitHub Pages
+## Architecture
 
-### Étape 1 – Créer le dépôt GitHub
-1. Aller sur [github.com/new](https://github.com/new)
-2. Nommer le dépôt : **`portfolio`** (ou `rochane.fr`)
-3. Le laisser **Public**
-4. Cliquer **Create repository**
-### Étape 2 – Pousser le code
+- **Hébergement : Cloudflare Pages** (domaine `ia.rochane.fr`, fichier `CNAME`).
+- `_worker.js` : Pages Function. Sert les fichiers statiques et l'endpoint
+  `POST /api/chat` du chatbot (API Gemini, clé dans le secret d'environnement
+  `GEMINI_API_KEY`, jamais exposée côté client).
+- Six pages : `index.html`, `conferences.html`, `ateliers-formations.html`,
+  `accompagnement.html`, `evaluer-ia.html`, `ressources.html`
+  (plus `mentions-legales.html` et `livre3d.html`, toutes deux en noindex).
+- `styles.css` et `site.js` sont partagés par toutes les pages. Cache-busting
+  par `?v=N` : incrémenter le numéro dans toutes les pages à chaque modification
+  de l'un de ces deux fichiers.
+- Les liens internes sont sans extension (`/conferences`) : Cloudflare Pages
+  redirige automatiquement `/conferences.html` vers `/conferences` (308).
+- Le widget de chat est injecté par `site.js` : son markup n'existe qu'à un
+  seul endroit.
+
+## Chatbot : chaîne de contenu
+
+Les pages HTML sont la source de vérité. `knowledge.md` (base de connaissance
+du chatbot) en est dérivé :
+
 ```bash
-git init
-git add .
-git commit -m "🚀 Initial portfolio"
-git branch -M main
-git remote add origin https://github.com/TON_USERNAME/portfolio.git
-git push -u origin main
+python3 generate-knowledge.py . knowledge.md
 ```
 
-### Étape 3 – Activer GitHub Pages
-1. Aller dans **Settings → Pages**
-2. Source : **Deploy from a branch**
-3. Branch : **main** / **(root)**
-4. Cliquer **Save**
-5. Ton site sera dispo sur : `https://TON_USERNAME.github.io/portfolio/`
+À relancer après **toute** modification de contenu des six pages, puis
+committer le `knowledge.md` produit. Le prompt système (ton, règles, tarifs,
+langues, démarche) vit dans `_worker.js`.
 
-### Étape 4 – Ajouter ton nom de domaine personnalisé
-1. Dans **Settings → Pages → Custom domain**
-2. Entrer : `ia.rochane.fr` (ou autre sous-domaine)
-3. Chez ton registraire (ex. OVH), ajouter un enregistrement DNS :
-   - Type : `CNAME`
-   - Nom : `ia`
-   - Valeur : `TON_USERNAME.github.io`
-4. Cocher **Enforce HTTPS**
+## Ajouter une intervention
 
----
+1. Dupliquer une ligne existante dans `conferences.html` (`.conf-row`) ou
+   `ateliers-formations.html` (`.form-row`) en conservant les classes CSS :
+   le générateur de knowledge les parse.
+2. Mettre à jour les compteurs affichés : sous-titre de la section concernée,
+   carte offre correspondante sur l'accueil, et `data-target="38"` de la carte
+   stats du hero (38 = 14 conférences + 21 formations + 3 webinaires).
+3. Régénérer `knowledge.md` (commande ci-dessus).
 
-## ✏️ Mettre à jour le site
+## Image de partage
 
-### Modifier le contenu
-Tout le site est dans **un seul fichier** : `index.html`
+`og-image.jpg` (1200x630) se régénère en capturant `og-template.html`
+(polices chargées) en 1200x630, par exemple avec Playwright :
 
-Les sections à modifier sont bien commentées avec des blocs `<!-- ═══ SECTION ═══ -->`.
-
-### Ajouter une conférence
-Trouver la section `<!-- CONFÉRENCES -->` et ajouter :
-```html
-<div class="conf-card fade-in">
-  <div class="conf-flag">🇫🇷</div>
-  <div class="conf-content">
-    <div class="conf-name">Nom de la conférence</div>
-    <div class="conf-meta">
-      <span class="conf-location"><i class="fas fa-map-marker-alt"></i>Ville</span>
-      <span class="conf-category">Catégorie</span>
-    </div>
-  </div>
-</div>
-```
-
-### Pousser les modifications
 ```bash
-git add .
-git commit -m "✏️ Mise à jour conférences"
-git push
-```
-GitHub Pages se met à jour automatiquement en ~1 minute.
-
----
-
-## 🏗️ Structure du projet
-
-```
-portfolio/
-├── index.html   ← Tout le site (HTML + CSS + JS)
-└── README.md    ← Ce fichier
+npx playwright screenshot --viewport-size "1200,630" og-template.html og-image.jpg
 ```
 
-## 🎨 Couleurs principales
-| Variable | Valeur | Usage |
-|----------|--------|-------|
-| `--blue` | `#4472C4` | Couleur principale |
-| `--blue-dark` | `#2c4a8a` | Titres, hover |
-| `--rose` | `#d4a5a5` | Accents, badges |
+## Notes
 
+- `.github/workflows/deploy.yml` est un vestige de l'ancien hébergement
+  GitHub Pages : ne pas le réactiver, le site vit sur Cloudflare Pages.
+- Après un merge, si `styles.css` ou `site.js` ne semblent pas à jour en
+  production, purger le cache Cloudflare ou incrémenter `?v=`.
+- Contrainte éditoriale : ne jamais présenter Rochane comme « expert IA »
+  (technopédagogue, spécialiste des usages de l'IA en pédagogie, Ambassadeur IA).
