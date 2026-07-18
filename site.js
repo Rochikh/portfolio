@@ -305,11 +305,30 @@
       });
     }
 
+  // ── FILTRES DE LA BIBLIOTHÈQUE RESSOURCES ──
+  function initFilters() {
+    var bar = document.querySelector('.filter-bar');
+    if (!bar) return;
+    var sections = document.querySelectorAll('[data-res-section]');
+    bar.addEventListener('click', function (e) {
+      var btn = e.target.closest('.filter-btn');
+      if (!btn) return;
+      var f = btn.dataset.filter;
+      bar.querySelectorAll('.filter-btn').forEach(function (b) {
+        b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+      });
+      sections.forEach(function (s) {
+        s.style.display = (f === 'all' || s.dataset.resSection === f) ? '' : 'none';
+      });
+    });
+  }
+
   function boot() {
     mountChat();
     initNav();
     initReveal();
     initCounters();
+    initFilters();
     init();
     initForm();
   }
