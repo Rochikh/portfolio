@@ -45,6 +45,38 @@ langues, démarche) vit dans `_worker.js`.
    stats du hero (38 = 14 conférences + 21 formations + 3 webinaires).
 3. Régénérer `knowledge.md` (commande ci-dessus).
 
+## Ajouter un article
+
+Les articles de fond vivent dans `articles/` et sont servis en
+`/articles/<slug>`. Le fichier `articles/pourquoi-les-detecteurs-dia-echouent.html`
+sert de gabarit : il est livré à l'état de **brouillon** (`noindex`, non lié,
+absent du sitemap et de `knowledge.md`).
+
+Écrire un article :
+
+1. **Dupliquer** le gabarit sous un nouveau slug (ex.
+   `articles/mon-sujet.html`). Mettre à jour `title`, `meta description`,
+   `canonical`, les balises Open Graph/Twitter, le `headline` du JSON-LD
+   `Article`, le H1, le chapô et le plan des titres.
+2. **Écrire le fond via voix-atelier** : remplacer chaque bloc
+   `<p class="article-todo">` par de la prose, en gardant les encarts
+   `.article-callout` pour les données vérifiables (avec leur source).
+   Ne rien inventer : chiffres, citations et exemples doivent être exacts.
+
+Publier (une fois le texte prêt) :
+
+3. Retirer la balise `<meta name="robots" content="noindex">`, le bandeau
+   `<div class="draft-banner">` et tous les blocs `.article-todo` restants.
+4. Ajouter `"datePublished": "AAAA-MM-JJ"` au nœud `Article` du JSON-LD.
+5. Ajouter une carte interne en tête de la section `#articles` de
+   `ressources.html` (même markup que `.article-card` mais
+   `href="/articles/<slug>"` **sans** `target="_blank"`), et mettre à jour le
+   compteur du filtre (`Articles · 6` → `7`) et le titre « Six articles publiés ».
+   Éventuellement l'ajouter aussi à la sélection Ressources de l'accueil.
+6. Ajouter l'URL `https://ia.rochane.fr/articles/<slug>` au `sitemap.xml`.
+7. Régénérer `knowledge.md` (l'article publié y apparaît automatiquement,
+   sous « Articles du site ») et incrémenter `?v=` si `styles.css` a changé.
+
 ## Image de partage
 
 `og-image.jpg` (1200x630) se régénère en capturant `og-template.html`
