@@ -15,19 +15,19 @@
   </button>
   <div class="chat-nudge" id="chat-nudge">
     💬 Une question ? Je suis là !
-    <span class="chat-nudge-close" id="chat-nudge-close">✕</span>
+    <button class="chat-nudge-close" id="chat-nudge-close" aria-label="Masquer ce message">✕</button>
   </div>
   <div id="chat-widget" class="chat-widget">
     <div class="chat-header">
       <div class="chat-header-top">
         <div class="chat-header-title">Une question ?</div>
-        <button class="chat-header-close" id="chat-close-btn">✕</button>
+        <button class="chat-header-close" id="chat-close-btn" aria-label="Fermer l'assistant">✕</button>
       </div>
       <div class="chat-header-sub">Je réponds sur les interventions, formats et disponibilités de Rochane.</div>
     </div>
     <div id="chat-messages" class="chat-messages"></div>
     <div class="chat-input-area">
-      <textarea id="chat-input" rows="1" placeholder="Votre question ici..."></textarea>
+      <textarea id="chat-input" rows="1" placeholder="Votre question ici..." aria-label="Votre question"></textarea>
       <button id="chat-send-btn">Envoyer</button>
     </div>
   </div>
@@ -92,9 +92,14 @@
     new IntersectionObserver(([e]) => {
       if (e.isIntersecting && !done) {
         done = true;
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         counters.forEach(el => {
           const target = +el.dataset.target;
           const suffix = el.dataset.suffix || '';
+          if (reduce) {
+            el.textContent = target.toLocaleString('fr-FR') + suffix;
+            return;
+          }
           const start = performance.now();
           const dur = 1100;
           function tick(now) {
