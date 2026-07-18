@@ -147,11 +147,11 @@ export default {
           ? SYSTEM_PROMPT + '\n\n=== BASE DE CONNAISSANCE DETAILLEE (titres et liens des travaux) ===\n' + knowledgeBase
           : SYSTEM_PROMPT;
 
-        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent?key=${GEMINI_API_KEY}`;
+        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent`;
 
         const googleResponse = await fetch(API_URL, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'application/json', 'x-goog-api-key': GEMINI_API_KEY },
           body: JSON.stringify({
             systemInstruction: { parts: [{ text: fullSystemPrompt }] },
             contents,
@@ -173,7 +173,7 @@ export default {
         });
 
       } catch (error) {
-        return new Response(JSON.stringify({ error: 'Internal server error in worker.', details: error.message }), {
+        return new Response(JSON.stringify({ error: 'Internal server error in worker.' }), {
           status: 500,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' }
         });
