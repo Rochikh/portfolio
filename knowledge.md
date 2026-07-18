@@ -95,7 +95,10 @@ La ligne Page: indique ou le contenu se trouve sur le site : elle peut etre cite
   URL: https://voix-atelier.rochane.fr/
   Page: https://ia.rochane.fr/ressources
 
-## Articles (6)
+## Articles (7)
+- [Évaluation · IA] Pourquoi les détecteurs d'IA échouent, et que faire à la place
+  URL: /articles/pourquoi-les-detecteurs-dia-echouent
+  Page: https://ia.rochane.fr/ressources
 - [Pédagogies actives · Formation] Les pédagogies actives au-delà du label
   URL: https://www.innovation-pedagogique.fr/article25856.html
   Page: https://ia.rochane.fr/ressources
@@ -204,3 +207,8 @@ La ligne Page: indique ou le contenu se trouve sur le site : elle peut etre cite
   Page: https://ia.rochane.fr/ressources
 - IA générative et création de contenus pédagogiques (Innovember) (Université de Lille · IA & Éducation)
   Page: https://ia.rochane.fr/ressources
+
+## Articles du site (1)
+- Pourquoi les détecteurs d'IA échouent, et que faire à la place : Les détecteurs d'IA échouent et la surveillance épuise. Comment déplacer l'évaluation du produit fini vers le processus documenté.
+  URL: https://ia.rochane.fr/articles/pourquoi-les-detecteurs-dia-echouent
+  Page: https://ia.rochane.fr/articles/pourquoi-les-detecteurs-dia-echouent
