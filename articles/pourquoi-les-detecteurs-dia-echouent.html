@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- BROUILLON : noindex tant que le fond n'est pas écrit via voix-atelier.
+     Publication : retirer cette ligne noindex + le bandeau .draft-banner + les blocs .article-todo,
+     ajouter datePublished au JSON-LD, lier la carte dans ressources.html, ajouter au sitemap,
+     régénérer knowledge.md. Voir README, section « Ajouter un article ». -->
+<meta name="robots" content="noindex">
+<title>Pourquoi les détecteurs d'IA échouent, et que faire à la place · Rochane Kherbouche</title>
+<meta name="description" content="Les détecteurs d'IA échouent et la surveillance épuise. Comment déplacer l'évaluation du produit fini vers le processus documenté.">
+<link rel="canonical" href="https://ia.rochane.fr/articles/pourquoi-les-detecteurs-dia-echouent">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="theme-color" content="#1d3db0">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://ia.rochane.fr/articles/pourquoi-les-detecteurs-dia-echouent">
+<meta property="og:site_name" content="Rochane Kherbouche">
+<meta property="og:title" content="Pourquoi les détecteurs d'IA échouent, et que faire à la place">
+<meta property="og:description" content="Les détecteurs d'IA échouent et la surveillance épuise. Comment déplacer l'évaluation du produit fini vers le processus documenté.">
+<meta property="og:image" content="https://ia.rochane.fr/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Rochane Kherbouche, technopédagogue et Ambassadeur IA, IA en formation">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pourquoi les détecteurs d'IA échouent, et que faire à la place">
+<meta name="twitter:description" content="Les détecteurs d'IA échouent et la surveillance épuise. Comment déplacer l'évaluation du produit fini vers le processus documenté.">
+<meta name="twitter:image" content="https://ia.rochane.fr/og-image.jpg">
+<meta name="twitter:image:alt" content="Rochane Kherbouche, technopédagogue et Ambassadeur IA, IA en formation">
+
+<!-- Données structurées. datePublished à ajouter au moment de la publication réelle. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://ia.rochane.fr/#person",
+      "name": "Rochane Kherbouche",
+      "url": "https://ia.rochane.fr/",
+      "image": "https://ia.rochane.fr/rochane.jpg",
+      "jobTitle": "Technopédagogue & Ambassadeur IA",
+      "description": "Technopédagogue et Ambassadeur IA, conférencier international, spécialiste de l'intégration de l'IA générative en formation.",
+      "email": "mailto:ia@rochane.fr",
+      "sameAs": [
+        "https://www.linkedin.com/in/rochanekherbouche",
+        "https://www.francenum.gouv.fr/ambassadeurs-ia"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://ia.rochane.fr/#website",
+      "url": "https://ia.rochane.fr/",
+      "name": "Rochane Kherbouche",
+      "inLanguage": "fr",
+      "publisher": { "@id": "https://ia.rochane.fr/#person" }
+    },
+    {
+      "@type": "Article",
+      "headline": "Pourquoi les détecteurs d'IA échouent, et que faire à la place",
+      "inLanguage": "fr",
+      "author": { "@id": "https://ia.rochane.fr/#person" },
+      "publisher": { "@id": "https://ia.rochane.fr/#person" },
+      "isPartOf": { "@id": "https://ia.rochane.fr/#website" },
+      "mainEntityOfPage": "https://ia.rochane.fr/articles/pourquoi-les-detecteurs-dia-echouent",
+      "image": "https://ia.rochane.fr/og-image.jpg"
+    }
+  ]
+}
+</script>
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=2">
+</head>
+
+<body>
+
+<a class="skip-link" href="#main">Aller au contenu</a>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a class="nav-logo" href="/">Rochane Kherbouche<span></span></a>
+  <button class="nav-burger" id="nav-burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-menu">
+    <li><a href="/conferences">Conférences</a></li>
+    <li><a href="/ateliers-formations">Ateliers &amp; formations</a></li>
+    <li><a href="/accompagnement">Accompagnement</a></li>
+    <li><a href="/evaluer-ia">Évaluer avec l'IA</a></li>
+    <li><a href="/ressources" aria-current="page">Ressources</a></li>
+    <li><a href="/#livre">Livre</a></li>
+    <li><a href="/#contact">Contact</a></li>
+    <li><a href="https://cal.com/rochane/echange-avec-rochane" target="_blank" rel="noopener" class="nav-cta">Échanger sur votre projet</a></li>
+  </ul>
+</nav>
+
+<!-- BROUILLON : retirer ce bandeau à la publication -->
+<div class="draft-banner">Brouillon · article en cours de rédaction, non publié</div>
+
+<main id="main">
+
+<article class="article-wrap">
+  <p class="article-eyebrow">Article · Évaluation &amp; IA</p>
+  <h1 class="article-h1">Pourquoi les détecteurs d'IA échouent, et que faire à la place</h1>
+  <p class="article-deck">Les détecteurs d'IA échouent. La surveillance épuise. La question utile n'est plus d'empêcher l'IA, mais de <strong>redéfinir ce que l'évaluation mesure</strong>.</p>
+  <p class="article-meta">Brouillon · à écrire via voix-atelier (T1 = ta parole brute)</p>
+
+  <div class="article-prose">
+
+    <!-- voix-atelier T1 : pose le problème en une scène concrète. Un formateur reçoit une copie
+         « suspecte », lance un détecteur. Que se passe-t-il, qu'est-ce qui se joue pour lui ? -->
+    <h2>Ce que promettent les détecteurs</h2>
+    <p class="article-todo">T1 : décris ce qu'on attend d'un détecteur d'IA, et pourquoi c'est rassurant sur le papier (un verdict, un score, une décision déléguée à la machine).</p>
+
+    <h2>Pourquoi ils échouent</h2>
+    <p class="article-todo">T1 : raconte un cas concret où le détecteur se trompe (faux positifs sur un texte humain, contournement trivial d'un texte IA). Ce que tu as vu sur le terrain, sans généraliser au-delà.</p>
+
+    <h2>Le coût de la surveillance</h2>
+    <p class="article-todo">T1 : ce que la logique de surveillance fait à la relation pédagogique et à la charge des formateurs. Pourquoi « épuise » n'est pas qu'une formule.</p>
+
+    <h2>Déplacer la question : du produit au processus</h2>
+    <aside class="article-callout">
+      <div class="callout-num">88 %</div>
+      <p class="callout-text">des étudiants du Royaume-Uni déclarent utiliser l'IA pour leurs travaux évalués <span class="callout-src">(HEPI, 2025)</span></p>
+    </aside>
+    <p class="article-todo">T1 : explique le déplacement du centre de gravité, du produit fini vers le processus documenté. Pourquoi interdire ne tient plus quand l'usage est déjà massif.</p>
+
+    <h2>Trois postures concrètes</h2>
+    <aside class="article-callout">
+      <div class="callout-num">3</div>
+      <p class="callout-text">postures face à l'IA dans l'évaluation, développées dans le livre : résistante, collaborative, formative</p>
+    </aside>
+    <p class="article-todo">T1 : présente les trois postures sans les caricaturer, et dis laquelle tu défends et dans quel contexte.</p>
+
+    <h2>Par où commencer</h2>
+    <aside class="article-callout">
+      <div class="callout-num">8</div>
+      <p class="callout-text">fiches applicables dans la boîte à outils du livre, adossées à une enquête auprès de <span class="callout-src">48 professionnels francophones</span></p>
+    </aside>
+    <p class="article-todo">T1 : donne deux ou trois premiers gestes concrets pour un formateur qui veut sortir de la logique du détecteur dès sa prochaine évaluation.</p>
+
+  </div>
+</article>
+
+<!-- POUR ALLER PLUS LOIN -->
+<div class="article-more">
+  <a href="/evaluer-ia" class="btn btn-outline">Le livre et les outils <span>→</span></a>
+  <a href="https://ia-cr.rochane.fr/" target="_blank" rel="noopener" class="btn btn-outline">Compagnon de Route <span>↗</span></a>
+  <a href="https://faqeval.rochane.fr" target="_blank" rel="noopener" class="btn btn-outline">FAQ Évaluer IA <span>↗</span></a>
+</div>
+
+<!-- CTA -->
+<div class="section-wrap bg-off cta-band">
+  <div class="section-inner reveal">
+    <h2 class="section-title">Ce sujet vous parle ?</h2>
+    <p class="section-sub" style="margin-left:auto;margin-right:auto;">Ce texte prolonge le livre « Évaluer en formation à l'ère de l'IA générative ». Pour une conférence ou un atelier sur l'évaluation, parlons de votre contexte.</p>
+    <div class="cta-actions">
+      <a href="https://cal.com/rochane/echange-avec-rochane" target="_blank" rel="noopener" class="btn btn-fill">Échanger sur votre projet →</a>
+      <a href="mailto:ia@rochane.fr" class="btn btn-outline">Écrire à ia@rochane.fr</a>
+    </div>
+    <p class="hero-note">Un créneau de 30 minutes ou 1 heure, à votre convenance. Tarifs établis au cas par cas selon le contexte.</p>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <div>© 2026 <strong>Rochane Kherbouche</strong> · Technopédagogue &amp; Ambassadeur IA</div>
+  <div style="display:flex;gap:1.2rem;flex-wrap:wrap;justify-content:center;">
+    <a href="/conferences">Conférences</a>
+    <a href="/ateliers-formations">Ateliers &amp; formations</a>
+    <a href="/accompagnement">Accompagnement</a>
+    <a href="/evaluer-ia">Évaluer avec l'IA</a>
+    <a href="/ressources">Ressources</a>
+    <a href="/mentions-legales">Mentions légales &amp; confidentialité</a>
+    <a href="https://www.francenum.gouv.fr/ambassadeurs-ia" target="_blank" rel="noopener">Ambassadeur IA · francenum.gouv.fr</a>
+  </div>
+</footer>
+
+<script src="/site.js?v=1" defer></script>
+
+</body>
+</html>
