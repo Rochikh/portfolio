@@ -55,7 +55,7 @@ Le SYSTEM_PROMPT du bot vit dans `_worker.js` (le bot habille les URLs en Markdo
    - Accueil : `data-target` de `.stats-card` (38 interventions, 7 pays, 1000+, 20+).
    - Cartes offres de l'accueil (« 14 conférences dans 5 pays », « 21 sessions »).
    - Pages parcours : sous-titres de preuve (`conferences.html` « 14 conférences »,
-     `ateliers-formations.html` « 21 interventions »).
+     `ateliers-formations.html` « 21 sessions »).
    - `ressources.html` : boutons de filtre (`Tout · N`, `Outils · 9`, `Infographies · 15`,
      `Articles · 7`, `Webinaires · 3`, `Podcasts · 2`), en-tête `Volume · N ressources`,
      titres de section (« Neuf outils », « Quinze infographies », « Sept articles
@@ -148,5 +148,7 @@ Le SYSTEM_PROMPT du bot vit dans `_worker.js` (le bot habille les URLs en Markdo
 
 ## Vestiges à ne pas réactiver
 
-- `.github/workflows/deploy.yml` (ancien déploiement GitHub Pages, inopérant).
+- `.github/workflows/deploy.yml` (ancien déploiement GitHub Pages) : supprimé du
+  dépôt en juillet 2026, il se déclenchait encore à chaque push sur `main`. Ne pas
+  recréer de workflow de déploiement, Cloudflare Pages déploie `main` tout seul.
 - `og-template.html` sert uniquement à régénérer `og-image.jpg` (capture 1200x630).

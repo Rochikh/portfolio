@@ -49,13 +49,15 @@ langues, démarche) vit dans `_worker.js`.
 
 Les articles de fond vivent dans `articles/` et sont servis en
 `/articles/<slug>`. Le fichier `articles/pourquoi-les-detecteurs-dia-echouent.html`
-sert de gabarit : il est livré à l'état de **brouillon** (`noindex`, non lié,
-absent du sitemap et de `knowledge.md`).
+sert de gabarit : il est désormais **publié** (indexé, lié depuis
+`ressources.html`, présent dans le sitemap et `knowledge.md`).
 
 Écrire un article :
 
 1. **Dupliquer** le gabarit sous un nouveau slug (ex.
-   `articles/mon-sujet.html`). Mettre à jour `title`, `meta description`,
+   `articles/mon-sujet.html`) et **repasser la copie en brouillon** : ajouter
+   `<meta name="robots" content="noindex">`, un bandeau `.draft-banner` et des
+   blocs `<p class="article-todo">` pour le plan. Mettre à jour `title`, `meta description`,
    `canonical`, les balises Open Graph/Twitter, le `headline` du JSON-LD
    `Article`, le H1, le chapô et le plan des titres.
 2. **Écrire le fond via voix-atelier** : remplacer chaque bloc
@@ -71,7 +73,8 @@ Publier (une fois le texte prêt) :
 5. Ajouter une carte interne en tête de la section `#articles` de
    `ressources.html` (même markup que `.article-card` mais
    `href="/articles/<slug>"` **sans** `target="_blank"`), et mettre à jour le
-   compteur du filtre (`Articles · 6` → `7`) et le titre « Six articles publiés ».
+   compteur du filtre (`Articles · 7` → `8`), le compteur `Tout · N` et le
+   titre « Sept articles publiés ».
    Éventuellement l'ajouter aussi à la sélection Ressources de l'accueil.
 6. Ajouter l'URL `https://ia.rochane.fr/articles/<slug>` au `sitemap.xml`.
 7. Régénérer `knowledge.md` (l'article publié y apparaît automatiquement,
@@ -88,8 +91,10 @@ npx playwright screenshot --viewport-size "1200,630" og-template.html og-image.j
 
 ## Notes
 
-- `.github/workflows/deploy.yml` est un vestige de l'ancien hébergement
-  GitHub Pages : ne pas le réactiver, le site vit sur Cloudflare Pages.
+- L'ancien workflow GitHub Pages (`.github/workflows/deploy.yml`) a été
+  supprimé du dépôt : le site vit sur Cloudflare Pages, qui déploie
+  automatiquement chaque push sur `main`. Ne pas recréer de workflow de
+  déploiement.
 - Après un merge, si `styles.css` ou `site.js` ne semblent pas à jour en
   production, purger le cache Cloudflare ou incrémenter `?v=`.
 - Contrainte éditoriale : ne jamais présenter Rochane comme « expert IA »
