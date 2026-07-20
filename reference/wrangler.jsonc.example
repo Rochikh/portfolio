@@ -1,0 +1,19 @@
+// Fichier de référence, NON UTILISÉ actuellement.
+// Le déploiement repose sur la convention _worker.js de Cloudflare Pages.
+// Servirait de point de départ en cas de migration vers un déploiement
+// Workers piloté par wrangler.
+// Récupéré depuis la branche cloudflare/workers-autoconfig avant sa suppression (juillet 2026).
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "portfolio",
+  "compatibility_date": "2025-09-27",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": "."
+  },
+  "compatibility_flags": [
+    "nodejs_compat"
+  ]
+}
