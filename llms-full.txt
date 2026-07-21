@@ -1,0 +1,96 @@
+# Rochane Kherbouche
+
+> Rochane Kherbouche, technopédagogue et consultant IA indépendant, basé à Lille (France). Conseil IA, ingénierie pédagogique, développement e-learning et formation, en France et en Belgique. Auteur de « Évaluer en formation à l'ère de l'IA générative » (Chronique Sociale, juin 2026, ISBN 978-2-38548-104-9). Ambassadeur IA du plan français « Osez l'IA ». Vacataire à l'Université de Lille (Master 2 Innovation et Service e-learning). Fondateur de la communauté IArena Educative (1200 membres francophones). Activité exercée en autoentreprise Kherbouche depuis 2021.
+
+## Qui est Rochane Kherbouche
+
+Rochane Kherbouche aide les institutions, l'enseignement supérieur, les organismes de formation, les entreprises et les acteurs de la santé à passer d'usages dispersés de l'IA à des pratiques pédagogiques assumées. Son terrain : 38 interventions dans 7 pays (France, Belgique, Autriche, Tunisie, Algérie, Burundi, Jordanie), auprès d'organisations comme la Commission européenne, les Nations Unies, l'UNESCO, le CELV (Conseil de l'Europe), l'ULB, la RTBF Academy, le CNFPT, France Éducation International et l'Université de Lille. Chaque intervention suit la même démarche en quatre temps : diagnostic (comprendre le contexte et les publics), conception (scénario pédagogique transmis en amont), animation (formats actifs où l'on manipule les outils en séance) et suivi (banque de ressources IA remise, recontact possible). Interventions en français, arabe possible.
+
+## Services
+
+### Conférences IA et pédagogie
+https://ia.rochane.fr/conferences
+Conférences de 1 h à 2 h pour événements, journées d'étude et séminaires : une lecture claire, critique et incarnée de ce que l'IA change en formation, en présentiel, distanciel ou hybride, quelle que soit la taille de l'audience. Thèmes déjà donnés : l'évaluation à l'ère de l'IA générative, l'IA et le multilinguisme, la réactivation comme levier de l'apprentissage avec l'IA, découverte de l'IA pour le grand public, IA et emploi. 14 conférences données dans 5 pays, du CELV (Conseil de l'Europe, Graz) à la Haute École Francisco Ferrer (Bruxelles), en passant par France Éducation International et le magazine Elle (Elle Active).
+
+### Ateliers et formations IA pour les équipes
+https://ia.rochane.fr/ateliers-formations
+Formats actifs pour formateurs, enseignants, équipes pédagogiques, professionnels de santé et agents publics : un scénario pédagogique est transmis en amont, les outils sont manipulés en séance sur des cas issus des pratiques réelles, et une banque de ressources IA est remise ensuite. Limites, biais, RGPD et transparence font partie du programme. 21 sessions référencées, d'Alger à Amman : Commission européenne (design de formation IA), CESI Alger (projet UNESCO), United Nations Volunteers (Amman), RTBF Academy, CNFPT Strasbourg, Université de Lille (Master IPM), initiation à l'IA pour médecins lors de réunions professionnelles de laboratoires pharmaceutiques partout en France.
+
+### Accompagnement des organisations
+https://ia.rochane.fr/accompagnement
+Pour les organisations qui veulent un cadre durable : cadrer les usages (état des lieux des pratiques IA, priorités, cadre de transparence), concevoir des dispositifs (ingénierie pédagogique intégrant l'IA de la conception à l'évaluation), former les équipes (cycles d'ateliers adossés à des cas réels) et contribuer aux groupes de travail, comme pour le cadre de référence IA du groupe AI-LANG (CELV, Conseil de l'Europe). Périmètre : France, Belgique, international. L'accompagnement s'appuie sur des outils développés par Rochane Kherbouche, que les équipes gardent ensuite.
+
+### Évaluer avec l'IA
+https://ia.rochane.fr/evaluer-ia
+Le parcours dédié à l'évaluation : les détecteurs d'IA échouent, la surveillance épuise ; la question utile est de redéfinir ce que l'évaluation mesure, du produit fini vers le processus documenté, de l'interdiction vers le discernement. Ce parcours réunit le livre, les outils en libre accès (Compagnon de Route, FAQ Évaluer IA, Argos Socratique) et les interventions dédiées (conférences, ateliers, accompagnements).
+
+### FAQ : qui peut vous aider sur l'IA en formation
+https://ia.rochane.fr/faq
+Réponses aux questions fréquentes : quel expert IA pour un organisme de formation, comment former ses formateurs à l'IA, quel accompagnement IA en France et en Belgique, comment évaluer à l'ère de l'IA générative.
+
+## Publications
+
+### Évaluer en formation à l'ère de l'IA générative
+https://livre.rochane.fr
+Manuel pratique pour repenser l'évaluation des apprentissages, paru le 25 juin 2026 chez Chronique Sociale (ISBN 978-2-38548-104-9, 26,90 €), préfacé par la Pr Christelle Lison (Université de Sherbrooke). L'ouvrage déplace le centre de gravité de l'évaluation : du produit fini vers le processus documenté, de l'interdiction vers le discernement. Trois postures concrètes, quatre parties, une boîte à outils de huit fiches applicables. Appuyé sur une enquête auprès de 48 professionnels francophones et plus de 300 sources scientifiques. Extrait gratuit (préface intégrale et sommaire) sur https://livre.rochane.fr. Commande chez l'éditeur : https://www.chroniquesociale.com/pedagogie-formation/1519-evaluer-en-formation-a-lere-de-lia-generative.html
+
+### Articles
+- Pourquoi les détecteurs d'IA échouent, et que faire à la place : https://ia.rochane.fr/articles/pourquoi-les-detecteurs-dia-echouent
+- Cinq questions que les formatrices et formateurs n'osent pas se poser sur l'évaluation à l'ère de l'IA : https://www.innovation-pedagogique.fr/article25486.html
+- Les pédagogies actives au-delà du label : https://www.innovation-pedagogique.fr/article25856.html
+- VoxFolio, quand la voix libère les talents : https://www.innovation-pedagogique.fr/article20741.html
+
+### Podcasts
+- Rendez-vous en terre digitale, « L'évaluation à l'heure de l'IA Générative » (46 min, février 2026) : https://podcast.ausha.co/rendez-vous-en-terre-digitale/rochane
+- Never Stop Learning, épisode 83, « IA et compétences, le futur de la formation professionnelle » : https://open.spotify.com/episode/11kOrwC5NSaKwFfPxxuCk5
+
+### Bibliothèque de ressources
+https://ia.rochane.fr/ressources
+36 ressources en libre accès : 9 outils IA pour la formation, 15 infographies pédagogiques, 7 articles, 3 webinaires et 2 podcasts.
+
+## Projets
+
+### Compagnon de Route
+https://ia-cr.rochane.fr/
+Mesure la robustesse des évaluations face à l'IA générative, selon le protocole du livre : audit détaillé sur 4 dimensions critiques ou diagnostic rapide en 8 questions.
+
+### FAQ Évaluer IA
+https://faqeval.rochane.fr
+Banque d'objections pour les interventions sur l'évaluation à l'ère de l'IA : 30 questions récurrentes, chacune avec réponse pivot, donnée chiffrée du livre, cas concret du terrain et relance. Recherche par mots-clés, mode tirage aléatoire, installable sur téléphone et ordinateur.
+
+### Assistant de différenciation pédagogique
+https://ia-diff.rochane.fr/
+Application web propulsée par l'IA qui génère instantanément des activités pédagogiques différenciées (versions guidée, standard et défi) pour s'adapter aux besoins de chaque apprenant.
+
+### Déstabilisateur pédagogique
+https://ia-conflits.rochane.fr/
+Génère une situation concrète qui fait tomber une croyance professionnelle erronée chez les apprenants. Trois niveaux d'intensité : questionnement doux, dissonance forte ou rupture radicale.
+
+### Générateur de transparence IA
+https://ia-generateurtransparence.rochane.fr/
+Système de jauge pour nuancer la transparence sur l'usage de l'IA : plutôt qu'un simple oui/non, l'outil visualise le dosage réel, du simple coup de main à la sous-traitance complète.
+
+### VoxFolio
+https://voxfolio.rochane.fr/
+Portfolio vocal augmenté par l'IA : en 2 minutes d'enregistrement, transcription, analyse et génération d'un profil professionnel.
+
+### Argos Socratique
+https://ia-des.rochane.fr/
+Dispositif de traçabilité des compétences critiques, système socratique augmenté par l'IA. Accès sur justification pédagogique.
+
+### Voix-atelier
+https://voix-atelier.rochane.fr/
+Protocole en quatre temps pour produire avec l'IA sans perdre sa voix : parole humaine brute, traitement analytique, reprise, assemblage sous contrainte.
+
+### Communauté IArena Educative
+1200 membres francophones : partage de ressources et d'outils IA, bonnes pratiques pédagogiques, live mensuel.
+
+## Contact
+
+- Email : contact@rochane.fr
+- Réserver un échange (30 min ou 1 h) : https://cal.com/rochane/echange-avec-rochane
+- Site : https://ia.rochane.fr/
+- Livre : https://livre.rochane.fr
+- GitHub : https://github.com/Rochikh
+- LinkedIn : https://www.linkedin.com/in/rochanekherbouche
+- Tarifs établis au cas par cas selon le contexte.

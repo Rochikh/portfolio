@@ -1,0 +1,36 @@
+# Rochane Kherbouche
+
+> Rochane Kherbouche, technopédagogue et consultant IA indépendant, basé à Lille (France). Conseil IA, ingénierie pédagogique, développement e-learning et formation, en France et en Belgique. Auteur de « Évaluer en formation à l'ère de l'IA générative » (Chronique Sociale, juin 2026, ISBN 978-2-38548-104-9). Ambassadeur IA du plan français « Osez l'IA ». Vacataire à l'Université de Lille (Master 2 Innovation et Service e-learning). Fondateur de la communauté IArena Educative (1200 membres francophones). Activité exercée en autoentreprise Kherbouche depuis 2021.
+
+## Services
+
+- [Conférences IA et pédagogie](https://ia.rochane.fr/conferences) : conférences de 1 h à 2 h sur l'IA en formation (évaluation, usages, esprit critique), en présentiel ou à distance. 14 conférences données dans 5 pays.
+- [Ateliers et formations IA](https://ia.rochane.fr/ateliers-formations) : formation des formateurs, enseignants et équipes pédagogiques, avec manipulation des outils en séance. 21 sessions référencées, d'Alger à Amman.
+- [Accompagnement des organisations](https://ia.rochane.fr/accompagnement) : structurer une stratégie IA en quatre temps (diagnostic, conception, animation, suivi), en France, en Belgique et à l'international.
+- [Évaluer avec l'IA](https://ia.rochane.fr/evaluer-ia) : le livre, les outils et les interventions pour repenser l'évaluation face à l'IA générative.
+- [FAQ : qui peut vous aider sur l'IA en formation](https://ia.rochane.fr/faq) : réponses aux questions fréquentes sur l'expertise IA en formation.
+
+## Publications
+
+- [Évaluer en formation à l'ère de l'IA générative](https://livre.rochane.fr) : manuel pratique pour repenser l'évaluation des apprentissages (Chronique Sociale, juin 2026, ISBN 978-2-38548-104-9). Extrait gratuit sur le site du livre.
+- [Pourquoi les détecteurs d'IA échouent, et que faire à la place](https://ia.rochane.fr/articles/pourquoi-les-detecteurs-dia-echouent) : article sur le déplacement de l'évaluation du produit fini vers le processus documenté.
+- [Bibliothèque de ressources](https://ia.rochane.fr/ressources) : 36 ressources en libre accès (outils IA, infographies pédagogiques, articles, webinaires, podcasts).
+
+## Projets
+
+- [Compagnon de Route](https://ia-cr.rochane.fr/) : audit de robustesse des évaluations face à l'IA générative.
+- [FAQ Évaluer IA](https://faqeval.rochane.fr) : banque de 30 objections sur l'évaluation à l'ère de l'IA, avec réponses documentées.
+- [Assistant de différenciation pédagogique](https://ia-diff.rochane.fr/) : génération d'activités différenciées (guidée, standard, défi).
+- [Déstabilisateur pédagogique](https://ia-conflits.rochane.fr/) : situations de conflit cognitif pour faire tomber des croyances professionnelles erronées.
+- [Générateur de transparence IA](https://ia-generateurtransparence.rochane.fr/) : jauge de transparence sur l'usage de l'IA dans un travail.
+- [VoxFolio](https://voxfolio.rochane.fr/) : portfolio vocal augmenté par l'IA.
+- [Argos Socratique](https://ia-des.rochane.fr/) : traçabilité des compétences critiques, accès sur justification pédagogique.
+
+## Contact
+
+- Email : contact@rochane.fr
+- Réserver un échange : https://cal.com/rochane/echange-avec-rochane
+- Site : https://ia.rochane.fr/
+- Livre : https://livre.rochane.fr
+- GitHub : https://github.com/Rochikh
+- LinkedIn : https://www.linkedin.com/in/rochanekherbouche
