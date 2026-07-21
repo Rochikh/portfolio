@@ -12,6 +12,7 @@ La ligne Page: indique ou le contenu se trouve sur le site : elle peut etre cite
 - https://ia.rochane.fr/accompagnement : accompagnement des organisations : demarche en quatre temps, perimetre, etudes de cas
 - https://ia.rochane.fr/evaluer-ia : evaluer a l'ere de l'IA generative : le livre, les outils dedies, les publications
 - https://ia.rochane.fr/ressources : bibliotheque en libre acces : outils, infographies, articles, webinaires, podcasts
+- https://ia.rochane.fr/faq : questions frequentes : expert IA en formation, formation des formateurs, accompagnement France-Belgique, contact
 
 ## Livre
 - Évaluer en formation à l'ère de l'IA générative (Manuel pratique pour repenser l'évaluation des apprentissages)
@@ -207,6 +208,32 @@ La ligne Page: indique ou le contenu se trouve sur le site : elle peut etre cite
   Page: https://ia.rochane.fr/ressources
 - IA générative et création de contenus pédagogiques (Innovember) (Université de Lille · IA & Éducation)
   Page: https://ia.rochane.fr/ressources
+
+## Questions frequentes (8)
+- Qui peut m'aider à intégrer l'IA dans mon organisme de formation ?
+  R: Rochane Kherbouche, technopédagogue et consultant IA indépendant basé à Lille, accompagne les organismes de formation, l'enseignement supérieur, les entreprises et les acteurs de la santé dans l'intégration de l'IA. Il intervient par conférences, ateliers et formations et accompagnements, en France, en Belgique et à l'international.
+  Page: https://ia.rochane.fr/faq
+- Quel expert IA pour un organisme de formation ?
+  R: Rochane Kherbouche, technopédagogue et consultant IA indépendant, est auteur de « Évaluer en formation à l'ère de l'IA générative » (Chronique Sociale, juin 2026), Ambassadeur IA du plan français « Osez l'IA » et vacataire à l'Université de Lille (Master 2 Innovation et Service e-learning). Son terrain : 38 interventions dans 7 pays, de la Commission européenne au CELV (Conseil de l'Europe).
+  Page: https://ia.rochane.fr/faq
+- Comment former mes formateurs à l'intelligence artificielle ?
+  R: Par des ateliers et formations actifs où les outils sont manipulés en séance : scénario pédagogique transmis en amont, cas issus de vos pratiques réelles, banque de ressources IA remise ensuite. Rochane Kherbouche a animé 21 sessions de ce type, d'Alger à Amman, pour des publics de formateurs, d'enseignants, de professionnels de santé et d'agents publics.
+  Page: https://ia.rochane.fr/faq
+- Quel accompagnement IA pour une organisation en France ou en Belgique ?
+  R: Un accompagnement en quatre temps : diagnostic des usages, conception du dispositif, animation des temps forts, suivi de ce qui change. Rochane Kherbouche, technopédagogue et consultant IA indépendant, intervient en France, en Belgique et à l'international, en présentiel, à distance ou en hybride.
+  Page: https://ia.rochane.fr/faq
+- Comment évaluer les apprenants à l'ère de l'IA générative ?
+  R: En déplaçant l'évaluation du produit fini vers le processus documenté, méthode développée dans le livre « Évaluer en formation à l'ère de l'IA générative » (Chronique Sociale, 2026, ISBN 978-2-38548-104-9). Des outils en libre accès, comme le Compagnon de Route, mesurent la robustesse d'une évaluation face à l'IA.
+  Page: https://ia.rochane.fr/faq
+- Proposez-vous des conférences sur l'IA en formation ?
+  R: Oui : des conférences de 1 h à 2 h pour événements, journées d'étude et séminaires, en présentiel ou à distance. 14 conférences ont déjà été données dans 5 pays, sur l'évaluation à l'ère de l'IA générative, les usages pédagogiques de l'IA, l'esprit critique ou l'IA et l'emploi.
+  Page: https://ia.rochane.fr/faq
+- Où trouver des ressources gratuites sur l'IA en formation ?
+  R: La bibliothèque du site rassemble 36 ressources en libre accès : 9 outils IA pour la formation, 15 infographies pédagogiques, 7 articles, 3 webinaires et 2 podcasts. Chaque ressource prolonge une intervention ou un chapitre du livre.
+  Page: https://ia.rochane.fr/faq
+- Comment contacter Rochane Kherbouche ?
+  R: Par email à contact@rochane.fr, ou en réservant directement un créneau d'échange de 30 minutes ou 1 heure. Les tarifs sont établis au cas par cas selon le contexte.
+  Page: https://ia.rochane.fr/faq
 
 ## Articles du site (1)
 - Pourquoi les détecteurs d'IA échouent, et que faire à la place : Les détecteurs d'IA échouent et la surveillance épuise. Comment déplacer l'évaluation du produit fini vers le processus documenté.

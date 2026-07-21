@@ -24,6 +24,7 @@ PAGE_URLS = {
     "accompagnement.html": SITE + "/accompagnement",
     "evaluer-ia.html": SITE + "/evaluer-ia",
     "ressources.html": SITE + "/ressources",
+    "faq.html": SITE + "/faq",
 }
 
 PAGES_DESC = [
@@ -33,6 +34,7 @@ PAGES_DESC = [
     (SITE + "/accompagnement", "accompagnement des organisations : demarche en quatre temps, perimetre, etudes de cas"),
     (SITE + "/evaluer-ia", "evaluer a l'ere de l'IA generative : le livre, les outils dedies, les publications"),
     (SITE + "/ressources", "bibliotheque en libre acces : outils, infographies, articles, webinaires, podcasts"),
+    (SITE + "/faq", "questions frequentes : expert IA en formation, formation des formateurs, accompagnement France-Belgique, contact"),
 ]
 
 # Ordre de lecture par section : la premiere page ou un contenu apparait
@@ -46,6 +48,7 @@ PRIORITY = {
     "articles": ["ressources.html", "evaluer-ia.html", "index.html"],
     "podcasts": ["ressources.html", "evaluer-ia.html", "index.html"],
     "webinaires": ["ressources.html", "index.html"],
+    "faq": ["faq.html"],
 }
 
 
@@ -206,6 +209,17 @@ def main(src_dir, dst):
     out.append(f"## Webinaires ({len(webs)})")
     for (title, meta), page in webs:
         out += [f"- {clean(title)} ({clean(meta)})", f"  Page: {page}"]
+    out.append("")
+
+    # Questions frequentes
+    faq_re = re.compile(
+        r'<div class="info-card[^"]*">.*?class="info-card-title">(.*?)</div>'
+        r'.*?class="info-card-text">(.*?)</div>',
+        re.S)
+    faqs = collect(docs, "faq", faq_re.findall, key=lambda it: clean(it[0]))
+    out.append(f"## Questions frequentes ({len(faqs)})")
+    for (q, a), page in faqs:
+        out += [f"- {clean(q)}", f"  R: {clean(a)}", f"  Page: {page}"]
     out.append("")
 
     # Articles du site (dossier articles/) : uniquement les articles PUBLIES.
