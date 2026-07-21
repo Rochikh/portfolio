@@ -147,7 +147,7 @@ export default {
           ? SYSTEM_PROMPT + '\n\n=== BASE DE CONNAISSANCE DETAILLEE (titres et liens des travaux) ===\n' + knowledgeBase
           : SYSTEM_PROMPT;
 
-        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent`;
+        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent`;
 
         const googleResponse = await fetch(API_URL, {
           method: 'POST',
