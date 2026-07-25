@@ -84,22 +84,23 @@
   }
 
   function initCounters() {
-  // COUNTER
+  // COUNTER — la valeur finale est écrite en dur dans le HTML (visible sans JS
+  // et pour les crawlers). Au premier passage dans le viewport, remise à 0 puis
+  // animation jusqu'à data-count-to. En prefers-reduced-motion, on ne touche
+  // à rien : la valeur du HTML reste affichée.
   let done = false;
-  const counters = document.querySelectorAll('.stat-num[data-target]');
+  const counters = document.querySelectorAll('.stat-num[data-count-to]');
   const statsEl = document.querySelector('.stats-card');
-  if (statsEl) {
-    new IntersectionObserver(([e]) => {
+  if (statsEl && counters.length) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    new IntersectionObserver(([e], io) => {
       if (e.isIntersecting && !done) {
         done = true;
-        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        io.disconnect();
         counters.forEach(el => {
-          const target = +el.dataset.target;
+          const target = +el.dataset.countTo;
           const suffix = el.dataset.suffix || '';
-          if (reduce) {
-            el.textContent = target.toLocaleString('fr-FR') + suffix;
-            return;
-          }
+          el.textContent = '0';
           const start = performance.now();
           const dur = 1100;
           function tick(now) {
