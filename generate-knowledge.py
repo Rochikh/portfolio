@@ -120,7 +120,7 @@ def main(src_dir, dst):
     # Infographies
     infog_re = re.compile(
         r'<a class="infog-card[^"]*" href="([^"]+)"[^>]*>'
-        r'<span class="infog-idx">(.*?)</span><span class="infog-name">(.*?)</span>',
+        r'<span class="infog-idx">(.*?)</span><(?:span|h3) class="infog-name">(.*?)</(?:span|h3)>',
         re.S)
     infogs = collect(docs, "infographies", infog_re.findall, key=lambda it: it[0])
     out.append(f"## Infographies ({len(infogs)})")
@@ -131,7 +131,7 @@ def main(src_dir, dst):
     # Projets et outils
     proj_re = re.compile(
         r'<a href="([^"]+)"[^>]*class="proj-card[^"]*"[^>]*>.*?'
-        r'class="proj-name">(.*?)</div>.*?class="proj-desc">(.*?)</div>',
+        r'class="proj-name">(.*?)</(?:div|h3)>.*?class="proj-desc">(.*?)</div>',
         re.S)
     projs = collect(docs, "projets", proj_re.findall, key=lambda it: it[0])
     out.append(f"## Projets et outils ({len(projs)})")
@@ -142,7 +142,7 @@ def main(src_dir, dst):
     # Articles
     art_re = re.compile(
         r'<a href="([^"]+)"[^>]*class="article-card[^"]*"[^>]*>.*?'
-        r'class="article-cat">(.*?)</div>.*?class="article-title">(.*?)</div>',
+        r'class="article-cat">(.*?)</div>.*?class="article-title">(.*?)</(?:div|h3)>',
         re.S)
     arts = collect(docs, "articles", art_re.findall, key=lambda it: it[0])
     out.append(f"## Articles ({len(arts)})")
@@ -155,7 +155,7 @@ def main(src_dir, dst):
         found = []
         for p in doc.split('<div class="podcast-card')[1:]:
             show = clean(re.search(r'class="podcast-show">(.*?)</div>', p, re.S).group(1))
-            title = clean(re.search(r'class="podcast-title">(.*?)</div>', p, re.S).group(1))
+            title = clean(re.search(r'class="podcast-title">(.*?)</(?:div|h3)>', p, re.S).group(1))
             desc = clean(re.search(r'class="podcast-desc">(.*?)</div>', p, re.S).group(1))
             link = re.search(r'<a href="([^"]+)"[^>]*class="podcast-play-btn', p)
             found.append((show, title, desc, link.group(1) if link else ""))
@@ -202,7 +202,7 @@ def main(src_dir, dst):
 
     # Webinaires
     web_re = re.compile(
-        r'<div class="webinar-row[^"]*">.*?class="w-title">(.*?)</div>'
+        r'<div class="webinar-row[^"]*">.*?class="w-title">(.*?)</(?:div|h3)>'
         r'<div class="w-meta">(.*?)</div>',
         re.S)
     webs = collect(docs, "webinaires", web_re.findall, key=lambda it: clean(it[0]))
@@ -213,7 +213,7 @@ def main(src_dir, dst):
 
     # Questions frequentes
     faq_re = re.compile(
-        r'<div class="info-card[^"]*">.*?class="info-card-title">(.*?)</div>'
+        r'<div class="info-card[^"]*">.*?class="info-card-title">(.*?)</(?:div|h[23])>'
         r'.*?class="info-card-text">(.*?)</div>',
         re.S)
     faqs = collect(docs, "faq", faq_re.findall, key=lambda it: clean(it[0]))
