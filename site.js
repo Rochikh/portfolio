@@ -14,13 +14,13 @@
     <span class="chat-badge" id="chat-badge"></span>
   </button>
   <div class="chat-nudge" id="chat-nudge">
-    <span aria-hidden="true">💬</span> Une question ? Je suis là !
+    <span aria-hidden="true">💬</span> Une question ? Je suis là !
     <button class="chat-nudge-close" id="chat-nudge-close" aria-label="Masquer ce message">✕</button>
   </div>
   <div id="chat-widget" class="chat-widget" hidden>
     <div class="chat-header">
       <div class="chat-header-top">
-        <div class="chat-header-title">Une question ?</div>
+        <div class="chat-header-title">Une question ?</div>
         <button class="chat-header-close" id="chat-close-btn" aria-label="Fermer l'assistant">✕</button>
       </div>
       <div class="chat-header-sub">Je réponds sur les interventions, formats et disponibilités de Rochane.</div>
@@ -117,7 +117,7 @@
   }
 
     // ── CHAT ──
-    var INITIAL_MSG = "Bonjour ! Je suis l'assistant virtuel de Rochane Kherbouche. Posez-moi vos questions sur ses interventions, ses outils et son livre.";
+    var INITIAL_MSG = "Bonjour ! Je suis l'assistant virtuel de Rochane Kherbouche. Posez-moi vos questions sur ses interventions, ses outils et son livre.";
     var history = [];
 
     function getElements() {
