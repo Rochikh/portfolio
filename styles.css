@@ -73,6 +73,16 @@ html { overflow-x: hidden; }
 /* L'attribut hidden (panneau chat fermé) doit primer sur tout display futur */
 .chat-widget[hidden] { display: none !important; }
 
+/* Titres de cartes passés de div/span à h3 : annuler les styles UA des h3.
+   Même spécificité que les règles de composant plus bas, qui reprennent donc
+   la main sur taille et graisse ; inherit reproduit le comportement des div. */
+.offer-title, .step-title, .case-title, .proj-name, .infog-name,
+.article-title, .podcast-title, .w-title, .info-card-title {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
 body {
   font-family: var(--font);
   background: var(--paper);
@@ -98,7 +108,9 @@ body {
 }
 
 /* ─── NAV ─── */
-nav {
+/* Scopé sur l'id : depuis que le pied de page contient un <nav>, une règle
+   d'élément nu l'attraperait aussi */
+#main-nav {
   position: fixed;
   top: 0;
   width: 100%;
@@ -1138,7 +1150,7 @@ footer a:hover { color: var(--accent); }
   .stats-card { border-radius: var(--radius); }
   .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
   .conf-grid { grid-template-columns: 1fr; }
-  nav { padding: 0 1.5rem; }
+  #main-nav { padding: 0 1.5rem; }
   .section-wrap { padding: 72px 1.5rem; }
   #trust { padding: 36px 1.5rem; }
   #community { padding: 72px 1.5rem; }
