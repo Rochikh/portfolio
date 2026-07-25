@@ -56,6 +56,23 @@ html { overflow-x: hidden; }
 }
 .skip-link:focus-visible { left: 0; }
 
+/* Texte réservé aux lecteurs d'écran. !important : les points animés du
+   loader du chat (.chat-message.loading span) redimensionneraient le span. */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* L'attribut hidden (panneau chat fermé) doit primer sur tout display futur */
+.chat-widget[hidden] { display: none !important; }
+
 body {
   font-family: var(--font);
   background: var(--paper);

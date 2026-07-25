@@ -8,7 +8,7 @@
   // ── WIDGET CHAT : markup injecté sur toutes les pages ──
   var CHAT_HTML = `
 <div id="chat-container" class="chat-container">
-  <button id="chat-toggle-btn" class="chat-toggle-btn" aria-label="Ouvrir l'assistant de discussion">
+  <button id="chat-toggle-btn" class="chat-toggle-btn" aria-label="Ouvrir l'assistant de discussion" aria-expanded="false" aria-controls="chat-widget">
     <svg class="fa-comment-dots" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 5.94 2 10.8c0 2.1.84 4.03 2.24 5.55-.18 1.4-.77 2.65-1.55 3.6-.16.2-.02.5.23.48 1.93-.18 3.6-.86 4.9-1.66 1.27.46 2.67.73 4.18.73 5.52 0 10-3.94 10-8.8S17.52 2 12 2zM7.5 12.1a1.3 1.3 0 1 1 0-2.6 1.3 1.3 0 0 1 0 2.6zm4.5 0a1.3 1.3 0 1 1 0-2.6 1.3 1.3 0 0 1 0 2.6zm4.5 0a1.3 1.3 0 1 1 0-2.6 1.3 1.3 0 0 1 0 2.6z"/></svg>
     <svg class="fa-times" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
     <span class="chat-badge" id="chat-badge"></span>
@@ -17,7 +17,7 @@
     💬 Une question ? Je suis là !
     <button class="chat-nudge-close" id="chat-nudge-close" aria-label="Masquer ce message">✕</button>
   </div>
-  <div id="chat-widget" class="chat-widget">
+  <div id="chat-widget" class="chat-widget" hidden>
     <div class="chat-header">
       <div class="chat-header-top">
         <div class="chat-header-title">Une question ?</div>
@@ -25,7 +25,7 @@
       </div>
       <div class="chat-header-sub">Je réponds sur les interventions, formats et disponibilités de Rochane.</div>
     </div>
-    <div id="chat-messages" class="chat-messages"></div>
+    <div id="chat-messages" class="chat-messages" role="log" aria-live="polite" aria-atomic="false"></div>
     <div class="chat-input-area">
       <textarea id="chat-input" rows="1" placeholder="Votre question ici..." aria-label="Votre question"></textarea>
       <button id="chat-send-btn">Envoyer</button>
@@ -207,14 +207,27 @@
     }
 
     function openChat(els) {
+      // Rendre le panneau au flux avant .open : le reflow forcé laisse la
+      // transition opacity/transform se jouer malgré le changement de display
+      els.widget.hidden = false;
+      void els.widget.offsetWidth;
       els.container.classList.add('open');
+      els.toggle.setAttribute('aria-expanded', 'true');
       if (els.badge) els.badge.style.display = 'none';
       if (els.nudge) els.nudge.classList.remove('visible');
       if (els.messages.children.length === 0) addMsg(INITIAL_MSG, 'ai', els);
+      els.input.focus();
     }
 
     function closeChat(els) {
       els.container.classList.remove('open');
+      els.toggle.setAttribute('aria-expanded', 'false');
+      // hidden retire le panneau de l'ordre de tabulation, posé après la
+      // transition de fermeture (.25s), sauf réouverture entre-temps
+      window.setTimeout(function () {
+        if (!els.container.classList.contains('open')) els.widget.hidden = true;
+      }, 260);
+      els.toggle.focus();
     }
 
     var sending = false;
@@ -233,7 +246,7 @@
 
       var loader = document.createElement('div');
       loader.className = 'chat-message ai loading';
-      loader.innerHTML = '<span></span><span></span><span></span>';
+      loader.innerHTML = '<span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span><span class="sr-only">L\'assistant rédige une réponse…</span>';
       els.messages.appendChild(loader);
       els.messages.scrollTop = els.messages.scrollHeight;
 
@@ -312,6 +325,29 @@
           openChat(els);
         });
       }
+
+      // Escape ferme le panneau (closeChat rend le focus au déclencheur)
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && els.container.classList.contains('open')) {
+          closeChat(els);
+        }
+      });
+
+      // Piège de focus : Tab boucle sur les éléments focusables du panneau
+      els.widget.addEventListener('keydown', function(e) {
+        if (e.key !== 'Tab') return;
+        var focusables = els.widget.querySelectorAll(
+          'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        );
+        if (!focusables.length) return;
+        var first = focusables[0];
+        var last = focusables[focusables.length - 1];
+        if (e.shiftKey) {
+          if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+        } else if (document.activeElement === last) {
+          e.preventDefault(); first.focus();
+        }
+      });
 
       // Scroll nudge trigger
       var nudgeDone = false;
