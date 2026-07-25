@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
 """Genere knowledge.md (base de connaissance du chatbot) depuis les pages du site.
 
-Usage: python3 generate-knowledge.py <dossier_du_site> knowledge.md
+Usage: python3 generate-knowledge.py <dossier_du_site> <fichier_sortie>
 Exemple: python3 generate-knowledge.py . knowledge.md
+
+Apres extraction, le script affiche un decompte par section et refuse d'ecrire
+le fichier (sortie code 1) si une section attendue est vide : infographies,
+projets, articles, webinaires, podcasts, questions FAQ.
 
 Chaque contenu est rattache a la page du site ou il vit (ligne "Page:"),
 avec deduplication : un outil present sur l'accueil et dans la bibliotheque
@@ -34,7 +38,7 @@ PAGES_DESC = [
     (SITE + "/accompagnement", "accompagnement des organisations : demarche en quatre temps, perimetre, etudes de cas"),
     (SITE + "/evaluer-ia", "evaluer a l'ere de l'IA generative : le livre, les outils dedies, les publications"),
     (SITE + "/ressources", "bibliotheque en libre acces : outils, infographies, articles, webinaires, podcasts"),
-    (SITE + "/faq", "questions frequentes : expert IA en formation, formation des formateurs, accompagnement France-Belgique, contact"),
+    (SITE + "/faq", "questions frequentes : accompagnement IA pour organisme de formation, formation des formateurs, presence France-Belgique, contact"),
 ]
 
 # Ordre de lecture par section : la premiere page ou un contenu apparait
@@ -243,8 +247,32 @@ def main(src_dir, dst):
             out += [f"  URL: {url}", f"  Page: {url}"]
         out.append("")
 
+    # Decompte par section : une section attendue vide signale un HTML qui a
+    # change (regex cassee) ou une page absente. On refuse alors d'ecrire un
+    # knowledge.md ampute.
+    counts = [
+        ("infographies", len(infogs)),
+        ("projets", len(projs)),
+        ("articles", len(arts)),
+        ("webinaires", len(webs)),
+        ("podcasts", len(pods)),
+        ("questions FAQ", len(faqs)),
+    ]
+    for name, n in counts:
+        print(f"  {name}: {n}", flush=True)
+    empty = [name for name, n in counts if n == 0]
+    if empty:
+        for name in empty:
+            print(f"Erreur: section '{name}' vide, aucune entree extraite.", file=sys.stderr)
+        print(f"Abandon: {dst} n'a pas ete ecrit.", file=sys.stderr)
+        sys.exit(1)
+
     open(dst, 'w', encoding='utf-8').write('\n'.join(out))
 
 
 if __name__ == '__main__':
+    if len(sys.argv) < 3:
+        print("Usage: python3 generate-knowledge.py <dossier_du_site> <fichier_sortie>", file=sys.stderr)
+        print("Exemple: python3 generate-knowledge.py . knowledge.md", file=sys.stderr)
+        sys.exit(2)
     main(sys.argv[1], sys.argv[2])

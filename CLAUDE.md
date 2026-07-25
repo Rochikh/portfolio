@@ -39,6 +39,10 @@ python3 generate-knowledge.py . knowledge.md
 Le `.` = dossier du site (le script scanne toutes les pages + `articles/`). L'ancienne
 forme `generate-knowledge.py index.html knowledge.md` est **obsolète** : elle raterait
 tout le contenu hors accueil. Les articles en `noindex` sont volontairement exclus.
+Le script exige ses deux arguments (sinon message d'usage, code 2), affiche un décompte
+par section, et refuse d'écrire `knowledge.md` (code 1) si une section attendue est
+vide (infographies, projets, articles, webinaires, podcasts, questions FAQ) : ce garde-fou
+signale une regex cassée par un changement de HTML, corriger avant de régénérer.
 Le SYSTEM_PROMPT du bot vit dans `_worker.js` (le bot habille les URLs en Markdown ;
 `knowledge.md` liste des URLs brutes, c'est voulu).
 
