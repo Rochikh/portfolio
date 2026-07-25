@@ -239,6 +239,7 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ contents: history })
         });
+        if (!res.ok) throw new Error('reponse non ok');
         var data = await res.json();
         els.messages.removeChild(loader);
         var reply = data && data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts && data.candidates[0].content.parts[0] && data.candidates[0].content.parts[0].text;
@@ -246,8 +247,10 @@
         addMsg(replyText, 'ai', els);
         if (reply) history.push({ role: 'model', parts: [{ text: reply }] });
       } catch(e) {
-        els.messages.removeChild(loader);
-        addMsg('Erreur de connexion.', 'ai', els);
+        // Repli unique (échec réseau, statut HTTP en erreur ou JSON invalide),
+        // sans détail technique dans le fil
+        if (loader.parentNode) els.messages.removeChild(loader);
+        addMsg("L'assistant est momentanément indisponible. Réessayez dans un instant.", 'ai', els);
       }
     }
 
