@@ -134,31 +134,73 @@
       };
     }
 
+    function escapeHTML(s) {
+      return s
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    // Rendu markdown minimal sur une chaîne DÉJÀ échappée. Seuls quatre motifs
+    // produisent des balises : gras, retours à la ligne, listes à puces,
+    // liens https absolus. Le texte échappé ne contient plus ni < ni guillemets
+    // bruts, les URLs restaurées dans href="" sont donc inertes.
+    function renderMarkdown(escaped) {
+      // Neutraliser tout octet nul du texte source : \x00 est réservé aux
+      // placeholders de liens ci-dessous
+      escaped = escaped.replace(/\x00/g, '');
+      var links = [];
+      // Liens Markdown [label](https://url) — placeholders \x00N\x00, un octet
+      // nul ne peut pas provenir du texte échappé
+      var processed = escaped.replace(/\[([^\]\n]+)\]\((https:\/\/[^\s)]+)\)/g, function (_, label, url) {
+        var i = links.length;
+        links.push('<a href="' + url + '" target="_blank" rel="noopener" style="color:#1d3db0;font-weight:600;text-decoration:underline;">' + label + ' ↗</a>');
+        return '\x00' + i + '\x00';
+      });
+      // URLs https brutes restantes, ponctuation finale laissée hors du lien
+      processed = processed.replace(/https:\/\/[^\s\x00]+/g, function (url) {
+        var trail = (url.match(/(?:&quot;|&#39;|[.,;:!?»)\]])+$/) || [''])[0];
+        if (trail) url = url.slice(0, url.length - trail.length);
+        var i = links.length;
+        links.push('<a href="' + url + '" target="_blank" rel="noopener" style="color:#1d3db0;text-decoration:underline;word-break:break-all;">' + url + '</a>');
+        return '\x00' + i + '\x00' + trail;
+      });
+      // Gras
+      processed = processed.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+      // Listes à puces et retours à la ligne
+      var html = '';
+      var inList = false;
+      var needBr = false;
+      processed.split('\n').forEach(function (line) {
+        var item = line.match(/^\s*[-*]\s+(.*)$/);
+        if (item) {
+          if (!inList) { html += '<ul>'; inList = true; }
+          html += '<li>' + item[1] + '</li>';
+          needBr = false;
+        } else {
+          if (inList) { html += '</ul>'; inList = false; }
+          if (needBr) html += '<br>';
+          html += line;
+          needBr = true;
+        }
+      });
+      if (inList) html += '</ul>';
+      // Restaurer les liens
+      return html.replace(/\x00(\d+)\x00/g, function (_, i) { return links[+i]; });
+    }
+
     function addMsg(text, who, els) {
       var d = document.createElement('div');
       d.className = 'chat-message ' + who;
-      // Extraire les liens Markdown [label](url) avant tout traitement
-      var links = [];
-      var processed = text.replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, function(_, label, url) {
-        var i = links.length;
-        links.push('<a href="' + url + '" target="_blank" rel="noopener" style="color:#1d3db0;font-weight:600;text-decoration:underline;">' + label + ' ↗</a>');
-        return '%%LINK' + i + '%%';
-      });
-      // Transformations texte
-      processed = processed
-        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-        .replace(/\n/g, '<br>')
-        .replace(/(\d+\. )/g, '<br>$1')
-        .replace(/^<br>/, '');
-      // URLs brutes restantes
-      processed = processed.replace(/(https?:\/\/[^\s<"%%]+)/g, function(url) {
-        var i = links.length;
-        links.push('<a href="' + url + '" target="_blank" rel="noopener" style="color:#1d3db0;text-decoration:underline;word-break:break-all;">' + url + '</a>');
-        return '%%LINK' + i + '%%';
-      });
-      // Restaurer tous les liens
-      var html = processed.replace(/%%LINK(\d+)%%/g, function(_, i) { return links[+i]; });
-      d.innerHTML = html;
+      if (who === 'user') {
+        // Jamais d'interprétation HTML côté utilisateur
+        d.textContent = text;
+        d.style.whiteSpace = 'pre-wrap';
+      } else {
+        d.innerHTML = renderMarkdown(escapeHTML(text));
+      }
       els.messages.appendChild(d);
       els.messages.scrollTop = els.messages.scrollHeight;
       return d;
