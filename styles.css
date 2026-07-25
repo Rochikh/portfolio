@@ -307,7 +307,7 @@ nav.menu-open .nav-burger span:nth-child(3) { transform: translateY(-7px) rotate
   font-size: 0.9rem;
   font-weight: 600;
   text-decoration: none;
-  transition: all var(--transition);
+  transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
   font-family: var(--font);
   border: none;
   cursor: pointer;
@@ -468,7 +468,7 @@ nav.menu-open .nav-burger span:nth-child(3) { transform: translateY(-7px) rotate
   font-size: 0.8rem;
   color: var(--text);
   font-weight: 500;
-  transition: all var(--transition);
+  transition: border-color var(--transition), color var(--transition);
 }
 
 .logo-chip:hover { border-color: var(--accent); color: var(--accent); }
@@ -597,7 +597,7 @@ nav.menu-open .nav-burger span:nth-child(3) { transform: translateY(-7px) rotate
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 1.4rem 1.5rem;
-  transition: all var(--transition);
+  transition: border-color var(--transition), transform var(--transition);
 }
 
 .info-card:hover {
@@ -631,7 +631,7 @@ nav.menu-open .nav-burger span:nth-child(3) { transform: translateY(-7px) rotate
   border-radius: var(--radius);
   padding: 1.6rem 1.5rem;
   position: relative;
-  transition: all var(--transition);
+  transition: border-color var(--transition), transform var(--transition);
 }
 
 .step-card:hover {
@@ -677,7 +677,7 @@ nav.menu-open .nav-burger span:nth-child(3) { transform: translateY(-7px) rotate
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
-  transition: all var(--transition);
+  transition: border-color var(--transition), transform var(--transition);
   position: relative;
   overflow: hidden;
 }
@@ -732,7 +732,7 @@ nav.menu-open .nav-burger span:nth-child(3) { transform: translateY(-7px) rotate
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  transition: all var(--transition);
+  transition: border-color var(--transition), background var(--transition);
 }
 
 .conf-row:hover {
@@ -775,7 +775,7 @@ nav.menu-open .nav-burger span:nth-child(3) { transform: translateY(-7px) rotate
   display: flex;
   align-items: flex-start;
   gap: 0.9rem;
-  transition: all var(--transition);
+  transition: border-color var(--transition), transform var(--transition);
 }
 
 .form-row:hover { border-color: rgba(29,61,176,0.25); transform: translateX(3px); }
@@ -836,7 +836,7 @@ nav.menu-open .nav-burger span:nth-child(3) { transform: translateY(-7px) rotate
   display: flex;
   flex-direction: column;
   gap: 0.55rem;
-  transition: all var(--transition);
+  transition: border-color var(--transition), transform var(--transition);
 }
 .infog-card:hover {
   border-color: var(--accent);
@@ -878,7 +878,7 @@ nav.menu-open .nav-burger span:nth-child(3) { transform: translateY(-7px) rotate
   color: var(--text);
   display: flex;
   flex-direction: column;
-  transition: all var(--transition);
+  transition: border-color var(--transition), transform var(--transition);
 }
 
 .proj-card:hover {
@@ -1020,7 +1020,7 @@ nav.menu-open .nav-burger span:nth-child(3) { transform: translateY(-7px) rotate
   color: var(--text);
   font-size: 0.88rem;
   font-weight: 600;
-  transition: all var(--transition);
+  transition: background var(--transition), border-color var(--transition), color var(--transition);
 }
 
 .channel-link:hover {
@@ -1175,7 +1175,7 @@ footer a:hover { color: var(--accent); }
       display: flex; align-items: center; justify-content: center;
       font-size: 1.4rem; cursor: pointer;
       box-shadow: 0 4px 20px rgba(29,61,176,0.35);
-      transition: all var(--transition);
+      transition: background var(--transition), transform var(--transition);
       position: relative;
     }
     .chat-toggle-btn:hover { background: var(--accent-hover); transform: scale(1.06); }
@@ -1321,7 +1321,7 @@ footer a:hover { color: var(--accent); }
       border: 1px solid var(--line);
       border-radius: var(--radius);
       overflow: hidden;
-      transition: all var(--transition);
+      transition: border-color var(--transition);
     }
     .podcast-card:hover { border-color: rgba(29,61,176,0.35); }
     .podcast-meta {
