@@ -217,9 +217,15 @@
       els.container.classList.remove('open');
     }
 
+    var sending = false;
+
     async function send(els) {
+      if (sending) return;
       var text = els.input.value.trim();
       if (!text) return;
+      sending = true;
+      if (els.send) els.send.disabled = true;
+      els.input.disabled = true;
       addMsg(text, 'user', els);
       els.input.value = '';
       els.input.style.height = 'auto';
@@ -251,6 +257,12 @@
         // sans détail technique dans le fil
         if (loader.parentNode) els.messages.removeChild(loader);
         addMsg("L'assistant est momentanément indisponible. Réessayez dans un instant.", 'ai', els);
+      } finally {
+        sending = false;
+        if (els.send) els.send.disabled = false;
+        els.input.disabled = false;
+        // La désactivation du textarea a rendu le focus au document
+        els.input.focus();
       }
     }
 
