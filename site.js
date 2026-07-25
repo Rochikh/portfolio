@@ -14,7 +14,7 @@
     <span class="chat-badge" id="chat-badge"></span>
   </button>
   <div class="chat-nudge" id="chat-nudge">
-    💬 Une question ? Je suis là !
+    <span aria-hidden="true">💬</span> Une question ? Je suis là !
     <button class="chat-nudge-close" id="chat-nudge-close" aria-label="Masquer ce message">✕</button>
   </div>
   <div id="chat-widget" class="chat-widget" hidden>
@@ -157,7 +157,7 @@
       // nul ne peut pas provenir du texte échappé
       var processed = escaped.replace(/\[([^\]\n]+)\]\((https:\/\/[^\s)]+)\)/g, function (_, label, url) {
         var i = links.length;
-        links.push('<a href="' + url + '" target="_blank" rel="noopener" style="color:#1d3db0;font-weight:600;text-decoration:underline;">' + label + ' ↗</a>');
+        links.push('<a href="' + url + '" target="_blank" rel="noopener" style="color:#1d3db0;font-weight:600;text-decoration:underline;">' + label + ' <span aria-hidden="true">↗</span></a>');
         return '\x00' + i + '\x00';
       });
       // URLs https brutes restantes, ponctuation finale laissée hors du lien
