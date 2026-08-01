@@ -11,7 +11,7 @@ La ligne Page: indique ou le contenu se trouve sur le site : elle peut etre cite
 - https://ia.rochane.fr/ateliers-formations : ateliers et formations IA pour les equipes : deroulement, themes, historique des sessions
 - https://ia.rochane.fr/accompagnement : accompagnement des organisations : demarche en quatre temps, perimetre, etudes de cas
 - https://ia.rochane.fr/evaluer-ia : evaluer a l'ere de l'IA generative : le livre, les outils dedies, les publications
-- https://ia.rochane.fr/ressources : bibliotheque en libre acces : outils, infographies, articles, webinaires, podcasts
+- https://ia.rochane.fr/ressources : bibliotheque en libre acces : outils, infographies, articles, webinaires, podcasts, BD
 - https://ia.rochane.fr/faq : questions frequentes : accompagnement IA pour organisme de formation, formation des formateurs, presence France-Belgique, contact
 
 ## Livre
@@ -65,6 +65,11 @@ La ligne Page: indique ou le contenu se trouve sur le site : elle peut etre cite
   Page: https://ia.rochane.fr/ressources
 - N°01 L'illusion de compétence à l'ère de l'IA (LLM Fallacy)
   URL: https://llm-fallacy.rochane.fr/
+  Page: https://ia.rochane.fr/ressources
+
+## BD (1)
+- BD Abrège, une BD sur nos petits secrets d'IA
+  URL: https://abrege.rochane.fr/
   Page: https://ia.rochane.fr/ressources
 
 ## Projets et outils (9)
@@ -229,7 +234,7 @@ La ligne Page: indique ou le contenu se trouve sur le site : elle peut etre cite
   R: Oui : des conférences de 1 h à 2 h pour événements, journées d'étude et séminaires, en présentiel ou à distance. 14 conférences ont déjà été données dans 5 pays, sur l'évaluation à l'ère de l'IA générative, les usages pédagogiques de l'IA, l'esprit critique ou l'IA et l'emploi.
   Page: https://ia.rochane.fr/faq
 - Où trouver des ressources gratuites sur l'IA en formation ?
-  R: La bibliothèque du site rassemble 36 ressources en libre accès : 9 outils IA pour la formation, 15 infographies pédagogiques, 7 articles, 3 webinaires et 2 podcasts. Chaque ressource prolonge une intervention ou un chapitre du livre.
+  R: La bibliothèque du site rassemble 37 ressources en libre accès : 9 outils IA pour la formation, 15 infographies pédagogiques, 7 articles, 3 webinaires, 2 podcasts et 1 BD. Chaque ressource prolonge une intervention ou un chapitre du livre.
   Page: https://ia.rochane.fr/faq
 - Comment contacter Rochane Kherbouche ?
   R: Par email à contact@rochane.fr, ou en réservant directement un créneau d'échange de 30 minutes ou 1 heure. Les tarifs sont établis au cas par cas selon le contexte.

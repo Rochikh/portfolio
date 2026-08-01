@@ -18,7 +18,7 @@ Il fait foi. Si le site et ce guide divergent, corrige le guide.
 - Pages parcours : `conferences.html`, `ateliers-formations.html`, `accompagnement.html`,
   `evaluer-ia.html`.
 - `ressources.html` : bibliothèque complète filtrable (outils, infographies, articles,
-  webinaires, podcasts).
+  webinaires, podcasts, BD).
 - `articles/<slug>.html` : articles de fond.
 - `mentions-legales.html`, `livre3d.html` (couverture 3D en iframe, `noindex`).
 - **Assets partagés** : `styles.css` et `site.js`, référencés par toutes les pages. Le
@@ -41,8 +41,13 @@ forme `generate-knowledge.py index.html knowledge.md` est **obsolète** : elle r
 tout le contenu hors accueil. Les articles en `noindex` sont volontairement exclus.
 Le script exige ses deux arguments (sinon message d'usage, code 2), affiche un décompte
 par section, et refuse d'écrire `knowledge.md` (code 1) si une section attendue est
-vide (infographies, projets, articles, webinaires, podcasts, questions FAQ) : ce garde-fou
-signale une regex cassée par un changement de HTML, corriger avant de régénérer.
+vide (infographies, BD, projets, articles, webinaires, podcasts, questions FAQ) : ce
+garde-fou signale une regex cassée par un changement de HTML, corriger avant de régénérer.
+La BD réutilise le gabarit visuel des infographies : sa carte porte la classe inerte
+`bd-card` (`infog-card bd-card reveal`, absente de `styles.css`), qui sert uniquement à
+la distinguer côté extraction. La regex des infographies exige donc exactement
+`class="infog-card reveal"` : une nouvelle carte infographie doit garder ces deux classes
+dans cet ordre, sinon elle disparaît silencieusement de `knowledge.md`.
 Le SYSTEM_PROMPT du bot vit dans `_worker.js` (le bot habille les URLs en Markdown ;
 `knowledge.md` liste des URLs brutes, c'est voulu).
 
@@ -61,7 +66,8 @@ Le SYSTEM_PROMPT du bot vit dans `_worker.js` (le bot habille les URLs en Markdo
    - Pages parcours : sous-titres de preuve (`conferences.html` « 14 conférences »,
      `ateliers-formations.html` « 21 sessions »).
    - `ressources.html` : boutons de filtre (`Tout · N`, `Outils · 9`, `Infographies · 15`,
-     `Articles · 7`, `Webinaires · 3`, `Podcasts · 2`), en-tête `Volume · N ressources`,
+     `Articles · 7`, `Webinaires · 3`, `Podcasts · 2`, `BD · 1`), en-tête
+     `Volume · N ressources`,
      titres de section (« Neuf outils », « Quinze infographies », « Sept articles
      publiés »...), et **les 4 copies** de la meta description (`description`,
      `og:description`, `twitter:description`, JSON-LD).

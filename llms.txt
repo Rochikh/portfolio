@@ -14,7 +14,7 @@
 
 - [Évaluer en formation à l'ère de l'IA générative](https://livre.rochane.fr) : manuel pratique pour repenser l'évaluation des apprentissages (Chronique Sociale, juin 2026, ISBN 978-2-38548-104-9). Extrait gratuit sur le site du livre.
 - [Pourquoi les détecteurs d'IA échouent, et que faire à la place](https://ia.rochane.fr/articles/pourquoi-les-detecteurs-dia-echouent) : article sur le déplacement de l'évaluation du produit fini vers le processus documenté.
-- [Bibliothèque de ressources](https://ia.rochane.fr/ressources) : 36 ressources en libre accès (outils IA, infographies pédagogiques, articles, webinaires, podcasts).
+- [Bibliothèque de ressources](https://ia.rochane.fr/ressources) : 37 ressources en libre accès (outils IA, infographies pédagogiques, articles, webinaires, podcasts, BD).
 
 ## Projets
 

@@ -6,7 +6,7 @@ Exemple: python3 generate-knowledge.py . knowledge.md
 
 Apres extraction, le script affiche un decompte par section et refuse d'ecrire
 le fichier (sortie code 1) si une section attendue est vide : infographies,
-projets, articles, webinaires, podcasts, questions FAQ.
+BD, projets, articles, webinaires, podcasts, questions FAQ.
 
 Chaque contenu est rattache a la page du site ou il vit (ligne "Page:"),
 avec deduplication : un outil present sur l'accueil et dans la bibliotheque
@@ -37,7 +37,7 @@ PAGES_DESC = [
     (SITE + "/ateliers-formations", "ateliers et formations IA pour les equipes : deroulement, themes, historique des sessions"),
     (SITE + "/accompagnement", "accompagnement des organisations : demarche en quatre temps, perimetre, etudes de cas"),
     (SITE + "/evaluer-ia", "evaluer a l'ere de l'IA generative : le livre, les outils dedies, les publications"),
-    (SITE + "/ressources", "bibliotheque en libre acces : outils, infographies, articles, webinaires, podcasts"),
+    (SITE + "/ressources", "bibliotheque en libre acces : outils, infographies, articles, webinaires, podcasts, BD"),
     (SITE + "/faq", "questions frequentes : accompagnement IA pour organisme de formation, formation des formateurs, presence France-Belgique, contact"),
 ]
 
@@ -48,6 +48,7 @@ PRIORITY = {
     "conferences": ["conferences.html", "evaluer-ia.html", "index.html"],
     "formations": ["ateliers-formations.html", "index.html"],
     "infographies": ["ressources.html", "index.html"],
+    "bd": ["ressources.html", "index.html"],
     "projets": ["ressources.html", "evaluer-ia.html", "accompagnement.html", "index.html"],
     "articles": ["ressources.html", "evaluer-ia.html", "index.html"],
     "podcasts": ["ressources.html", "evaluer-ia.html", "index.html"],
@@ -123,12 +124,24 @@ def main(src_dir, dst):
 
     # Infographies
     infog_re = re.compile(
-        r'<a class="infog-card[^"]*" href="([^"]+)"[^>]*>'
+        r'<a class="infog-card reveal" href="([^"]+)"[^>]*>'
         r'<span class="infog-idx">(.*?)</span><(?:span|h3) class="infog-name">(.*?)</(?:span|h3)>',
         re.S)
     infogs = collect(docs, "infographies", infog_re.findall, key=lambda it: it[0])
     out.append(f"## Infographies ({len(infogs)})")
     for (url, idx, name), page in infogs:
+        out += [f"- {clean(idx)} {clean(name)}", f"  URL: {url}", f"  Page: {page}"]
+    out.append("")
+
+    # BD : meme gabarit visuel que les infographies, distingue par la classe
+    # inerte bd-card pour ne pas etre compte comme une infographie.
+    bd_re = re.compile(
+        r'<a class="infog-card bd-card reveal" href="([^"]+)"[^>]*>'
+        r'<span class="infog-idx">(.*?)</span><(?:span|h3) class="infog-name">(.*?)</(?:span|h3)>',
+        re.S)
+    bds = collect(docs, "bd", bd_re.findall, key=lambda it: it[0])
+    out.append(f"## BD ({len(bds)})")
+    for (url, idx, name), page in bds:
         out += [f"- {clean(idx)} {clean(name)}", f"  URL: {url}", f"  Page: {page}"]
     out.append("")
 
@@ -252,6 +265,7 @@ def main(src_dir, dst):
     # knowledge.md ampute.
     counts = [
         ("infographies", len(infogs)),
+        ("BD", len(bds)),
         ("projets", len(projs)),
         ("articles", len(arts)),
         ("webinaires", len(webs)),
