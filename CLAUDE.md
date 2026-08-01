@@ -148,8 +148,17 @@ Le SYSTEM_PROMPT du bot vit dans `_worker.js` (le bot habille les URLs en Markdo
 - `python3 -m http.server` ne sert pas les URLs sans extension. Les liens internes sont
   extensionless (`/conferences`) car Cloudflare redirige `.html` en 308 : utiliser un
   petit serveur Python qui mappe `/x` vers `x.html`.
-- Rendu et débordements : Playwright + Chromium (`/opt/pw-browsers/chromium`), captures
-  desktop et mobile.
+- Rendu et débordements : Playwright + Chromium (`~/.cache/ms-playwright/`, emplacement
+  par défaut de Playwright), captures desktop et mobile. Si le chemin rebouge, le
+  trancher sur pièce plutôt que de se fier à ce guide :
+
+  ```
+  python3 -c "from playwright.sync_api import sync_playwright; p=sync_playwright().start(); print(p.chromium.executable_path); p.stop()"
+  ```
+
+  affiche le binaire réellement utilisé (à ce jour
+  `/root/.cache/ms-playwright/chromium-1228/chrome-linux64/chrome`), puis corriger cette
+  ligne en conséquence.
 - Grep de conformité avant push : `Bruxelles Formation`, `expert`, tiret cadratin,
   `soundcloud|numericast`.
 
