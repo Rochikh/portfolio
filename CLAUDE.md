@@ -39,10 +39,13 @@ python3 generate-knowledge.py . knowledge.md
 Le `.` = dossier du site (le script scanne toutes les pages + `articles/`). L'ancienne
 forme `generate-knowledge.py index.html knowledge.md` est **obsolète** : elle raterait
 tout le contenu hors accueil. Les articles en `noindex` sont volontairement exclus.
-Le script exige ses deux arguments (sinon message d'usage, code 2), affiche un décompte
-par section, et refuse d'écrire `knowledge.md` (code 1) si une section attendue est
-vide (infographies, BD, projets, articles, webinaires, podcasts, questions FAQ) : ce
-garde-fou signale une regex cassée par un changement de HTML, corriger avant de régénérer.
+Le script exige ses deux arguments (sinon message d'usage, code 2). Après chaque
+collecte, il affiche l'effectif de la section et le compare au minimum déclaré dans le
+dict **`EXPECTED`** en tête du script (infographies, bd, projets, articles, podcasts,
+conferences, formations, webinaires, faq). Si une section rend moins d'entrées que
+prévu, il écrit l'écart sur stderr et sort en code 1 **sans écrire `knowledge.md`** :
+ce garde-fou signale une regex cassée par un changement de HTML même quand elle ne fait
+perdre qu'une seule entrée. Corriger le HTML avant de régénérer.
 La BD réutilise le gabarit visuel des infographies : sa carte porte la classe inerte
 `bd-card` (`infog-card bd-card reveal`, absente de `styles.css`), qui sert uniquement à
 la distinguer côté extraction. La regex des infographies exige donc exactement
@@ -71,6 +74,10 @@ Le SYSTEM_PROMPT du bot vit dans `_worker.js` (le bot habille les URLs en Markdo
      titres de section (« Neuf outils », « Quinze infographies », « Sept articles
      publiés »...), et **les 4 copies** de la meta description (`description`,
      `og:description`, `twitter:description`, JSON-LD).
+   - `generate-knowledge.py` : le dict **`EXPECTED`**. Toute ressource ajoutée impose
+     d'y incrémenter la valeur de sa section, au même titre que les compteurs des pages
+     HTML. Sans ça le garde-fou reste calé sur l'ancien effectif et cesse de détecter
+     la perte d'une entrée.
 4. **Ne pas toucher `_worker.js`** lors d'une modification de contenu. N'y toucher que
    sur demande explicite visant le chatbot. `ALLOWED_ORIGINS` inchangé.
 5. **Diffs chirurgicaux.** Aucune ligne hors demande. Les incohérences repérées hors

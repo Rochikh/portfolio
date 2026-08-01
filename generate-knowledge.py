@@ -4,9 +4,13 @@
 Usage: python3 generate-knowledge.py <dossier_du_site> <fichier_sortie>
 Exemple: python3 generate-knowledge.py . knowledge.md
 
-Apres extraction, le script affiche un decompte par section et refuse d'ecrire
-le fichier (sortie code 1) si une section attendue est vide : infographies,
-BD, projets, articles, webinaires, podcasts, questions FAQ.
+Apres chaque collecte, le script affiche l'effectif de la section et le compare
+au minimum attendu declare dans EXPECTED. Si une section rend moins d'entrees
+que prevu, il ecrit l'ecart sur stderr et sort en code 1 sans produire le
+fichier de sortie : une regex cassee par un changement de HTML est ainsi
+signalee, meme quand elle ne fait perdre qu'une seule entree.
+Toute ressource ajoutee au site impose de bump la valeur correspondante dans
+EXPECTED, au meme titre que les compteurs affiches dans les pages HTML.
 
 Chaque contenu est rattache a la page du site ou il vit (ligne "Page:"),
 avec deduplication : un outil present sur l'accueil et dans la bibliotheque
@@ -56,6 +60,20 @@ PRIORITY = {
     "faq": ["faq.html"],
 }
 
+# Effectif minimal attendu par section, renseigne a l'etat courant du site.
+# A bump a chaque ressource ajoutee, comme les compteurs des pages HTML.
+EXPECTED = {
+    "infographies": 15,
+    "bd": 1,
+    "projets": 9,
+    "articles": 7,
+    "podcasts": 2,
+    "conferences": 14,
+    "formations": 21,
+    "webinaires": 3,
+    "faq": 8,
+}
+
 
 def clean(s):
     s = re.sub(r'<[^>]+>', '', s)
@@ -75,6 +93,19 @@ def collect(docs, section, finder, key):
                 continue
             seen.add(k)
             items.append((item, PAGE_URLS[fname]))
+    return items
+
+
+def check(section, items, dst):
+    """Affiche l'effectif de la section et abandonne s'il est sous EXPECTED."""
+    found, expected = len(items), EXPECTED[section]
+    print(f"  {section}: {found}", flush=True)
+    if found < expected:
+        print(f"Erreur: section '{section}' incomplete, "
+              f"{expected} entrees attendues au minimum, {found} trouvee(s).",
+              file=sys.stderr)
+        print(f"Abandon: {dst} n'a pas ete ecrit.", file=sys.stderr)
+        sys.exit(1)
     return items
 
 
@@ -127,7 +158,8 @@ def main(src_dir, dst):
         r'<a class="infog-card reveal" href="([^"]+)"[^>]*>'
         r'<span class="infog-idx">(.*?)</span><(?:span|h3) class="infog-name">(.*?)</(?:span|h3)>',
         re.S)
-    infogs = collect(docs, "infographies", infog_re.findall, key=lambda it: it[0])
+    infogs = check("infographies",
+                   collect(docs, "infographies", infog_re.findall, key=lambda it: it[0]), dst)
     out.append(f"## Infographies ({len(infogs)})")
     for (url, idx, name), page in infogs:
         out += [f"- {clean(idx)} {clean(name)}", f"  URL: {url}", f"  Page: {page}"]
@@ -139,7 +171,7 @@ def main(src_dir, dst):
         r'<a class="infog-card bd-card reveal" href="([^"]+)"[^>]*>'
         r'<span class="infog-idx">(.*?)</span><(?:span|h3) class="infog-name">(.*?)</(?:span|h3)>',
         re.S)
-    bds = collect(docs, "bd", bd_re.findall, key=lambda it: it[0])
+    bds = check("bd", collect(docs, "bd", bd_re.findall, key=lambda it: it[0]), dst)
     out.append(f"## BD ({len(bds)})")
     for (url, idx, name), page in bds:
         out += [f"- {clean(idx)} {clean(name)}", f"  URL: {url}", f"  Page: {page}"]
@@ -150,7 +182,8 @@ def main(src_dir, dst):
         r'<a href="([^"]+)"[^>]*class="proj-card[^"]*"[^>]*>.*?'
         r'class="proj-name">(.*?)</(?:div|h3)>.*?class="proj-desc">(.*?)</div>',
         re.S)
-    projs = collect(docs, "projets", proj_re.findall, key=lambda it: it[0])
+    projs = check("projets",
+                  collect(docs, "projets", proj_re.findall, key=lambda it: it[0]), dst)
     out.append(f"## Projets et outils ({len(projs)})")
     for (url, name, desc), page in projs:
         out += [f"- {clean(name)}: {clean(desc)}", f"  URL: {url}", f"  Page: {page}"]
@@ -161,7 +194,8 @@ def main(src_dir, dst):
         r'<a href="([^"]+)"[^>]*class="article-card[^"]*"[^>]*>.*?'
         r'class="article-cat">(.*?)</div>.*?class="article-title">(.*?)</(?:div|h3)>',
         re.S)
-    arts = collect(docs, "articles", art_re.findall, key=lambda it: it[0])
+    arts = check("articles",
+                 collect(docs, "articles", art_re.findall, key=lambda it: it[0]), dst)
     out.append(f"## Articles ({len(arts)})")
     for (url, cat, title), page in arts:
         out += [f"- [{clean(cat)}] {clean(title)}", f"  URL: {url}", f"  Page: {page}"]
@@ -178,7 +212,8 @@ def main(src_dir, dst):
             found.append((show, title, desc, link.group(1) if link else ""))
         return found
 
-    pods = collect(docs, "podcasts", find_podcasts, key=lambda it: it[3] or it[1])
+    pods = check("podcasts",
+                 collect(docs, "podcasts", find_podcasts, key=lambda it: it[3] or it[1]), dst)
     out.append(f"## Podcasts ({len(pods)})")
     for (show, title, desc, url), page in pods:
         out.append(f"- {show}: {title}. {desc}")
@@ -200,7 +235,8 @@ def main(src_dir, dst):
             found.append((clean(title), ' '.join(spans)))
         return found
 
-    confs = collect(docs, "conferences", find_confs, key=lambda it: it[0])
+    confs = check("conferences",
+                  collect(docs, "conferences", find_confs, key=lambda it: it[0]), dst)
     out.append(f"## Conferences ({len(confs)})")
     for (title, meta), page in confs:
         out += [f"- {title} ({meta})", f"  Page: {page}"]
@@ -211,7 +247,8 @@ def main(src_dir, dst):
         r'<div class="form-row[^"]*">.*?class="form-title">(.*?)</div>'
         r'<div class="form-meta">(.*?)</div>',
         re.S)
-    forms = collect(docs, "formations", form_re.findall, key=lambda it: clean(it[0]))
+    forms = check("formations",
+                  collect(docs, "formations", form_re.findall, key=lambda it: clean(it[0])), dst)
     out.append(f"## Formations et ateliers ({len(forms)})")
     for (title, meta), page in forms:
         out += [f"- {clean(title)} ({clean(meta)})", f"  Page: {page}"]
@@ -222,7 +259,8 @@ def main(src_dir, dst):
         r'<div class="webinar-row[^"]*">.*?class="w-title">(.*?)</(?:div|h3)>'
         r'<div class="w-meta">(.*?)</div>',
         re.S)
-    webs = collect(docs, "webinaires", web_re.findall, key=lambda it: clean(it[0]))
+    webs = check("webinaires",
+                 collect(docs, "webinaires", web_re.findall, key=lambda it: clean(it[0])), dst)
     out.append(f"## Webinaires ({len(webs)})")
     for (title, meta), page in webs:
         out += [f"- {clean(title)} ({clean(meta)})", f"  Page: {page}"]
@@ -233,7 +271,8 @@ def main(src_dir, dst):
         r'<div class="info-card[^"]*">.*?class="info-card-title">(.*?)</(?:div|h[23])>'
         r'.*?class="info-card-text">(.*?)</div>',
         re.S)
-    faqs = collect(docs, "faq", faq_re.findall, key=lambda it: clean(it[0]))
+    faqs = check("faq",
+                 collect(docs, "faq", faq_re.findall, key=lambda it: clean(it[0])), dst)
     out.append(f"## Questions frequentes ({len(faqs)})")
     for (q, a), page in faqs:
         out += [f"- {clean(q)}", f"  R: {clean(a)}", f"  Page: {page}"]
@@ -259,27 +298,6 @@ def main(src_dir, dst):
             out.append(f"- {title}" + (f" : {desc}" if desc else ""))
             out += [f"  URL: {url}", f"  Page: {url}"]
         out.append("")
-
-    # Decompte par section : une section attendue vide signale un HTML qui a
-    # change (regex cassee) ou une page absente. On refuse alors d'ecrire un
-    # knowledge.md ampute.
-    counts = [
-        ("infographies", len(infogs)),
-        ("BD", len(bds)),
-        ("projets", len(projs)),
-        ("articles", len(arts)),
-        ("webinaires", len(webs)),
-        ("podcasts", len(pods)),
-        ("questions FAQ", len(faqs)),
-    ]
-    for name, n in counts:
-        print(f"  {name}: {n}", flush=True)
-    empty = [name for name, n in counts if n == 0]
-    if empty:
-        for name in empty:
-            print(f"Erreur: section '{name}' vide, aucune entree extraite.", file=sys.stderr)
-        print(f"Abandon: {dst} n'a pas ete ecrit.", file=sys.stderr)
-        sys.exit(1)
 
     open(dst, 'w', encoding='utf-8').write('\n'.join(out))
 
