@@ -391,7 +391,7 @@
           var msg  = (form.querySelector('[name="message"]') || {}).value || '';
           var sub  = encodeURIComponent('Contact depuis ia.rochane.fr');
           var bod  = encodeURIComponent('Nom: '+nom+'\nEmail: '+mail+'\nType: '+type+'\n\n'+msg);
-          window.location.href = 'mailto:ia@rochane.fr?subject='+sub+'&body='+bod;
+          window.location.href = 'mailto:contact@rochane.fr?subject='+sub+'&body='+bod;
           err.style.display = 'block';
           btn.textContent = 'Envoyer →';
           btn.disabled = false;
