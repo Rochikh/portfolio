@@ -27,6 +27,19 @@ Il fait foi. Si le site et ce guide divergent, corrige le guide.
   (Person `#person`, WebSite `#website`, plus WebPage / Service / Book / Article /
   CollectionPage selon la page).
 
+## Sous-dossiers hors site
+
+Ces dossiers vivent dans l'arbre de travail mais ne font pas partie du site publié. Ils
+sont listés dans `.gitignore` : ne pas les versionner, ne pas les référencer depuis les
+pages, ne pas les servir. Ce sont des chantiers séparés, pas des pages du portfolio.
+
+- `pedago-fiches/`
+- `_templates/`
+- `33pour1/`
+
+Le `.gitignore` est la protection réelle, cette liste n'est que son rappel : si un
+dossier hors site est ajouté, l'inscrire aux deux endroits.
+
 ## Chaîne de contenu du chatbot (à ne pas oublier)
 
 Les pages HTML sont la **source de vérité**. `knowledge.md` en est un **dérivé**, jamais
@@ -56,8 +69,11 @@ Le SYSTEM_PROMPT du bot vit dans `_worker.js` (le bot habille les URLs en Markdo
 
 ## Règles de fond
 
-1. **Synchroniser avant de modifier.** Après chaque merge de PR sur `main`, repartir de
-   `main` à jour : `git fetch origin main && git checkout -B <branche> origin/main`.
+1. **Synchroniser avant de modifier.** `git fetch origin main` **en début de session**,
+   avant toute modification, et pas seulement après un merge de PR. Plusieurs clones de
+   ce dépôt ont coexisté sur la machine : un arbre de travail en retard produit des
+   conflits (vécu sur la PR #12). Toujours repartir de `main` à jour :
+   `git fetch origin main && git checkout -B <branche> origin/main`.
 2. **Cache-busting.** Toute modification de `styles.css` ou `site.js` oblige à
    incrémenter `?v=N` **sur toutes les pages** qui les référencent. État courant :
    `styles.css?v=9`, `site.js?v=5`. Sans ça, les visiteurs récurrents gardent l'ancienne
