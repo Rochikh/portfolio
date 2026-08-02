@@ -170,7 +170,7 @@ Le SYSTEM_PROMPT du bot vit dans `_worker.js` (le bot habille les URLs en Markdo
 ## Conversion
 
 - CTA principal : Cal.com `https://cal.com/rochane/echange-avec-rochane`.
-- Email public affiché : `ia@rochane.fr`. Formulaire de contact via Formspree.
+- Email public affiché : `contact@rochane.fr`. Formulaire de contact via Formspree.
 
 ## Vestiges à ne pas réactiver
 
