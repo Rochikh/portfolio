@@ -67,7 +67,10 @@ La ligne Page: indique ou le contenu se trouve sur le site : elle peut etre cite
   URL: https://llm-fallacy.rochane.fr/
   Page: https://ia.rochane.fr/ressources
 
-## BD (1)
+## BD (2)
+- BD 20/20, une BD sur ce qu'un dossier parfait ne dit pas
+  URL: https://20sur20.rochane.fr/
+  Page: https://ia.rochane.fr/ressources
 - BD Abrège, une BD sur nos petits secrets d'IA
   URL: https://abrege.rochane.fr/
   Page: https://ia.rochane.fr/ressources
@@ -234,7 +237,7 @@ La ligne Page: indique ou le contenu se trouve sur le site : elle peut etre cite
   R: Oui : des conférences de 1 h à 2 h pour événements, journées d'étude et séminaires, en présentiel ou à distance. 14 conférences ont déjà été données dans 5 pays, sur l'évaluation à l'ère de l'IA générative, les usages pédagogiques de l'IA, l'esprit critique ou l'IA et l'emploi.
   Page: https://ia.rochane.fr/faq
 - Où trouver des ressources gratuites sur l'IA en formation ?
-  R: La bibliothèque du site rassemble 37 ressources en libre accès : 9 outils IA pour la formation, 15 infographies pédagogiques, 7 articles, 3 webinaires, 2 podcasts et 1 BD. Chaque ressource prolonge une intervention ou un chapitre du livre.
+  R: La bibliothèque du site rassemble 38 ressources en libre accès : 9 outils IA pour la formation, 15 infographies pédagogiques, 7 articles, 3 webinaires, 2 podcasts et 2 BD. Chaque ressource prolonge une intervention ou un chapitre du livre.
   Page: https://ia.rochane.fr/faq
 - Comment contacter Rochane Kherbouche ?
   R: Par email à contact@rochane.fr, ou en réservant directement un créneau d'échange de 30 minutes ou 1 heure. Les tarifs sont établis au cas par cas selon le contexte.

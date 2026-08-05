@@ -64,7 +64,7 @@ PRIORITY = {
 # A bump a chaque ressource ajoutee, comme les compteurs des pages HTML.
 EXPECTED = {
     "infographies": 15,
-    "bd": 1,
+    "bd": 2,
     "projets": 9,
     "articles": 7,
     "podcasts": 2,
