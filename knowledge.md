@@ -68,10 +68,10 @@ La ligne Page: indique ou le contenu se trouve sur le site : elle peut etre cite
   Page: https://ia.rochane.fr/ressources
 
 ## BD (2)
-- BD 20/20, une BD sur ce qu'un dossier parfait ne dit pas
+- BD · réalisée avec IA, déclarée 20/20, une BD sur ce qu'un dossier parfait ne dit pas
   URL: https://20sur20.rochane.fr/
   Page: https://ia.rochane.fr/ressources
-- BD Abrège, une BD sur nos petits secrets d'IA
+- BD · réalisée avec IA, déclarée Abrège, une BD sur nos petits secrets d'IA
   URL: https://abrege.rochane.fr/
   Page: https://ia.rochane.fr/ressources
 
