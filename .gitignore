@@ -1,3 +1,7 @@
 # Sous-dossiers hors site (voir CLAUDE.md)
 pedago-fiches/
 _templates/
+
+# Rapports Lighthouse bruts (voir CLAUDE.md, section Base de mesure)
+audit/**/*.report.html
+audit/**/*.report.json

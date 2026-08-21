@@ -19,6 +19,7 @@ Il fait foi. Si le site et ce guide divergent, corrige le guide.
   `evaluer-ia.html`.
 - `ressources.html` : bibliothèque complète filtrable (outils, infographies, articles,
   webinaires, podcasts, BD).
+- `faq.html` : questions fréquentes (8 entrées, parsées par le générateur de knowledge).
 - `articles/<slug>.html` : articles de fond.
 - `mentions-legales.html`, `livre3d.html` (couverture 3D en iframe, `noindex`).
 - **Assets partagés** : `styles.css` et `site.js`, référencés par toutes les pages. Le
@@ -75,7 +76,7 @@ Le SYSTEM_PROMPT du bot vit dans `_worker.js` (le bot habille les URLs en Markdo
    `git fetch origin main && git checkout -B <branche> origin/main`.
 2. **Cache-busting.** Toute modification de `styles.css` ou `site.js` oblige à
    incrémenter `?v=N` **sur toutes les pages** qui les référencent. État courant :
-   `styles.css?v=9`, `site.js?v=5`. Sans ça, les visiteurs récurrents gardent l'ancienne
+   `styles.css?v=9`, `site.js?v=6`. Sans ça, les visiteurs récurrents gardent l'ancienne
    version (source du bug de scrollbar déjà corrigé).
 3. **Compteurs, plusieurs emplacements et plusieurs formes.** Recenser TOUS les endroits
    par `grep` du chiffre ET du mot, sur toutes les pages, avant de conclure. Connus :
@@ -84,12 +85,14 @@ Le SYSTEM_PROMPT du bot vit dans `_worker.js` (le bot habille les URLs en Markdo
    - Pages parcours : sous-titres de preuve (`conferences.html` « 14 conférences »,
      `ateliers-formations.html` « 21 sessions »).
    - `ressources.html` : boutons de filtre (`Tout · N`, `Outils · 9`, `Infographies · 15`,
-     `Articles · 7`, `Webinaires · 3`, `Podcasts · 2`, `BD · 1`), en-tête
+     `Articles · 7`, `Webinaires · 3`, `Podcasts · 2`, `BD · 2`), en-tête
      `Volume · N ressources`,
      titres de section (« Neuf outils », « Quinze infographies », « Sept articles
-     publiés »...), et **les 4 copies** de la meta description (`description`,
+     publiés », « Deux BD »...), et **les 4 copies** de la meta description (`description`,
      `og:description`, `twitter:description`, JSON-LD).
-   - `generate-knowledge.py` : le dict **`EXPECTED`**. Toute ressource ajoutée impose
+   - `generate-knowledge.py` : le dict **`EXPECTED`** (état courant : `infographies` 15,
+     `bd` 2, `projets` 9, `articles` 7, `podcasts` 2, `conferences` 14, `formations` 21,
+     `webinaires` 3, `faq` 8). Toute ressource ajoutée impose
      d'y incrémenter la valeur de sa section, au même titre que les compteurs des pages
      HTML. Sans ça le garde-fou reste calé sur l'ancien effectif et cesse de détecter
      la perte d'une entrée.
@@ -176,6 +179,24 @@ Le SYSTEM_PROMPT du bot vit dans `_worker.js` (le bot habille les URLs en Markdo
   ligne en conséquence.
 - Grep de conformité avant push : `Bruxelles Formation`, `expert`, tiret cadratin,
   `soundcloud|numericast`.
+
+## Base de mesure
+
+- Les campagnes Lighthouse vivent dans `audit/avant/` et `audit/apres/`.
+- **Versionnés** : `_METHODE.md` (protocole, versions, flags, tableaux de médianes et
+  d'amplitude) et `_scores.json` (médiane, min, max et les 3 valeurs brutes par
+  métrique).
+- **Non versionnés** : les rapports Lighthouse bruts `*.report.json` et `*.report.html`,
+  exclus par `.gitignore` (environ 25 Mo par campagne). Ils restent sur disque pour
+  consultation.
+- **Règle** : la campagne APRÈS doit reprendre à l'identique la version de Lighthouse,
+  le Chromium, l'ordre des URL et les `--chrome-flags` de la campagne AVANT, `--disable-gpu`
+  compris. Un flag qui change rend les deux campagnes incomparables. Voir la section
+  « Artefact WebGL » de `audit/avant/_METHODE.md` : l'erreur WebGL de l'accueil vient du
+  headless sans GPU, pas du site, et doit se reproduire à l'identique.
+- Protocole : 3 passes par URL, en séquentiel, médiane de chaque métrique calculée
+  indépendamment. L'amplitude min-max relevée impose de ne pas lire comme un effet réel
+  un écart de performance inférieur ou égal à **7 points**.
 
 ## Commits
 
