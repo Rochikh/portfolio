@@ -1,0 +1,890 @@
+{
+  "01-accueil": {
+    "url": "https://ia.rochane.fr/",
+    "passes": 3,
+    "horodatage_passes": [
+      "2026-08-21T15:14:21.004Z",
+      "2026-08-21T15:16:10.145Z",
+      "2026-08-21T15:17:59.400Z"
+    ],
+    "metriques": {
+      "perf": {
+        "mediane": 79,
+        "min": 77,
+        "max": 83,
+        "passes": [
+          79,
+          77,
+          83
+        ]
+      },
+      "a11y": {
+        "mediane": 100,
+        "min": 100,
+        "max": 100,
+        "passes": [
+          100,
+          100,
+          100
+        ]
+      },
+      "best_practices": {
+        "mediane": 96,
+        "min": 96,
+        "max": 96,
+        "passes": [
+          96,
+          96,
+          96
+        ]
+      },
+      "seo": {
+        "mediane": 100,
+        "min": 100,
+        "max": 100,
+        "passes": [
+          100,
+          100,
+          100
+        ]
+      },
+      "fcp_ms": {
+        "mediane": 2483,
+        "min": 1610,
+        "max": 3080,
+        "passes": [
+          2483,
+          3080,
+          1610
+        ]
+      },
+      "lcp_ms": {
+        "mediane": 4786,
+        "min": 4636,
+        "max": 4790,
+        "passes": [
+          4786,
+          4790,
+          4636
+        ]
+      },
+      "tbt_ms": {
+        "mediane": 47,
+        "min": 46,
+        "max": 84,
+        "passes": [
+          46,
+          47,
+          84
+        ]
+      },
+      "cls": {
+        "mediane": 0,
+        "min": 0,
+        "max": 0,
+        "passes": [
+          0,
+          0,
+          0
+        ]
+      },
+      "si_ms": {
+        "mediane": 2483,
+        "min": 1610,
+        "max": 3080,
+        "passes": [
+          2483,
+          3080,
+          1610
+        ]
+      },
+      "poids_total_octets": {
+        "mediane": 445933,
+        "min": 445891,
+        "max": 445952,
+        "passes": [
+          445933,
+          445952,
+          445891
+        ]
+      }
+    }
+  },
+  "02-conferences": {
+    "url": "https://ia.rochane.fr/conferences",
+    "passes": 3,
+    "horodatage_passes": [
+      "2026-08-21T15:14:34.974Z",
+      "2026-08-21T15:16:23.718Z",
+      "2026-08-21T15:18:13.075Z"
+    ],
+    "metriques": {
+      "perf": {
+        "mediane": 94,
+        "min": 94,
+        "max": 95,
+        "passes": [
+          95,
+          94,
+          94
+        ]
+      },
+      "a11y": {
+        "mediane": 100,
+        "min": 100,
+        "max": 100,
+        "passes": [
+          100,
+          100,
+          100
+        ]
+      },
+      "best_practices": {
+        "mediane": 96,
+        "min": 96,
+        "max": 96,
+        "passes": [
+          96,
+          96,
+          96
+        ]
+      },
+      "seo": {
+        "mediane": 100,
+        "min": 100,
+        "max": 100,
+        "passes": [
+          100,
+          100,
+          100
+        ]
+      },
+      "fcp_ms": {
+        "mediane": 1621,
+        "min": 1545,
+        "max": 1633,
+        "passes": [
+          1545,
+          1621,
+          1633
+        ]
+      },
+      "lcp_ms": {
+        "mediane": 2984,
+        "min": 2907,
+        "max": 2995,
+        "passes": [
+          2907,
+          2984,
+          2995
+        ]
+      },
+      "tbt_ms": {
+        "mediane": 0,
+        "min": 0,
+        "max": 26,
+        "passes": [
+          26,
+          0,
+          0
+        ]
+      },
+      "cls": {
+        "mediane": 0,
+        "min": 0,
+        "max": 0,
+        "passes": [
+          0,
+          0,
+          0
+        ]
+      },
+      "si_ms": {
+        "mediane": 1621,
+        "min": 1545,
+        "max": 1633,
+        "passes": [
+          1545,
+          1621,
+          1633
+        ]
+      },
+      "poids_total_octets": {
+        "mediane": 135410,
+        "min": 135390,
+        "max": 135415,
+        "passes": [
+          135390,
+          135415,
+          135410
+        ]
+      }
+    }
+  },
+  "03-ateliers-formations": {
+    "url": "https://ia.rochane.fr/ateliers-formations",
+    "passes": 3,
+    "horodatage_passes": [
+      "2026-08-21T15:14:48.223Z",
+      "2026-08-21T15:16:36.506Z",
+      "2026-08-21T15:18:26.248Z"
+    ],
+    "metriques": {
+      "perf": {
+        "mediane": 94,
+        "min": 91,
+        "max": 94,
+        "passes": [
+          91,
+          94,
+          94
+        ]
+      },
+      "a11y": {
+        "mediane": 100,
+        "min": 100,
+        "max": 100,
+        "passes": [
+          100,
+          100,
+          100
+        ]
+      },
+      "best_practices": {
+        "mediane": 96,
+        "min": 96,
+        "max": 96,
+        "passes": [
+          96,
+          96,
+          96
+        ]
+      },
+      "seo": {
+        "mediane": 100,
+        "min": 100,
+        "max": 100,
+        "passes": [
+          100,
+          100,
+          100
+        ]
+      },
+      "fcp_ms": {
+        "mediane": 1562,
+        "min": 1559,
+        "max": 2459,
+        "passes": [
+          2459,
+          1562,
+          1559
+        ]
+      },
+      "lcp_ms": {
+        "mediane": 2996,
+        "min": 2984,
+        "max": 3003,
+        "passes": [
+          2984,
+          3003,
+          2996
+        ]
+      },
+      "tbt_ms": {
+        "mediane": 23,
+        "min": 0,
+        "max": 24,
+        "passes": [
+          0,
+          23,
+          24
+        ]
+      },
+      "cls": {
+        "mediane": 0,
+        "min": 0,
+        "max": 0,
+        "passes": [
+          0,
+          0,
+          0
+        ]
+      },
+      "si_ms": {
+        "mediane": 1562,
+        "min": 1559,
+        "max": 2459,
+        "passes": [
+          2459,
+          1562,
+          1559
+        ]
+      },
+      "poids_total_octets": {
+        "mediane": 136861,
+        "min": 136859,
+        "max": 136871,
+        "passes": [
+          136859,
+          136861,
+          136871
+        ]
+      }
+    }
+  },
+  "04-accompagnement": {
+    "url": "https://ia.rochane.fr/accompagnement",
+    "passes": 3,
+    "horodatage_passes": [
+      "2026-08-21T15:15:01.037Z",
+      "2026-08-21T15:16:49.582Z",
+      "2026-08-21T15:18:39.347Z"
+    ],
+    "metriques": {
+      "perf": {
+        "mediane": 92,
+        "min": 90,
+        "max": 93,
+        "passes": [
+          90,
+          92,
+          93
+        ]
+      },
+      "a11y": {
+        "mediane": 100,
+        "min": 100,
+        "max": 100,
+        "passes": [
+          100,
+          100,
+          100
+        ]
+      },
+      "best_practices": {
+        "mediane": 100,
+        "min": 100,
+        "max": 100,
+        "passes": [
+          100,
+          100,
+          100
+        ]
+      },
+      "seo": {
+        "mediane": 100,
+        "min": 100,
+        "max": 100,
+        "passes": [
+          100,
+          100,
+          100
+        ]
+      },
+      "fcp_ms": {
+        "mediane": 2464,
+        "min": 2451,
+        "max": 2465,
+        "passes": [
+          2464,
+          2451,
+          2465
+        ]
+      },
+      "lcp_ms": {
+        "mediane": 2901,
+        "min": 2765,
+        "max": 2914,
+        "passes": [
+          2914,
+          2901,
+          2765
+        ]
+      },
+      "tbt_ms": {
+        "mediane": 0,
+        "min": 0,
+        "max": 125,
+        "passes": [
+          125,
+          0,
+          0
+        ]
+      },
+      "cls": {
+        "mediane": 0,
+        "min": 0,
+        "max": 0,
+        "passes": [
+          0,
+          0,
+          0
+        ]
+      },
+      "si_ms": {
+        "mediane": 2464,
+        "min": 2451,
+        "max": 2465,
+        "passes": [
+          2464,
+          2451,
+          2465
+        ]
+      },
+      "poids_total_octets": {
+        "mediane": 133226,
+        "min": 133222,
+        "max": 133232,
+        "passes": [
+          133222,
+          133226,
+          133232
+        ]
+      }
+    }
+  },
+  "05-evaluer-ia": {
+    "url": "https://ia.rochane.fr/evaluer-ia",
+    "passes": 3,
+    "horodatage_passes": [
+      "2026-08-21T15:15:14.334Z",
+      "2026-08-21T15:17:02.609Z",
+      "2026-08-21T15:18:51.962Z"
+    ],
+    "metriques": {
+      "perf": {
+        "mediane": 93,
+        "min": 89,
+        "max": 94,
+        "passes": [
+          89,
+          94,
+          93
+        ]
+      },
+      "a11y": {
+        "mediane": 100,
+        "min": 100,
+        "max": 100,
+        "passes": [
+          100,
+          100,
+          100
+        ]
+      },
+      "best_practices": {
+        "mediane": 100,
+        "min": 100,
+        "max": 100,
+        "passes": [
+          100,
+          100,
+          100
+        ]
+      },
+      "seo": {
+        "mediane": 100,
+        "min": 100,
+        "max": 100,
+        "passes": [
+          100,
+          100,
+          100
+        ]
+      },
+      "fcp_ms": {
+        "mediane": 1572,
+        "min": 1561,
+        "max": 2526,
+        "passes": [
+          2526,
+          1561,
+          1572
+        ]
+      },
+      "lcp_ms": {
+        "mediane": 3170,
+        "min": 3076,
+        "max": 3201,
+        "passes": [
+          3201,
+          3076,
+          3170
+        ]
+      },
+      "tbt_ms": {
+        "mediane": 0,
+        "min": 0,
+        "max": 0,
+        "passes": [
+          0,
+          0,
+          0
+        ]
+      },
+      "cls": {
+        "mediane": 0,
+        "min": 0,
+        "max": 0,
+        "passes": [
+          0,
+          0,
+          0
+        ]
+      },
+      "si_ms": {
+        "mediane": 1572,
+        "min": 1561,
+        "max": 2526,
+        "passes": [
+          2526,
+          1561,
+          1572
+        ]
+      },
+      "poids_total_octets": {
+        "mediane": 354292,
+        "min": 354276,
+        "max": 354298,
+        "passes": [
+          354276,
+          354298,
+          354292
+        ]
+      }
+    }
+  },
+  "06-ressources": {
+    "url": "https://ia.rochane.fr/ressources",
+    "passes": 3,
+    "horodatage_passes": [
+      "2026-08-21T15:15:26.984Z",
+      "2026-08-21T15:17:15.359Z",
+      "2026-08-21T15:19:05.129Z"
+    ],
+    "metriques": {
+      "perf": {
+        "mediane": 95,
+        "min": 90,
+        "max": 95,
+        "passes": [
+          95,
+          90,
+          95
+        ]
+      },
+      "a11y": {
+        "mediane": 100,
+        "min": 100,
+        "max": 100,
+        "passes": [
+          100,
+          100,
+          100
+        ]
+      },
+      "best_practices": {
+        "mediane": 100,
+        "min": 100,
+        "max": 100,
+        "passes": [
+          100,
+          100,
+          100
+        ]
+      },
+      "seo": {
+        "mediane": 100,
+        "min": 100,
+        "max": 100,
+        "passes": [
+          100,
+          100,
+          100
+        ]
+      },
+      "fcp_ms": {
+        "mediane": 1555,
+        "min": 1545,
+        "max": 2913,
+        "passes": [
+          1555,
+          2913,
+          1545
+        ]
+      },
+      "lcp_ms": {
+        "mediane": 2913,
+        "min": 2905,
+        "max": 2930,
+        "passes": [
+          2930,
+          2913,
+          2905
+        ]
+      },
+      "tbt_ms": {
+        "mediane": 0,
+        "min": 0,
+        "max": 0,
+        "passes": [
+          0,
+          0,
+          0
+        ]
+      },
+      "cls": {
+        "mediane": 0.009,
+        "min": 0.009,
+        "max": 0.009,
+        "passes": [
+          0.009,
+          0.009,
+          0.009
+        ]
+      },
+      "si_ms": {
+        "mediane": 1555,
+        "min": 1545,
+        "max": 2913,
+        "passes": [
+          1555,
+          2913,
+          1545
+        ]
+      },
+      "poids_total_octets": {
+        "mediane": 137042,
+        "min": 137039,
+        "max": 137100,
+        "passes": [
+          137042,
+          137100,
+          137039
+        ]
+      }
+    }
+  },
+  "07-faq": {
+    "url": "https://ia.rochane.fr/faq",
+    "passes": 3,
+    "horodatage_passes": [
+      "2026-08-21T15:15:39.651Z",
+      "2026-08-21T15:17:28.136Z",
+      "2026-08-21T15:19:17.934Z"
+    ],
+    "metriques": {
+      "perf": {
+        "mediane": 90,
+        "min": 89,
+        "max": 96,
+        "passes": [
+          90,
+          89,
+          96
+        ]
+      },
+      "a11y": {
+        "mediane": 100,
+        "min": 100,
+        "max": 100,
+        "passes": [
+          100,
+          100,
+          100
+        ]
+      },
+      "best_practices": {
+        "mediane": 100,
+        "min": 100,
+        "max": 100,
+        "passes": [
+          100,
+          100,
+          100
+        ]
+      },
+      "seo": {
+        "mediane": 100,
+        "min": 100,
+        "max": 100,
+        "passes": [
+          100,
+          100,
+          100
+        ]
+      },
+      "fcp_ms": {
+        "mediane": 2680,
+        "min": 1558,
+        "max": 2993,
+        "passes": [
+          2680,
+          2993,
+          1558
+        ]
+      },
+      "lcp_ms": {
+        "mediane": 2980,
+        "min": 2768,
+        "max": 2993,
+        "passes": [
+          2980,
+          2993,
+          2768
+        ]
+      },
+      "tbt_ms": {
+        "mediane": 0,
+        "min": 0,
+        "max": 0,
+        "passes": [
+          0,
+          0,
+          0
+        ]
+      },
+      "cls": {
+        "mediane": 0,
+        "min": 0,
+        "max": 0,
+        "passes": [
+          0,
+          0,
+          0
+        ]
+      },
+      "si_ms": {
+        "mediane": 2680,
+        "min": 1558,
+        "max": 2993,
+        "passes": [
+          2680,
+          2993,
+          1558
+        ]
+      },
+      "poids_total_octets": {
+        "mediane": 132366,
+        "min": 132361,
+        "max": 132375,
+        "passes": [
+          132375,
+          132361,
+          132366
+        ]
+      }
+    }
+  },
+  "08-article-detecteurs": {
+    "url": "https://ia.rochane.fr/articles/pourquoi-les-detecteurs-dia-echouent",
+    "passes": 3,
+    "horodatage_passes": [
+      "2026-08-21T15:15:52.035Z",
+      "2026-08-21T15:17:40.841Z",
+      "2026-08-21T15:19:30.665Z"
+    ],
+    "metriques": {
+      "perf": {
+        "mediane": 91,
+        "min": 90,
+        "max": 94,
+        "passes": [
+          90,
+          91,
+          94
+        ]
+      },
+      "a11y": {
+        "mediane": 100,
+        "min": 100,
+        "max": 100,
+        "passes": [
+          100,
+          100,
+          100
+        ]
+      },
+      "best_practices": {
+        "mediane": 100,
+        "min": 100,
+        "max": 100,
+        "passes": [
+          100,
+          100,
+          100
+        ]
+      },
+      "seo": {
+        "mediane": 100,
+        "min": 100,
+        "max": 100,
+        "passes": [
+          100,
+          100,
+          100
+        ]
+      },
+      "fcp_ms": {
+        "mediane": 2777,
+        "min": 2475,
+        "max": 2923,
+        "passes": [
+          2923,
+          2777,
+          2475
+        ]
+      },
+      "lcp_ms": {
+        "mediane": 2777,
+        "min": 2475,
+        "max": 2923,
+        "passes": [
+          2923,
+          2777,
+          2475
+        ]
+      },
+      "tbt_ms": {
+        "mediane": 0,
+        "min": 0,
+        "max": 0,
+        "passes": [
+          0,
+          0,
+          0
+        ]
+      },
+      "cls": {
+        "mediane": 0,
+        "min": 0,
+        "max": 0,
+        "passes": [
+          0,
+          0,
+          0
+        ]
+      },
+      "si_ms": {
+        "mediane": 2777,
+        "min": 2475,
+        "max": 2923,
+        "passes": [
+          2923,
+          2777,
+          2475
+        ]
+      },
+      "poids_total_octets": {
+        "mediane": 133266,
+        "min": 133265,
+        "max": 133337,
+        "passes": [
+          133337,
+          133265,
+          133266
+        ]
+      }
+    }
+  }
+}
