@@ -129,6 +129,8 @@ Le SYSTEM_PROMPT du bot vit dans `_worker.js` (le bot habille les URLs en Markdo
   bandeau brouillon, dater le JSON-LD Article, câbler la carte dans `ressources.html` +
   compteurs, ajouter au `sitemap.xml`, régénérer `knowledge.md`, bump `?v` si `styles.css`
   a bougé).
+- **Financement** : toute page ou mention touchant au financement se conforme à
+  `financement.html`, qui fait référence.
 
 ## Écriture de contenu (voix de l'auteur)
 
@@ -152,6 +154,19 @@ Le SYSTEM_PROMPT du bot vit dans `_worker.js` (le bot habille les URLs en Markdo
 - Préserver : le livre « Évaluer en formation à l'ère de l'IA générative » (Chronique
   Sociale, 2026), Ambassadeur IA France Num, les références institutionnelles exactes,
   les outils, les articles, les interventions internationales.
+- Jamais « **Certifié Qualiopi** », jamais de logo Qualiopi, jamais « organisme de
+  formation » au sujet de Rochane. Il ne détient pas la certification. Elle est détenue
+  par **AUTONOMIA Formation**, organisme qui conventionne les interventions, déclaration
+  d'activité **42 68 02034 68**. Seule formulation admise : les interventions peuvent
+  être conventionnées par un organisme de formation certifié Qualiopi, au sein duquel
+  Rochane intervient comme **formateur porté**.
+- Jamais de promesse de financement **CPF**, ni de mention d'un référencement **EDOF**.
+  Le CPF n'entre pas dans le dispositif.
+- Le délai de **trois à cinq semaines** vaut pour une demande **OPCO uniquement**. Aucun
+  délai n'est établi pour France Travail, les collectivités ni les régions : ne pas en
+  écrire.
+- La **catégorie d'action** couverte par la certification d'AUTONOMIA n'est pas établie.
+  Ne jamais l'écrire tant que le certificat n'a pas été communiqué.
 
 ## Identité visuelle (« copie corrigée »)
 
