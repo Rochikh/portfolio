@@ -424,6 +424,77 @@
     });
   }
 
+
+    // ── MESURE D'AUDIENCE, EVENEMENTS PLAUSIBLE ──
+    // Cablage par delegation sur document : le contenu de ressources.html evolue,
+    // aucun ecouteur n'est attache a une liste figee de liens.
+    function envoyer(nom, props) {
+      if (typeof window.plausible !== 'function') return;
+      if (props) window.plausible(nom, { props: props });
+      else window.plausible(nom);
+    }
+
+    function initAnalytics() {
+      // Conversion du formulaire : declenchee a l'arrivee sur merci.html, pas au clic
+      // sur le bouton. Seule une page de confirmation reellement atteinte prouve que
+      // Formspree a accepte l'envoi.
+      if (location.pathname === '/merci' || location.pathname === '/merci.html') {
+        envoyer('conversion-formulaire-contact');
+      }
+
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest('a[href]');
+        if (!a) return;
+
+        var href = a.getAttribute('href') || '';
+        var nom = null, props = null;
+
+        if (href.indexOf('cal.com/rochane') !== -1) {
+          nom = 'clic-cal-com';
+        } else if (href.indexOf('chroniquesociale.com') !== -1) {
+          nom = 'clic-bon-de-commande-livre';
+        } else if (href.indexOf('livre.rochane.fr') !== -1) {
+          nom = 'telechargement-extrait-livre';
+        } else if (href.indexOf('chat.whatsapp.com') !== -1) {
+          nom = 'clic-communaute-whatsapp';
+        } else if (a.classList.contains('proj-card') && a.closest('#outils')) {
+          // Le nom de l'outil part en propriete, pas en evenement distinct :
+          // un seul evenement quel que soit le nombre d'outils listes.
+          var t = a.querySelector('.proj-name');
+          nom = 'clic-outil-externe';
+          props = { outil: (t ? t.textContent : href).trim() };
+        }
+        if (!nom) return;
+
+        // Tous les liens instrumentes portent target="_blank" : la page courante
+        // n'est pas dechargee, la requete a le temps de partir. Le cas d'une
+        // navigation dans le meme onglet est traite par securite, le contenu du
+        // site pouvant evoluer : l'evenement part d'abord, la navigation suit,
+        // avec un delai de garde pour ne jamais bloquer le visiteur.
+        var memeOnglet = a.target !== '_blank'
+          && !e.defaultPrevented
+          && e.button === 0
+          && !e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey;
+
+        if (!memeOnglet || typeof window.plausible !== 'function') {
+          envoyer(nom, props);
+          return;
+        }
+
+        e.preventDefault();
+        var parti = false;
+        var suivre = function () {
+          if (parti) return;
+          parti = true;
+          window.location.href = a.href;
+        };
+        var opts = { callback: suivre };
+        if (props) opts.props = props;
+        window.plausible(nom, opts);
+        setTimeout(suivre, 1000);
+      });
+    }
+
   function boot() {
     mountChat();
     initNav();
@@ -432,6 +503,7 @@
     initFilters();
     init();
     initForm();
+    initAnalytics();
   }
 
   if (document.readyState === 'loading') {
