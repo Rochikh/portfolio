@@ -183,10 +183,10 @@ https://ia.rochane.fr/articles/pourquoi-les-detecteurs-dia-echouent
 
 Derive du FCP de +681 ms en moyenne sur 8 pages sur 8, y compris les pages non modifiees
 par le lot. Non imputable au lot. Piste principale : la latence des deux domaines Google
-Fonts, qui representent 233,8 Ko sur 7 requetes dans la campagne d'avant, soit la majorite
+Fonts, qui representent 235,9 Ko sur 9 requetes dans la campagne d'avant, soit la majorite
 du transfert de l'accueil, et qui echappent totalement au controle du site. A verifier au
 lot 4, lors de l'auto-hebergement des polices : si la derive disparait, la cause est
-confirmee.
+confirmee. Poids identique a l'octet entre les deux campagnes, 239 426 o sur fonts.gstatic.com. La derive porte donc sur la latence de ces domaines, pas sur leur poids.
 
 | page | FCP avant | FCP apres | ecart |
 |---|---|---|---|
