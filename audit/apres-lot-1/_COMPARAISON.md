@@ -179,3 +179,30 @@ https://ia.rochane.fr/articles/pourquoi-les-detecteurs-dia-echouent
 | Bonnes pratiques | 0 / 8 | 8 / 8 |
 | SEO | 0 / 8 | 8 / 8 |
 
+## Derive du FCP
+
+Derive du FCP de +681 ms en moyenne sur 8 pages sur 8, y compris les pages non modifiees
+par le lot. Non imputable au lot. Piste principale : la latence des deux domaines Google
+Fonts, qui representent 233,8 Ko sur 7 requetes dans la campagne d'avant, soit la majorite
+du transfert de l'accueil, et qui echappent totalement au controle du site. A verifier au
+lot 4, lors de l'auto-hebergement des polices : si la derive disparait, la cause est
+confirmee.
+
+| page | FCP avant | FCP apres | ecart |
+|---|---|---|---|
+| `01-accueil` | 2483 ms | 2908 ms | +425 ms |
+| `02-conferences` | 1621 ms | 2908 ms | +1287 ms |
+| `03-ateliers-formations` | 1562 ms | 2455 ms | +893 ms |
+| `04-accompagnement` | 2464 ms | 2770 ms | +306 ms |
+| `05-evaluer-ia` | 1572 ms | 2532 ms | +960 ms |
+| `06-ressources` | 1555 ms | 2904 ms | +1349 ms |
+| `07-faq` | 2680 ms | 2774 ms | +94 ms |
+| `08-article-detecteurs` | 2777 ms | 2912 ms | +135 ms |
+
+## Incoherences signalees et non corrigees
+
+| # | Fichier | Constat | Lot de destination |
+|---|---|---|---|
+| 1 | `styles.css:597` | Regle `.about-right` orpheline, aucune occurrence HTML dans le depot. | lot 4, nettoyage et minification CSS |
+| 2 | `conferences.html`, `ateliers-formations.html` | conferences.html et ateliers-formations.html, 35 requetes d'images vers flagcdn.com. Rapport de forme incorrect, latence hors controle, transfert d'adresse IP vers un tiers non mentionne dans les mentions legales. Correction attendue au lot 4 : rapatriement des drapeaux en local, en SVG, avec width et height corrects. A traiter avec l'auto-hebergement des polices, meme nature de probleme. | lot 4 |
+| 3 | `site.js:396` | site.js, chemin d'echec du gestionnaire #contact-form. Correction attendue au lot 4 : afficher l'adresse de contact en clair avec un bouton de copie, sans declencher de navigation mailto: non demandee. | lot 4, item comportements du formulaire |

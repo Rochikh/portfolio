@@ -128,11 +128,15 @@ Score de performance en baisse sur **7 pages sur 8**, moyenne des ecarts **-2.12
 Le Speed Index est egal au FCP sur les 8 pages des deux campagnes, il suit donc la
 meme derive.
 
-Cette derive porte sur des metriques declarees indicatives. Elle est concordante,
-de meme signe sur la quasi-totalite des pages, y compris sur les 6 pages dont le
-contenu n'a pas ete modifie par le lot 1. Les 3 metriques de preuve, LCP, poids
-transfere et CLS, ne la suivent pas : le LCP est stable ou en baisse sur 8 pages
-sur 8, le CLS est inchange sur 8 pages sur 8.
+Derive du FCP de +681 ms en moyenne sur 8 pages sur 8, y compris les pages non
+modifiees par le lot. Non imputable au lot. Piste principale : la latence des deux
+domaines Google Fonts, qui representent 233,8 Ko sur 7 requetes dans la campagne
+d'avant, soit la majorite du transfert de l'accueil, et qui echappent totalement au
+controle du site. A verifier au lot 4, lors de l'auto-hebergement des polices : si la
+derive disparait, la cause est confirmee.
+
+Les 3 metriques de preuve, LCP, poids transfere et CLS, ne suivent pas cette derive :
+le LCP est stable ou en baisse sur 8 pages sur 8, le CLS est inchange sur 8 pages sur 8.
 
 ### Poids transfere des 6 pages non modifiees
 
