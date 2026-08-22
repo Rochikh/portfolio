@@ -342,6 +342,10 @@ nav.menu-open .nav-burger span:nth-child(3) { transform: translateY(-7px) rotate
   align-items: center;
 }
 
+/* <picture> ne doit pas creer de boite de ligne : sans ceci, l'espace de
+   descendante sous l'image rallonge la carte du hero de 7px. */
+picture { display: contents; }
+
 /* Photo d'identité de la copie : cadre droit, pas de médaillon */
 .hero-photo {
   width: 150px;

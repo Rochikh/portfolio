@@ -106,7 +106,7 @@ document.documentElement.classList.add('js');
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=9">
+<link rel="stylesheet" href="/styles.css?v=10">
 </head>
 
 <body>
@@ -157,13 +157,17 @@ document.documentElement.classList.add('js');
 
   <div class="hero-right reveal">
     <div class="hero-photo-card">
-      <img
-        src="/rochane.jpg"
-        alt="Rochane Kherbouche"
-        class="hero-photo"
-        width="540" height="540"
-        fetchpriority="high"
-      />
+      <picture>
+        <source type="image/avif" srcset="/rochane.avif">
+        <source type="image/webp" srcset="/rochane.webp">
+        <img
+          src="/rochane.jpg"
+          alt="Rochane Kherbouche"
+          class="hero-photo"
+          width="540" height="540"
+          fetchpriority="high"
+        />
+      </picture>
       <div class="hero-name">Rochane Kherbouche</div>
       <div class="hero-role">Technopédagogue &amp; Ambassadeur IA · Lille · Bruxelles · International</div>
       <div class="hero-tag-row">
@@ -268,7 +272,11 @@ document.documentElement.classList.add('js');
           <div class="book3d-hint">Glisser pour tourner · molette pour zoomer</div>
         </div>
         <figure class="book-polaroid">
-          <img src="/livre-rochane.jpg" alt="Rochane Kherbouche tenant l'exemplaire imprimé de son livre" loading="lazy" width="900" height="1084">
+          <picture>
+            <source type="image/avif" srcset="/livre-rochane.avif">
+            <source type="image/webp" srcset="/livre-rochane.webp">
+            <img src="/livre-rochane.jpg" alt="Rochane Kherbouche tenant l'exemplaire imprimé de son livre" loading="lazy" width="900" height="1084">
+          </picture>
           <figcaption>L'exemplaire imprimé, entre mes mains</figcaption>
         </figure>
       </div>
