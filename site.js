@@ -372,6 +372,7 @@
         var err = document.getElementById('form-error');
         btn.textContent = 'Envoi...';
         btn.disabled = true;
+        var envoye = false;
         try {
           var r = await fetch(form.action, {
             method: 'POST',
@@ -383,6 +384,7 @@
             err.style.display = 'none';
             form.reset();
             btn.textContent = 'Envoyé ✓';
+            envoye = true;
           } else { throw new Error(); }
         } catch(_) {
           var nom  = (form.querySelector('[name="nom"]') || {}).value || '';
@@ -396,6 +398,11 @@
           btn.textContent = 'Envoyer →';
           btn.disabled = false;
         }
+        // Navigation vers la page de confirmation, uniquement sur succes reel de la
+        // requete. Hors du try : une navigation qui echouerait ne doit pas retomber
+        // dans le catch et declencher le repli mailto. Le message de confirmation
+        // reste affiche en place, il sert de repli si la navigation n'aboutit pas.
+        if (envoye) window.location.assign('/merci');
       });
     }
 
