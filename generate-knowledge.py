@@ -33,6 +33,7 @@ PAGE_URLS = {
     "evaluer-ia.html": SITE + "/evaluer-ia",
     "ressources.html": SITE + "/ressources",
     "faq.html": SITE + "/faq",
+    "financement.html": SITE + "/financement",
 }
 
 PAGES_DESC = [
@@ -43,6 +44,7 @@ PAGES_DESC = [
     (SITE + "/evaluer-ia", "evaluer a l'ere de l'IA generative : le livre, les outils dedies, les publications"),
     (SITE + "/ressources", "bibliotheque en libre acces : outils, infographies, articles, webinaires, podcasts, BD"),
     (SITE + "/faq", "questions frequentes : accompagnement IA pour organisme de formation, formation des formateurs, presence France-Belgique, contact"),
+    (SITE + "/financement", "financement des interventions : conventionnement par un organisme de formation certifie Qualiopi, financeurs ouverts (OPCO, France Travail, entreprises, collectivites, regions), le CPF est exclu et il n'y a pas de referencement EDOF, etapes du montage et delai de traitement"),
 ]
 
 # Ordre de lecture par section : la premiere page ou un contenu apparait
@@ -71,7 +73,7 @@ EXPECTED = {
     "conferences": 14,
     "formations": 21,
     "webinaires": 3,
-    "faq": 8,
+    "faq": 11,
 }
 
 

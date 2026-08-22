@@ -13,6 +13,7 @@ La ligne Page: indique ou le contenu se trouve sur le site : elle peut etre cite
 - https://ia.rochane.fr/evaluer-ia : evaluer a l'ere de l'IA generative : le livre, les outils dedies, les publications
 - https://ia.rochane.fr/ressources : bibliotheque en libre acces : outils, infographies, articles, webinaires, podcasts, BD
 - https://ia.rochane.fr/faq : questions frequentes : accompagnement IA pour organisme de formation, formation des formateurs, presence France-Belgique, contact
+- https://ia.rochane.fr/financement : financement des interventions : conventionnement par un organisme de formation certifie Qualiopi, financeurs ouverts (OPCO, France Travail, entreprises, collectivites, regions), le CPF est exclu et il n'y a pas de referencement EDOF, etapes du montage et delai de traitement
 
 ## Livre
 - Évaluer en formation à l'ère de l'IA générative (Manuel pratique pour repenser l'évaluation des apprentissages)
@@ -217,7 +218,7 @@ La ligne Page: indique ou le contenu se trouve sur le site : elle peut etre cite
 - IA générative et création de contenus pédagogiques (Innovember) (Université de Lille · IA & Éducation)
   Page: https://ia.rochane.fr/ressources
 
-## Questions frequentes (8)
+## Questions frequentes (11)
 - Qui peut m'aider à intégrer l'IA dans mon organisme de formation ?
   R: Rochane Kherbouche, technopédagogue et consultant IA indépendant basé à Lille, accompagne les organismes de formation, l'enseignement supérieur, les entreprises et les acteurs de la santé dans l'intégration de l'IA. Il intervient par conférences, ateliers et formations et accompagnements, en France, en Belgique et à l'international.
   Page: https://ia.rochane.fr/faq
@@ -241,6 +242,15 @@ La ligne Page: indique ou le contenu se trouve sur le site : elle peut etre cite
   Page: https://ia.rochane.fr/faq
 - Comment contacter Rochane Kherbouche ?
   R: Par email à contact@rochane.fr, ou en réservant directement un créneau d'échange de 30 minutes ou 1 heure. Les tarifs sont établis au cas par cas selon le contexte.
+  Page: https://ia.rochane.fr/faq
+- La formation peut-elle être prise en charge par un OPCO ?
+  R: Oui. Les interventions peuvent être conventionnées par AUTONOMIA Formation, organisme de formation certifié Qualiopi, au sein duquel Rochane Kherbouche intervient comme formateur porté. Ce cadre ouvre l'accès aux OPCO, à France Travail, aux entreprises, aux collectivités et aux régions. Comptez trois à cinq semaines de traitement de la demande de prise en charge après signature de la convention de formation. Le détail du montage figure sur la page financement.
+  Page: https://ia.rochane.fr/faq
+- Êtes-vous certifié Qualiopi ?
+  R: Non. Rochane Kherbouche n'est pas organisme de formation et ne détient pas la certification Qualiopi en propre. La certification est portée par AUTONOMIA Formation, l'organisme qui conventionne les interventions, déclaration d'activité numéro 42 68 02034 68 auprès du préfet de la région Alsace. Pour l'acheteur, l'effet est le même : l'action est conventionnée par un organisme certifié et peut donc être financée. Voir la page financement.
+  Page: https://ia.rochane.fr/faq
+- Peut-on payer avec le CPF ?
+  R: Non. Le compte personnel de formation n'entre pas dans ce dispositif, et Rochane Kherbouche n'est pas référencé sur EDOF. Aucune intervention n'apparaît donc dans le catalogue accessible depuis Mon Compte Formation. Les financements ouverts sont listés sur la page financement.
   Page: https://ia.rochane.fr/faq
 
 ## Articles du site (1)
