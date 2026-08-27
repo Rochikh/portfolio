@@ -99,7 +99,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=10">
+<link rel="stylesheet" href="/styles.css?v=11">
 <!-- Privacy-friendly analytics by Plausible -->
 <script async src="https://plausible.io/js/pa-lLcGhGgxOeaVOVv8s3k81.js"></script>
 <script>
@@ -212,7 +212,21 @@
     </div>
     <div class="projects-grid">
         <a href="https://ia-cr.rochane.fr/" target="_blank" rel="noopener" class="proj-card reveal">
-      <div class="proj-visual c4" aria-hidden="true">📊</div>
+      <div class="proj-visual c4">
+        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="72" height="72" fill="none">
+          <!-- Arc de jauge -->
+          <path d="M16 54 A24 24 0 0 1 64 54" stroke="#1d3db0" stroke-width="7" stroke-linecap="round" opacity="0.14"/>
+          <!-- Graduations -->
+          <circle cx="22.5" cy="54" r="1.7" fill="#1d3db0" opacity="0.3"/>
+          <circle cx="27.6" cy="41.6" r="1.7" fill="#1d3db0" opacity="0.3"/>
+          <circle cx="40" cy="36.5" r="1.7" fill="#1d3db0" opacity="0.3"/>
+          <circle cx="52.4" cy="41.6" r="1.7" fill="#1d3db0" opacity="0.3"/>
+          <circle cx="57.5" cy="54" r="1.7" fill="#1d3db0" opacity="0.3"/>
+          <!-- Aiguille -->
+          <path d="M40 54 L47.5 41" stroke="#1d3db0" stroke-width="3.5" stroke-linecap="round" opacity="0.5"/>
+          <circle cx="40" cy="54" r="4" fill="#1d3db0" opacity="0.5"/>
+        </svg>
+      </div>
       <div class="proj-body">
         <h3 class="proj-name">Compagnon de Route</h3>
         <div class="proj-desc">Mesurez la robustesse de vos évaluations face à l'IA générative. Basé sur le protocole du livre de Rochane (2026) : audit détaillé sur 4 dimensions critiques ou diagnostic rapide en 8 questions.</div>
@@ -316,7 +330,7 @@
   </nav>
 </footer>
 
-<script src="/site.js?v=8" defer></script>
+<script src="/site.js?v=9" defer></script>
 
 </body>
 </html>

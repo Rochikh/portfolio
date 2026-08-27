@@ -123,7 +123,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=10">
+<link rel="stylesheet" href="/styles.css?v=11">
 <!-- Privacy-friendly analytics by Plausible -->
 <script async src="https://plausible.io/js/pa-lLcGhGgxOeaVOVv8s3k81.js"></script>
 <script>
@@ -191,7 +191,7 @@
           <source type="image/webp" srcset="/livre-rochane.webp">
           <img src="/livre-rochane.jpg" alt="Rochane Kherbouche tenant l'exemplaire imprimé de son livre" loading="lazy" width="900" height="1084" class="book-photo">
         </picture>
-        <p class="hero-note" style="text-align:center;"><a href="/#livre" style="color:var(--accent);">Voir la couverture en 3D sur l'accueil →</a></p>
+        <p class="hero-note" style="text-align:center;"><a href="/#livre" style="color:var(--accent);">Voir la couverture en 3D sur l'accueil</a></p>
       </div>
       <div class="book-text">
         <span class="book-status">Paru le 25 juin 2026 · disponible chez l'éditeur</span>
@@ -217,7 +217,7 @@
         </div>
         <p class="book-note">Commande chez l'éditeur Chronique Sociale, expédition sous quelques jours. L'extrait gratuit (préface intégrale et sommaire) est téléchargeable sans engagement.</p>
         <div class="book-actions" style="margin-top:1.5rem;">
-          <a href="https://20sur20.rochane.fr/" target="_blank" rel="noopener" class="btn btn-fill">Regarder la BD 20/20 →</a>
+          <a href="https://20sur20.rochane.fr/" target="_blank" rel="noopener" class="btn btn-fill">Regarder la BD 20/20</a>
         </div>
       </div>
     </div>
@@ -234,7 +234,21 @@
   </div>
   <div class="projects-grid">
         <a href="https://ia-cr.rochane.fr/" target="_blank" rel="noopener" class="proj-card reveal">
-      <div class="proj-visual c4" aria-hidden="true">📊</div>
+      <div class="proj-visual c4">
+        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="72" height="72" fill="none">
+          <!-- Arc de jauge -->
+          <path d="M16 54 A24 24 0 0 1 64 54" stroke="#1d3db0" stroke-width="7" stroke-linecap="round" opacity="0.14"/>
+          <!-- Graduations -->
+          <circle cx="22.5" cy="54" r="1.7" fill="#1d3db0" opacity="0.3"/>
+          <circle cx="27.6" cy="41.6" r="1.7" fill="#1d3db0" opacity="0.3"/>
+          <circle cx="40" cy="36.5" r="1.7" fill="#1d3db0" opacity="0.3"/>
+          <circle cx="52.4" cy="41.6" r="1.7" fill="#1d3db0" opacity="0.3"/>
+          <circle cx="57.5" cy="54" r="1.7" fill="#1d3db0" opacity="0.3"/>
+          <!-- Aiguille -->
+          <path d="M40 54 L47.5 41" stroke="#1d3db0" stroke-width="3.5" stroke-linecap="round" opacity="0.5"/>
+          <circle cx="40" cy="54" r="4" fill="#1d3db0" opacity="0.5"/>
+        </svg>
+      </div>
       <div class="proj-body">
         <h3 class="proj-name">Compagnon de Route</h3>
         <div class="proj-desc">Mesurez la robustesse de vos évaluations face à l'IA générative. Basé sur le protocole du livre de Rochane (2026) : audit détaillé sur 4 dimensions critiques ou diagnostic rapide en 8 questions.</div>
@@ -265,7 +279,20 @@
     
     </a>
         <a href="https://ia-des.rochane.fr/" target="_blank" rel="noopener" class="proj-card reveal">
-      <div class="proj-visual c3" aria-hidden="true">🔍</div>
+      <div class="proj-visual c3">
+        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="72" height="72" fill="none">
+          <!-- Lentille -->
+          <circle cx="35" cy="35" r="19" fill="#1d3db0" opacity="0.14"/>
+          <circle cx="35" cy="35" r="19" stroke="#1d3db0" stroke-width="3.5" opacity="0.5"/>
+          <!-- Manche -->
+          <path d="M48.5 48.5 L64 64" stroke="#1d3db0" stroke-width="5" stroke-linecap="round" opacity="0.5"/>
+          <!-- Piste relevee dans la lentille -->
+          <path d="M26 41 L34 31 L43 37" stroke="#1d3db0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.3"/>
+          <circle cx="26" cy="41" r="2.2" fill="#1d3db0" opacity="0.5"/>
+          <circle cx="34" cy="31" r="2.2" fill="#1d3db0" opacity="0.5"/>
+          <circle cx="43" cy="37" r="2.2" fill="#1d3db0" opacity="0.5"/>
+        </svg>
+      </div>
       <div class="proj-body">
         <h3 class="proj-name">Argos Socratique</h3>
         <div class="proj-desc">Dispositif de traçabilité des compétences critiques. Système Socrate augmenté par l'IA. Accès sur justification pédagogique.</div>
@@ -289,7 +316,7 @@
             <a href="https://www.innovation-pedagogique.fr/article25486.html" target="_blank" rel="noopener" class="article-card reveal">
         <div class="article-cat">Évaluation · IA</div>
         <h3 class="article-title">Cinq questions que les formatrices et formateurs n'osent pas se poser sur l'évaluation à l'ère de l'IA</h3>
-        <div class="article-cta">Lire l'article <span aria-hidden="true">→</span></div>
+        <div class="article-cta">Lire l'article</div>
       
       </a>
       <a class="infog-card bd-card reveal" href="https://20sur20.rochane.fr/" target="_blank" rel="noopener"><span class="infog-idx">BD · réalisée avec IA, déclarée</span><h3 class="infog-name">20/20, une BD sur ce qu'un dossier parfait ne dit pas</h3><span class="infog-open">Lire la BD, cinq planches <span aria-hidden="true">↗</span></span></a>
@@ -332,9 +359,9 @@
         <div class="conf-row reveal"><div class="conf-flag"><img src="https://flagcdn.com/w40/at.png" srcset="https://flagcdn.com/w80/at.png 2x" alt="" width="28" height="20" loading="lazy"></div><div><div class="conf-title">L'évaluation à l'ère de l'IA, Network Meeting AI-LANG</div><div class="conf-meta"><span class="conf-loc">Graz, Autriche</span><span>CELV, Avril 2026</span></div></div></div>
     </div>
     <div class="home-more reveal" style="display:flex;gap:0.8rem;justify-content:center;flex-wrap:wrap;">
-      <a href="/conferences" class="btn btn-outline">En conférence <span aria-hidden="true">→</span></a>
-      <a href="/ateliers-formations" class="btn btn-outline">En atelier <span aria-hidden="true">→</span></a>
-      <a href="/accompagnement" class="btn btn-outline">En accompagnement <span aria-hidden="true">→</span></a>
+      <a href="/conferences" class="btn btn-outline">En conférence</a>
+      <a href="/ateliers-formations" class="btn btn-outline">En atelier</a>
+      <a href="/accompagnement" class="btn btn-outline">En accompagnement</a>
     </div>
   </div>
 </div>
@@ -369,7 +396,7 @@
   </nav>
 </footer>
 
-<script src="/site.js?v=8" defer></script>
+<script src="/site.js?v=9" defer></script>
 
 </body>
 </html>

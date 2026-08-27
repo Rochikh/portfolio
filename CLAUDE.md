@@ -76,7 +76,7 @@ Le SYSTEM_PROMPT du bot vit dans `_worker.js` (le bot habille les URLs en Markdo
    `git fetch origin main && git checkout -B <branche> origin/main`.
 2. **Cache-busting.** Toute modification de `styles.css` ou `site.js` oblige à
    incrémenter `?v=N` **sur toutes les pages** qui les référencent. État courant :
-   `styles.css?v=9`, `site.js?v=6`. Sans ça, les visiteurs récurrents gardent l'ancienne
+   `styles.css?v=11`, `site.js?v=9`. Sans ça, les visiteurs récurrents gardent l'ancienne
    version (source du bug de scrollbar déjà corrigé).
 3. **Compteurs, plusieurs emplacements et plusieurs formes.** Recenser TOUS les endroits
    par `grep` du chiffre ET du mot, sur toutes les pages, avant de conclure. Connus :

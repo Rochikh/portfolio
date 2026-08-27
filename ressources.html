@@ -78,7 +78,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=10">
+<link rel="stylesheet" href="/styles.css?v=11">
 <!-- Privacy-friendly analytics by Plausible -->
 <script async src="https://plausible.io/js/pa-lLcGhGgxOeaVOVv8s3k81.js"></script>
 <script>
@@ -144,7 +144,18 @@
   </div>
   <div class="projects-grid">
     <a href="https://scenariocreator.rochane.fr/" target="_blank" rel="noopener" class="proj-card reveal">
-      <div class="proj-visual c1" aria-hidden="true">🤖</div>
+      <div class="proj-visual c1">
+        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="72" height="72" fill="none">
+          <!-- Bulle de depart -->
+          <path d="M12 20 Q12 13 19 13 L45 13 Q52 13 52 20 L52 32 Q52 39 45 39 L42 39 L29 51 L33 39 L19 39 Q12 39 12 32 Z" fill="#1d3db0" opacity="0.14"/>
+          <!-- Ramification a deux branches -->
+          <path d="M31 49 L31 54" stroke="#1d3db0" stroke-width="2.5" stroke-linecap="round" opacity="0.3"/>
+          <path d="M16 62 L16 58 Q16 54 20 54 L42 54 Q46 54 46 58 L46 62" stroke="#1d3db0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.3"/>
+          <!-- Repliques -->
+          <rect x="7" y="62" width="18" height="14" rx="5" fill="#1d3db0" opacity="0.3"/>
+          <rect x="37" y="62" width="18" height="14" rx="5" fill="#1d3db0" opacity="0.3"/>
+        </svg>
+      </div>
       <div class="proj-body">
         <h3 class="proj-name">Chat Bot Scenario Creator</h3>
         <div class="proj-desc">Créer des scénarios conversationnels avec l'IA pour concevoir des formations interactives et engageantes.</div>
@@ -153,7 +164,20 @@
       <div class="proj-footer">Voir l'outil <span aria-hidden="true">↗</span></div>
     </a>
     <a href="https://voxfolio.rochane.fr/" target="_blank" rel="noopener" class="proj-card reveal">
-      <div class="proj-visual c2" aria-hidden="true">🎙️</div>
+      <div class="proj-visual c2">
+        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="72" height="72" fill="none">
+          <!-- Capsule -->
+          <rect x="32" y="14" width="16" height="30" rx="8" fill="#1d3db0" opacity="0.3"/>
+          <!-- Arceau -->
+          <path d="M24 40 a16 16 0 0 0 32 0" stroke="#1d3db0" stroke-width="3.5" stroke-linecap="round" opacity="0.5"/>
+          <!-- Pied -->
+          <rect x="38" y="56" width="4" height="9" rx="2" fill="#1d3db0" opacity="0.5"/>
+          <rect x="28" y="64" width="24" height="4" rx="2" fill="#1d3db0" opacity="0.3"/>
+          <!-- Ondes -->
+          <path d="M22 32 q-5 8 0 16" stroke="#1d3db0" stroke-width="2.5" stroke-linecap="round" opacity="0.3"/>
+          <path d="M58 32 q5 8 0 16" stroke="#1d3db0" stroke-width="2.5" stroke-linecap="round" opacity="0.3"/>
+        </svg>
+      </div>
       <div class="proj-body">
         <h3 class="proj-name">VoxFolio</h3>
         <div class="proj-desc">Portfolio vocal augmenté par l'IA. En 2 minutes d'enregistrement : transcription, analyse et génération d'un profil professionnel.</div>
@@ -162,7 +186,20 @@
       <div class="proj-footer">Accéder à VoxFolio <span aria-hidden="true">↗</span></div>
     </a>
     <a href="https://ia-des.rochane.fr/" target="_blank" rel="noopener" class="proj-card reveal">
-      <div class="proj-visual c3" aria-hidden="true">🔍</div>
+      <div class="proj-visual c3">
+        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="72" height="72" fill="none">
+          <!-- Lentille -->
+          <circle cx="35" cy="35" r="19" fill="#1d3db0" opacity="0.14"/>
+          <circle cx="35" cy="35" r="19" stroke="#1d3db0" stroke-width="3.5" opacity="0.5"/>
+          <!-- Manche -->
+          <path d="M48.5 48.5 L64 64" stroke="#1d3db0" stroke-width="5" stroke-linecap="round" opacity="0.5"/>
+          <!-- Piste relevee dans la lentille -->
+          <path d="M26 41 L34 31 L43 37" stroke="#1d3db0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.3"/>
+          <circle cx="26" cy="41" r="2.2" fill="#1d3db0" opacity="0.5"/>
+          <circle cx="34" cy="31" r="2.2" fill="#1d3db0" opacity="0.5"/>
+          <circle cx="43" cy="37" r="2.2" fill="#1d3db0" opacity="0.5"/>
+        </svg>
+      </div>
       <div class="proj-body">
         <h3 class="proj-name">Argos Socratique</h3>
         <div class="proj-desc">Dispositif de traçabilité des compétences critiques. Système Socrate augmenté par l'IA. Accès sur justification pédagogique.</div>
@@ -171,7 +208,21 @@
       <div class="proj-footer">Découvrir Argos <span aria-hidden="true">↗</span></div>
     </a>
     <a href="https://ia-cr.rochane.fr/" target="_blank" rel="noopener" class="proj-card reveal">
-      <div class="proj-visual c4" aria-hidden="true">📊</div>
+      <div class="proj-visual c4">
+        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="72" height="72" fill="none">
+          <!-- Arc de jauge -->
+          <path d="M16 54 A24 24 0 0 1 64 54" stroke="#1d3db0" stroke-width="7" stroke-linecap="round" opacity="0.14"/>
+          <!-- Graduations -->
+          <circle cx="22.5" cy="54" r="1.7" fill="#1d3db0" opacity="0.3"/>
+          <circle cx="27.6" cy="41.6" r="1.7" fill="#1d3db0" opacity="0.3"/>
+          <circle cx="40" cy="36.5" r="1.7" fill="#1d3db0" opacity="0.3"/>
+          <circle cx="52.4" cy="41.6" r="1.7" fill="#1d3db0" opacity="0.3"/>
+          <circle cx="57.5" cy="54" r="1.7" fill="#1d3db0" opacity="0.3"/>
+          <!-- Aiguille -->
+          <path d="M40 54 L47.5 41" stroke="#1d3db0" stroke-width="3.5" stroke-linecap="round" opacity="0.5"/>
+          <circle cx="40" cy="54" r="4" fill="#1d3db0" opacity="0.5"/>
+        </svg>
+      </div>
       <div class="proj-body">
         <h3 class="proj-name">Compagnon de Route</h3>
         <div class="proj-desc">Mesurez la robustesse de vos évaluations face à l'IA générative. Basé sur le protocole du livre de Rochane (2026) : audit détaillé sur 4 dimensions critiques ou diagnostic rapide en 8 questions.</div>
@@ -359,37 +410,37 @@
       <a href="/articles/pourquoi-les-detecteurs-dia-echouent" class="article-card reveal">
         <div class="article-cat">Évaluation · IA</div>
         <h3 class="article-title">Pourquoi les détecteurs d'IA échouent, et que faire à la place</h3>
-        <div class="article-cta">Lire l'article <span aria-hidden="true">→</span></div>
+        <div class="article-cta">Lire l'article</div>
       </a>
       <a href="https://www.innovation-pedagogique.fr/article25856.html" target="_blank" rel="noopener" class="article-card reveal">
         <div class="article-cat">Pédagogies actives · Formation</div>
         <h3 class="article-title">Les pédagogies actives au-delà du label</h3>
-        <div class="article-cta">Lire l'article <span aria-hidden="true">→</span></div>
+        <div class="article-cta">Lire l'article</div>
       </a>
       <a href="https://www.innovation-pedagogique.fr/article25486.html" target="_blank" rel="noopener" class="article-card reveal">
         <div class="article-cat">Évaluation · IA</div>
         <h3 class="article-title">Cinq questions que les formatrices et formateurs n'osent pas se poser sur l'évaluation à l'ère de l'IA</h3>
-        <div class="article-cta">Lire l'article <span aria-hidden="true">→</span></div>
+        <div class="article-cta">Lire l'article</div>
       </a>
       <a href="https://www.innovation-pedagogique.fr/article20741.html" target="_blank" rel="noopener" class="article-card reveal">
         <div class="article-cat">Innovation · Inclusion</div>
         <h3 class="article-title">VoxFolio – Quand la voix libère les talents, IA et pédagogies inclusives</h3>
-        <div class="article-cta">Lire l'article <span aria-hidden="true">→</span></div>
+        <div class="article-cta">Lire l'article</div>
       </a>
       <a href="https://www.innovation-pedagogique.fr/article12108.html" target="_blank" rel="noopener" class="article-card reveal">
         <div class="article-cat">Réflexion</div>
         <h3 class="article-title">Éducation artificielle ?</h3>
-        <div class="article-cta">Lire l'article <span aria-hidden="true">→</span></div>
+        <div class="article-cta">Lire l'article</div>
       </a>
       <a href="https://www.innovation-pedagogique.fr/article15242.html" target="_blank" rel="noopener" class="article-card reveal">
         <div class="article-cat">IA &amp; Éducation</div>
         <h3 class="article-title">IA en éducation, un outil d'innovation</h3>
-        <div class="article-cta">Lire l'article <span aria-hidden="true">→</span></div>
+        <div class="article-cta">Lire l'article</div>
       </a>
       <a href="https://fr.linkedin.com/pulse/lia-pour-une-%C3%A9ducation-inclusive-r%C3%A9duire-la-fracture-kherbouche-jovde" target="_blank" rel="noopener" class="article-card reveal">
         <div class="article-cat">Inclusion numérique</div>
         <h3 class="article-title">IA et inclusion – Réduire la fracture numérique</h3>
-        <div class="article-cta">Lire l'article <span aria-hidden="true">→</span></div>
+        <div class="article-cta">Lire l'article</div>
       </a>
     </div>
   </div>
@@ -505,7 +556,7 @@
   </nav>
 </footer>
 
-<script src="/site.js?v=8" defer></script>
+<script src="/site.js?v=9" defer></script>
 
 </body>
 </html>
