@@ -62,8 +62,9 @@ PRIORITY = {
     "faq": ["faq.html"],
 }
 
-# Effectif minimal attendu par section, renseigne a l'etat courant du site.
-# A bump a chaque ressource ajoutee, comme les compteurs des pages HTML.
+# Effectif exact attendu par section, renseigne a l'etat courant du site.
+# A bump a chaque ressource ajoutee ou retiree, comme les compteurs des pages HTML.
+# Tout ecart, par defaut comme par exces, abandonne la generation.
 EXPECTED = {
     "infographies": 15,
     "bd": 2,
@@ -99,12 +100,25 @@ def collect(docs, section, finder, key):
 
 
 def check(section, items, dst):
-    """Affiche l'effectif de la section et abandonne s'il est sous EXPECTED."""
+    """Affiche l'effectif de la section et abandonne s'il s'ecarte de EXPECTED."""
     found, expected = len(items), EXPECTED[section]
     print(f"  {section}: {found}", flush=True)
     if found < expected:
         print(f"Erreur: section '{section}' incomplete, "
-              f"{expected} entrees attendues au minimum, {found} trouvee(s).",
+              f"{expected} entrees attendues, {found} trouvee(s).",
+              file=sys.stderr)
+        print("Une regex a probablement cesse de reconnaitre une entree "
+              "apres un changement de HTML. Corriger le HTML avant de regenerer.",
+              file=sys.stderr)
+        print(f"Abandon: {dst} n'a pas ete ecrit.", file=sys.stderr)
+        sys.exit(1)
+    if found > expected:
+        print(f"Erreur: section '{section}' en exces, "
+              f"{expected} entrees attendues, {found} trouvee(s).",
+              file=sys.stderr)
+        print(f"Action: porter EXPECTED['{section}'] a {found}, puis repercuter "
+              "le compteur dans les pages HTML (boutons de filtre, en-tete Volume, "
+              "titre de section, les 4 copies de la meta description).",
               file=sys.stderr)
         print(f"Abandon: {dst} n'a pas ete ecrit.", file=sys.stderr)
         sys.exit(1)

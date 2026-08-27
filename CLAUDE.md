@@ -80,22 +80,22 @@ Le SYSTEM_PROMPT du bot vit dans `_worker.js` (le bot habille les URLs en Markdo
    version (source du bug de scrollbar déjà corrigé).
 3. **Compteurs, plusieurs emplacements et plusieurs formes.** Recenser TOUS les endroits
    par `grep` du chiffre ET du mot, sur toutes les pages, avant de conclure. Connus :
-   - Accueil : `data-target` de `.stats-card` (38 interventions, 7 pays, 1000+, 20+).
-   - Cartes offres de l'accueil (« 14 conférences dans 5 pays », « 21 sessions »).
-   - Pages parcours : sous-titres de preuve (`conferences.html` « 14 conférences »,
-     `ateliers-formations.html` « 21 sessions »).
-   - `ressources.html` : boutons de filtre (`Tout · N`, `Outils · 9`, `Infographies · 15`,
-     `Articles · 7`, `Webinaires · 3`, `Podcasts · 2`, `BD · 2`), en-tête
-     `Volume · N ressources`,
-     titres de section (« Neuf outils », « Quinze infographies », « Sept articles
-     publiés », « Deux BD »...), et **les 4 copies** de la meta description (`description`,
+   - Accueil : `data-count-to` de `.stats-card` (interventions, pays, membres
+     communauté, outils et ressources).
+   - Cartes offres de l'accueil (« N conférences dans N pays », « N sessions »).
+   - Pages parcours : sous-titres de preuve (`conferences.html` « N conférences »,
+     `ateliers-formations.html` « N sessions »).
+   - `ressources.html` : boutons de filtre (`Tout`, `Outils`, `Infographies`, `Articles`,
+     `Webinaires`, `Podcasts`, `BD`, chacun suivi de son effectif après un `·`), en-tête
+     `Volume · N ressources`, titres de section, où l'effectif est écrit en toutes lettres
+     et non en chiffres, et **les 4 copies** de la meta description (`description`,
      `og:description`, `twitter:description`, JSON-LD).
-   - `generate-knowledge.py` : le dict **`EXPECTED`** (état courant : `infographies` 15,
-     `bd` 2, `projets` 9, `articles` 7, `podcasts` 2, `conferences` 14, `formations` 21,
-     `webinaires` 3, `faq` 8). Toute ressource ajoutée impose
-     d'y incrémenter la valeur de sa section, au même titre que les compteurs des pages
-     HTML. Sans ça le garde-fou reste calé sur l'ancien effectif et cesse de détecter
-     la perte d'une entrée.
+     Les valeurs vivent dans la page, les relever par `grep` plutôt que de les lire ici.
+   - `generate-knowledge.py` : le dict **`EXPECTED`**, en tête de fichier, un effectif par
+     section. Sa valeur fait foi, ne pas la recopier ici. Toute ressource ajoutée ou
+     retirée impose d'y porter le nouvel effectif, au même titre que les compteurs des
+     pages HTML. Le script abandonne sur tout écart, par défaut comme par excès, et
+     n'écrit pas `knowledge.md`.
 4. **Ne pas toucher `_worker.js`** lors d'une modification de contenu. N'y toucher que
    sur demande explicite visant le chatbot. `ALLOWED_ORIGINS` inchangé.
 5. **Diffs chirurgicaux.** Aucune ligne hors demande. Les incohérences repérées hors
