@@ -14,7 +14,7 @@
     <span class="chat-badge" id="chat-badge"></span>
   </button>
   <div class="chat-nudge" id="chat-nudge">
-    <span aria-hidden="true">💬</span> Une question ? Je suis là !
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 5.94 2 10.8c0 2.1.84 4.03 2.24 5.55-.18 1.4-.77 2.65-1.55 3.6-.16.2-.02.5.23.48 1.93-.18 3.6-.86 4.9-1.66 1.27.46 2.67.73 4.18.73 5.52 0 10-3.94 10-8.8S17.52 2 12 2zM7.5 12.1a1.3 1.3 0 1 1 0-2.6 1.3 1.3 0 0 1 0 2.6zm4.5 0a1.3 1.3 0 1 1 0-2.6 1.3 1.3 0 0 1 0 2.6zm4.5 0a1.3 1.3 0 1 1 0-2.6 1.3 1.3 0 0 1 0 2.6z"/></svg> Une question ? Je suis là !
     <button class="chat-nudge-close" id="chat-nudge-close" aria-label="Masquer ce message">✕</button>
   </div>
   <div id="chat-widget" class="chat-widget" hidden>
