@@ -1547,9 +1547,6 @@ footer a:hover { color: var(--accent); }
   align-items: center;
 }
 
-.case-link span { transition: transform var(--transition); }
-.case-link:hover span { transform: translateX(3px); }
-
 .press-links {
   display: flex;
   gap: 0.8rem 2.5rem;
