@@ -5,3 +5,7 @@ _templates/
 # Rapports Lighthouse bruts (voir CLAUDE.md, section Base de mesure)
 audit/**/*.report.html
 audit/**/*.report.json
+
+# Artefacts d'outillage, jamais versionnes : Cloudflare publie la racine
+__pycache__/
+.claude/
