@@ -22,7 +22,7 @@ Pour les organisations qui veulent un cadre durable : cadrer les usages (état d
 
 ### Évaluer avec l'IA
 https://ia.rochane.fr/evaluer-ia
-Le parcours dédié à l'évaluation : les détecteurs d'IA échouent, la surveillance épuise ; la question utile est de redéfinir ce que l'évaluation mesure, du produit fini vers le processus documenté, de l'interdiction vers le discernement. Ce parcours réunit le livre, les outils en libre accès (Compagnon de Route, FAQ Évaluer IA, Argos Socratique) et les interventions dédiées (conférences, ateliers, accompagnements).
+Le parcours dédié à l'évaluation : les détecteurs d'IA échouent, la surveillance épuise ; la question utile porte sur ce que l'évaluation mesure encore, du produit fini vers le processus documenté, de l'interdiction vers le discernement. Ce parcours réunit le livre, les outils en libre accès (Compagnon de Route, FAQ Évaluer IA, Argos Socratique) et les interventions dédiées (conférences, ateliers, accompagnements).
 
 ### FAQ : qui peut vous aider sur l'IA en formation
 https://ia.rochane.fr/faq
