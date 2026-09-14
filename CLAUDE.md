@@ -36,6 +36,7 @@ pages, ne pas les servir. Ce sont des chantiers séparés, pas des pages du port
 
 - `pedago-fiches/`
 - `_templates/`
+- `crfpa/`
 
 Le `.gitignore` est la protection réelle, cette liste n'est que son rappel : si un
 dossier hors site est ajouté, l'inscrire aux deux endroits.
