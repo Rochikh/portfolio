@@ -68,7 +68,7 @@ PRIORITY = {
 EXPECTED = {
     "infographies": 15,
     "bd": 2,
-    "projets": 9,
+    "projets": 10,
     "articles": 7,
     "podcasts": 2,
     "conferences": 14,

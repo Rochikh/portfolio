@@ -76,7 +76,7 @@ La ligne Page: indique ou le contenu se trouve sur le site : elle peut etre cite
   URL: https://abrege.rochane.fr/
   Page: https://ia.rochane.fr/ressources
 
-## Projets et outils (9)
+## Projets et outils (10)
 - Chat Bot Scenario Creator: Créer des scénarios conversationnels avec l'IA pour concevoir des formations interactives et engageantes.
   URL: https://scenariocreator.rochane.fr/
   Page: https://ia.rochane.fr/ressources
@@ -103,6 +103,9 @@ La ligne Page: indique ou le contenu se trouve sur le site : elle peut etre cite
   Page: https://ia.rochane.fr/ressources
 - Voix-atelier: Protocole en quatre temps pour produire avec l'IA sans perdre sa voix. Alterne parole humaine brute (T1, T3) et traitement analytique (T2), puis assemble sous contrainte (T4). Skill Claude et prompts portables disponibles.
   URL: https://voix-atelier.rochane.fr/
+  Page: https://ia.rochane.fr/ressources
+- 286 fiches pour enseigner la culture de l'IA: Recueil Faktabaari EDU traduit en français : sept niveaux d'enseignement, de la petite enfance au supérieur, recherche dans tous les textes, licence CC BY 4.0. Traduction non officielle.
+  URL: https://fiches-ia.rochane.fr/
   Page: https://ia.rochane.fr/ressources
 
 ## Articles (7)
@@ -238,7 +241,7 @@ La ligne Page: indique ou le contenu se trouve sur le site : elle peut etre cite
   R: Oui : des conférences de 1 h à 2 h pour événements, journées d'étude et séminaires, en présentiel ou à distance. 14 conférences ont déjà été données dans 5 pays, sur l'évaluation à l'ère de l'IA générative, les usages pédagogiques de l'IA, l'esprit critique ou l'IA et l'emploi.
   Page: https://ia.rochane.fr/faq
 - Où trouver des ressources gratuites sur l'IA en formation ?
-  R: La bibliothèque du site rassemble 38 ressources en libre accès : 9 outils IA pour la formation, 15 infographies pédagogiques, 7 articles, 3 webinaires, 2 podcasts et 2 BD. Chaque ressource prolonge une intervention ou un chapitre du livre.
+  R: La bibliothèque du site rassemble 39 ressources en libre accès : 10 outils IA pour la formation, 15 infographies pédagogiques, 7 articles, 3 webinaires, 2 podcasts et 2 BD. Chaque ressource prolonge une intervention ou un chapitre du livre.
   Page: https://ia.rochane.fr/faq
 - Comment contacter Rochane Kherbouche ?
   R: Par email à contact@rochane.fr, ou en réservant directement un créneau d'échange de 30 minutes ou 1 heure. Les tarifs sont établis au cas par cas selon le contexte.
