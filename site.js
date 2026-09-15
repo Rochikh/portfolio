@@ -425,13 +425,17 @@
   }
 
 
-    // ── MESURE D'AUDIENCE, EVENEMENTS PLAUSIBLE ──
+    // ── MESURE D'AUDIENCE, EVENEMENTS UMAMI ──
     // Cablage par delegation sur document : le contenu de ressources.html evolue,
     // aucun ecouteur n'est attache a une liste figee de liens.
+    function umamiPret() {
+      return !!(window.umami && typeof window.umami.track === 'function');
+    }
+
     function envoyer(nom, props) {
-      if (typeof window.plausible !== 'function') return;
-      if (props) window.plausible(nom, { props: props });
-      else window.plausible(nom);
+      if (!umamiPret()) return;
+      if (props) window.umami.track(nom, props);
+      else window.umami.track(nom);
     }
 
     function initAnalytics() {
@@ -476,7 +480,7 @@
           && e.button === 0
           && !e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey;
 
-        if (!memeOnglet || typeof window.plausible !== 'function') {
+        if (!memeOnglet || !umamiPret()) {
           envoyer(nom, props);
           return;
         }
@@ -488,9 +492,8 @@
           parti = true;
           window.location.href = a.href;
         };
-        var opts = { callback: suivre };
-        if (props) opts.props = props;
-        window.plausible(nom, opts);
+        var envoi = props ? window.umami.track(nom, props) : window.umami.track(nom);
+        Promise.resolve(envoi).then(suivre, suivre);
         setTimeout(suivre, 1000);
       });
     }
