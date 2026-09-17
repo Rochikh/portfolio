@@ -41,8 +41,9 @@ langues, démarche) vit dans `_worker.js`.
    `ateliers-formations.html` (`.form-row`) en conservant les classes CSS :
    le générateur de knowledge les parse.
 2. Mettre à jour les compteurs affichés : sous-titre de la section concernée,
-   carte offre correspondante sur l'accueil, et `data-target="38"` de la carte
-   stats du hero (38 = 14 conférences + 21 formations + 3 webinaires).
+   carte offre correspondante sur l'accueil, et `data-count-to` de la carte
+   stats du hero (interventions = conférences + formations + webinaires, les
+   effectifs vivent dans les pages et dans `EXPECTED` de `generate-knowledge.py`).
 3. Régénérer `knowledge.md` (commande ci-dessus).
 
 ## Ajouter un article
