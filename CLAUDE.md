@@ -20,7 +20,8 @@ Il fait foi. Si le site et ce guide divergent, corrige le guide.
 - `ressources.html` : bibliothèque complète filtrable (outils, guides pratiques,
   infographies, articles, webinaires, podcasts, BD). Les PDF servis par le site vivent
   dans `guides/`.
-- `faq.html` : questions fréquentes (8 entrées, parsées par le générateur de knowledge).
+- `faq.html` : questions fréquentes, parsées par le générateur de knowledge (effectif :
+  clé `faq` du dict `EXPECTED` de `generate-knowledge.py`).
 - `articles/<slug>.html` : articles de fond.
 - `mentions-legales.html`, `livre3d.html` (couverture 3D en iframe, `noindex`).
 - **Assets partagés** : `styles.css` et `site.js`, référencés par toutes les pages. Le
