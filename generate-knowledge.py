@@ -42,7 +42,7 @@ PAGES_DESC = [
     (SITE + "/ateliers-formations", "ateliers et formations IA pour les equipes : deroulement, themes, historique des sessions"),
     (SITE + "/accompagnement", "accompagnement des organisations : demarche en quatre temps, perimetre, etudes de cas"),
     (SITE + "/evaluer-ia", "evaluer a l'ere de l'IA generative : le livre, les outils dedies, les publications"),
-    (SITE + "/ressources", "bibliotheque en libre acces : outils, infographies, articles, webinaires, podcasts, BD"),
+    (SITE + "/ressources", "bibliotheque en libre acces : outils, guides pratiques, infographies, articles, webinaires, podcasts, BD"),
     (SITE + "/faq", "questions frequentes : accompagnement IA pour organisme de formation, formation des formateurs, presence France-Belgique, contact"),
     (SITE + "/financement", "financement des interventions : conventionnement par un organisme de formation certifie Qualiopi, financeurs ouverts (OPCO, France Travail, entreprises, collectivites, regions), le CPF est exclu et il n'y a pas de referencement EDOF, etapes du montage et delai de traitement"),
 ]
@@ -56,6 +56,7 @@ PRIORITY = {
     "infographies": ["ressources.html", "index.html"],
     "bd": ["ressources.html", "index.html"],
     "projets": ["ressources.html", "evaluer-ia.html", "accompagnement.html", "index.html"],
+    "guides": ["ressources.html"],
     "articles": ["ressources.html", "evaluer-ia.html", "index.html"],
     "podcasts": ["ressources.html", "evaluer-ia.html", "index.html"],
     "webinaires": ["ressources.html", "index.html"],
@@ -68,7 +69,8 @@ PRIORITY = {
 EXPECTED = {
     "infographies": 15,
     "bd": 2,
-    "projets": 10,
+    "projets": 8,
+    "guides": 3,
     "articles": 7,
     "podcasts": 2,
     "conferences": 14,
@@ -193,15 +195,39 @@ def main(src_dir, dst):
         out += [f"- {clean(idx)} {clean(name)}", f"  URL: {url}", f"  Page: {page}"]
     out.append("")
 
-    # Projets et outils
+    # Projets et outils. Sur ressources.html, les cartes proj-card vivent dans
+    # deux rubriques (#outils et #guides-pratiques) : chaque collecte se limite
+    # a sa rubrique, les autres pages sont lues en entier.
     proj_re = re.compile(
         r'<a href="([^"]+)"[^>]*class="proj-card[^"]*"[^>]*>.*?'
         r'class="proj-name">(.*?)</(?:div|h3)>.*?class="proj-desc">(.*?)</div>',
         re.S)
+
+    def section_of(doc, res_section):
+        m = re.search(r'data-res-section="' + res_section + r'".*?(?=<div class="section-wrap|</main>)', doc, re.S)
+        return m.group(0) if m else ""
+
+    def in_section(res_section):
+        def finder(doc):
+            if 'data-res-section="' in doc:
+                doc = section_of(doc, res_section)
+            return proj_re.findall(doc)
+        return finder
+
     projs = check("projets",
-                  collect(docs, "projets", proj_re.findall, key=lambda it: it[0]), dst)
+                  collect(docs, "projets", in_section("outils"), key=lambda it: it[0]), dst)
     out.append(f"## Projets et outils ({len(projs)})")
     for (url, name, desc), page in projs:
+        out += [f"- {clean(name)}: {clean(desc)}", f"  URL: {url}", f"  Page: {page}"]
+    out.append("")
+
+    # Guides pratiques : meme gabarit de carte, rubrique dediee
+    guides = check("guides",
+                   collect(docs, "guides", in_section("guides-pratiques"), key=lambda it: it[0]), dst)
+    out.append(f"## Guides pratiques ({len(guides)})")
+    for (url, name, desc), page in guides:
+        if url.startswith('/'):
+            url = SITE + url
         out += [f"- {clean(name)}: {clean(desc)}", f"  URL: {url}", f"  Page: {page}"]
     out.append("")
 

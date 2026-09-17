@@ -461,7 +461,12 @@
           nom = 'telechargement-extrait-livre';
         } else if (href.indexOf('chat.whatsapp.com') !== -1) {
           nom = 'clic-communaute-whatsapp';
-        } else if (a.classList.contains('proj-card') && a.closest('#outils')) {
+        } else if (href.indexOf('/guides/') !== -1 && /\.pdf$/.test(href)) {
+          // Guides pratiques servis par le site : un seul evenement, le nom du
+          // fichier part en propriete, reutilisable pour les guides suivants.
+          nom = 'telechargement-guide';
+          props = { guide: href.slice(href.lastIndexOf('/') + 1).replace(/\.pdf$/, '') };
+        } else if (a.classList.contains('proj-card') && a.closest('#outils, #guides-pratiques')) {
           // Le nom de l'outil part en propriete, pas en evenement distinct :
           // un seul evenement quel que soit le nombre d'outils listes.
           var t = a.querySelector('.proj-name');

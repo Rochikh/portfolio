@@ -17,8 +17,9 @@ Il fait foi. Si le site et ce guide divergent, corrige le guide.
   phares, sélection ressources, contact).
 - Pages parcours : `conferences.html`, `ateliers-formations.html`, `accompagnement.html`,
   `evaluer-ia.html`.
-- `ressources.html` : bibliothèque complète filtrable (outils, infographies, articles,
-  webinaires, podcasts, BD).
+- `ressources.html` : bibliothèque complète filtrable (outils, guides pratiques,
+  infographies, articles, webinaires, podcasts, BD). Les PDF servis par le site vivent
+  dans `guides/`.
 - `faq.html` : questions fréquentes (8 entrées, parsées par le générateur de knowledge).
 - `articles/<slug>.html` : articles de fond.
 - `mentions-legales.html`, `livre3d.html` (couverture 3D en iframe, `noindex`).
@@ -55,8 +56,10 @@ forme `generate-knowledge.py index.html knowledge.md` est **obsolète** : elle r
 tout le contenu hors accueil. Les articles en `noindex` sont volontairement exclus.
 Le script exige ses deux arguments (sinon message d'usage, code 2). Après chaque
 collecte, il affiche l'effectif de la section et le compare au minimum déclaré dans le
-dict **`EXPECTED`** en tête du script (infographies, bd, projets, articles, podcasts,
-conferences, formations, webinaires, faq). Si une section rend moins d'entrées que
+dict **`EXPECTED`** en tête du script (infographies, bd, projets, guides, articles,
+podcasts, conferences, formations, webinaires, faq). Les cartes `proj-card` de
+`ressources.html` sont comptées par rubrique : `projets` lit `#outils`, `guides` lit
+`#guides-pratiques`. Si une section rend moins d'entrées que
 prévu, il écrit l'écart sur stderr et sort en code 1 **sans écrire `knowledge.md`** :
 ce garde-fou signale une regex cassée par un changement de HTML même quand elle ne fait
 perdre qu'une seule entrée. Corriger le HTML avant de régénérer.
@@ -77,7 +80,7 @@ Le SYSTEM_PROMPT du bot vit dans `_worker.js` (le bot habille les URLs en Markdo
    `git fetch origin main && git checkout -B <branche> origin/main`.
 2. **Cache-busting.** Toute modification de `styles.css` ou `site.js` oblige à
    incrémenter `?v=N` **sur toutes les pages** qui les référencent. État courant :
-   `styles.css?v=11`, `site.js?v=10`. Sans ça, les visiteurs récurrents gardent l'ancienne
+   `styles.css?v=11`, `site.js?v=11`. Sans ça, les visiteurs récurrents gardent l'ancienne
    version (source du bug de scrollbar déjà corrigé).
 3. **Compteurs, plusieurs emplacements et plusieurs formes.** Recenser TOUS les endroits
    par `grep` du chiffre ET du mot, sur toutes les pages, avant de conclure. Connus :
@@ -86,12 +89,16 @@ Le SYSTEM_PROMPT du bot vit dans `_worker.js` (le bot habille les URLs en Markdo
    - Cartes offres de l'accueil (« N conférences dans N pays », « N sessions »).
    - Pages parcours : sous-titres de preuve (`conferences.html` « N conférences »,
      `ateliers-formations.html` « N sessions »).
-   - `ressources.html` : boutons de filtre (`Tout`, `Outils`, `Infographies`, `Articles`,
-     `Webinaires`, `Podcasts`, `BD`, chacun suivi de son effectif après un `·`), en-tête
+   - `ressources.html` : boutons de filtre (`Tout`, `Outils`, `Guides pratiques`,
+     `Infographies`, `Articles`, `Webinaires`, `Podcasts`, `BD`, chacun suivi de son
+     effectif après un `·`), en-tête
      `Volume · N ressources`, titres de section, où l'effectif est écrit en toutes lettres
      et non en chiffres, et **les 4 copies** de la meta description (`description`,
      `og:description`, `twitter:description`, JSON-LD).
      Les valeurs vivent dans la page, les relever par `grep` plutôt que de les lire ici.
+   - `faq.html` : la réponse « Où trouver des ressources gratuites » reprend le total et
+     le détail par type, en deux copies (JSON-LD et carte).
+   - `llms.txt` et `llms-full.txt` : total de la bibliothèque et détail par type.
    - `generate-knowledge.py` : le dict **`EXPECTED`**, en tête de fichier, un effectif par
      section. Sa valeur fait foi, ne pas la recopier ici. Toute ressource ajoutée ou
      retirée impose d'y porter le nouvel effectif, au même titre que les compteurs des
