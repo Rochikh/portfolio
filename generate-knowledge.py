@@ -70,7 +70,7 @@ EXPECTED = {
     "infographies": 15,
     "bd": 2,
     "projets": 8,
-    "guides": 3,
+    "guides": 4,
     "articles": 7,
     "podcasts": 2,
     "conferences": 14,
