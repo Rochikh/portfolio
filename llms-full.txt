@@ -46,7 +46,7 @@ Manuel pratique pour repenser l'évaluation des apprentissages, paru le 25 juin 
 
 ### Bibliothèque de ressources
 https://ia.rochane.fr/ressources
-40 ressources en libre accès : 8 outils IA pour la formation, 3 guides pratiques, 15 infographies pédagogiques, 7 articles, 3 webinaires, 2 podcasts et 2 BD.
+41 ressources en libre accès : 8 outils IA pour la formation, 4 guides pratiques, 15 infographies pédagogiques, 7 articles, 3 webinaires, 2 podcasts et 2 BD.
 
 ## Projets
 
@@ -85,6 +85,10 @@ Protocole en quatre temps pour produire avec l'IA sans perdre sa voix : parole h
 ### 286 fiches pour enseigner la culture de l'IA
 https://fiches-ia.rochane.fr/
 Recueil Faktabaari EDU traduit en français : sept niveaux d'enseignement, de la petite enfance au supérieur, recherche dans tous les textes, licence CC BY 4.0. Traduction non officielle.
+
+### 40 consignes de cours pour enseigner avec l'IA
+https://consignes-ia.rochane.fr/
+Adaptation française non officielle des consignes du AI Pedagogy Project (metaLAB at Harvard) : recherche dans tous les textes, filtres par thème, discipline, outil et compétence, licence CC BY-NC-SA 4.0.
 
 ### Gemini Notebook, 10 usages pour apprendre avec l'IA
 https://ia.rochane.fr/guides/gemini-notebook-10-usages.pdf
