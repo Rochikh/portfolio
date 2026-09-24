@@ -74,7 +74,7 @@ EXPECTED = {
     "articles": 7,
     "podcasts": 2,
     "conferences": 14,
-    "formations": 21,
+    "formations": 22,
     "webinaires": 3,
     "faq": 11,
 }
