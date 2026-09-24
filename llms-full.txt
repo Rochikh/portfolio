@@ -4,7 +4,7 @@
 
 ## Qui est Rochane Kherbouche
 
-Rochane Kherbouche aide les institutions, l'enseignement supérieur, les organismes de formation, les entreprises et les acteurs de la santé à passer d'usages dispersés de l'IA à des pratiques pédagogiques assumées. Son terrain : 38 interventions dans 7 pays (France, Belgique, Autriche, Tunisie, Algérie, Burundi, Jordanie), auprès d'organisations comme la Commission européenne, les Nations Unies, l'UNESCO, le CELV (Conseil de l'Europe), l'ULB, la RTBF Academy, le CNFPT, France Éducation International et l'Université de Lille. Chaque intervention suit la même démarche en quatre temps : diagnostic (comprendre le contexte et les publics), conception (scénario pédagogique transmis en amont), animation (formats actifs où l'on manipule les outils en séance) et suivi (banque de ressources IA remise, recontact possible). Interventions en français, arabe possible.
+Rochane Kherbouche aide les institutions, l'enseignement supérieur, les organismes de formation, les entreprises et les acteurs de la santé à passer d'usages dispersés de l'IA à des pratiques pédagogiques assumées. Son terrain : 39 interventions dans 8 pays (France, Belgique, Autriche, Tunisie, Algérie, Burundi, Jordanie, Canada), auprès d'organisations comme la Commission européenne, les Nations Unies, l'UNESCO, le CELV (Conseil de l'Europe), l'ULB, la RTBF Academy, le CNFPT, France Éducation International, l'Université de Lille et l'AQPC. Chaque intervention suit la même démarche en quatre temps : diagnostic (comprendre le contexte et les publics), conception (scénario pédagogique transmis en amont), animation (formats actifs où l'on manipule les outils en séance) et suivi (banque de ressources IA remise, recontact possible). Interventions en français, arabe possible.
 
 ## Services
 
@@ -14,7 +14,7 @@ Conférences de 1 h à 2 h pour événements, journées d'étude et séminaires 
 
 ### Ateliers et formations IA pour les équipes
 https://ia.rochane.fr/ateliers-formations
-Formats actifs pour formateurs, enseignants, équipes pédagogiques, professionnels de santé et agents publics : un scénario pédagogique est transmis en amont, les outils sont manipulés en séance sur des cas issus des pratiques réelles, et une banque de ressources IA est remise ensuite. Limites, biais, RGPD et transparence font partie du programme. 21 sessions référencées, d'Alger à Amman : Commission européenne (design de formation IA), CESI Alger (projet UNESCO), United Nations Volunteers (Amman), RTBF Academy, CNFPT Strasbourg, Université de Lille (Master IPM), initiation à l'IA pour médecins lors de réunions professionnelles de laboratoires pharmaceutiques partout en France.
+Formats actifs pour formateurs, enseignants, équipes pédagogiques, professionnels de santé et agents publics : un scénario pédagogique est transmis en amont, les outils sont manipulés en séance sur des cas issus des pratiques réelles, et une banque de ressources IA est remise ensuite. Limites, biais, RGPD et transparence font partie du programme. 22 sessions référencées, d'Alger à Amman : Commission européenne (design de formation IA), CESI Alger (projet UNESCO), United Nations Volunteers (Amman), RTBF Academy, CNFPT Strasbourg, Université de Lille (Master IPM), initiation à l'IA pour médecins lors de réunions professionnelles de laboratoires pharmaceutiques partout en France.
 
 ### Accompagnement des organisations
 https://ia.rochane.fr/accompagnement

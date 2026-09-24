@@ -5,7 +5,7 @@
 ## Services
 
 - [Conférences IA et pédagogie](https://ia.rochane.fr/conferences) : conférences de 1 h à 2 h sur l'IA en formation (évaluation, usages, esprit critique), en présentiel ou à distance. 14 conférences données dans 5 pays.
-- [Ateliers et formations IA](https://ia.rochane.fr/ateliers-formations) : formation des formateurs, enseignants et équipes pédagogiques, avec manipulation des outils en séance. 21 sessions référencées, d'Alger à Amman.
+- [Ateliers et formations IA](https://ia.rochane.fr/ateliers-formations) : formation des formateurs, enseignants et équipes pédagogiques, avec manipulation des outils en séance. 22 sessions référencées, d'Alger à Amman.
 - [Accompagnement des organisations](https://ia.rochane.fr/accompagnement) : structurer une stratégie IA en quatre temps (diagnostic, conception, animation, suivi), en France, en Belgique et à l'international.
 - [Évaluer avec l'IA](https://ia.rochane.fr/evaluer-ia) : le livre, les outils et les interventions pour repenser l'évaluation face à l'IA générative.
 - [FAQ : qui peut vous aider sur l'IA en formation](https://ia.rochane.fr/faq) : réponses aux questions fréquentes sur l'accompagnement et la formation à l'IA des organismes de formation.
