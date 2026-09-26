@@ -19,7 +19,7 @@
 ## Projets
 
 - [Compagnon de Route](https://ia-cr.rochane.fr/) : audit de robustesse des évaluations face à l'IA générative.
-- [FAQ Évaluer IA](https://faqeval.rochane.fr) : banque de 30 objections sur l'évaluation à l'ère de l'IA, avec réponses documentées.
+- [FAQ Évaluer IA](https://faqeval.rochane.fr) : banque de 50 questions sur l'évaluation à l'ère de l'IA, avec réponses documentées.
 - [Assistant de différenciation pédagogique](https://ia-diff.rochane.fr/) : génération d'activités différenciées (guidée, standard, défi).
 - [Déstabilisateur pédagogique](https://ia-conflits.rochane.fr/) : situations de conflit cognitif pour faire tomber des croyances professionnelles erronées.
 - [Générateur de transparence IA](https://ia-generateurtransparence.rochane.fr/) : jauge de transparence sur l'usage de l'IA dans un travail.
