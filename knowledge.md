@@ -89,7 +89,7 @@ La ligne Page: indique ou le contenu se trouve sur le site : elle peut etre cite
 - Compagnon de Route: Mesurez la robustesse de vos évaluations face à l'IA générative. Basé sur le protocole du livre de Rochane (2026) : audit détaillé sur 4 dimensions critiques ou diagnostic rapide en 8 questions.
   URL: https://ia-cr.rochane.fr/
   Page: https://ia.rochane.fr/ressources
-- FAQ Évaluer IA: Banque d'objections pour vos interventions sur l'évaluation à l'ère de l'IA. 30 questions récurrentes, chacune avec réponse pivot, donnée chiffrée du livre, cas concret du terrain et relance qui retourne l'objection. Recherche par mots-clés, mode tirage aléatoire, installable sur téléphone et ordinateur.
+- FAQ Évaluer IA: 50 questions qu'on se pose en formation sur l'évaluation à l'ère de l'IA : détection, triche, oral, atrophie, AI Act. Réponses courtes, sourcées, reliées au livre. Recherche, filtres par provenance et par nouveautés, mode entraînement.
   URL: https://faqeval.rochane.fr
   Page: https://ia.rochane.fr/ressources
 - Assistant de différenciation pédagogique: Application web propulsée par l'IA permettant aux formateurs et enseignants de générer instantanément des activités pédagogiques différenciées (versions guidée, standard et défi) pour s'adapter aux besoins de chaque apprenant.

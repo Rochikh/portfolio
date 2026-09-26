@@ -56,7 +56,7 @@ Mesure la robustesse des évaluations face à l'IA générative, selon le protoc
 
 ### FAQ Évaluer IA
 https://faqeval.rochane.fr
-Banque d'objections pour les interventions sur l'évaluation à l'ère de l'IA : 30 questions récurrentes, chacune avec réponse pivot, donnée chiffrée du livre, cas concret du terrain et relance. Recherche par mots-clés, mode tirage aléatoire, installable sur téléphone et ordinateur.
+50 questions qu'on se pose en formation sur l'évaluation à l'ère de l'IA : détection, triche, oral, atrophie, AI Act. Réponses courtes, sourcées, reliées au livre. Recherche, filtres par provenance et par nouveautés, mode entraînement.
 
 ### Assistant de différenciation pédagogique
 https://ia-diff.rochane.fr/
