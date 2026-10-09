@@ -10,3 +10,6 @@ audit/**/*.report.json
 # Artefacts d'outillage, jamais versionnes : Cloudflare publie la racine
 __pycache__/
 .claude/
+
+# Notes de maintenance hors site (Cloudflare publierait docs/)
+docs/

@@ -1,240 +1,73 @@
 # Portfolio ia.rochane.fr, guide de maintenance
 
-Ce fichier est lu au démarrage de chaque session Claude Code (local, Code Server, web).
-Il fait foi. Si le site et ce guide divergent, corrige le guide.
+Site statique multi-pages de Rochane (offres, livre, ressources, articles) avec chatbot.
+Ce guide fait foi : s'il diverge du site, corriger le guide. Détails annexes : `docs/NOTES.md`.
 
-## Vue d'ensemble
+## Stack et publication
 
-- Site statique servi par **Cloudflare Pages** sur `ia.rochane.fr` (`rochane.fr` redirige).
-  Dépôt GitHub `Rochikh/portfolio`. Cloudflare déploie la branche `main` à chaque merge.
-- `_worker.js` = Cloudflare Pages Function : sert les fichiers statiques et l'endpoint
-  `POST /api/chat` (chatbot Gemini, clé `GEMINI_API_KEY` en secret côté serveur, jamais
-  exposée au navigateur). CNAME = `ia.rochane.fr`.
+- Cloudflare Pages sur `ia.rochane.fr`, dépôt `Rochikh/portfolio`, branche `main`
+  déployée à chaque merge. Aucun workflow GitHub de déploiement à recréer.
+- `_worker.js` : fichiers statiques + `POST /api/chat` (Gemini, secret `GEMINI_API_KEY`).
+  N'y toucher que sur demande explicite visant le chatbot ; `ALLOWED_ORIGINS` inchangé.
+- Session web : push direct sur `main` bloqué, publier par PR fusionnée. `curl` vers le
+  site en ligne renvoie 403 en session web : vérifier par navigateur.
 
-## Architecture (multi-pages, ce n'est PAS un mono-page)
+## Chemins clés
 
-- `index.html` : accueil conversion (hero, offres, livre, démarche, preuves, projets
-  phares, sélection ressources, contact).
-- Pages parcours : `conferences.html`, `ateliers-formations.html`, `accompagnement.html`,
-  `evaluer-ia.html`.
-- `ressources.html` : bibliothèque complète filtrable (outils, guides pratiques,
-  infographies, articles, webinaires, podcasts, BD). Les PDF servis par le site vivent
-  dans `guides/`.
-- `faq.html` : questions fréquentes, parsées par le générateur de knowledge (effectif :
-  clé `faq` du dict `EXPECTED` de `generate-knowledge.py`).
-- `articles/<slug>.html` : articles de fond.
-- `mentions-legales.html`, `livre3d.html` (couverture 3D en iframe, `noindex`).
-- **Assets partagés** : `styles.css` et `site.js`, référencés par toutes les pages. Le
-  widget chatbot est injecté par `site.js`. CSS et JS ne sont plus inline.
-- SEO : `sitemap.xml`, `robots.txt`, `og-image.jpg` (1200x630). JSON-LD par page
-  (Person `#person`, WebSite `#website`, plus WebPage / Service / Book / Article /
-  CollectionPage selon la page).
+- `index.html`, pages parcours (`conferences.html`, `ateliers-formations.html`,
+  `accompagnement.html`, `evaluer-ia.html`), `ressources.html`, `faq.html`,
+  `financement.html` (référence pour toute mention de financement), `articles/<slug>.html`.
+- `styles.css` et `site.js` partagés (le widget chatbot est injecté par `site.js`).
+- `knowledge.md` : dérivé des pages, **jamais édité à la main**. SYSTEM_PROMPT dans `_worker.js`.
+- Hors site, ignorés par `.gitignore` : `pedago-fiches/`, `_templates/`, `crfpa/`. Tout
+  nouveau dossier hors site s'inscrit dans `.gitignore`.
 
-## Sous-dossiers hors site
-
-Ces dossiers vivent dans l'arbre de travail mais ne font pas partie du site publié. Ils
-sont listés dans `.gitignore` : ne pas les versionner, ne pas les référencer depuis les
-pages, ne pas les servir. Ce sont des chantiers séparés, pas des pages du portfolio.
-
-- `pedago-fiches/`
-- `_templates/`
-- `crfpa/`
-
-Le `.gitignore` est la protection réelle, cette liste n'est que son rappel : si un
-dossier hors site est ajouté, l'inscrire aux deux endroits.
-
-## Chaîne de contenu du chatbot (à ne pas oublier)
-
-Les pages HTML sont la **source de vérité**. `knowledge.md` en est un **dérivé**, jamais
-édité à la main. Après toute modification de contenu d'une page, régénérer :
+## Commandes
 
 ```
-python3 generate-knowledge.py . knowledge.md
+git fetch origin main && git checkout -B <branche> origin/main   # en début de session
+python3 generate-knowledge.py . knowledge.md                     # après toute modif de contenu
 ```
 
-Le `.` = dossier du site (le script scanne toutes les pages + `articles/`). L'ancienne
-forme `generate-knowledge.py index.html knowledge.md` est **obsolète** : elle raterait
-tout le contenu hors accueil. Les articles en `noindex` sont volontairement exclus.
-Le script exige ses deux arguments (sinon message d'usage, code 2). Après chaque
-collecte, il affiche l'effectif de la section et le compare au minimum déclaré dans le
-dict **`EXPECTED`** en tête du script (infographies, bd, projets, guides, articles,
-podcasts, conferences, formations, webinaires, faq). Les cartes `proj-card` de
-`ressources.html` sont comptées par rubrique : `projets` lit `#outils`, `guides` lit
-`#guides-pratiques`. Si une section rend moins d'entrées que
-prévu, il écrit l'écart sur stderr et sort en code 1 **sans écrire `knowledge.md`** :
-ce garde-fou signale une regex cassée par un changement de HTML même quand elle ne fait
-perdre qu'une seule entrée. Corriger le HTML avant de régénérer.
-La BD réutilise le gabarit visuel des infographies : sa carte porte la classe inerte
-`bd-card` (`infog-card bd-card reveal`, absente de `styles.css`), qui sert uniquement à
-la distinguer côté extraction. La regex des infographies exige donc exactement
-`class="infog-card reveal"` : une nouvelle carte infographie doit garder ces deux classes
-dans cet ordre, sinon elle disparaît silencieusement de `knowledge.md`.
-Le SYSTEM_PROMPT du bot vit dans `_worker.js` (le bot habille les URLs en Markdown ;
-`knowledge.md` liste des URLs brutes, c'est voulu).
+`generate-knowledge.py` compare chaque section au dict **`EXPECTED`** et sort en code 1
+sans écrire `knowledge.md` au moindre écart : corriger le HTML, ou porter le nouvel
+effectif dans `EXPECTED`. Une carte infographie garde exactement
+`class="infog-card reveal"` ; la BD porte `infog-card bd-card reveal`.
+
+Vérification locale : un petit serveur Python qui mappe `/x` vers `x.html` (liens
+extensionless), Playwright + Chromium en desktop et mobile. Grep de conformité avant
+push : `Bruxelles Formation`, `expert`, tiret cadratin, `soundcloud|numericast`.
 
 ## Règles de fond
 
-1. **Synchroniser avant de modifier.** `git fetch origin main` **en début de session**,
-   avant toute modification, et pas seulement après un merge de PR. Plusieurs clones de
-   ce dépôt ont coexisté sur la machine : un arbre de travail en retard produit des
-   conflits (vécu sur la PR #12). Toujours repartir de `main` à jour :
-   `git fetch origin main && git checkout -B <branche> origin/main`.
-2. **Cache-busting.** Toute modification de `styles.css` ou `site.js` oblige à
-   incrémenter `?v=N` **sur toutes les pages** qui les référencent. État courant :
-   `styles.css?v=11`, `site.js?v=11`. Sans ça, les visiteurs récurrents gardent l'ancienne
-   version (source du bug de scrollbar déjà corrigé).
-3. **Compteurs, plusieurs emplacements et plusieurs formes.** Recenser TOUS les endroits
-   par `grep` du chiffre ET du mot, sur toutes les pages, avant de conclure. Connus :
-   - Accueil : `data-count-to` de `.stats-card` (interventions, pays, membres
-     communauté, outils et ressources).
-   - Cartes offres de l'accueil (« N conférences dans N pays », « N sessions »).
-   - Pages parcours : sous-titres de preuve (`conferences.html` « N conférences »,
-     `ateliers-formations.html` « N sessions »).
-   - `ressources.html` : boutons de filtre (`Tout`, `Outils`, `Guides pratiques`,
-     `Infographies`, `Articles`, `Webinaires`, `Podcasts`, `BD`, chacun suivi de son
-     effectif après un `·`), en-tête
-     `Volume · N ressources`, titres de section, où l'effectif est écrit en toutes lettres
-     et non en chiffres, et **les 4 copies** de la meta description (`description`,
-     `og:description`, `twitter:description`, JSON-LD).
-     Les valeurs vivent dans la page, les relever par `grep` plutôt que de les lire ici.
-   - `faq.html` : la réponse « Où trouver des ressources gratuites » reprend le total et
-     le détail par type, en deux copies (JSON-LD et carte).
-   - `llms.txt` et `llms-full.txt` : total de la bibliothèque et détail par type.
-   - `generate-knowledge.py` : le dict **`EXPECTED`**, en tête de fichier, un effectif par
-     section. Sa valeur fait foi, ne pas la recopier ici. Toute ressource ajoutée ou
-     retirée impose d'y porter le nouvel effectif, au même titre que les compteurs des
-     pages HTML. Le script abandonne sur tout écart, par défaut comme par excès, et
-     n'écrit pas `knowledge.md`.
-4. **Ne pas toucher `_worker.js`** lors d'une modification de contenu. N'y toucher que
-   sur demande explicite visant le chatbot. `ALLOWED_ORIGINS` inchangé.
-5. **Diffs chirurgicaux.** Aucune ligne hors demande. Les incohérences repérées hors
-   périmètre sont signalées en fin de réponse pour arbitrage, jamais corrigées d'office.
-6. **Ampleur.** Changement visuel ou multi-fichiers : passer par un plan d'abord.
-   Correction simple mono-fichier : direct.
-
-## Publication (mise en ligne)
-
-- Cloudflare déploie `main`. Selon l'environnement : en session web, le **push direct
-  sur `main` est bloqué**, publier via une **pull request fusionnée** (outils GitHub) ;
-  en local, adapter selon l'accès. Après un merge, repartir de `main` (règle 1).
-- Vérifier avant push par `grep` et rendu Playwright. Le `curl` direct vers le site en
-  ligne n'est **pas fiable** en session web (403 du proxy) ; vérifier par navigateur.
-
-## Ajouter un contenu
-
-- **Intervention** (conférence / formation) : dupliquer une ligne `.conf-row`
-  (`conferences.html`) ou `.form-row` (`ateliers-formations.html`) en gardant les classes
-  intactes (le générateur de knowledge les parse). Mettre à jour les compteurs (règle 3),
-  régénérer `knowledge.md`.
-- **Infographie** : ajouter en tête de `#infographies` dans `ressources.html` (plus
-  récente d'abord), incrémenter le bouton de filtre + le `Volume` + le titre de section +
-  les 4 metas, régénérer `knowledge.md`.
-- **Carte projet / outil** : reproduire le pattern `.proj-card` (`proj-visual`,
-  `proj-body`, `proj-tags`, `proj-footer`), SVG dans la palette (pas d'emoji pour les
-  nouvelles), liens externes `target="_blank" rel="noopener"`. Ajouter aussi dans
-  `ressources.html#outils` avec ses compteurs.
-- **Article** : voir la section « Ajouter un article » du `README.md`. Brouillon
-  `noindex` d'abord, écriture via voix-atelier, puis publication (retirer `noindex` + le
-  bandeau brouillon, dater le JSON-LD Article, câbler la carte dans `ressources.html` +
-  compteurs, ajouter au `sitemap.xml`, régénérer `knowledge.md`, bump `?v` si `styles.css`
-  a bougé).
-- **Financement** : toute page ou mention touchant au financement se conforme à
-  `financement.html`, qui fait référence.
-
-## Écriture de contenu (voix de l'auteur)
-
-- Mobiliser les skills : `voix-atelier` (production de fond en quatre temps),
-  `filtre-anti-baratin` et `humanizer` (passe finale), `ecriture-evaluation-ia` (contenu
-  adossé au livre).
-- **Règle permanente : jamais d'antithèse « pas X mais Y »** (ni « ce n'est pas X, c'est
-  Y », ni « il ne s'agit pas de X, il s'agit de Y »).
-- Aucun tiret cadratin dans le contenu. Rien d'inventé : chiffres, clients, citations,
-  résultats, certifications.
+1. **Cache-busting** : toute modif de `styles.css` ou `site.js` incrémente `?v=N` sur
+   toutes les pages (état courant : `v=11`).
+2. **Compteurs** : recenser par `grep` du chiffre ET du mot sur toutes les pages. Connus :
+   `.stats-card` et cartes offres de l'accueil, sous-titres des pages parcours, boutons
+   de filtre, `Volume`, titres de section (en toutes lettres) et **4 copies** de la meta
+   description de `ressources.html`, réponse ressources de `faq.html` (2 copies),
+   `llms.txt`, `llms-full.txt`, `EXPECTED`.
+3. Incohérences hors périmètre : signalées en fin de réponse, jamais corrigées d'office.
+4. Changement visuel ou multi-fichiers : plan d'abord. Correction mono-fichier : direct.
+5. Commits sans accents ni tirets cadratins, sans identifiant de modèle.
 
 ## Contraintes éditoriales NON NÉGOCIABLES
 
-- Jamais « **expert IA** ». Titre : « Technopédagogue & Ambassadeur IA ». « Spécialiste
-  des usages de l'IA en pédagogie » est admis.
-- Jamais l'organisme « **Bruxelles Formation** » (texte, logo, métadonnées, données
-  structurées, `knowledge.md`). L'activité indépendante et l'emploi salarié restent
-  strictement séparés.
-- Localisation : basé en France près de Lille, actif à Bruxelles et à l'international.
-  Jamais « basé à Bruxelles ».
-- Préserver : le livre « Évaluer en formation à l'ère de l'IA générative » (Chronique
-  Sociale, 2026), Ambassadeur IA France Num, les références institutionnelles exactes,
-  les outils, les articles, les interventions internationales.
-- Jamais « **Certifié Qualiopi** », jamais de logo Qualiopi, jamais « organisme de
-  formation » au sujet de Rochane. Il ne détient pas la certification. Elle est détenue
-  par **AUTONOMIA Formation**, organisme qui conventionne les interventions, déclaration
-  d'activité **42 68 02034 68**. Seule formulation admise : les interventions peuvent
-  être conventionnées par un organisme de formation certifié Qualiopi, au sein duquel
-  Rochane intervient comme **formateur porté**.
-- Jamais de promesse de financement **CPF**, ni de mention d'un référencement **EDOF**.
-  Le CPF n'entre pas dans le dispositif.
-- Le délai de **trois à cinq semaines** vaut pour une demande **OPCO uniquement**. Aucun
-  délai n'est établi pour France Travail, les collectivités ni les régions : ne pas en
-  écrire.
-- La **catégorie d'action** couverte par la certification d'AUTONOMIA n'est pas établie.
-  Ne jamais l'écrire tant que le certificat n'a pas été communiqué.
+- Jamais « **expert IA** ». Titre : « Technopédagogue & Ambassadeur IA ».
+- Jamais l'organisme « **Bruxelles Formation** » (texte, logo, métadonnées, `knowledge.md`).
+- Basé en France près de Lille, actif à Bruxelles et à l'international. Jamais « basé à Bruxelles ».
+- Jamais « **Certifié Qualiopi** », ni logo Qualiopi, ni « organisme de formation » pour
+  Rochane. Seule formulation : interventions conventionnables par un organisme certifié
+  Qualiopi (**AUTONOMIA Formation**, NDA **42 68 02034 68**), Rochane **formateur porté**.
+- Jamais de promesse **CPF** ni de mention **EDOF**. Délai de trois à cinq semaines :
+  **OPCO uniquement**. Catégorie d'action de la certification : ne jamais l'écrire.
+- Rien d'inventé (chiffres, clients, citations, résultats). Aucun tiret cadratin.
+- Préserver le livre (Chronique Sociale, 2026), Ambassadeur IA France Num, les références
+  institutionnelles, outils, articles, interventions internationales.
+- Écriture : skills `voix-atelier`, `filtre-anti-baratin`, `humanizer`, `ecriture-evaluation-ia`.
 
-## Identité visuelle (« copie corrigée »)
+## Identité visuelle « copie corrigée »
 
-- Papier clair `--paper #fdfdfb`, encre `--text #14151b`, accent bleu `--accent #1d3db0`,
-  rouge correcteur `--rouge #cf2e2e`, réglure seyes `--seyes #ccd9ec`.
-- Polices : Bricolage Grotesque (titres), Instrument Sans (texte), Spline Sans Mono
-  (labels / mono).
-- Jamais l'ancienne charte : orange `#e8520a`, crème `#f7f6f3`, Plus Jakarta Sans.
-
-## Vérification locale
-
-- `python3 -m http.server` ne sert pas les URLs sans extension. Les liens internes sont
-  extensionless (`/conferences`) car Cloudflare redirige `.html` en 308 : utiliser un
-  petit serveur Python qui mappe `/x` vers `x.html`.
-- Rendu et débordements : Playwright + Chromium (`~/.cache/ms-playwright/`, emplacement
-  par défaut de Playwright), captures desktop et mobile. Si le chemin rebouge, le
-  trancher sur pièce plutôt que de se fier à ce guide :
-
-  ```
-  python3 -c "from playwright.sync_api import sync_playwright; p=sync_playwright().start(); print(p.chromium.executable_path); p.stop()"
-  ```
-
-  affiche le binaire réellement utilisé (à ce jour
-  `/root/.cache/ms-playwright/chromium-1228/chrome-linux64/chrome`), puis corriger cette
-  ligne en conséquence.
-- Grep de conformité avant push : `Bruxelles Formation`, `expert`, tiret cadratin,
-  `soundcloud|numericast`.
-
-## Base de mesure
-
-- Les campagnes Lighthouse vivent dans `audit/avant/` et `audit/apres/`.
-- **Versionnés** : `_METHODE.md` (protocole, versions, flags, tableaux de médianes et
-  d'amplitude) et `_scores.json` (médiane, min, max et les 3 valeurs brutes par
-  métrique).
-- **Non versionnés** : les rapports Lighthouse bruts `*.report.json` et `*.report.html`,
-  exclus par `.gitignore` (environ 25 Mo par campagne). Ils restent sur disque pour
-  consultation.
-- **Règle** : la campagne APRÈS doit reprendre à l'identique la version de Lighthouse,
-  le Chromium, l'ordre des URL et les `--chrome-flags` de la campagne AVANT, `--disable-gpu`
-  compris. Un flag qui change rend les deux campagnes incomparables. Voir la section
-  « Artefact WebGL » de `audit/avant/_METHODE.md` : l'erreur WebGL de l'accueil vient du
-  headless sans GPU, pas du site, et doit se reproduire à l'identique.
-- Protocole : 3 passes par URL, en séquentiel, médiane de chaque métrique calculée
-  indépendamment. L'amplitude min-max relevée impose de ne pas lire comme un effet réel
-  un écart de performance inférieur ou égal à **7 points**.
-
-## Commits
-
-- Messages **sans accents et sans tirets cadratins**.
-- Ne pas inclure d'identifiant de modèle dans les artefacts poussés.
-
-## Conversion
-
-- CTA principal : Cal.com `https://cal.com/rochane/echange-avec-rochane`.
-- Email public affiché : `contact@rochane.fr`. Formulaire de contact via Formspree.
-
-## Vestiges à ne pas réactiver
-
-- `.github/workflows/deploy.yml` (ancien déploiement GitHub Pages) : supprimé du
-  dépôt en juillet 2026, il se déclenchait encore à chaque push sur `main`. Ne pas
-  recréer de workflow de déploiement, Cloudflare Pages déploie `main` tout seul.
-- `og-template.html` sert uniquement à régénérer `og-image.jpg` (capture 1200x630).
+`--paper #fdfdfb`, `--text #14151b`, `--accent #1d3db0`, `--rouge #cf2e2e`,
+`--seyes #ccd9ec`. Bricolage Grotesque, Instrument Sans, Spline Sans Mono.
+Jamais l'ancienne charte (orange `#e8520a`, crème `#f7f6f3`, Plus Jakarta Sans).
