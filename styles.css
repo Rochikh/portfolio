@@ -2,7 +2,6 @@
    Rochane Kherbouche · ia.rochane.fr
    Feuille de style partagée par toutes les pages du site.
    ═══════════════════════════════════════════════════════════ */
-html { scroll-behavior: smooth; }
 
 :root {
   --white: #ffffff;
@@ -564,7 +563,7 @@ picture { display: contents; }
   background: var(--accent-light);
   color: var(--accent);
   padding: 0.3rem 0.8rem;
-  border-radius: 5px;
+  border-radius: 3px;
   font-weight: 600;
   border: 1px solid rgba(29,61,176,0.15);
 }

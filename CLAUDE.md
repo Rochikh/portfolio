@@ -41,7 +41,7 @@ push : `Bruxelles Formation`, `expert`, tiret cadratin, `soundcloud|numericast`.
 ## Règles de fond
 
 1. **Cache-busting** : toute modif de `styles.css` ou `site.js` incrémente `?v=N` sur
-   toutes les pages (état courant : `v=11`).
+   toutes les pages (état courant : `v=12`).
 2. **Compteurs** : recenser par `grep` du chiffre ET du mot sur toutes les pages. Connus :
    `.stats-card` et cartes offres de l'accueil, sous-titres des pages parcours, boutons
    de filtre, `Volume`, titres de section (en toutes lettres) et **4 copies** de la meta
