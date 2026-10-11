@@ -67,7 +67,7 @@ PRIORITY = {
 # A bump a chaque ressource ajoutee ou retiree, comme les compteurs des pages HTML.
 # Tout ecart, par defaut comme par exces, abandonne la generation.
 EXPECTED = {
-    "infographies": 15,
+    "infographies": 16,
     "bd": 2,
     "projets": 8,
     "guides": 4,
