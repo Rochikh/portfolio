@@ -760,6 +760,33 @@ picture { display: contents; }
 
 .conf-loc { color: var(--accent); font-weight: 600; }
 
+.conf-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 300px) 1fr;
+  gap: 1.8rem;
+  align-items: center;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--rouge);
+  border-radius: var(--radius);
+  padding: 1.3rem;
+  margin-bottom: 0.8rem;
+}
+.conf-feature-visual img { display: block; width: 100%; height: auto; border-radius: 2px; }
+.conf-feature-tag {
+  display: flex; align-items: center; gap: 0.6rem;
+  font-family: 'Spline Sans Mono', monospace;
+  font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--rouge); margin-bottom: 0.7rem;
+}
+.conf-feature-tag img { border-radius: 2px; box-shadow: 0 1px 2px rgba(0,0,0,0.08); }
+.conf-feature-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 1.25rem; font-weight: 700; line-height: 1.25;
+  color: var(--text); margin-bottom: 0.7rem;
+}
+.conf-feature-text { font-size: 0.9rem; line-height: 1.55; color: var(--muted); margin-bottom: 0.8rem; }
+
 /* ─── FORMATIONS ─── */
 .form-grid {
   display: grid;
@@ -1149,6 +1176,8 @@ footer a:hover { color: var(--accent); }
   .stats-card { border-radius: var(--radius); }
   .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
   .conf-grid { grid-template-columns: 1fr; }
+  .conf-feature { grid-template-columns: 1fr; gap: 1.1rem; }
+  .conf-feature-visual { max-width: 340px; }
   #main-nav { padding: 0 1.5rem; }
   .section-wrap { padding: 72px 1.5rem; }
   #trust { padding: 36px 1.5rem; }

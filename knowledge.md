@@ -7,7 +7,7 @@ La ligne Page: indique ou le contenu se trouve sur le site : elle peut etre cite
 
 ## Pages du site
 - https://ia.rochane.fr/ : accueil : offres, livre, demarche, etudes de cas, contact et formulaire
-- https://ia.rochane.fr/conferences : conferences IA et pedagogie : formats, themes, historique des 14 conferences
+- https://ia.rochane.fr/conferences : conferences IA et pedagogie : formats, themes, historique des 15 conferences
 - https://ia.rochane.fr/ateliers-formations : ateliers et formations IA pour les equipes : deroulement, themes, historique des sessions
 - https://ia.rochane.fr/accompagnement : accompagnement des organisations : demarche en quatre temps, perimetre, etudes de cas
 - https://ia.rochane.fr/evaluer-ia : evaluer a l'ere de l'IA generative : le livre, les outils dedies, les publications
@@ -150,7 +150,7 @@ La ligne Page: indique ou le contenu se trouve sur le site : elle peut etre cite
   URL: https://open.spotify.com/episode/11kOrwC5NSaKwFfPxxuCk5
   Page: https://ia.rochane.fr/ressources
 
-## Conferences (14)
+## Conferences (15)
 - L'évaluation à l'ère de l'IA générative, Haute École Francisco Ferrer (Bruxelles Évaluation & IA, Mai 2026)
   Page: https://ia.rochane.fr/conferences
 - L'évaluation à l'ère de l'IA, Network Meeting AI-LANG (Graz, Autriche CELV, Avril 2026)
@@ -179,6 +179,8 @@ La ligne Page: indique ou le contenu se trouve sur le site : elle peut etre cite
   Page: https://ia.rochane.fr/conferences
 - Forum Citoyen de l'Innovation en Éducation, Sousse (Sousse Innovation)
   Page: https://ia.rochane.fr/conferences
+- Évaluation en formation à l'ère de l'IA générative, webinaire AIPU section suisse (En ligne, Suisse Évaluation & IA, Oct. 2026)
+  Page: https://ia.rochane.fr/evaluer-ia
 
 ## Formations et ateliers (22)
 - Initiation au protocole d'audit des évaluations (CoP LiteratIA · AQPC, Québec, à distance)
@@ -251,7 +253,7 @@ La ligne Page: indique ou le contenu se trouve sur le site : elle peut etre cite
   R: En déplaçant l'évaluation du produit fini vers le processus documenté, méthode développée dans le livre « Évaluer en formation à l'ère de l'IA générative » (Chronique Sociale, 2026, ISBN 978-2-38548-104-9). Des outils en libre accès, comme le Compagnon de Route, mesurent la robustesse d'une évaluation face à l'IA.
   Page: https://ia.rochane.fr/faq
 - Proposez-vous des conférences sur l'IA en formation ?
-  R: Oui : des conférences de 1 h à 2 h pour événements, journées d'étude et séminaires, en présentiel ou à distance. 14 conférences ont déjà été données dans 5 pays, sur l'évaluation à l'ère de l'IA générative, les usages pédagogiques de l'IA, l'esprit critique ou l'IA et l'emploi.
+  R: Oui : des conférences de 1 h à 2 h pour événements, journées d'étude et séminaires, en présentiel ou à distance. 15 conférences ont déjà été données dans 6 pays, sur l'évaluation à l'ère de l'IA générative, les usages pédagogiques de l'IA, l'esprit critique ou l'IA et l'emploi.
   Page: https://ia.rochane.fr/faq
 - Où trouver des ressources gratuites sur l'IA en formation ?
   R: La bibliothèque du site rassemble 42 ressources en libre accès : 8 outils IA pour la formation, 4 guides pratiques, 16 infographies pédagogiques, 7 articles, 3 webinaires, 2 podcasts et 2 BD. Chaque ressource prolonge une intervention ou un chapitre du livre.

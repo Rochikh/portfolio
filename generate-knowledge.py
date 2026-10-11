@@ -38,7 +38,7 @@ PAGE_URLS = {
 
 PAGES_DESC = [
     (SITE + "/", "accueil : offres, livre, demarche, etudes de cas, contact et formulaire"),
-    (SITE + "/conferences", "conferences IA et pedagogie : formats, themes, historique des 14 conferences"),
+    (SITE + "/conferences", "conferences IA et pedagogie : formats, themes, historique des 15 conferences"),
     (SITE + "/ateliers-formations", "ateliers et formations IA pour les equipes : deroulement, themes, historique des sessions"),
     (SITE + "/accompagnement", "accompagnement des organisations : demarche en quatre temps, perimetre, etudes de cas"),
     (SITE + "/evaluer-ia", "evaluer a l'ere de l'IA generative : le livre, les outils dedies, les publications"),
@@ -73,7 +73,7 @@ EXPECTED = {
     "guides": 4,
     "articles": 7,
     "podcasts": 2,
-    "conferences": 14,
+    "conferences": 15,
     "formations": 22,
     "webinaires": 3,
     "faq": 11,
