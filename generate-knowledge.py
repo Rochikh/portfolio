@@ -42,7 +42,7 @@ PAGES_DESC = [
     (SITE + "/ateliers-formations", "ateliers et formations IA pour les equipes : deroulement, themes, historique des sessions"),
     (SITE + "/accompagnement", "accompagnement des organisations : demarche en quatre temps, perimetre, etudes de cas"),
     (SITE + "/evaluer-ia", "evaluer a l'ere de l'IA generative : le livre, les outils dedies, les publications"),
-    (SITE + "/ressources", "bibliotheque en libre acces : outils, guides pratiques, infographies, articles, webinaires, podcasts, BD"),
+    (SITE + "/ressources", "bibliotheque en libre acces : outils, guides pratiques, infographies, articles, webinaires, podcasts, BD, recit illustre"),
     (SITE + "/faq", "questions frequentes : accompagnement IA pour organisme de formation, formation des formateurs, presence France-Belgique, contact"),
     (SITE + "/financement", "financement des interventions : conventionnement par un organisme de formation certifie Qualiopi, financeurs ouverts (OPCO, France Travail, entreprises, collectivites, regions), le CPF est exclu et il n'y a pas de referencement EDOF, etapes du montage et delai de traitement"),
 ]
@@ -68,7 +68,7 @@ PRIORITY = {
 # Tout ecart, par defaut comme par exces, abandonne la generation.
 EXPECTED = {
     "infographies": 16,
-    "bd": 2,
+    "bd": 3,
     "projets": 8,
     "guides": 4,
     "articles": 7,
