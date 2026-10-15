@@ -11,7 +11,7 @@ La ligne Page: indique ou le contenu se trouve sur le site : elle peut etre cite
 - https://ia.rochane.fr/ateliers-formations : ateliers et formations IA pour les equipes : deroulement, themes, historique des sessions
 - https://ia.rochane.fr/accompagnement : accompagnement des organisations : demarche en quatre temps, perimetre, etudes de cas
 - https://ia.rochane.fr/evaluer-ia : evaluer a l'ere de l'IA generative : le livre, les outils dedies, les publications
-- https://ia.rochane.fr/ressources : bibliotheque en libre acces : outils, guides pratiques, infographies, articles, webinaires, podcasts, BD
+- https://ia.rochane.fr/ressources : bibliotheque en libre acces : outils, guides pratiques, infographies, articles, webinaires, podcasts, BD, recit illustre
 - https://ia.rochane.fr/faq : questions frequentes : accompagnement IA pour organisme de formation, formation des formateurs, presence France-Belgique, contact
 - https://ia.rochane.fr/financement : financement des interventions : conventionnement par un organisme de formation certifie Qualiopi, financeurs ouverts (OPCO, France Travail, entreprises, collectivites, regions), le CPF est exclu et il n'y a pas de referencement EDOF, etapes du montage et delai de traitement
 
@@ -71,12 +71,15 @@ La ligne Page: indique ou le contenu se trouve sur le site : elle peut etre cite
   URL: https://llm-fallacy.rochane.fr/
   Page: https://ia.rochane.fr/ressources
 
-## BD (2)
+## BD (3)
 - BD · réalisée avec IA, déclarée 20/20, une BD sur ce qu'un dossier parfait ne dit pas
   URL: https://20sur20.rochane.fr/
   Page: https://ia.rochane.fr/ressources
 - BD · réalisée avec IA, déclarée Abrège, une BD sur nos petits secrets d'IA
   URL: https://abrege.rochane.fr/
+  Page: https://ia.rochane.fr/ressources
+- Récit à faire défiler · réalisé avec IA, déclaré L'IA, échafaudage ou béquille ? Une histoire sur deux façons de s'en servir
+  URL: https://echafaudage.rochane.fr/
   Page: https://ia.rochane.fr/ressources
 
 ## Projets et outils (8)
@@ -256,7 +259,7 @@ La ligne Page: indique ou le contenu se trouve sur le site : elle peut etre cite
   R: Oui : des conférences de 1 h à 2 h pour événements, journées d'étude et séminaires, en présentiel ou à distance. 15 conférences ont déjà été données dans 6 pays, sur l'évaluation à l'ère de l'IA générative, les usages pédagogiques de l'IA, l'esprit critique ou l'IA et l'emploi.
   Page: https://ia.rochane.fr/faq
 - Où trouver des ressources gratuites sur l'IA en formation ?
-  R: La bibliothèque du site rassemble 42 ressources en libre accès : 8 outils IA pour la formation, 4 guides pratiques, 16 infographies pédagogiques, 7 articles, 3 webinaires, 2 podcasts et 2 BD. Chaque ressource prolonge une intervention ou un chapitre du livre.
+  R: La bibliothèque du site rassemble 43 ressources en libre accès : 8 outils IA pour la formation, 4 guides pratiques, 16 infographies pédagogiques, 7 articles, 3 webinaires, 2 podcasts, 2 BD et 1 récit illustré. Chaque ressource prolonge une intervention ou un chapitre du livre.
   Page: https://ia.rochane.fr/faq
 - Comment contacter Rochane Kherbouche ?
   R: Par email à contact@rochane.fr, ou en réservant directement un créneau d'échange de 30 minutes ou 1 heure. Les tarifs sont établis au cas par cas selon le contexte.
