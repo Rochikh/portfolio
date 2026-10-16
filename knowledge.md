@@ -108,7 +108,7 @@ La ligne Page: indique ou le contenu se trouve sur le site : elle peut etre cite
   URL: https://ia-generateurtransparence.rochane.fr/
   Page: https://ia.rochane.fr/ressources
 
-## Guides pratiques (4)
+## Guides pratiques (5)
 - Voix-atelier: Protocole en quatre temps pour produire avec l'IA sans perdre sa voix. Alterne parole humaine brute (T1, T3) et traitement analytique (T2), puis assemble sous contrainte (T4). Skill Claude et prompts portables disponibles.
   URL: https://voix-atelier.rochane.fr/
   Page: https://ia.rochane.fr/ressources
@@ -120,6 +120,9 @@ La ligne Page: indique ou le contenu se trouve sur le site : elle peut etre cite
   Page: https://ia.rochane.fr/ressources
 - Gemini Notebook, 10 usages pour apprendre avec l'IA: Dix prompts à reprendre sur vos propres documents, chacun avec une question pour vérifier ce que vous avez compris. Carrousel PDF de 14 pages. Adaptation du guide de Med Kharbach, PhD (2026), 10 Ways to Use Gemini Notebook as a Researcher.
   URL: https://ia.rochane.fr/guides/gemini-notebook-10-usages.pdf
+  Page: https://ia.rochane.fr/ressources
+- Analyser et renforcer une évaluation à l'ère de l'IA générative: Co-écrit avec le Pôle d'expertise interordres, ce scénario reprend la grille RCTM de mon livre. Il fait examiner une évaluation selon quatre dimensions (reproductibilité, contextualisation, tacitité, multimodalité), puis proposer une modification ciblée pour chacune. Il s'adresse au personnel enseignant, aux conseiller·ères pédagogiques et aux technopédagogues de tous les ordres d'enseignement. Le Pôle l'a classé « Incontournable ». Il prolonge l'atelier donné à la CoP LiteratIA (AQPC) en septembre 2026.
+  URL: https://www.campus-expertise.gouv.qc.ca/ressources/analyser-renforcer-evaluation-iag-scenario/
   Page: https://ia.rochane.fr/ressources
 
 ## Articles (7)
@@ -259,7 +262,7 @@ La ligne Page: indique ou le contenu se trouve sur le site : elle peut etre cite
   R: Oui : des conférences de 1 h à 2 h pour événements, journées d'étude et séminaires, en présentiel ou à distance. 15 conférences ont déjà été données dans 6 pays, sur l'évaluation à l'ère de l'IA générative, les usages pédagogiques de l'IA, l'esprit critique ou l'IA et l'emploi.
   Page: https://ia.rochane.fr/faq
 - Où trouver des ressources gratuites sur l'IA en formation ?
-  R: La bibliothèque du site rassemble 43 ressources en libre accès : 8 outils IA pour la formation, 4 guides pratiques, 16 infographies pédagogiques, 7 articles, 3 webinaires, 2 podcasts, 2 BD et 1 récit illustré. Chaque ressource prolonge une intervention ou un chapitre du livre.
+  R: La bibliothèque du site rassemble 44 ressources en libre accès : 8 outils IA pour la formation, 5 guides pratiques, 16 infographies pédagogiques, 7 articles, 3 webinaires, 2 podcasts, 2 BD et 1 récit illustré. Chaque ressource prolonge une intervention ou un chapitre du livre.
   Page: https://ia.rochane.fr/faq
 - Comment contacter Rochane Kherbouche ?
   R: Par email à contact@rochane.fr, ou en réservant directement un créneau d'échange de 30 minutes ou 1 heure. Les tarifs sont établis au cas par cas selon le contexte.
