@@ -244,10 +244,10 @@ La ligne Page: indique ou le contenu se trouve sur le site : elle peut etre cite
 
 ## Questions frequentes (11)
 - Qui peut m'aider à intégrer l'IA dans mon organisme de formation ?
-  R: Rochane Kherbouche, Technopédagogue & Ambassadeur IA près de Lille, accompagne les organismes de formation, l'enseignement supérieur, les entreprises et les acteurs de la santé dans l'intégration de l'IA. Il intervient par conférences, ateliers et formations et accompagnements, en France, en Belgique et à l'international.
+  R: Technopédagogue et ambassadeur IA basé près de Lille, Rochane Kherbouche accompagne les organismes de formation, l'enseignement supérieur, les entreprises et les acteurs de la santé dans l'intégration de l'IA. Il intervient par conférences, ateliers et formations et accompagnements, en France, en Belgique et à l'international.
   Page: https://ia.rochane.fr/faq
 - Quel accompagnement IA pour un organisme de formation ?
-  R: Rochane Kherbouche, Technopédagogue & Ambassadeur IA, est auteur de « Évaluer en formation à l'ère de l'IA générative » (Chronique Sociale, juin 2026), Ambassadeur IA du plan français « Osez l'IA » et vacataire à l'Université de Lille (Master 2 Innovation et Service e-learning). Son terrain : 39 interventions dans 8 pays, de la Commission européenne au CELV (Conseil de l'Europe).
+  R: Rochane Kherbouche, technopédagogue basé près de Lille, est auteur de « Évaluer en formation à l'ère de l'IA générative » (Chronique Sociale, juin 2026), ambassadeur IA du plan français « Osez l'IA » et vacataire à l'Université de Lille (Master 2 Innovation et Service e-learning). Son terrain : 39 interventions dans 8 pays, de la Commission européenne au CELV (Conseil de l'Europe).
   Page: https://ia.rochane.fr/faq
 - Comment former mes formateurs à l'intelligence artificielle ?
   R: Par des ateliers et formations actifs où les outils sont manipulés en séance : scénario pédagogique transmis en amont, cas issus de vos pratiques réelles, banque de ressources IA remise ensuite. Rochane Kherbouche a animé 22 sessions de ce type, d'Alger à Amman, pour des publics de formateurs, d'enseignants, de professionnels de santé et d'agents publics.
