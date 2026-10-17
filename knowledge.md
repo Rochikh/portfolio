@@ -21,7 +21,10 @@ La ligne Page: indique ou le contenu se trouve sur le site : elle peut etre cite
   Extrait gratuit et infos: https://livre.rochane.fr
   Page: https://ia.rochane.fr/
 
-## Infographies (16)
+## Infographies (17)
+- N°17 L'IA à l'école, tour du monde de la rentrée 2026
+  URL: /veille-ia-rentree-2026
+  Page: https://ia.rochane.fr/ressources
 - N°16 Comment les machines ont appris à parler
   URL: https://ia-histoire.rochane.fr/
   Page: https://ia.rochane.fr/ressources
@@ -262,7 +265,7 @@ La ligne Page: indique ou le contenu se trouve sur le site : elle peut etre cite
   R: Oui : des conférences de 1 h à 2 h pour événements, journées d'étude et séminaires, en présentiel ou à distance. 15 conférences ont déjà été données dans 6 pays, sur l'évaluation à l'ère de l'IA générative, les usages pédagogiques de l'IA, l'esprit critique ou l'IA et l'emploi.
   Page: https://ia.rochane.fr/faq
 - Où trouver des ressources gratuites sur l'IA en formation ?
-  R: La bibliothèque du site rassemble 44 ressources en libre accès : 8 outils IA pour la formation, 5 guides pratiques, 16 infographies pédagogiques, 7 articles, 3 webinaires, 2 podcasts, 2 BD et 1 récit illustré. Chaque ressource prolonge une intervention ou un chapitre du livre.
+  R: La bibliothèque du site rassemble 45 ressources en libre accès : 8 outils IA pour la formation, 5 guides pratiques, 17 infographies pédagogiques, 7 articles, 3 webinaires, 2 podcasts, 2 BD et 1 récit illustré. Chaque ressource prolonge une intervention ou un chapitre du livre.
   Page: https://ia.rochane.fr/faq
 - Comment contacter Rochane Kherbouche ?
   R: Par email à contact@rochane.fr, ou en réservant directement un créneau d'échange de 30 minutes ou 1 heure. Les tarifs sont établis au cas par cas selon le contexte.
