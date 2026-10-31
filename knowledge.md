@@ -191,7 +191,9 @@ La ligne Page: indique ou le contenu se trouve sur le site : elle peut etre cite
 - Évaluation en formation à l'ère de l'IA générative, webinaire AIPU section suisse (En ligne, Suisse Évaluation & IA, Oct. 2026)
   Page: https://ia.rochane.fr/evaluer-ia
 
-## Formations et ateliers (22)
+## Formations et ateliers (23)
+- Juger avec l'IA dans sa discipline (Forum-FCIERI 2026 · Tunis)
+  Page: https://ia.rochane.fr/ateliers-formations
 - Initiation au protocole d'audit des évaluations (CoP LiteratIA · AQPC, Québec, à distance)
   Page: https://ia.rochane.fr/ateliers-formations
 - Design de formation IA (Commission européenne · AIM Consulting)
@@ -250,10 +252,10 @@ La ligne Page: indique ou le contenu se trouve sur le site : elle peut etre cite
   R: Technopédagogue et ambassadeur IA basé près de Lille, Rochane Kherbouche accompagne les organismes de formation, l'enseignement supérieur, les entreprises et les acteurs de la santé dans l'intégration de l'IA. Il intervient par conférences, ateliers, formations et accompagnements, en France, en Belgique et à l'international.
   Page: https://ia.rochane.fr/faq
 - Quel accompagnement IA pour un organisme de formation ?
-  R: Rochane Kherbouche, technopédagogue basé près de Lille, est auteur de « Évaluer en formation à l'ère de l'IA générative » (Chronique Sociale, juin 2026), ambassadeur IA du plan français « Osez l'IA » et vacataire à l'Université de Lille (Master 2 Innovation et Service e-learning). Son terrain : 39 interventions dans 8 pays, de la Commission européenne au CELV (Conseil de l'Europe).
+  R: Rochane Kherbouche, technopédagogue basé près de Lille, est auteur de « Évaluer en formation à l'ère de l'IA générative » (Chronique Sociale, juin 2026), ambassadeur IA du plan français « Osez l'IA » et vacataire à l'Université de Lille (Master 2 Innovation et Service e-learning). Son terrain : 40 interventions dans 8 pays, de la Commission européenne au CELV (Conseil de l'Europe).
   Page: https://ia.rochane.fr/faq
 - Comment former mes formateurs à l'intelligence artificielle ?
-  R: Par des ateliers et formations actifs où les outils sont manipulés en séance : scénario pédagogique transmis en amont, cas issus de vos pratiques réelles, banque de ressources IA remise ensuite. Rochane Kherbouche a animé 22 sessions de ce type, d'Alger à Amman, pour des publics de formateurs, d'enseignants, de professionnels de santé et d'agents publics.
+  R: Par des ateliers et formations actifs où les outils sont manipulés en séance : scénario pédagogique transmis en amont, cas issus de vos pratiques réelles, banque de ressources IA remise ensuite. Rochane Kherbouche a animé 23 sessions de ce type, d'Alger à Amman, pour des publics de formateurs, d'enseignants, de professionnels de santé et d'agents publics.
   Page: https://ia.rochane.fr/faq
 - Quel accompagnement IA pour une organisation en France ou en Belgique ?
   R: Un accompagnement en quatre temps : diagnostic des usages, conception du dispositif, animation des temps forts, suivi de ce qui change. Rochane Kherbouche, technopédagogue et ambassadeur IA, intervient en France, en Belgique et à l'international, en présentiel, à distance ou en hybride.
